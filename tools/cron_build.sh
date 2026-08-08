@@ -16,12 +16,23 @@
 #   tools/cron_build.sh wrap|build|designation|lock [--prompt-only]
 #   tools/cron_build.sh --detect-only [--now ISO]   # print the detected type (selftest)
 #
-# CRONTAB SKETCH (ET; the lock entries fire hourly on game days — the detector no-ops
-# when nothing is imminent, so extra firings cost nothing):
-#   0 10 * * 2  bash tools/cron_build.sh wrap
-#   0 10 * * 4  bash tools/cron_build.sh build
-#   0 17 * * 5  bash tools/cron_build.sh designation
-#   0 9-21 * * 0,1,4,6  bash tools/cron_build.sh   # auto: lock when windows approach
+# SCHEDULE OF RECORD (UTC cron — designed for Claude Routines, which evaluate UTC; each
+# expression stays inside the right run window under BOTH EDT (Sep-Oct, UTC-4) and EST
+# (Nov+, UTC-5), so no seasonal edit is required. The detector picks the run type at
+# fire time. Lock firings at ~T-60-90m land POST-INACTIVES under EDT — that's ideal, not
+# late. A Thursday/Monday firing with no game that week degrades to a build (harmless).
+#
+#   0 14 * * 2    wrap         Tue 10:00/09:00 ET — settle + review + calib/pulse + dashboard
+#   0 14 * * 4    build        Thu 10:00/09:00 ET — Wed practice known, props posting
+#   0 21 * * 5    designation  Fri 17:00/16:00 ET — Q/D/O designations land
+#   0 23 * * 4    lock (TNF)   Thu 19:00/18:00 ET — kick ~20:15
+#   30 15 * * 0   lock (Sun early) 11:30/10:30 ET — kick 13:00
+#   30 19 * * 0   lock (Sun late)  15:30/14:30 ET — kick 16:05/16:25
+#   30 23 * * 0   lock (SNF)   Sun 19:30/18:30 ET — kick 20:20
+#   0 23 * * 1    lock (MNF)   Mon 19:00/18:00 ET — kick ~20:15
+# OPTIONAL (enable when the build flags the week):
+#   0 12 * * 0    lock (intl AM)   Sun 08:00/07:00 ET — 9:30 ET international kicks
+#   30 19 * * 6   lock (Saturday)  Sat 15:30/14:30 ET — Dec weeks 15-18 Sat slates
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
