@@ -201,14 +201,16 @@ CorrEntry = {family_a, family_b, same_game:bool, rho_tier, rho, basis(structural
                       -- team_total_over, game_total_over, anytime_td, kicker_pts
 ```
 
-## 6. Decisions for you (each with my recommended default — "go with your defaults" works)
+## 6. Decisions — ✅ RESOLVED 2026-08-08: user accepted every recommended default
+
+All nine defaults below are now the plan of record (user: "go with your defaults").
 
 | # | Decision | Options | **Recommended default** + why |
 |---|---|---|---|
 | (a) | Context layer: pre-computed weekly store vs on-demand fetch | store / on-demand / hybrid | **Pre-computed SQLite store, rebuilt per session from release assets, manifest + per-week packs committed, DB not committed.** nflverse is files (verified); on-demand would re-download per question; committing the DB bloats git ~3×/wk. Manifest keeps provenance auditable in the MLB `.probables` spirit. |
 | (b) | How correlation surfaces in the UI/output | suggest stacks / warn only / adjust payouts / all | **All three**: builds list the top positive same-game stacks with floor-gain + min-SGP quote; the optimizer warns on negative pairs and book-blocked combos (never recommends them); every displayed combined prob/payout is correlation-adjusted — the naive product is never shown unlabeled. Dashboard gets a stack-performance panel once data accrues. |
 | (c) | Default polled prop markets | minimal(4) / **core(8)** / broad(14+) | **Core 8**: pass_yds, pass_tds, pass_interceptions, rush_yds, rush_attempts, receptions, reception_yds, anytime_td (~1,750 cr/wk incl. board+closes+backfill, ~62% headroom on 20K/mo). Alternates pulled per shortlisted leg; kicking/defense/period/longest opt-in (thin, settle-fragile). |
-| (d) | Injury/practice source | ESPN best-effort / paid API / manual-only | **ESPN best-effort on top of a degraded-mode default** (rosters+depth floor). Requires you to allowlist `site.api.espn.com` + `sports.core.api.espn.com` in the environment (verified blocked today); until then the app runs degraded-correct. No paid data. |
+| (d) | Injury/practice source | ESPN best-effort / paid API / manual-only | **ESPN best-effort on top of a degraded-mode default** (rosters+depth floor). Both ESPN hosts verified reachable from this environment on re-probe 2026-08-08 (an earlier same-day probe timed out — treat the feed as flaky by design); the app runs degraded-correct whenever it's absent. No paid data. |
 | (e) | Preseason posture (it's August) | ignore / paper-builds / full builds | **Paper-builds on featured markets only**, clearly labeled, no ladder, no props (separate sport key verified; props assumed absent) — used to soak M2/M5 plumbing before Week 1. |
 | (f) | Bankroll ladder cadence | per-window / weekly | **One roll per week** (safest qualifying favorite across the whole week, placed at its own window lock). 4-win target ≈ a month horizon, matching NFL rhythm; per-window rolls would triple exposure without new edge. |
 | (g) | NRFI-analog side tracker | port as 1H-total tracker / drop | **Drop at launch.** Re-propose a 1H-total/first-drive tracker only after the core loop has a few settled weeks (it was a late MLB addition too). |
@@ -235,18 +237,21 @@ Assumptions I had to make (all flagged inline where used):
    treated as confirmation that windows must be data-driven, but worth a glance at flex/PPD
    handling when the first schedule change of the season lands.
 
-Questions for you (non-blocking — defaults above let me proceed):
+Questions — ✅ ANSWERED 2026-08-08:
 
-- Q1: Is the Odds API key intended to be shared across both apps long-term (decision h)?
-- Q2: Will you allowlist the two ESPN hosts in this environment (decision d), or should the
-  injury layer plan on degraded mode indefinitely?
-- Q3: Weekly notification cadence: same push+email per run as MLB, or consolidated (build /
-  Friday update / Sunday locks / Tuesday wrap)? Default: consolidated at those four points.
-- Q4: Any appetite cap on defensive/kicker props even as C-tier scan-only rows? Default:
-  scan-log them, never tier them, MANUAL settle.
+- Q1: Odds API key IS shared across both apps long-term (user-confirmed). Budget monitoring
+  via the credits-per-run doctrine; revisit only if the Sept/Oct MLB+NFL overlap squeezes.
+- Q2: ESPN hosts are reachable (environment has full internet access, user-confirmed;
+  verified live — see decision (d)). Injury layer targets the full ladder, with degraded
+  mode as the always-available floor.
+- Q3: Notification cadence = **consolidated four touchpoints** (Wed/Thu build, Friday
+  designation update, pre-window locks, Tuesday wrap) — user chose the NFL-fitted cadence
+  over MLB's per-run notifications.
+- Q4: Defensive/kicker props = default accepted: scan-logged C-tier rows, never
+  tiered/recommended, MANUAL settle until proven.
 
 ---
 
-*End of plan. Stopping here per the task — no implementation until you review. The natural
-first increment after sign-off is M0+M1 (scaffold + context ingest), which can be proven
-against live 2026 schedules and 2025 historical data immediately.*
+*Plan of record as of 2026-08-08 — all decisions resolved, no implementation yet. The first
+increment on "go" is M0+M1 (scaffold + context ingest), provable immediately against live
+2026 schedules and 2025 historical data.*

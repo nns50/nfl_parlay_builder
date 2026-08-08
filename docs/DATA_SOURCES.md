@@ -228,14 +228,16 @@ free CLV/backtest reference).
 - Intended uses: live game state (`/apis/site/v2/sports/football/nfl/scoreboard`), in-week
   injury/practice status (`…/teams/{id}/injuries` and event summaries), and the **T-90min
   inactives** (event summary feeds).
-- **[VERIFIED — currently BLOCKED]**: from this environment the host **times out through the
-  egress proxy** (connection timed out; not reachable today). Two consequences for the plan:
-  (a) the environment allowlist needs `site.api.espn.com` (and `sports.core.api.espn.com`)
-  added before M3's live layer can even be tested — same one-time env step as `*.mlb.com` was
-  for the MLB app; (b) the design must already be what the task demands anyway — *best-effort*:
-  every ESPN-derived field is optional, degrades to "UNKNOWN — treat as PENDING/unverified",
-  and no gate can *require* ESPN to pass. Being undocumented, shapes can drift without notice:
-  parse defensively, selftest with committed fixtures, degrade on shape mismatch.
+- **[VERIFIED — reachable, but treat as flaky]**: probed twice on 2026-08-08 from this
+  environment. First probe: connection timeout. Re-probe hours later: **both hosts 200** —
+  `site.api.espn.com` scoreboard (returns `season.type`/`year`, event list) and
+  `sports.core.api.espn.com` team injuries (73 records for BUF). The user confirms the
+  environment has full internet access, so the earlier timeout was transient — which is
+  itself the design input: ESPN can disappear mid-week. The design is therefore what the
+  task demands anyway — *best-effort*: every ESPN-derived field is optional, degrades to
+  "UNKNOWN — treat as PENDING/unverified", and no gate can *require* ESPN to pass. Being
+  undocumented, shapes can drift without notice: parse defensively, selftest with committed
+  fixtures, degrade on shape mismatch.
 - Fallback chain for what ESPN would provide: live game state → `schedules` scores (5-min
   cadence; good enough for settlement, no in-progress detail) + kickoff-time-based
   started-game guards (an event whose kickoff has passed is LOCKED regardless of feed);
