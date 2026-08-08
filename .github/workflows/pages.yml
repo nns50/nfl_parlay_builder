@@ -34,7 +34,11 @@ jobs:
       - name: Generate dashboard
         run: python tools/generate_dashboard.py
 
+      # enablement: true creates the Pages site on first run (pages:write suffices) —
+      # no manual Settings → Pages step needed on a fresh repo.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
