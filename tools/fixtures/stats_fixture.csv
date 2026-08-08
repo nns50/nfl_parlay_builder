@@ -1,0 +1,4 @@
+player_id,player_name,player_display_name,position,position_group,season,week,season_type,game_id,team,opponent_team,completions,attempts,passing_yards,passing_tds,passing_interceptions,sacks_suffered,carries,rushing_yards,rushing_tds,receptions,targets,receiving_yards,receiving_tds,target_share,air_yards_share,def_sacks,def_interceptions,def_tackles_solo,def_tackle_assists,fg_made,fg_att,fg_missed,fg_long,pat_made,pat_att,extra_ignored
+00-0034857,J.Allen,Josh Fixture,QB,QB,2025,10,REG,2025_10_BUF_MIA,BUF,MIA,29,41,301.0,2,1,2,9,44.0,1,0,0,0.0,0,,,0,0,0,0,,,,,,,x
+00-0036162,T.Bass,Tyler Fixture,K,SPEC,2025,10,REG,2025_10_BUF_MIA,BUF,MIA,,,,,,,,,,,,,,,,0,0,0,0,3,4,1,52,4,4,x
+00-0037777,S.Diggs,Stef Fixture,WR,WR,2025,10,REG,2025_10_BUF_MIA,BUF,MIA,,,,,,,1,7.0,0,8,11,104.0,1,0.324,0.41,0,0,0,0,,,,,,,x

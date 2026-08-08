@@ -1,0 +1,5 @@
+dt,team,player_name,espn_id,gsis_id,pos_grp_id,pos_grp,pos_id,pos_name,pos_abb,pos_slot,pos_rank
+2026-08-01T07:00:00Z,BUF,Old Starter,111,00-0000001,1,Offense,10,Quarterback,QB,1,1
+2026-08-07T07:00:00Z,BUF,New Starter,222,00-0000002,1,Offense,10,Quarterback,QB,1,1
+2026-08-07T07:00:00Z,BUF,New Backup,333,00-0000003,1,Offense,10,Quarterback,QB,1,2
+2026-08-05T07:00:00Z,MIA,Other Team QB,444,00-0000004,1,Offense,10,Quarterback,QB,1,1

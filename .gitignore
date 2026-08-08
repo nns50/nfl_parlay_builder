@@ -1,0 +1,12 @@
+# SQLite context store — rebuilt deterministically from nflverse release assets
+# (provenance lives in data/ingest_manifest.json, which IS committed)
+data/context.db
+data/context.db-journal
+data/context.db-wal
+data/context.db-shm
+data/.cache/
+
+*.tmp
+*.pyc
+__pycache__/
+.DS_Store

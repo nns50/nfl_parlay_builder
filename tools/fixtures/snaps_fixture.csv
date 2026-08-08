@@ -1,0 +1,4 @@
+game_id,pfr_game_id,season,game_type,week,player,pfr_player_id,position,team,opponent,offense_snaps,offense_pct,defense_snaps,defense_pct,st_snaps,st_pct
+2025_10_BUF_MIA,202511100buf,2025,REG,10,Josh Fixture,AlleJo02,QB,BUF,MIA,68,1.0,0,0.0,0,0.0
+2025_10_BUF_MIA,202511100buf,2025,REG,10,Stef Fixture,DiggSt00,WR,BUF,MIA,61,0.897,0,0.0,2,0.08
+2025_10_BUF_MIA,202511100buf,2025,REG,10,Bench Fixture,BencBe00,TE,BUF,MIA,12,0.176,0,0.0,14,0.56

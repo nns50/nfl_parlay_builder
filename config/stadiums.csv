@@ -1,0 +1,45 @@
+stadium,lat,lon,roof,surface,tz,note
+State Farm Stadium,33.5276,-112.2626,retractable,grass,America/Phoenix,ARI
+Mercedes-Benz Stadium,33.7554,-84.4009,retractable,turf,America/New_York,ATL
+M&T Bank Stadium,39.2780,-76.6227,outdoor,grass,America/New_York,BAL
+Highmark Stadium,42.7738,-78.7870,outdoor,turf,America/New_York,BUF (new stadium 2026; same Orchard Park site)
+New Era Field,42.7738,-78.7870,outdoor,turf,America/New_York,BUF legacy name (2025 rows)
+Bank of America Stadium,35.2258,-80.8528,outdoor,grass,America/New_York,CAR
+Soldier Field,41.8623,-87.6167,outdoor,grass,America/Chicago,CHI
+Paycor Stadium,39.0955,-84.5161,outdoor,turf,America/New_York,CIN
+Huntington Bank Field,41.5061,-81.6995,outdoor,grass,America/New_York,CLE
+FirstEnergy Stadium,41.5061,-81.6995,outdoor,grass,America/New_York,CLE legacy name (2025 rows)
+AT&T Stadium,32.7473,-97.0945,retractable,turf,America/Chicago,DAL
+Empower Field at Mile High,39.7439,-105.0201,outdoor,grass,America/Denver,DEN
+Ford Field,42.3400,-83.0456,dome,turf,America/Detroit,DET
+Lambeau Field,44.5013,-88.0622,outdoor,grass,America/Chicago,GB
+NRG Stadium,29.6847,-95.4107,retractable,turf,America/Chicago,HOU
+Reliant Stadium,29.6847,-95.4107,retractable,turf,America/Chicago,HOU legacy name (appears in 2026 rows)
+Lucas Oil Stadium,39.7601,-86.1639,retractable,turf,America/Indiana/Indianapolis,IND
+EverBank Stadium,30.3239,-81.6373,outdoor,grass,America/New_York,JAX
+TIAA Bank Stadium,30.3239,-81.6373,outdoor,grass,America/New_York,JAX legacy name (2025 rows)
+GEHA Field at Arrowhead Stadium,39.0489,-94.4839,outdoor,grass,America/Chicago,KC
+SoFi Stadium,33.9535,-118.3392,dome,turf,America/Los_Angeles,LA + LAC (fixed canopy — treat as indoor)
+Allegiant Stadium,36.0909,-115.1833,dome,grass,America/Los_Angeles,LV (indoor natural grass tray)
+Hard Rock Stadium,25.9580,-80.2389,outdoor,grass,America/New_York,MIA (canopy covers stands only)
+U.S. Bank Stadium,44.9738,-93.2577,dome,turf,America/Chicago,MIN
+Gillette Stadium,42.0909,-71.2643,outdoor,turf,America/New_York,NE
+Caesars Superdome,29.9511,-90.0812,dome,turf,America/Chicago,NO
+Mercedes-Benz Superdome,29.9511,-90.0812,dome,turf,America/Chicago,NO legacy name (2025 rows)
+MetLife Stadium,40.8128,-74.0742,outdoor,turf,America/New_York,NYG + NYJ
+Lincoln Financial Field,39.9008,-75.1675,outdoor,grass,America/New_York,PHI
+Acrisure Stadium,40.4468,-80.0158,outdoor,grass,America/New_York,PIT
+Lumen Field,47.5952,-122.3316,outdoor,turf,America/Los_Angeles,SEA
+Levi's Stadium,37.4030,-121.9700,outdoor,grass,America/Los_Angeles,SF
+Raymond James Stadium,27.9759,-82.5033,outdoor,grass,America/New_York,TB
+Nissan Stadium,36.1665,-86.7713,outdoor,turf,America/Chicago,TEN
+Northwest Stadium,38.9077,-76.8645,outdoor,grass,America/New_York,WAS
+FedExField,38.9077,-76.8645,outdoor,grass,America/New_York,WAS legacy name (2025 rows)
+Tottenham Hotspur Stadium,51.6043,-0.0665,outdoor,grass,Europe/London,intl — London (JAX home + neutral games)
+Wembley Stadium,51.5560,-0.2796,outdoor,grass,Europe/London,intl — London
+FC Bayern Munich Stadium,48.2188,11.6247,outdoor,grass,Europe/Berlin,intl — Munich (Allianz Arena; open pitch)
+Bernabeu,40.4531,-3.6883,retractable,grass,Europe/Madrid,intl — Madrid (Santiago Bernabéu)
+Stade de France,48.9244,2.3601,outdoor,grass,Europe/Paris,intl — Paris
+Maracana Stadium,-22.9121,-43.2302,outdoor,grass,America/Sao_Paulo,intl — Rio de Janeiro
+Estadio Banorte,19.3029,-99.1505,outdoor,grass,America/Mexico_City,intl — Mexico City (Azteca)
+Melbourne Cricket Ground,-37.8200,144.9834,outdoor,grass,Australia/Melbourne,intl — Melbourne (schedules row says dome — wrong; open-air. Static table wins for venue type)
