@@ -8,8 +8,8 @@ claims). MLB burn history does not port.**
 
 ## Build status
 
-- ✅ M0 scaffold + M1 context ingest (this file's tooling section)
-- ⬜ M2 market layer (odds wrapper + poll scheduler) → M3 gates → M4 pricing/construction
+- ✅ M0 scaffold + M1 context ingest + M2 market layer
+- ⬜ M3 gates (availability/weather/weekcheck) → M4 pricing/construction
   → M5 ledgers/settle/CLV → M6 measurement → M7 dashboard → M8 ops. See PORT_PLAN §4.
 
 ## Repo map
@@ -49,6 +49,29 @@ Rules that already apply (ported doctrine, sport-agnostic):
   2025+; route participation is postseason-only → in-season volume = snap share × target
   share × depth role. `stats_player`/`snap_counts` for the current season don't exist until
   games are played — `sync` treats that as ABSENT (info), not an error.
+
+## Market layer — `tools/odds_api.sh` + `tools/poll_scheduler.py` + `tools/propquote.py`
+
+Run `odds_api.sh check` first (key + both sport keys + quota; shared key with the MLB
+app — report credits after every spending run). Then:
+
+```
+tools/odds_api.sh board [reg|pre] [<season> <week>]  # bulk featured pull (3 cr), week-scoped, cached
+tools/odds_api.sh best h2h|spreads|totals [scope]    # best price/side/point from cache (0 cr)
+tools/odds_api.sh game "<team>" [scope]              # book-by-book board (0 cr, cached)
+tools/odds_api.sh events [reg|pre]                   # event ids (FREE)
+tools/odds_api.sh props <eid> <core|kicking|defense|longest|keys>  # per-event, SPENDS
+tools/poll_scheduler.py plan <season> <week>         # dry-run the week's polls + credit cost
+tools/poll_scheduler.py due  <season> <week> --mark  # what to poll NOW (idempotent state)
+tools/propquote.py "<player>" <market>               # every line + alternates, devigged (~2 cr)
+```
+
+Market-layer rules: poll cadences/market sets live in `config/markets.conf` (core-8 props;
+defense/kicking/longest opt-in); started games are never priced (in-game ≠ shoppable/close);
+absence of a prop market is a NORMAL pre-posting state (logged to `data/market_log.jsonl` —
+the posting-time observation record), never an error; preseason = featured markets only;
+props auto-suppress under `CREDIT_FLOOR_PROPS`. Empty-response prop calls bill 0 credits
+(verified 2026-08-08), so absence probes are free.
 
 ## Betting doctrine seed (full framework arrives with M4/M5)
 
