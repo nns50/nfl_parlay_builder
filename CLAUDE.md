@@ -9,8 +9,9 @@ claims). MLB burn history does not port.**
 ## Build status
 
 - ✅ M0 scaffold + M1 context ingest + M2 market layer + M3 domain gates
-  + M4 pricing/construction
-- ⬜ M5 ledgers/settle/CLV → M6 measurement → M7 dashboard → M8 ops. See PORT_PLAN §4.
+  + M4 pricing/construction + M5 ledger loop
+- ⬜ M6 measurement (calib/pulse) → M7 dashboard → M8 ops (cron + clv_backfill).
+  See PORT_PLAN §4.
 
 ## Repo map
 
@@ -118,7 +119,26 @@ negative-ρ pairs are rejected; an UNKNOWN same-game pair is rejected (one leg p
 — never silently assumed independent. Every band pick containing a stack prints its
 MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
 
-## Betting doctrine seed (full framework arrives with M5)
+## Ledger loop — `ledgers/` + `tools/legs.py` + `settle.py` + `clv_capture.py`
+
+- **`ledgers/results_log.md`** — every recommended leg gets a row with a structured
+  **`leg_id`** (`{season}-W{week}:{game_id}:{market}:{side}:{point}:{gsis}` — codec in
+  `tools/legs.py`). Tools JOIN on leg_id, never on label text (the MLB regex bug class is
+  designed out). Columns add `Grade` (process grade at bet time) + `Bucket` S/P/BT
+  (BT = backtest-validation rows, excluded from live calibration).
+- **`tools/settle.py <S> <W> [--apply]`** — settles TBD rows from the store: h2h by score,
+  spreads by MARGIN (integer pushes), totals/team totals off finals, props off
+  `player_week` (anytime TD = rush+rec TDs; kicking points = 3·FG+PAT; DNP → MANUAL/void;
+  defense/longest MANUAL by doctrine). Proposals by default; --apply writes Result cells.
+- **`tools/clv_capture.py <S> <W> [--apply]`** — CLV verdicts (`+/−/= N%cl`, ±0.5pp
+  dead-band) from the window's cached close board; ⚠ EDGE GONE warnings; stale-cache and
+  moved-number guards; idempotent. Props close via the scheduler's T-5m per-event poll.
+  (`clv_backfill.py` via the historical endpoint arrives with M8 ops if live capture
+  actually drops windows — NFL kickoffs cluster, so one snapshot covers a whole window.)
+- **`builds/<season>-W<week>.md`** — append-only per-run build file (gates → scan → tiers →
+  locks by window → results). `ledgers/bankroll.md` — the $10 ladder, one roll per week.
+
+## Betting doctrine seed
 
 - Minimum-edge gate on the devigged (no-vig) price: **≥ +2pp standalone / ≥ +3-4pp parlay
   anchor**, always vs the best-shopped line. **NO BET is a valid, correct output.**

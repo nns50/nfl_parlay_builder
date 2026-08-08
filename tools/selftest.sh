@@ -459,7 +459,97 @@ for row in csv.DictReader(open("config/blocked_combos.csv")):
     assert row["reason"].strip(), row
 EOF
 
-# ── 16. CLI contract ─────────────────────────────────────────────────────────
+# ── 16. M5: leg_id codec + verdict math + cell surgery ───────────────────────
+pyblk "legs.py: leg_id round-trip; verdict fns (margin/push/flag); set_cell surgical" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from legs import (format_leg_id, parse_leg_id, ou_verdict, spread_verdict,
+                  flag_verdict, set_cell, is_leg_row, COL)
+lid = format_leg_id(2026, 1, "2026_01_BUF_HOU", "player_pass_yds", "Over", 249.5, "00-0034857")
+assert lid == "2026-W01:2026_01_BUF_HOU:player_pass_yds:Over:249.5:00-0034857"
+p = parse_leg_id(lid)
+assert p["season"] == 2026 and p["week"] == 1 and p["point"] == 249.5
+assert p["gsis_id"] == "00-0034857" and p["market"] == "player_pass_yds"
+h = parse_leg_id("2026-W01:2026_01_NE_SEA:h2h:SEA::")
+assert h["point"] is None and h["gsis_id"] is None
+sp = parse_leg_id(format_leg_id(2026, 1, "G", "spreads", "NE", 3.5))
+assert sp["point"] == 3.5
+assert parse_leg_id("**2026-W01:G:h2h:SEA::**") is not None    # markdown noise stripped
+assert parse_leg_id("not a leg id") is None
+assert ou_verdict("Over", 44.0, 44) == "Push"                  # integer push
+assert ou_verdict("Under", 44.5, 44) == "W" and ou_verdict("Over", 44.5, 45) == "W"
+assert spread_verdict(24, 20, -4.5) == "L"                     # won by 4, laid 4.5 — the margin rule
+assert spread_verdict(24, 20, -3.5) == "W" and spread_verdict(20, 24, +4.5) == "W"
+assert spread_verdict(24, 21, -3.0) == "Push"
+assert flag_verdict("Yes", 2) == "W" and flag_verdict("Yes", 0) == "L" and flag_verdict("No", 0) == "W"
+row = "| 2026-W01 | x | 2026-W01:G:h2h:SEA:: | ML | -190 | B | 64% | 64% | +0 | scan | TBD | N | — | S |"
+assert is_leg_row(row)
+out = set_cell(row, COL["result"], "**W** (SEA 24-20)")
+assert "**W** (SEA 24-20)" in out and out.count("|") == row.count("|")
+assert "TBD" not in out and "-190" in out                      # only the one cell changed
+EOF
+
+# ── 16b. M5: settle_leg on fixtures — every market family ────────────────────
+pyblk "settle.py: game/prop/kicking/ATD/DNP/not-final verdicts from fixture rows" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from settle import settle_leg, team_total_verdict
+game = {"game_id": "G", "home_team": "MIA", "away_team": "BUF",
+        "home_score": 30, "away_score": 13}
+live = dict(game, home_score=None, away_score=None)
+stat = {"player_display_name": "Josh Fixture", "passing_yards": 306.0, "passing_tds": 2,
+        "attempts": 41, "completions": 29, "passing_interceptions": 1, "carries": 9,
+        "rushing_yards": 44.0, "rushing_tds": 1, "receptions": 0, "targets": 0,
+        "receiving_yards": 0.0, "receiving_tds": 0, "fg_made": 3, "pat_made": 4}
+L = lambda m, s, pt=None, g="00-1": {"season":2025,"week":10,"game_id":"G","market":m,
+                                     "side":s,"point":pt,"gsis_id":g}
+assert settle_leg(L("h2h","BUF"), game, None)[0] == "L"
+assert settle_leg(L("h2h","MIA"), game, None)[0] == "W"
+assert settle_leg(L("spreads","MIA",-16.5), game, None)[0] == "W"   # won by 17
+assert settle_leg(L("spreads","MIA",-17.0), game, None)[0] == "Push"
+assert settle_leg(L("totals","Over",43.5), game, None)[0] == "L"    # total 43
+assert settle_leg(L("player_pass_yds","Over",249.5), game, stat)[0] == "W"
+assert settle_leg(L("player_kicking_points","Over",12.5), game, stat)[0] == "W"  # 13
+assert settle_leg(L("player_anytime_td","Yes"), game, stat)[0] == "W"
+assert settle_leg(L("player_pass_yds","Over",249.5), game, None)[0] == "MANUAL"  # DNP
+assert settle_leg(L("player_sacks","Over",0.5), game, stat)[0] == "MANUAL"       # C-tier
+assert settle_leg(L("h2h","BUF"), live, None)[0] is None                          # not final
+assert team_total_verdict(L("team_total","MIA_Over",20.5), game)[0] == "W"
+assert team_total_verdict(L("team_total","BUF_Under",21.5), game)[0] == "W"
+EOF
+
+# ── 16c. M5: clv close math — side resolution, moved number, dead-band, edge-gone ─
+pyblk "clv_capture: close_novig fixtures + verdict dead-band + EDGE GONE + stale gate" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from clv_capture import (close_novig, verdict_from_close, edge_warning,
+                         cache_is_stale_for)
+names = {"SEA": "Seattle Seahawks", "NE": "New England Patriots"}
+ev = {"bookmakers": [
+  {"title": "A", "markets": [
+    {"key": "h2h", "outcomes": [
+      {"name": "Seattle Seahawks", "price": -200},
+      {"name": "New England Patriots", "price": 170}]},
+    {"key": "totals", "outcomes": [
+      {"name": "Over", "point": 43.5, "price": -110},
+      {"name": "Under", "point": 43.5, "price": -110}]}]},
+  {"title": "B", "markets": [
+    {"key": "h2h", "outcomes": [
+      {"name": "Seattle Seahawks", "price": -195},
+      {"name": "New England Patriots", "price": 175}]}]}]}
+got, err = close_novig(ev, "h2h", "SEA", None, names)
+assert err is None and abs(got[0] - 0.6425) < 0.01              # best -195/+175 devig
+got2, err2 = close_novig(ev, "totals", "Under", 44.0, names)
+assert got2 is None and "NUMBER moved" in err2                   # 44.0 no longer quoted
+got3, err3 = close_novig(ev, "totals", "Under", 43.5, names)
+assert err3 is None and abs(got3[0] - 0.5) < 1e-6
+assert verdict_from_close(55.0, 52.0).startswith("+")
+assert verdict_from_close(52.3, 52.0).startswith("=")            # ±0.5pp dead-band
+assert verdict_from_close(48.0, 52.0).startswith("−")
+assert "EDGE GONE" in edge_warning(65.0, 64.0)
+assert edge_warning(50.0, 60.0) is None
+assert cache_is_stale_for("2026-09-10T01:00:00Z", "2026-09-10T00:15:00Z") is True
+assert cache_is_stale_for("2026-09-09T12:00:00Z", "2026-09-10T00:15:00Z") is False
+EOF
+
+# ── 17. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi
