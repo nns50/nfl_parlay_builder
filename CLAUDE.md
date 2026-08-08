@@ -166,6 +166,17 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
 - **Supersede, never edit-in-place** in all ledgers; append-only build files per week.
 - Never frame a leg as "safe/lock/free money" — win-prob numbers only.
 
+## Notifications & email
+
+- Consolidated four-touchpoint cadence (resolved decision Q3): wrap → build →
+  designation → first lock of each game day. Each touchpoint sends a push notification
+  (`PushNotification` via ToolSearch) AND a Gmail draft to **realityremixed125@gmail.com**
+  (`mcp__Gmail__create_draft` via ToolSearch; the routines carry the Gmail connector).
+  Body: prose under ~250 words + the run's key tables; ALWAYS include `Odds API credits
+  remaining: <N>` (shared key — the burn must stay visible).
+- Routine-level completion notifications (push+email) are ALSO enabled on the scheduled
+  routines themselves — they fire when a run finishes with something noteworthy.
+
 ## Git workflow (current phase)
 
 Work on the designated feature branch (`claude/nfl-parlay-port-plan-3ijsrm` for this effort);
