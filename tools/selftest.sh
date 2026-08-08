@@ -614,7 +614,54 @@ else
   no "generate_dashboard --selftest" "$(python3 tools/generate_dashboard.py --selftest 2>&1 | tail -8)"
 fi
 
-# ── 19. CLI contract ─────────────────────────────────────────────────────────
+# ── 19. M8: cron run-type detection (data-driven) + prompt single-source ─────
+pyblk "cron_build: detect lock/wrap/designation/build from fixture kickoffs + weekday" <<'EOF'
+import os, subprocess, sys, tempfile, csv
+td = tempfile.mkdtemp()
+os.environ["NFL_DB"] = os.path.join(td, "t.db")
+sys.path.insert(0, "tools")
+import ingest
+con = ingest.connect()
+rows = list(csv.DictReader(open("tools/fixtures/games_fixture.csv")))
+ingest.load_table(con, "games", iter(rows), list(rows[0].keys())); con.close()
+env = dict(os.environ)
+def det(now):
+    return subprocess.run(["bash", "tools/cron_build.sh", "--detect-only", "--now", now],
+                          capture_output=True, text=True, env=env, timeout=30).stdout.strip()
+assert det("2026-09-09T23:00:00Z") == "lock",        det("2026-09-09T23:00:00Z")  # T-80m to the Wed opener
+assert det("2026-09-08T14:00:00Z") == "wrap",        det("2026-09-08T14:00:00Z")  # Tuesday, nothing imminent
+assert det("2026-09-04T14:00:00Z") == "designation", det("2026-09-04T14:00:00Z")  # Friday
+assert det("2026-09-02T14:00:00Z") == "build",       det("2026-09-02T14:00:00Z")  # Wednesday, no games near
+EOF
+for t in wrap build designation lock; do
+  if bash tools/cron_build.sh "$t" --prompt-only 2>/dev/null | grep -q "per CLAUDE.md"; then
+    ok "cron_build.sh $t --prompt-only prints its prompt"
+  else no "cron_build.sh $t --prompt-only prints its prompt"; fi
+done
+grep -q -- "--prompt-only" .claude/hooks/session-start.sh \
+  && ok "hook delegates to cron_build --prompt-only (single prompt source)" \
+  || no "hook delegates to cron_build --prompt-only"
+
+# ── 19b. M8: clv_backfill pure planning (snapshot clustering + row selection) ─
+pyblk "clv_backfill: window-clustered snapshots; only blank-CLV backfillable rows" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from clv_backfill import snapshot_ts, plan_rows
+assert snapshot_ts("2026-09-13T17:00:00Z") == "2026-09-13T16:58:00Z"
+games = {"G1": {"kickoff_utc": "2026-09-13T17:00:00Z"},
+         "G2": {"kickoff_utc": "2026-09-13T17:00:00Z"},
+         "G3": {"kickoff_utc": "2026-09-14T00:20:00Z"}}
+mk = lambda gid, mkt, clv: (f"| 2026-W01 | x | 2026-W01:{gid}:{mkt}:SEA:: | ML | -110 "
+                            f"| B | 60% | 58% | +2 | ok | TBD | N | {clv} | S |")
+lines = [mk("G1", "h2h", "—"), mk("G2", "totals", "—"), mk("G3", "h2h", "—"),
+         mk("G1", "player_pass_yds", "—"),     # prop → not backfillable
+         mk("G2", "h2h", "+ 60%cl")]           # already filled → skip
+rows = plan_rows(lines, 2026, 1, games)
+assert len(rows) == 3, rows
+stamps = {snapshot_ts(k) for _, _, k in rows}
+assert len(stamps) == 2, stamps                # G1+G2 share one window snapshot
+EOF
+
+# ── 20. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi

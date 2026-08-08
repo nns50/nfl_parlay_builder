@@ -45,7 +45,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv.gz"
  },
  "snap_counts:2026": {
-  "checked_at": "2026-08-08T20:42:05Z",
+  "checked_at": "2026-08-08T21:24:39Z",
   "note": "current-season asset not published yet (no games played)",
   "status": "ABSENT",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.csv.gz"
@@ -69,7 +69,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2025.csv.gz"
  },
  "stats_player:2026": {
-  "checked_at": "2026-08-08T20:42:05Z",
+  "checked_at": "2026-08-08T21:24:39Z",
   "note": "current-season asset not published yet (no games played)",
   "status": "ABSENT",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv.gz"

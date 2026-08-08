@@ -8,10 +8,26 @@ claims). MLB burn history does not port.**
 
 ## Build status
 
-- ✅ M0 scaffold + M1 context ingest + M2 market layer + M3 domain gates
-  + M4 pricing/construction + M5 ledger loop
-- ⬜ M6 measurement (calib/pulse) → M7 dashboard → M8 ops (cron + clv_backfill).
-  See PORT_PLAN §4.
+- ✅ **ALL MILESTONES COMPLETE** (M0–M8, 2026-08-08): scaffold, context ingest, market
+  layer, domain gates, pricing/construction, ledger loop, measurement, dashboard, ops.
+  The system is ready for the preseason soak (paper mode) → REG Week 1 (kickoff Wed
+  2026-09-09). Remaining before live money: wire the external cron (crontab sketch in
+  `tools/cron_build.sh`), merge to main to activate Pages, run 1-2 paper weeks.
+
+## Ops — the weekly rhythm (`session_start.sh` + `cron_build.sh` + the hook)
+
+- `.claude/hooks/session-start.sh` (UserPromptSubmit) injects `tools/session_start.sh`
+  (selftest → store sync → quota/ODDS_MODE → unsettled proposals → weekcheck →
+  availability → window-phase CLV auto-apply → PULSE) and delegates the run directive to
+  `tools/cron_build.sh <type> --prompt-only` — the SINGLE prompt source.
+- Run types (data-driven detection — imminent kickoffs → lock; else Tue→wrap,
+  Fri→designation, else build): **wrap** (settle + review + calib/pulse + dashboard) →
+  **build** (scan → gates → tiers → snapshot) → **designation** (Fri availability
+  haircuts, supersede protocol) → **lock** (per window: weekcheck diff, inactives, final
+  prices, lock that window only, T-5m close). Notifications at the four touchpoints.
+- `tools/clv_backfill.py <S> <W> [--apply]` — historical closes for missed windows
+  (30 cr/snapshot; windows cluster; plan-mode default; rich-tier + --max-credits gated;
+  ' bf' provenance marker; validated live against real 2025 closes).
 
 ## Repo map
 

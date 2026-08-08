@@ -48,10 +48,10 @@ every settle.
 
 | Week | Leg | leg_id | Type | Price | Book | TrueP | ImplP | Edge | Grade | Result | Played | CLV | Bucket |
 |------|-----|--------|------|-------|------|-------|-------|------|-------|--------|--------|-----|--------|
-| 2025-W10 | CHI ML (NYG@CHI close) | 2025-W10:2025_10_NYG_CHI:h2h:CHI:: | ML-fav | -218 | close | 68%* | 65.8% | +2.2 | BT | **W** (CHI 24-20) | N | — | BT |
-| 2025-W10 | CHI -4.5 (NYG@CHI close) | 2025-W10:2025_10_NYG_CHI:spreads:CHI:-4.5: | spread | -112 | close | 55%* | 50.4% | +4.6 | BT | **L** (CHI 24-20 w/ -4.5 → margin +4) | N | — | BT |
-| 2025-W10 | NO-CAR Under 38.5 (close) | 2025-W10:2025_10_NO_CAR:totals:Under:38.5: | total | -105 | close | 53%* | 48.8% | +4.2 | BT | **W** (total 24 vs Under 38.5) | N | — | BT |
-| 2025-W10 | JAX ML (JAX@HOU close) | 2025-W10:2025_10_JAX_HOU:h2h:JAX:: | ML | -115 | close | 55%* | 51.2% | +3.8 | BT | **L** (JAX 29-36) | N | — | BT |
+| 2025-W10 | CHI ML (NYG@CHI close) | 2025-W10:2025_10_NYG_CHI:h2h:CHI:: | ML-fav | -218 | close | 68%* | 65.8% | +2.2 | BT | **W** (CHI 24-20) | N | + 66%cl bf | BT |
+| 2025-W10 | CHI -4.5 (NYG@CHI close) | 2025-W10:2025_10_NYG_CHI:spreads:CHI:-4.5: | spread | -112 | close | 55%* | 50.4% | +4.6 | BT | **L** (CHI 24-20 w/ -4.5 → margin +4) | N | = 50%cl bf | BT |
+| 2025-W10 | NO-CAR Under 38.5 (close) | 2025-W10:2025_10_NO_CAR:totals:Under:38.5: | total | -105 | close | 53%* | 48.8% | +4.2 | BT | **W** (total 24 vs Under 38.5) | N | + 51%cl bf | BT |
+| 2025-W10 | JAX ML (JAX@HOU close) | 2025-W10:2025_10_JAX_HOU:h2h:JAX:: | ML | -115 | close | 55%* | 51.2% | +3.8 | BT | **L** (JAX 29-36) | N | − 49%cl bf | BT |
 | 2025-W10 | Josh Allen Over 249.5 pass yds | 2025-W10:2025_10_BUF_MIA:player_pass_yds:Over:249.5:00-0034857 | QB prop | -110 | demo | 55%* | 50.0% | +5.0 | BT | **W** (Josh Allen 306 vs Over 249.5) | N | — | BT |
 | 2025-W10 | De'Von Achane anytime TD | 2025-W10:2025_10_BUF_MIA:player_anytime_td:Yes::00-0039040 | ATD | -140 | demo | 60%* | 58.3% | +1.7 | BT | **W** (De'Von Achane TDs=2) | N | — | BT |
 | 2025-W10 | MIA team total Over 21 | 2025-W10:2025_10_BUF_MIA:team_total:MIA_Over:21: | team total | -110 | demo | 55%* | 52.4% | +2.6 | BT | **W** (MIA scored 30 vs Over 21) | N | — | BT |

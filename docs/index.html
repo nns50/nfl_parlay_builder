@@ -27,7 +27,7 @@ td{padding:5px 8px;border-bottom:1px solid rgba(48,54,61,.5)}
 @media(max-width:760px){.grid{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
 <h1>NFL Parlay Builder <span class="badge fresh">● live</span></h1>
-<div class="sub">read-only measurement dashboard · generated 2026-08-08 21:20Z · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div>
+<div class="sub">read-only measurement dashboard · generated 2026-08-08 21:25Z · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div>
 
 <div class="tiles">
 <div class="tile"><div class="v">0</div><div class="k">decided live legs</div></div>
@@ -55,10 +55,10 @@ td{padding:5px 8px;border-bottom:1px solid rgba(48,54,61,.5)}
 <tr><td>2025-W10</td><td>MIA team total Over 21</td><td>team total</td><td class='mono'>55.0</td><td class='mono'>—</td><td class='pos'>W</td></tr>
 <tr><td>2025-W10</td><td>De'Von Achane anytime TD</td><td>ATD</td><td class='mono'>60.0</td><td class='mono'>—</td><td class='pos'>W</td></tr>
 <tr><td>2025-W10</td><td>Josh Allen Over 249.5 pass yds</td><td>QB prop</td><td class='mono'>55.0</td><td class='mono'>—</td><td class='pos'>W</td></tr>
-<tr><td>2025-W10</td><td>JAX ML (JAX@HOU close)</td><td>ML</td><td class='mono'>55.0</td><td class='mono'>—</td><td class='neg'>L</td></tr>
-<tr><td>2025-W10</td><td>NO-CAR Under 38.5 (close)</td><td>total</td><td class='mono'>53.0</td><td class='mono'>—</td><td class='pos'>W</td></tr>
-<tr><td>2025-W10</td><td>CHI -4.5 (NYG@CHI close)</td><td>spread</td><td class='mono'>55.0</td><td class='mono'>—</td><td class='neg'>L</td></tr>
-<tr><td>2025-W10</td><td>CHI ML (NYG@CHI close)</td><td>ML-fav</td><td class='mono'>68.0</td><td class='mono'>—</td><td class='pos'>W</td></tr></table></div>
+<tr><td>2025-W10</td><td>JAX ML (JAX@HOU close)</td><td>ML</td><td class='mono'>55.0</td><td class='mono'>- 49%cl bf</td><td class='neg'>L</td></tr>
+<tr><td>2025-W10</td><td>NO-CAR Under 38.5 (close)</td><td>total</td><td class='mono'>53.0</td><td class='mono'>+ 51%cl bf</td><td class='pos'>W</td></tr>
+<tr><td>2025-W10</td><td>CHI -4.5 (NYG@CHI close)</td><td>spread</td><td class='mono'>55.0</td><td class='mono'>= 50%cl bf</td><td class='neg'>L</td></tr>
+<tr><td>2025-W10</td><td>CHI ML (NYG@CHI close)</td><td>ML-fav</td><td class='mono'>68.0</td><td class='mono'>+ 66%cl bf</td><td class='pos'>W</td></tr></table></div>
 <div class="card"><h2>Builds · Fades · Bankroll</h2>
 <p class="note" style="margin:0 0 6px"><b>Builds:</b></p><p class='note' style='margin:2px 0'>2026-W01.md — Build — 2026 Week 1 (REG) — PAPER (pre-season soak; no real stakes)</p>
 <p class="note" style="margin:10px 0 6px"><b>Fade registry:</b> empty (entries must be earned by the NFL ledger)</p>
@@ -69,7 +69,7 @@ td{padding:5px 8px;border-bottom:1px solid rgba(48,54,61,.5)}
 <div class="note">Sources: ledgers/results_log.md · ledgers/fades.md · ledgers/bankroll.md · builds/*.md — parsed by the same code as tools/calib.py. If this page disagrees with calib.py, run tools/generate_dashboard.py --selftest.</div>
 </div>
 <script>
-const CAL={"labels": [], "hit": [], "mid": []}, CLVD={"labels": ["SEA ML (NE@SEA, We", "NE@SEA Under 44.0 "], "vals": [-0.3, 0.0], "cols": ["#8b949e", "#8b949e"]};
+const CAL={"labels": [], "hit": [], "mid": []}, CLVD={"labels": ["SEA ML (NE@SEA, We", "NE@SEA Under 44.0 ", "CHI ML (NYG@CHI cl", "CHI -4.5 (NYG@CHI ", "NO-CAR Under 38.5 ", "JAX ML (JAX@HOU cl"], "vals": [-0.3, 0.0, 0.2, -0.4, 2.2, -2.2], "cols": ["#8b949e", "#8b949e", "#22c55e", "#8b949e", "#22c55e", "#ef4444"]};
 if(CAL.labels.length){new Chart(document.getElementById('cal'),{data:{labels:CAL.labels,
  datasets:[{type:'bar',label:'actual hit %',data:CAL.hit,backgroundColor:'rgba(59,130,246,.75)',borderRadius:3},
  {type:'line',label:'perfect calibration',data:CAL.mid,borderColor:'#f59e0b',borderDash:[5,4],pointRadius:3,fill:false}]},
