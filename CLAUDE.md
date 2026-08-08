@@ -8,9 +8,9 @@ claims). MLB burn history does not port.**
 
 ## Build status
 
-- ✅ M0 scaffold + M1 context ingest + M2 market layer
-- ⬜ M3 gates (availability/weather/weekcheck) → M4 pricing/construction
-  → M5 ledgers/settle/CLV → M6 measurement → M7 dashboard → M8 ops. See PORT_PLAN §4.
+- ✅ M0 scaffold + M1 context ingest + M2 market layer + M3 domain gates
+- ⬜ M4 pricing/construction → M5 ledgers/settle/CLV → M6 measurement
+  → M7 dashboard → M8 ops. See PORT_PLAN §4.
 
 ## Repo map
 
@@ -72,6 +72,28 @@ absence of a prop market is a NORMAL pre-posting state (logged to `data/market_l
 the posting-time observation record), never an error; preseason = featured markets only;
 props auto-suppress under `CREDIT_FLOOR_PROPS`. Empty-response prop calls bill 0 credits
 (verified 2026-08-08), so absence probes are free.
+
+## Domain gates — `tools/availability.py` + `tools/weather.py` + `tools/weekcheck.py`
+
+```
+tools/availability.py sync [--no-espn]     # roster floor + ESPN Q/D/O ladder → store
+tools/availability.py gate [S W]           # per-game gate table (QB listings loudest)
+tools/availability.py team <ABBR>          # team board: designation, P(plays), detail
+tools/weather.py week [S W]                # per-game kickoff-window forecast (Open-Meteo)
+tools/weather.py probe "<stadium>" <isoZ>  # one venue, one time
+tools/weekcheck.py snap [S W]              # commit the week's premises (data/weeks/…)
+tools/weekcheck.py diff [S W]              # live vs snapshot; exit 1 on ⚠/⛔
+```
+
+Gate rules: **availability is a ladder, not a boolean** — P(plays) seeds O/IR=0,
+D=0.25, Q=0.75, DTD=0.85 (directional; calibration will own them). ESPN is best-effort:
+absent ⇒ the board says DEGRADED and only roster hard-OUTs are marked — designations are
+never invented. Weather: dome short-circuit (static-outdoor VETOES per-game roof values —
+neutral-site rows inherit the home team's roof template); beyond the 16-day horizon ⇒
+HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adjustment.
+`weekcheck.py diff` is the pre-lock gate: QB change / availability drop / spread ≥1.5 /
+total ≥2.0 / wind crossing 15mph / kickoff moved / started — any finding invalidates the
+dependent legs until re-verified.
 
 ## Betting doctrine seed (full framework arrives with M4/M5)
 

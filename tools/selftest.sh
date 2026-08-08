@@ -287,7 +287,55 @@ out = buf.getvalue().split()
 assert out[0] == "2026" and out[1] == "1" and out[2] == "REG", out
 EOF
 
-# ── 14. CLI contract ─────────────────────────────────────────────────────────
+# ── 14. M3: availability ladder (p_plays seeds, status map, espn-id extraction) ─
+pyblk "availability: p_plays ladder + roster hard-OUTs + espn id from links" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from availability import p_plays, map_status, espn_id_from_links
+assert map_status("Out") == "OUT" and map_status("Questionable") == "QUESTIONABLE"
+assert map_status("Injured Reserve") == "IR" and map_status("Day-To-Day") == "DTD"
+assert map_status("Active") is None                 # news note, not a listing
+assert p_plays("OUT") == 0.0 and p_plays("IR") == 0.0
+assert p_plays("DOUBTFUL") == 0.25 and p_plays("QUESTIONABLE") == 0.75
+assert p_plays(None) is None                        # no signal ≠ certainty
+assert p_plays(None, roster_status="RES") == 0.0    # roster floor wins
+assert p_plays("QUESTIONABLE", roster_status="PUP") == 0.0
+ath = {"links": [{"href": "https://www.espn.com/nfl/player/_/id/4709695/karson-sharar"}]}
+assert espn_id_from_links(ath) == "4709695"
+assert espn_id_from_links({"links": []}) is None
+EOF
+
+# ── 14b. M3: weather pure logic (dome short-circuit, window pick, flags) ─────
+pyblk "weather: is_indoor precedence; pick_window maxes; verdict thresholds" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from weather import is_indoor, pick_window, verdict, days_out
+assert is_indoor("closed", "retractable") is True      # per-game closed wins
+assert is_indoor("outdoors", "dome") is False          # per-game open wins
+assert is_indoor("", "dome") is True                   # static fallback
+assert is_indoor(None, "retractable") is False         # unknown retractable = outdoor
+# static-outdoor VETO: neutral-site rows inherit the home team's roof template
+# (real case: 2026 MCG game carries LA's 'dome' — a roofless venue can't close)
+assert is_indoor("dome", "outdoor") is False
+times = [f"2026-09-13T{h:02d}:00" for h in range(12, 24)]
+temp = list(range(60, 72)); wind = [5]*5 + [18, 12, 9] + [4]*4
+gust = [10]*12; precip = [0]*6 + [60] + [0]*5
+w = pick_window(times, temp, wind, gust, precip, "2026-09-13T17:00:00Z", hours=4)
+assert w["temp_f"] == 65 and w["wind_mph"] == 18 and w["precip_prob"] == 60
+v = verdict(w); assert "WIND 18" in v and "PRECIP 60" in v
+assert verdict({"temp_f": 70, "wind_mph": 6, "gust_mph": 10, "precip_prob": 0}) == ""
+assert pick_window(times, temp, wind, gust, precip, "2026-09-14T05:00:00Z") is None
+from datetime import datetime, timezone
+assert 31 < days_out("2026-09-10T00:20:00Z", datetime(2026,8,8,12,0,tzinfo=timezone.utc)) < 33
+EOF
+
+# ── 14c. M3: weekcheck diff fixtures (every finding class fires; clean = silent) ─
+if python3 tools/weekcheck.py --selftest >/dev/null 2>&1; then
+  ok "weekcheck --selftest (QB/line/avail/wind/flex/started/gone fixtures)"
+else
+  no "weekcheck --selftest (QB/line/avail/wind/flex/started/gone fixtures)" \
+     "$(python3 tools/weekcheck.py --selftest 2>&1 | tail -12)"
+fi
+
+# ── 15. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi
