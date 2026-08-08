@@ -176,7 +176,118 @@ assert current_season(datetime(2027, 1, 15, tzinfo=timezone.utc)) == 2026
 assert current_season(datetime(2027, 3, 2, tzinfo=timezone.utc)) == 2027
 EOF
 
-# ── 12. CLI contract ─────────────────────────────────────────────────────────
+# ── 12. M2: markets.conf budget/floor keys ───────────────────────────────────
+grep -Eq '^BUDGET_WEEKLY_SOFT=[0-9]+$' config/markets.conf \
+  && ok "markets.conf BUDGET_WEEKLY_SOFT present" || no "markets.conf BUDGET_WEEKLY_SOFT present"
+grep -Eq '^CREDIT_FLOOR_PROPS=[0-9]+$' config/markets.conf \
+  && ok "markets.conf CREDIT_FLOOR_PROPS present" || no "markets.conf CREDIT_FLOOR_PROPS present"
+
+# ── 13. M2: scheduler phase math (bracket model, close semantics, started) ───
+pyblk "poll_scheduler: interval_for bracket logic (baseline/aggressive/close/started)" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from poll_scheduler import parse_cadence, interval_for
+ph = parse_cadence("99999:720,4320:480,1440:360,120:15,5:0")
+assert ph[0] == (99999, 720) and ph[-1] == (5, 0)
+assert interval_for(6000, ph) == 720     # week-open baseline
+assert interval_for(2000, ph) == 480     # T-72h..T-24h
+assert interval_for(600,  ph) == 360     # T-24h..T-2h
+assert interval_for(60,   ph) == 15      # aggressive window
+assert interval_for(3,    ph) == 0       # close bracket
+assert interval_for(0,    ph) is None    # kickoff — stop
+assert interval_for(-10,  ph) is None    # started — stop
+EOF
+
+# ── 13b. M2: whole-week simulation reproduces the budget model ───────────────
+pyblk "poll_scheduler: simulated 16-game week lands within budget; preseason props=0" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from datetime import datetime, timezone, timedelta
+from poll_scheduler import parse_cadence, simulate_week
+ff = parse_cadence("99999:720,4320:480,1440:360,120:15,5:0")
+pp = parse_cadence("4320:1440,1440:360,120:30,5:0")
+base = datetime(2026, 9, 13, 17, 0, tzinfo=timezone.utc)
+kicks = ([datetime(2026, 9, 10, 0, 20, tzinfo=timezone.utc)]      # Thu-style opener
+         + [base] * 9                                             # Sun early
+         + [base + timedelta(hours=3, minutes=25)] * 4            # Sun late
+         + [base + timedelta(hours=7, minutes=20)]                # SNF
+         + [base + timedelta(days=1, hours=3, minutes=15)])       # MNF
+res = simulate_week(kicks, ff, pp, 8)
+assert res["props_polls"] > 0 and res["featured_polls"] > 0
+assert res["total_credits"] <= 2500, f"blows the soft budget: {res}"
+# floor pins the per-EVENT identity fix: keying props state by kickoff datetime
+# collapsed simultaneous-window games and undercounted the week 3x (656 vs ~1600)
+assert res["total_credits"] >= 1200, f"implausibly cheap (event-collapse regression?): {res}"
+pre = simulate_week(kicks, ff, pp, 8, props_enabled=False)
+assert pre["props_credits"] == 0 and pre["featured_polls"] > 0
+EOF
+
+# ── 13c. M2: due-state idempotence (marked poll not re-due inside interval) ──
+pyblk "poll_scheduler: due --mark is idempotent within an interval" <<'EOF'
+import os, sys, io, tempfile, contextlib
+td = tempfile.mkdtemp()
+os.environ["NFL_DB"] = os.path.join(td, "t.db")
+os.environ["NFL_POLL_STATE"] = os.path.join(td, "state.json")
+sys.path.insert(0, "tools")
+import csv, ingest, importlib
+import poll_scheduler as ps
+importlib.reload(ps)                       # pick up the env-var paths
+con = ingest.connect()
+rows = list(csv.DictReader(open("tools/fixtures/games_fixture.csv")))
+ingest.load_table(con, "games", iter(rows), list(rows[0].keys())); con.close()
+def run(now):
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        ps.cmd_due(2026, 1, now=now, mark=True, skip_quota=True)
+    return buf.getvalue()
+first = run("2026-09-07T12:00:00Z")        # T-2.3d: featured+props due (never polled)
+assert "FEATURED" in first and "PROPS" in first, first
+second = run("2026-09-07T12:05:00Z")       # 5 min later, inside every interval
+assert "FEATURED" not in second and "PROPS" not in second, second
+EOF
+
+# ── 13d. M2: propquote pure pricing (best-per-side, alternates, ambiguity) ───
+pyblk "propquote: best_by_point picks best book incl. _alternate; ambiguity refused" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from propquote import best_by_point, novig_at_point
+ev = {"bookmakers": [
+ {"title": "BookA", "markets": [
+   {"key": "player_pass_yds", "outcomes": [
+     {"description": "Josh Allen", "name": "Over", "point": 249.5, "price": -115},
+     {"description": "Josh Allen", "name": "Under", "point": 249.5, "price": -105}]},
+   {"key": "player_pass_yds_alternate", "outcomes": [
+     {"description": "Josh Allen", "name": "Over", "point": 274.5, "price": 130}]}]},
+ {"title": "BookB", "markets": [
+   {"key": "player_pass_yds", "outcomes": [
+     {"description": "Josh Allen", "name": "Over", "point": 249.5, "price": -110},
+     {"description": "Josh Allen", "name": "Under", "point": 249.5, "price": -110}]}]}]}
+t = best_by_point(ev, "Josh Allen", "player_pass_yds")
+assert t[249.5]["Over"] == (-110, "BookB") and t[249.5]["Under"] == (-105, "BookA")
+assert t[274.5]["Over"] == (130, "BookA")          # _alternate folded in
+nv = novig_at_point(t[249.5]); assert abs(nv[0] + nv[1] - 1) < 1e-9
+assert novig_at_point(t[274.5]) is None            # one-sided
+amb = {"bookmakers": [{"title": "A", "markets": [{"key": "player_rush_yds", "outcomes": [
+  {"description": "J. Smith", "name": "Over", "point": 50.5, "price": -110},
+  {"description": "K. Smith", "name": "Over", "point": 40.5, "price": -110}]}]}]}
+assert best_by_point(amb, "Smith", "player_rush_yds") == {}   # two players — refuse
+EOF
+
+# ── 13e. M2: weekof resolves the coming week from the store ──────────────────
+pyblk "ingest.weekof: resolves 2026 W1 from fixture games" <<'EOF'
+import os, sys, io, tempfile, contextlib
+td = tempfile.mkdtemp()
+os.environ["NFL_DB"] = os.path.join(td, "t.db")
+sys.path.insert(0, "tools")
+import csv, ingest
+con = ingest.connect()
+rows = list(csv.DictReader(open("tools/fixtures/games_fixture.csv")))
+ingest.load_table(con, "games", iter(rows), list(rows[0].keys())); con.close()
+buf = io.StringIO()
+with contextlib.redirect_stdout(buf):
+    ingest.weekof("2026-09-01T00:00:00Z")
+out = buf.getvalue().split()
+assert out[0] == "2026" and out[1] == "1" and out[2] == "REG", out
+EOF
+
+# ── 14. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi

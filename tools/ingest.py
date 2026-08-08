@@ -607,6 +607,34 @@ def depth(team):
     con.close()
 
 
+def weekof(date_iso=None):
+    """Resolve 'which week is (or is next after) this moment' from the games table.
+    Prints: <season> <week> <game_type> <window_start_utc> <window_end_utc>.
+    Rule: the REG/POST week containing the next kickoff ≥ (now − 6h); if the
+    season is over, the last completed week. Consumers (odds_api.sh board) use
+    the window to scope bulk pulls; before Week 1 this correctly returns W1."""
+    now = date_iso or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    floor = (datetime.strptime(now, "%Y-%m-%dT%H:%M:%SZ")
+             .replace(tzinfo=timezone.utc)).timestamp() - 6 * 3600
+    floor_iso = datetime.fromtimestamp(floor, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    con = connect(readonly=True)
+    nxt = con.execute(
+        "SELECT season, week, game_type FROM games WHERE kickoff_utc >= ? "
+        "AND game_type != 'PRE' ORDER BY kickoff_utc LIMIT 1", (floor_iso,)).fetchone()
+    if nxt is None:
+        nxt = con.execute(
+            "SELECT season, week, game_type FROM games WHERE kickoff_utc IS NOT NULL "
+            "ORDER BY kickoff_utc DESC LIMIT 1").fetchone()
+    if nxt is None:
+        sys.exit("weekof: games table is empty — run sync first")
+    win = con.execute(
+        "SELECT MIN(kickoff_utc) a, MAX(kickoff_utc) b FROM games "
+        "WHERE season=? AND week=? AND game_type=?",
+        (nxt["season"], nxt["week"], nxt["game_type"])).fetchone()
+    print(f"{nxt['season']} {nxt['week']} {nxt['game_type']} {win['a']} {win['b']}")
+    con.close()
+
+
 def run_sql(q):
     con = connect(readonly=True)
     try:
@@ -649,6 +677,8 @@ def main():
         player(rest[0])
     elif cmd == "depth" and rest:
         depth(rest[0])
+    elif cmd == "weekof":
+        weekof(rest[0] if rest else None)
     elif cmd == "sql" and rest:
         run_sql(rest[0])
     else:

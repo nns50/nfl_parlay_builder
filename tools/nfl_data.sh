@@ -50,7 +50,7 @@ EOF
 sub="${1:-}"
 case "$sub" in
   check) cmd_check ;;
-  sync|status|slate|finals|volume|form|player|depth|sql)
+  sync|status|slate|finals|volume|form|player|depth|weekof|sql)
     shift
     exec python3 tools/ingest.py "$sub" "$@" ;;
   ""|-h|--help|help) sed -n '3,23p' "$0" ;;
