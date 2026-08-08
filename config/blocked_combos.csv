@@ -1,0 +1,6 @@
+family_a,family_b,same_team,reason
+team_ml,team_ml,N,opposite sides of the same game — books refuse; near-logically exclusive
+team_spread,team_spread,N,opposite covers of the same spread — books refuse
+team_ml,team_spread,N,ML one side × spread other side of the same game — commonly refused cross
+game_total_o,game_total_u,any,over and under of the same total — contradiction
+team_total_o,team_total_u,Y,over and under of the same team total — contradiction

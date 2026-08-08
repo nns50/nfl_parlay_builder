@@ -1,0 +1,22 @@
+family_a,family_b,same_team,rho,basis,note
+qb_pass_yds_o,wr_rec_yds_o,Y,0.45,structural,QB and his receiver share the same completed yards
+qb_pass_yds_o,qb_pass_tds_o,Y,0.40,structural,volume and scoring through the air move together
+qb_pass_tds_o,anytime_td,Y,0.35,structural,pass TDs are scored BY receivers/backs (same team)
+qb_pass_yds_o,game_total_o,any,0.35,structural,passing volume drives scoring environment
+wr_rec_yds_o,game_total_o,any,0.25,structural,receiver production rides the scoring environment
+team_ml,team_total_o,Y,0.6,backtest-2024-25,"winning teams score (the MLB ML+own-TT stack analog) [reseeded from structural 0.30: phi_obs +0.427, n>500, rho=sin(pi*phi/2)]"
+team_ml,rb_rush_yds_o,Y,0.35,backtest-2024-25,"game script: leading teams run it out [reseeded from structural 0.30: phi_obs +0.224, n>500, rho=sin(pi*phi/2)]"
+team_ml,rb_rush_att_o,Y,0.35,structural,attempts follow the lead even harder than yards
+rb_rush_yds_o,game_total_u,any,0.15,structural,run-heavy scripts shorten games (mild)
+qb_pass_yds_o,team_ml,Y,0.10,structural,ambiguous: good QB play wins but TRAILING inflates yards — near-zero seed
+qb_pass_yds_o,qb_pass_yds_o,N,0.17,backtest-2024-25,"opposing QBs: shootouts lift both (pace/environment) [reseeded from structural 0.20: phi_obs +0.108, n>500, rho=sin(pi*phi/2)]"
+wr_rec_yds_o,wr_rec_yds_o,Y,-0.15,structural,same-team receivers compete for one target pool
+rb_rush_att_o,qb_pass_att_o,Y,-0.15,backtest-2024-25,"same-team run and pass volume fight for the same plays [reseeded from structural -0.30: phi_obs -0.099, n>500, rho=sin(pi*phi/2)]"
+team_ml,team_total_o,N,-0.20,structural,our win leans the OPPONENT total down (mild)
+team_ml,team_ml,N,-0.90,structural,opposite sides of one game are near-exclusive — blocked anyway
+game_total_o,team_total_o,any,0.65,backtest-2024-25,"a team total IS a component of the game total [reseeded from structural 0.55: phi_obs +0.487, n>500, rho=sin(pi*phi/2)]"
+anytime_td,team_total_o,Y,0.30,structural,a scorer needs his team to score
+kicker_pts_o,team_total_o,Y,0.30,structural,kicker points ride team scoring (drives that stall in range)
+team_spread,team_ml,Y,0.75,structural,cover and win are the same direction (margin vs any-margin)
+team_spread,team_spread,N,-0.90,structural,opposite covers near-exclusive (push aside) — blocked anyway
+anytime_td,game_total_o,any,0.20,structural,more scoring = more scorers

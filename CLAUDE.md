@@ -9,8 +9,8 @@ claims). MLB burn history does not port.**
 ## Build status
 
 - ✅ M0 scaffold + M1 context ingest + M2 market layer + M3 domain gates
-- ⬜ M4 pricing/construction → M5 ledgers/settle/CLV → M6 measurement
-  → M7 dashboard → M8 ops. See PORT_PLAN §4.
+  + M4 pricing/construction
+- ⬜ M5 ledgers/settle/CLV → M6 measurement → M7 dashboard → M8 ops. See PORT_PLAN §4.
 
 ## Repo map
 
@@ -95,7 +95,30 @@ HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adj
 total ≥2.0 / wind crossing 15mph / kickoff moved / started — any finding invalidates the
 dependent legs until re-verified.
 
-## Betting doctrine seed (full framework arrives with M4/M5)
+## Pricing + construction — the M4 chain (run it in THIS order per leg/build)
+
+```
+tools/odds_api.sh best … / propquote.py       # 1. BEST-shopped real price (never estimate)
+tools/devig.sh <A> <B> [TrueP%]               # 2. no-vig baseline + min-edge gate + ¼-Kelly
+tools/implied.py --game <id> | --week S W     # 2b. implied team totals (team-level reads)
+tools/truep.py --base-prob <novig> --adj …    # 3. TrueP = baseline + NAMED adjustments
+                                              #    (NFL registry — ALL directional seeds;
+                                              #    paste the [adj:] tag into the ledger)
+tools/parlay.py --leg … [--corr tier] [--sgp] # 4a. price ONE ticket (habit tool)
+tools/ticket.py --leg TrueP:price:game[:label[:famOrTier[:team]]] …
+                                              # 4b. THE SEARCH: frontier + band + stacks
+tools/corr_backtest.py                        # matrix sanity vs history (re-seed evidence)
+```
+
+Correlation doctrine (v2 — supersedes the MLB one-pair model): ρ lives in
+`config/corr_matrix.csv` keyed by leg FAMILY + same-team flag (5 rows already re-seeded
+from a 2024-25 backtest, n=388-856/pair, signs all confirmed); same-game groups price
+jointly via a Gaussian copula; blocked combos (`config/blocked_combos.csv`) and
+negative-ρ pairs are rejected; an UNKNOWN same-game pair is rejected (one leg per game)
+— never silently assumed independent. Every band pick containing a stack prints its
+MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
+
+## Betting doctrine seed (full framework arrives with M5)
 
 - Minimum-edge gate on the devigged (no-vig) price: **≥ +2pp standalone / ≥ +3-4pp parlay
   anchor**, always vs the best-shopped line. **NO BET is a valid, correct output.**

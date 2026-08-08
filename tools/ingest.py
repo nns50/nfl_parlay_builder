@@ -94,7 +94,9 @@ WANTED = {
         ("overtime", "INT"), ("gsis", "TEXT"), ("pfr", "TEXT"), ("espn", "TEXT"),
         ("ftn", "TEXT"), ("away_rest", "INT"), ("home_rest", "INT"),
         ("away_moneyline", "INT"), ("home_moneyline", "INT"), ("spread_line", "REAL"),
-        ("total_line", "REAL"), ("div_game", "INT"), ("roof", "TEXT"), ("surface", "TEXT"),
+        ("away_spread_odds", "INT"), ("home_spread_odds", "INT"),
+        ("total_line", "REAL"), ("over_odds", "INT"), ("under_odds", "INT"),
+        ("div_game", "INT"), ("roof", "TEXT"), ("surface", "TEXT"),
         ("temp", "INT"), ("wind", "INT"), ("away_qb_id", "TEXT"), ("home_qb_id", "TEXT"),
         ("away_qb_name", "TEXT"), ("home_qb_name", "TEXT"), ("referee", "TEXT"),
         ("stadium_id", "TEXT"), ("stadium", "TEXT"),
@@ -219,6 +221,22 @@ def source_unchanged(entry, length, last_modified):
     return (bool(entry) and entry.get("source_length") == length
             and entry.get("source_last_modified") == last_modified
             and entry.get("rows", 0) > 0)
+
+
+def db_has_rows(con, table, season=None):
+    """The DB-side half of the skip decision. The manifest alone lied once: with the
+    DB file deleted but the manifest intact, sync skipped every dataset as 'fresh'
+    while the store sat empty (caught live 2026-08-08, pinned in selftest). A skip
+    requires BOTH a fresh manifest AND an actually-populated table."""
+    try:
+        if season is not None and ("season", "INT") in WANTED.get(table, []):
+            n = con.execute(f"SELECT COUNT(*) FROM {table} WHERE season=?",
+                            (season,)).fetchone()[0]
+        else:
+            n = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
+        return n > 0
+    except sqlite3.OperationalError:      # table doesn't exist yet
+        return False
 
 
 # ── HTTP via curl (the repo's proven transport; stdlib urllib would need CA fiddling) ──
@@ -359,7 +377,8 @@ def sync(only=None, force=False, today=None):
                 print(f"  ✗ {key:<24} HTTP {code} — keeping last-good table; see check")
                 man.setdefault(key, {})["last_error"] = f"HTTP {code} @ {now}"
                 continue
-            if not force and source_unchanged(man.get(key), length, lastmod):
+            if not force and source_unchanged(man.get(key), length, lastmod) \
+                    and db_has_rows(con, ds["table"], season):
                 print(f"  ✓ {key:<24} fresh (source unchanged; {man[key]['rows']} rows)")
                 continue
             dest = os.path.join(CACHE, os.path.basename(url))

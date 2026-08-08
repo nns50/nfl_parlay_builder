@@ -151,6 +151,19 @@ assert source_unchanged(e, "123", "Mon, 01 Jan 2026 00:00:00 GMT")
 assert not source_unchanged(e, "999", "Mon, 01 Jan 2026 00:00:00 GMT")   # length changed
 assert not source_unchanged({}, "123", "x")                              # never synced
 assert not source_unchanged(dict(e, rows=0), "123", "Mon, 01 Jan 2026 00:00:00 GMT")  # empty load
+# manifest-vs-DB pin (live burn 2026-08-08): fresh manifest + missing/empty TABLE
+# must NOT skip — a deleted DB with an intact manifest left the store empty
+import os
+os.environ["NFL_DB"] = ":memory:"
+import importlib, ingest as _ing
+importlib.reload(_ing)
+con = _ing.connect()
+assert not _ing.db_has_rows(con, "games")                 # table absent → no skip
+import csv as _csv
+rows = list(_csv.DictReader(open("tools/fixtures/games_fixture.csv")))
+_ing.load_table(con, "games", iter(rows), list(rows[0].keys()))
+assert _ing.db_has_rows(con, "games")                     # populated → skip allowed
+assert _ing.db_has_rows(con, "games", 2026) and not _ing.db_has_rows(con, "games", 1999)
 EOF
 
 # ── 10. window labels are data-driven cosmetics ──────────────────────────────
@@ -335,7 +348,118 @@ else
      "$(python3 tools/weekcheck.py --selftest 2>&1 | tail -12)"
 fi
 
-# ── 15. CLI contract ─────────────────────────────────────────────────────────
+# ── 15. M4: implied team totals (the pricing primitive) ──────────────────────
+pyblk "implied: spread/total → team totals; nflverse sign convention flip" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from implied import implied_totals, from_store_line
+assert implied_totals(-3.5, 44.5) == (24.0, 20.5)     # home favored by 3.5
+assert implied_totals(+3.0, 42.0) == (19.5, 22.5)     # home a 3-point dog
+assert from_store_line(3.5) == -3.5                    # store: + = home favored
+EOF
+
+# ── 15b. M4: devig math (ported tool still computes the same numbers) ────────
+DV=$(bash tools/devig.sh -120 +100 59 2>/dev/null)
+echo "$DV" | grep -q "no-vig  52.2%" && echo "$DV" | grep -q "Edge +6.8pp" \
+  && ok "devig.sh: -120/+100 → 52.2% no-vig, +6.8pp edge" \
+  || no "devig.sh: -120/+100 → 52.2% no-vig, +6.8pp edge" "$DV"
+
+# ── 15c. M4: truep NFL registry + custom cap ─────────────────────────────────
+python3 tools/truep.py --list 2>/dev/null | grep -q "script_rush_fav" \
+  && ok "truep.py: NFL registry loads" || no "truep.py: NFL registry loads"
+if python3 tools/truep.py --base-prob 55 --custom "+5:too big" >/dev/null 2>&1; then
+  no "truep.py: --custom ±3 cap enforced"
+else ok "truep.py: --custom ±3 cap enforced"; fi
+python3 tools/truep.py --base-prob 54.3 --adj wind_under 2>/dev/null \
+  | grep -q "\[adj: wind_under+4\]" \
+  && ok "truep.py: [adj:] ledger tag emitted" || no "truep.py: [adj:] ledger tag emitted"
+
+# ── 15d. M4: corr engine — copula math + matrix semantics ────────────────────
+pyblk "corr: bvn bounds/independence/comonotone; MC deterministic + consistent" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from corr import bvn_prob, joint_prob, build_R, pair_rho, blocked, load_matrix, load_blocklist
+assert abs(bvn_prob(0.6, 0.55, 0.0) - 0.33) < 1e-6            # independence = product
+assert abs(bvn_prob(0.6, 0.55, 0.999) - 0.55) < 0.01          # comonotone → min(p)
+assert bvn_prob(0.6, 0.55, 0.45) > 0.33                       # positive ρ lifts joint
+assert bvn_prob(0.6, 0.55, -0.45) < 0.33                      # negative ρ cuts it
+lo = max(0.0, 0.6 + 0.55 - 1)
+assert bvn_prob(0.6, 0.55, -0.999) >= lo - 1e-9               # Fréchet floor respected
+# 3-leg MC: deterministic, between bounds, above independent product for +ρ
+R = [[1, .4, .3], [.4, 1, .3], [.3, .3, 1]]
+a = joint_prob([.6, .55, .5], R); b = joint_prob([.6, .55, .5], R)
+assert a == b, "MC not deterministic"
+assert .6 * .55 * .5 < a < .5, a
+EOF
+
+pyblk "corr: matrix lookup — same-team rows, orientation flips, unknown=None, blocklist" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from corr import pair_rho, blocked, load_matrix, load_blocklist
+M, B = load_matrix(), load_blocklist()
+qb  = {"p":.6, "game":"G1", "team":"BUF", "family":"qb_pass_yds_o"}
+wr  = {"p":.55,"game":"G1", "team":"BUF", "family":"wr_rec_yds_o"}
+wr2 = {"p":.5, "game":"G1", "team":"BUF", "family":"wr_rec_yds_o"}
+oqb = {"p":.5, "game":"G1", "team":"HOU", "family":"qb_pass_yds_o"}
+tu  = {"p":.5, "game":"G1", "team":None,  "family":"game_total_u"}
+ml  = {"p":.6, "game":"G1", "team":"BUF", "family":"team_ml"}
+oml = {"p":.4, "game":"G1", "team":"HOU", "family":"team_ml"}
+x   = {"p":.6, "game":"G2", "team":"KC",  "family":"team_ml"}
+unk = {"p":.5, "game":"G1", "team":"BUF", "family":"made_up_family"}
+assert pair_rho(qb, wr, M) == 0.45                    # same-team row
+assert pair_rho(wr, wr2, M) == -0.15                  # same-team receivers compete
+assert pair_rho(qb, oqb, M) == 0.17                   # opposing QBs row (backtest-reseeded)
+assert pair_rho(qb, tu, M) == -0.35                   # orientation flip: yds_o × total_u
+assert pair_rho(qb, x, M) == 0.0                      # different game = independent
+assert pair_rho(qb, unk, M) is None                   # unknown same-game pair
+assert blocked(ml, oml, B) is not None                # opposite MLs blocked
+assert blocked(ml, wr, B) is None
+EOF
+
+# ── 15e. M4: ticket.py — blocked/negative/unknown rejected; stack priced ─────
+pyblk "ticket.py: legality + copula stack pricing + band search (CLI, offline)" <<'EOF'
+import subprocess
+r = subprocess.run(["python3", "tools/ticket.py",
+  "--leg", "60:-140:G1:BUF ML:team_ml:BUF",
+  "--leg", "58:+105:G1:Allen O249.5:qb_pass_yds_o:BUF",
+  "--leg", "45:+240:G1:HOU ML:team_ml:HOU",
+  "--leg", "55:-110:G1:Shakir rec yds:wr_rec_yds_o:BUF",
+  "--leg", "56:-105:G1:Coleman rec yds:wr_rec_yds_o:BUF",
+  "--leg", "57:-110:G2:Total U44.5:game_total_u",
+  "--leg", "52:-102:G1:Mystery:made_up_fam:BUF",
+  ], capture_output=True, text=True, timeout=120)
+out = r.stdout
+assert "BLOCKED — opposite sides" in out, "opposing MLs not blocked"
+assert "negatively-correlated pair" in out, "same-team WR pair not rejected"
+assert "unknown same-game correlation" in out, "unknown pair not rejected"
+assert "joint" in out and "stack" in out, "no copula-priced stack in output"
+assert "TARGET BAND" in out and "RECOMMENDED" in out, "band search missing"
+assert "worth taking only if the quote beats" in out, "min-SGP quote missing"
+EOF
+
+# ── 15f. M4: parlay.py CLI-compat (tier joint via copula, deterministic) ─────
+pyblk "parlay.py: moderate-tier pair sits between product and min(p)" <<'EOF'
+import subprocess, re
+r = subprocess.run(["python3", "tools/parlay.py", "--leg", "60:-130",
+                    "--leg", "55:+110", "--corr", "moderate"],
+                   capture_output=True, text=True, timeout=60)
+m = re.search(r"true combined .*?:\s+([\d.]+)%", r.stdout)
+assert m, r.stdout
+v = float(m.group(1))
+assert 33.0 < v < 55.0 and v > 33.1, v      # above the 33.0% naive product, below min(p)
+EOF
+
+# ── 15g. M4: corr matrix + blocklist CSVs parse and stay symmetric ───────────
+pyblk "corr_matrix.csv / blocked_combos.csv: parse, ρ in range, families well-formed" <<'EOF'
+import csv
+fams = set()
+for row in csv.DictReader(open("config/corr_matrix.csv")):
+    rho = float(row["rho"]); assert -1 < rho < 1, row
+    assert row["same_team"] in ("Y", "N", "any"), row
+    fams |= {row["family_a"], row["family_b"]}
+assert "qb_pass_yds_o" in fams and "team_ml" in fams
+for row in csv.DictReader(open("config/blocked_combos.csv")):
+    assert row["reason"].strip(), row
+EOF
+
+# ── 16. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi
