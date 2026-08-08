@@ -607,7 +607,14 @@ recent = window_rows(rows)
 assert {r["week"] for r in recent} == {"2026-W02", "2026-W03", "2026-W04"}
 EOF
 
-# ── 18. CLI contract ─────────────────────────────────────────────────────────
+# ── 18. M7: dashboard parser invariants + calib reconciliation ───────────────
+if python3 tools/generate_dashboard.py --selftest >/dev/null 2>&1; then
+  ok "generate_dashboard --selftest (parses ledgers, BT isolation, render sane)"
+else
+  no "generate_dashboard --selftest" "$(python3 tools/generate_dashboard.py --selftest 2>&1 | tail -8)"
+fi
+
+# ── 19. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi
