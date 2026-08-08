@@ -549,7 +549,65 @@ assert cache_is_stale_for("2026-09-10T01:00:00Z", "2026-09-10T00:15:00Z") is Tru
 assert cache_is_stale_for("2026-09-09T12:00:00Z", "2026-09-10T00:15:00Z") is False
 EOF
 
-# ── 17. CLI contract ─────────────────────────────────────────────────────────
+# ── 17. M6: calib parses the live ledger; BT rows excluded; result semantics ─
+pyblk "calib: ledger parse + BT isolation + result/star semantics" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from calib import parse_result, parse_pct, parse_adj_tags, read_rows
+assert parse_result("**W** (CHI 24-20)") == "W"
+assert parse_result("**L** (JAX 29-36)") == "L"
+assert parse_result("**Push** (44 on the nose)") == "Push"
+assert parse_result("TBD") is None
+assert parse_result("SUPERSEDED → see run 2 **W**") is None       # supersede veto
+assert parse_result("would-W (declined)") == "W"
+assert parse_pct("68%*") == (68.0, True)                          # starred legacy
+assert parse_pct("**64.3%**") == (64.3, False)                    # bold ≠ star
+assert parse_adj_tags("SEA ML [adj: none]") == []
+assert parse_adj_tags("x [adj: wind_under+4, rest_edge+2]") == ["wind_under", "rest_edge"]
+assert parse_adj_tags("no tag here") is None
+live, bt, tickets = read_rows(open("ledgers/results_log.md").read())
+assert len(bt) == 7, f"expected 7 BT rows, got {len(bt)}"
+assert all(r["bucket"] == "BT" for r in bt)
+assert len(live) == 2, f"expected 2 live scan rows, got {len(live)}"
+assert all(r["result"] is None for r in live)                     # W1 not played yet
+assert sum(r["result"] == "W" for r in bt) == 5 and sum(r["result"] == "L" for r in bt) == 2
+EOF
+
+# ── 17b. M6: pulse governor actions fire on synthetic windows ────────────────
+pyblk "pulse: COOL/SUSPEND/MARKET-SHADE/GLOBAL-SHRINK/RE-WARM on fixtures" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from pulse import actions_for, market_family, window_rows
+def row(res, truep=65, clv="—", week="2026-W01", market="h2h", implp=None):
+    return {"result": res, "truep": truep, "starred": False, "implp": implp,
+            "week": week, "leg": "x [adj: none]",
+            "leg_id": f"2026-W01:2026_01_NE_SEA:{market}:SEA::", "clv": clv}
+assert market_family("2026-W01:G:player_pass_yds:Over:249.5:00-1") == "prop:pass_yds"
+assert market_family("2026-W01:G:h2h:SEA::") == "ML"
+# COOL: 1-4 (20%) vs claimed 65 → gap 45 ≥ 15, n=5
+_, acts = actions_for([row("W")] + [row("L")] * 4)
+assert any("COOL" in a[0] for a in acts), acts
+# SUSPEND: 0-6 vs claimed 65
+_, acts = actions_for([row("L")] * 6)
+assert any("SUSPEND" in a[0] for a in acts), acts
+# RE-WARM: 3 of last 5 won suppresses COOL/SUSPEND even after a cold start
+rows = [row("L")] * 5 + [row("W"), row("W"), row("L"), row("W"), row("W")]
+_, acts = actions_for(rows)
+assert not any("SUSPEND" in a[0] or "COOL" in a[0] for a in acts), acts
+# MARKET-SHADE: CLV 0+/4−
+_, acts = actions_for([row("W", clv="− 60%cl"), row("W", clv="- 61%cl"),
+                       row("L", clv="− 59%cl"), row("W", clv="− 62%cl")])
+assert any("MARKET-SHADE" in a[0] for a in acts), acts
+# GLOBAL SHRINK: TrueP consistently worse than market over n≥10
+bad = [row("L", truep=70, implp=50) for _ in range(10)]
+_, acts = actions_for(bad)
+assert any("GLOBAL SHRINK" in a[0] for a in acts), acts
+# window: last 3 distinct weeks only
+rows = ([row("W", week="2026-W01")] * 6 + [row("L", week="2026-W02")] * 6
+        + [row("W", week="2026-W03")] * 6 + [row("L", week="2026-W04")] * 6)
+recent = window_rows(rows)
+assert {r["week"] for r in recent} == {"2026-W02", "2026-W03", "2026-W04"}
+EOF
+
+# ── 18. CLI contract ─────────────────────────────────────────────────────────
 if bash tools/nfl_data.sh definitely-not-a-command >/dev/null 2>&1; then
   no "nfl_data.sh rejects unknown subcommand"
 else ok "nfl_data.sh rejects unknown subcommand"; fi
