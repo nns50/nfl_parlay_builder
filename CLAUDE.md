@@ -75,6 +75,14 @@ claims). MLB burn history does not port.**
   inventing a "first drive" analog would manufacture doctrine this ledger has not earned.
   `kprice.py` is already covered by `propquote.py`, and `recheck.py` (SP-scratch snapshot →
   diff) by `weekcheck.py snap/diff`.
+- **The exposure governor is LIVE FROM WEEK 1 (2026-08-09).** `pulse.py` previously
+  required 15 *decided* legs before any rule could fire, so it idled through roughly the
+  first three weeks of a season — exactly when the adjustments are least proven. But
+  **MARKET-SHADE is a pure CLV rule**, and CLV is known at the CLOSE, weeks before any
+  W/L. `clv_window_rows()` now feeds it CLV-bearing legs **decided or not**, so the
+  governor can shade a dimension to market no-vig from the very first week. Hit-rate rules
+  (COOL / SUSPEND / GLOBAL SHRINK) still require decisions, because those genuinely need
+  results.
 - **Streaks are a RULE TRIGGER, not decoration.** `streaks()` reports the current run
   (signed), longest win run and longest losing run over decided legs — a Push breaks
   nothing, since it is not a loss. `ladder_state()` computes the $10 ladder's live state
@@ -186,8 +194,19 @@ tools/corr_backtest.py                        # matrix sanity vs history (re-see
 ```
 
 Correlation doctrine (v2 — supersedes the MLB one-pair model): ρ lives in
-`config/corr_matrix.csv` keyed by leg FAMILY + same-team flag (5 rows already re-seeded
-from a 2024-25 backtest, n=388-856/pair, signs all confirmed); same-game groups price
+`config/corr_matrix.csv` keyed by leg FAMILY + same-team flag. **19 of 21 rows are now
+MEASURED over 2015-2025 (n=736-2869/pair) via `corr_backtest.py --reseed`**, which writes
+ρ = sin(π·φ/2) back into the CSV; the only 2 left structural are the opposite-side pairs
+that are blocked anyway. **This mattered more than expected: structural guesses ran up to
+2× off IN BOTH DIRECTIONS and got two SIGNS wrong** — same-team WR1×WR2 was seeded −0.15
+("they compete for one target pool") but measures **+0.02, i.e. ~independent**, and that
+wrong sign had been silently REJECTING legal WR1+WR2 stacks as negatively correlated;
+`rb_rush_yds_o × game_total_u` was seeded +0.15 and measures ~0. Biggest magnitude moves:
+`team_ml × OPPOSING team_total_o` −0.20 → **−0.58**, `team_spread × team_ml` (same team)
+0.75 → **0.93** (a spread+ML stack is nearly ONE leg, not two), `kicker_pts × team_total_o`
+0.30 → 0.49. For a single leg a bad ρ is invisible; in a parlay it compounds straight into
+the floor, which is the number the whole ticket rests on. Re-run `--reseed` as seasons
+accrue, and update selftest WITH the new measurement rather than loosening the assertion; same-game groups price
 jointly via a Gaussian copula; blocked combos (`config/blocked_combos.csv`) and
 negative-ρ pairs are rejected; an UNKNOWN same-game pair is rejected (one leg per game)
 — never silently assumed independent. Every band pick containing a stack prints its

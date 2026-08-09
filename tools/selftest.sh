@@ -403,10 +403,16 @@ ml  = {"p":.6, "game":"G1", "team":"BUF", "family":"team_ml"}
 oml = {"p":.4, "game":"G1", "team":"HOU", "family":"team_ml"}
 x   = {"p":.6, "game":"G2", "team":"KC",  "family":"team_ml"}
 unk = {"p":.5, "game":"G1", "team":"BUF", "family":"made_up_family"}
-assert pair_rho(qb, wr, M) == 0.45                    # same-team row
-assert pair_rho(wr, wr2, M) == -0.15                  # same-team receivers compete
-assert pair_rho(qb, oqb, M) == 0.17                   # opposing QBs row (backtest-reseeded)
-assert pair_rho(qb, tu, M) == -0.35                   # orientation flip: yds_o × total_u
+# These are MEASURED (corr_backtest.py --reseed, 2015-2025, n=736-2869), not guessed.
+# Re-running --reseed may move them; update here WITH the new measurement, never by
+# loosening the assertion.
+assert pair_rho(qb, wr, M) == 0.44                    # same-team QB→WR (phi +0.293)
+assert pair_rho(wr, wr2, M) == 0.02                   # same-team WRs: ~INDEPENDENT.
+# The shipped seed said -0.15 ("they compete for one target pool"); measurement over
+# n=736 says +0.010. The story was wrong, and it had been BLOCKING legal WR1+WR2 stacks.
+assert pair_rho(qb, oqb, M) == 0.17                   # opposing QBs row (backtest)
+assert pair_rho(qb, tu, M) == -0.33                   # orientation flip: yds_o × total_u
+                                                      # (mirrors the re-seeded +0.33)
 assert pair_rho(qb, x, M) == 0.0                      # different game = independent
 assert pair_rho(qb, unk, M) is None                   # unknown same-game pair
 assert blocked(ml, oml, B) is not None                # opposite MLs blocked
@@ -422,12 +428,16 @@ r = subprocess.run(["python3", "tools/ticket.py",
   "--leg", "45:+240:G1:HOU ML:team_ml:HOU",
   "--leg", "55:-110:G1:Shakir rec yds:wr_rec_yds_o:BUF",
   "--leg", "56:-105:G1:Coleman rec yds:wr_rec_yds_o:BUF",
+  # TrueP must beat breakeven (+120 → 45.5%) or the leg is dropped as thin BEFORE the
+  # correlation check ever sees it — which is how this test first failed.
+  "--leg", "53:+120:G1:HOU team total O21.5:team_total_o:HOU",
   "--leg", "57:-110:G2:Total U44.5:game_total_u",
   "--leg", "52:-102:G1:Mystery:made_up_fam:BUF",
   ], capture_output=True, text=True, timeout=120)
 out = r.stdout
 assert "BLOCKED — opposite sides" in out, "opposing MLs not blocked"
-assert "negatively-correlated pair" in out, "same-team WR pair not rejected"
+# BUF ML x HOU team-total-over is measured -0.58 — a genuinely negative pair.
+assert "negatively-correlated pair" in out, "negative ML x opposing-TT pair not rejected"
 assert "unknown same-game correlation" in out, "unknown pair not rejected"
 assert "joint" in out and "stack" in out, "no copula-priced stack in output"
 assert "TARGET BAND" in out and "RECOMMENDED" in out, "band search missing"
@@ -957,6 +967,63 @@ for path in sorted(glob.glob("tools/*.sh")):
                 bad.append(f"{path}:{n}: {lit[:70]}")
 assert not bad, "unescaped $<digit> in an expanded string:\n  " + "\n  ".join(bad)
 PYEOF_LINT
+
+# ── pulse: MARKET-SHADE must fire on CLV ALONE (governor live from Week 1) ──
+pyblk "pulse: CLV-only window fires MARKET-SHADE with ZERO decided legs" <<'EOF'
+import os, subprocess, sys, tempfile
+hdr = ("## Recommended but NOT played\n\n| Week | Leg | leg_id | Type | Price | Book "
+       "| TrueP | ImplP | Edge | Grade | Result | Played | CLV | Bucket | Stake |\n"
+       "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n")
+def row(i, clv, result="TBD"):
+    return (f"| 2026-W01 | leg{i} [adj: none] | 2026-W01:2026_01_NE_SEA:h2h:T{i}:: | ML "
+            f"| -110 | B | 60.0% | 55.0% | +5.0 | scan | {result} | N | {clv} | S |  |\n")
+def run(body):
+    f = tempfile.NamedTemporaryFile("w", suffix=".md", delete=False, encoding="utf-8")
+    f.write(hdr + body); f.close()
+    out = subprocess.run([sys.executable, "tools/pulse.py"], capture_output=True,
+                         text=True, env=dict(os.environ, NFL_LEDGER=f.name)).stdout
+    os.unlink(f.name); return out
+
+# 6 UNDECIDED legs, all negative CLV → the shade must fire anyway
+out = run("".join(row(i, "− 5%cl") for i in range(6)))
+assert "MARKET-SHADE" in out, "CLV-only shade did not fire:\n" + out
+assert "0 decided legs" in out, out
+# positive CLV must NOT trigger a shade
+out2 = run("".join(row(i, "+ 5%cl") for i in range(6)))
+assert "MARKET-SHADE" not in out2, "shade fired on POSITIVE CLV:\n" + out2
+# hit-rate rules still need decisions — they must not fire (or divide by zero) here
+assert "COOL" not in out and "SUSPEND" not in out, out
+EOF
+
+# ── correlation matrix: measured coverage + the re-seeded values in use ─────
+pyblk "corr matrix: measured coverage, re-seeded signs, coverage panel" <<'EOF'
+import csv, sys
+sys.path.insert(0, "tools")
+import generate_dashboard as gd
+from corr import load_matrix, pair_rho
+
+rows = list(csv.DictReader(open("config/corr_matrix.csv")))
+meas = [r for r in rows if (r["basis"] or "").startswith("backtest")]
+assert len(meas) >= 19, f"expected >=19 measured rows, got {len(meas)}"
+for r in rows:                       # every rho stays a legal correlation
+    assert -1.0 <= float(r["rho"]) <= 1.0, r
+
+# the two SIGN CORRECTIONS the 2015-2025 measurement forced — pin them so a careless
+# re-seed or hand-edit cannot quietly restore the wrong structural story.
+M = load_matrix()
+wr = {"p": .5, "game": "G", "team": "BUF", "family": "wr_rec_yds_o"}
+wr2 = {"p": .5, "game": "G", "team": "BUF", "family": "wr_rec_yds_o"}
+assert pair_rho(wr, wr2, M) >= 0, "same-team WRs measured ~independent (+0.02), not -0.15"
+rb = {"p": .5, "game": "G", "team": "BUF", "family": "rb_rush_yds_o"}
+tu = {"p": .5, "game": "G", "team": None, "family": "game_total_u"}
+assert pair_rho(rb, tu, M) <= 0.05, "rb rush yds x game total UNDER measured ~0, not +0.15"
+
+cov, tally = gd.corr_coverage()
+assert tally["measured"] >= 19 and len(cov) == len(rows)
+# the only rows allowed to remain guesses are ones that are BLOCKED anyway
+guessed = [(r["a"], r["b"]) for r in cov if not r["meas"]]
+assert all(a == b for a, b in guessed), f"unmeasured non-blocked pair: {guessed}"
+EOF
 
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"

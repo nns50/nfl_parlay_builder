@@ -73,7 +73,36 @@ def window_rows(rows):
     return recent
 
 
-def actions_for(recent):
+def clv_window_rows(rows):
+    """Live rows carrying a CLV verdict, DECIDED OR NOT (2026-08-09).
+
+    WHY SEPARATE FROM window_rows(): MARKET-SHADE is a pure CLV rule — it asks whether
+    the market moved against a dimension, which is knowable at the CLOSE, weeks before
+    any W/L exists. Gating it behind decided legs left the governor completely idle for
+    the first ~3 weeks of a season (MIN_ROWS=15 decided), which is exactly when the
+    adjustments are least proven and a bad one does the most damage. Hit-rate rules
+    (COOL/SUSPEND/GLOBAL SHRINK) still require decisions — those genuinely need results.
+    """
+    have = [r for r in rows
+            if r["truep"] is not None and not r["starred"]
+            and (r["clv"] or "").replace("−", "-").strip()[:1] in ("+", "-", "=")]
+    if not have:
+        return []
+    weeks = sorted({r["week"] for r in have})
+    recent = [r for r in have if r["week"] in weeks[-WINDOW_WEEKS:]]
+    return recent if len(recent) >= MIN_ROWS else have[-FALLBACK_ROWS:]
+
+
+def dim_names(r):
+    names = [f"family:{market_family(r['leg_id'])}"]
+    b = int(r["truep"] // 5 * 5)
+    names.append(f"band:{b}-{b+4}")
+    for tag in (parse_adj_tags(r["leg"]) or []):
+        names.append(f"adj:{tag}")
+    return names
+
+
+def actions_for(recent, clv_recent=None):
     dims = defaultdict(lambda: {"n": 0, "w": 0, "tp": 0.0, "clv+": 0, "clv-": 0,
                                 "last": []})
     bm = bk = scored = 0.0
@@ -83,27 +112,27 @@ def actions_for(recent):
             bm += (r["truep"] / 100 - y) ** 2
             bk += (r["implp"] / 100 - y) ** 2
             scored += 1
-        names = [f"family:{market_family(r['leg_id'])}"]
-        b = int(r["truep"] // 5 * 5)
-        names.append(f"band:{b}-{b+4}")
-        for tag in (parse_adj_tags(r["leg"]) or []):
-            names.append(f"adj:{tag}")
-        for d in names:
+        for d in dim_names(r):
             e = dims[d]
             e["n"] += 1
             e["w"] += int(y)
             e["tp"] += r["truep"]
             e["last"].append(y)
-            clv = (r["clv"] or "").replace("−", "-").strip()
-            if clv.startswith("+"):
-                e["clv+"] += 1
-            elif clv.startswith("-"):
-                e["clv-"] += 1
+    # CLV counts come from their OWN window so the shade can fire pre-results. Rows in
+    # both windows are counted once here, not twice.
+    for r in (clv_recent if clv_recent is not None else recent):
+        clv = (r["clv"] or "").replace("−", "-").strip()
+        if not clv[:1] in ("+", "-"):
+            continue
+        for d in dim_names(r):
+            dims[d]["clv+" if clv.startswith("+") else "clv-"] += 1
     acts = []
     for d, e in sorted(dims.items()):
         n, w = e["n"], e["w"]
-        hit = w / n * 100
-        claimed = e["tp"] / n
+        # A dimension can now exist on CLV alone (no decided legs yet) — hit-rate rules
+        # must not divide by zero; they simply do not apply until results arrive.
+        hit = (w / n * 100) if n else 0.0
+        claimed = (e["tp"] / n) if n else 0.0
         rewarmed = len(e["last"]) >= 5 and sum(e["last"][-5:]) >= 3
         if n >= SUSP_N and hit <= claimed - SUSP_GAP and not rewarmed:
             acts.append(("⛔ SUSPEND", d, f"{w}-{n-w} ({hit:.0f}%) vs claimed "
@@ -126,19 +155,27 @@ def main():
     with open(LEDGER, encoding="utf-8") as fh:
         live, _bt, _tickets, _orphans = read_rows(fh.read())
     recent = window_rows(live)
-    dims, acts = actions_for(recent)
+    clv_recent = clv_window_rows(live)
+    dims, acts = actions_for(recent, clv_recent)
     print("═" * 72)
-    print(f"  PULSE — recent-window exposure governor ({len(recent)} decided legs in window)")
+    print(f"  PULSE — recent-window exposure governor ({len(recent)} decided legs, "
+          f"{len(clv_recent)} CLV-bearing legs in window)")
     print("═" * 72)
     shown = 0
     for d, e in sorted(dims.items(), key=lambda kv: -kv[1]["n"]):
-        if e["n"] < 3:
+        clvn = e["clv+"] + e["clv-"]
+        if e["n"] < 3 and clvn < CLV_MIN:
             continue
-        print(f"  {d:<28} {e['w']}-{e['n']-e['w']:<3} hit {e['w']/e['n']*100:>3.0f}% "
-              f"vs claimed {e['tp']/e['n']:>3.0f}%   CLV {e['clv+']}+/{e['clv-']}−")
+        if e["n"]:
+            print(f"  {d:<28} {e['w']}-{e['n']-e['w']:<3} hit {e['w']/e['n']*100:>3.0f}% "
+                  f"vs claimed {e['tp']/e['n']:>3.0f}%   CLV {e['clv+']}+/{e['clv-']}−")
+        else:
+            print(f"  {d:<28} {'—':<7} (no decided legs yet)        "
+                  f"   CLV {e['clv+']}+/{e['clv-']}−")
         shown += 1
     if not shown:
-        print("  (window too thin — no dimension has 3 decided legs; governor idles)")
+        print("  (window too thin — no dimension has 3 decided legs or "
+              f"{CLV_MIN} CLV verdicts; governor idles)")
     print("─" * 72)
     if acts:
         print("  ACTIONS (mechanical — the build MUST apply these; the registry itself")

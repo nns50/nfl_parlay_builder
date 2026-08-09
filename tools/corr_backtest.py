@@ -55,6 +55,10 @@ def gauss_to_phi(rho):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--seasons", default="2024,2025")
+    ap.add_argument("--reseed", action="store_true",
+                    help="rewrite config/corr_matrix.csv from the MEASURED rho "
+                         "(rho = sin(pi*phi/2), the inverse of the attenuation the "
+                         "docstring describes). Only pairs with n>=200 are rewritten.")
     args = ap.parse_args()
     seasons = tuple(int(s) for s in args.seasons.split(","))
 
@@ -65,7 +69,8 @@ def main():
     # per-player weekly lines (REG only), season medians, team leaders
     rows = con.execute(
         f"SELECT season, week, team, player_id, player_display_name, position, "
-        f"passing_yards, attempts, receiving_yards, rushing_yards, carries "
+        f"passing_yards, attempts, receiving_yards, rushing_yards, carries, "
+        f"passing_tds, receiving_tds, rushing_tds, fg_made, pat_made "
         f"FROM player_week WHERE season IN ({ph}) AND season_type='REG'",
         seasons).fetchall()
     weekly = defaultdict(dict)     # (season,player) -> {week: row}
@@ -175,6 +180,106 @@ def main():
         p5.append((go, ho))
         p6.append((g["home_score"] > g["away_score"], ho))
 
+    # ── EXPANDED COVERAGE (2026-08-09). The matrix shipped 21 rows but only 6 had a
+    # measurement path; the 5 that got re-seeded moved by up to 2x IN BOTH DIRECTIONS
+    # (team_ml×team_total_o 0.30→0.60, rb_att×qb_att −0.30→−0.15), so the remaining
+    # structural guesses could not be trusted either. For a PARLAY these errors compound
+    # into the floor, which is the number the whole ticket rests on.
+    p7 = []    # qb_pass_yds_o × qb_pass_tds_o (same team)
+    p8 = []    # qb_pass_tds_o × anytime_td (same team, WR1 scores)
+    p9 = []    # qb_pass_yds_o × game_total_o
+    p10 = []   # wr_rec_yds_o × game_total_o
+    p11 = []   # team_ml × rb_rush_att_o (same team)
+    p12 = []   # rb_rush_yds_o × game_total_u
+    p13 = []   # qb_pass_yds_o × team_ml (same team)
+    p14 = []   # wr_rec_yds_o × wr_rec_yds_o (two same-team receivers)
+    p15 = []   # team_ml × team_total_o (OPPOSING team total)
+    p16 = []   # anytime_td × team_total_o (same team)
+    p17 = []   # kicker_pts_o × team_total_o (same team)
+    p18 = []   # team_spread(cover) × team_ml (same team)
+    p19 = []   # anytime_td × game_total_o
+
+    def top2(season, team, pos, field):
+        """Two highest-volume players at a position (for the same-team WR pair)."""
+        agg = {}
+        for r in rows:
+            if r["season"] == season and r["team"] == team and r["position"] == pos:
+                agg[r["player_id"]] = agg.get(r["player_id"], 0) + (r[field] or 0)
+        return [pid for pid, _ in sorted(agg.items(), key=lambda kv: -kv[1])[:2]]
+
+    for season in seasons:
+        for team in teams:
+            qb = leader(season, team, "QB", "passing_yards")
+            wr = leader(season, team, "WR", "receiving_yards")
+            rb = leader(season, team, "RB", "rushing_yards")
+            k = leader(season, team, "K", "fg_made")
+            wr2 = top2(season, team, "WR", "receiving_yards")
+            if not qb:
+                continue
+            qmed = season_median(season, qb, "passing_yards")
+            qtmed = season_median(season, qb, "passing_tds")
+            wmed = season_median(season, wr, "receiving_yards") if wr else None
+            rmed = season_median(season, rb, "rushing_yards") if rb else None
+            ramed = season_median(season, rb, "carries") if rb else None
+            if qmed is None:
+                continue
+            for wk, qrow in weekly[(season, qb)].items():
+                q_over = (qrow["passing_yards"] or 0) > qmed
+                side_g = game_by_team_week.get((season, wk, team))
+                if qtmed is not None:
+                    p7.append((q_over, (qrow["passing_tds"] or 0) > qtmed))
+                if wr and wk in weekly[(season, wr)]:
+                    wrow = weekly[(season, wr)][wk]
+                    if qtmed is not None:
+                        p8.append(((qrow["passing_tds"] or 0) > qtmed,
+                                   (wrow["receiving_tds"] or 0) >= 1))
+                if not side_g:
+                    continue
+                side, g = side_g
+                own = g["home_score"] if side == "home" else g["away_score"]
+                opp = g["away_score"] if side == "home" else g["home_score"]
+                won = own > opp
+                tl, sp = g["total_line"], from_store_line(g["spread_line"])
+                tot = g["home_score"] + g["away_score"]
+                p13.append((q_over, won))
+                if tl is not None and abs(tot - tl) > 1e-9:
+                    p9.append((q_over, tot > tl))
+                    if wmed is not None and wk in weekly[(season, wr)]:
+                        p10.append(((weekly[(season, wr)][wk]["receiving_yards"] or 0)
+                                    > wmed, tot > tl))
+                    if rmed is not None and wk in weekly[(season, rb)]:
+                        p12.append(((weekly[(season, rb)][wk]["rushing_yards"] or 0)
+                                    > rmed, tot < tl))
+                if ramed is not None and wk in weekly[(season, rb)]:
+                    p11.append((won, (weekly[(season, rb)][wk]["carries"] or 0) > ramed))
+                if len(wr2) == 2 and all(wk in weekly[(season, p)] for p in wr2):
+                    m0 = season_median(season, wr2[0], "receiving_yards")
+                    m1 = season_median(season, wr2[1], "receiving_yards")
+                    if m0 is not None and m1 is not None:
+                        p14.append(((weekly[(season, wr2[0])][wk]["receiving_yards"] or 0) > m0,
+                                    (weekly[(season, wr2[1])][wk]["receiving_yards"] or 0) > m1))
+                if sp is not None and tl is not None:
+                    hi, ai = implied_totals(sp, tl)
+                    own_imp = hi if side == "home" else ai
+                    own_over = own > own_imp
+                    p15.append((won, (opp > (ai if side == "home" else hi))))
+                    margin = own - opp
+                    cover_line = -sp if side == "home" else sp
+                    if abs(margin + cover_line) > 1e-9:
+                        p18.append((margin > -cover_line, won))
+                    if wr and wk in weekly[(season, wr)]:
+                        p16.append(((weekly[(season, wr)][wk]["receiving_tds"] or 0) >= 1,
+                                    own_over))
+                    if k and wk in weekly[(season, k)]:
+                        krow = weekly[(season, k)][wk]
+                        kpts = 3 * (krow["fg_made"] or 0) + (krow["pat_made"] or 0)
+                        kmed = season_median(season, k, "fg_made")
+                        if kmed is not None:
+                            p17.append((kpts > 7, own_over))
+                if tl is not None and abs(tot - tl) > 1e-9 and wr and wk in weekly[(season, wr)]:
+                    p19.append(((weekly[(season, wr)][wk]["receiving_tds"] or 0) >= 1,
+                                tot > tl))
+
     checks = [
         ("qb_pass_yds_o × wr_rec_yds_o (same team)", 0.45, p1),
         ("team_ml × rb_rush_yds_o (same team)", 0.30, p2),
@@ -182,7 +287,79 @@ def main():
         ("rb_rush_att_o × qb_pass_att_o (same team)", -0.30, p4),
         ("game_total_o × team_total_o", 0.55, p5),
         ("team_ml × team_total_o (same team)", 0.30, p6),
+        ("qb_pass_yds_o × qb_pass_tds_o (same team)", 0.40, p7),
+        ("qb_pass_tds_o × anytime_td (same team)", 0.35, p8),
+        ("qb_pass_yds_o × game_total_o", 0.35, p9),
+        ("wr_rec_yds_o × game_total_o", 0.25, p10),
+        ("team_ml × rb_rush_att_o (same team)", 0.35, p11),
+        ("rb_rush_yds_o × game_total_u", 0.15, p12),
+        ("qb_pass_yds_o × team_ml (same team)", 0.10, p13),
+        ("wr_rec_yds_o × wr_rec_yds_o (same team)", -0.15, p14),
+        ("team_ml × team_total_o (OPPOSING)", -0.20, p15),
+        ("anytime_td × team_total_o (same team)", 0.30, p16),
+        ("kicker_pts_o × team_total_o (same team)", 0.30, p17),
+        ("team_spread × team_ml (same team)", 0.75, p18),
+        ("anytime_td × game_total_o", 0.20, p19),
     ]
+    # matrix key for each check, so a measurement can be written back to the CSV
+    KEYS = {
+        "qb_pass_yds_o × wr_rec_yds_o (same team)": ("qb_pass_yds_o", "wr_rec_yds_o", "Y"),
+        "team_ml × rb_rush_yds_o (same team)": ("team_ml", "rb_rush_yds_o", "Y"),
+        "qb_pass_yds_o × qb_pass_yds_o (opposing)": ("qb_pass_yds_o", "qb_pass_yds_o", "N"),
+        "rb_rush_att_o × qb_pass_att_o (same team)": ("rb_rush_att_o", "qb_pass_att_o", "Y"),
+        "game_total_o × team_total_o": ("game_total_o", "team_total_o", "any"),
+        "team_ml × team_total_o (same team)": ("team_ml", "team_total_o", "Y"),
+        "qb_pass_yds_o × qb_pass_tds_o (same team)": ("qb_pass_yds_o", "qb_pass_tds_o", "Y"),
+        "qb_pass_tds_o × anytime_td (same team)": ("qb_pass_tds_o", "anytime_td", "Y"),
+        "qb_pass_yds_o × game_total_o": ("qb_pass_yds_o", "game_total_o", "any"),
+        "wr_rec_yds_o × game_total_o": ("wr_rec_yds_o", "game_total_o", "any"),
+        "team_ml × rb_rush_att_o (same team)": ("team_ml", "rb_rush_att_o", "Y"),
+        "rb_rush_yds_o × game_total_u": ("rb_rush_yds_o", "game_total_u", "any"),
+        "qb_pass_yds_o × team_ml (same team)": ("qb_pass_yds_o", "team_ml", "Y"),
+        "wr_rec_yds_o × wr_rec_yds_o (same team)": ("wr_rec_yds_o", "wr_rec_yds_o", "Y"),
+        "team_ml × team_total_o (OPPOSING)": ("team_ml", "team_total_o", "N"),
+        "anytime_td × team_total_o (same team)": ("anytime_td", "team_total_o", "Y"),
+        "kicker_pts_o × team_total_o (same team)": ("kicker_pts_o", "team_total_o", "Y"),
+        "team_spread × team_ml (same team)": ("team_spread", "team_ml", "Y"),
+        "anytime_td × game_total_o": ("anytime_td", "game_total_o", "any"),
+    }
+    measured = {}
+    for name, seed, pairs in checks:
+        f, n = phi(pairs)
+        if f is not None and n >= 200 and name in KEYS:
+            measured[KEYS[name]] = (math.sin(math.pi * f / 2), f, n)
+
+    if args.reseed:
+        import csv as _csv
+        mp = os.path.join(REPO, "config", "corr_matrix.csv")
+        with open(mp, newline="", encoding="utf-8") as fh:
+            hdr, rows_csv = None, []
+            for i, row in enumerate(_csv.reader(fh)):
+                if i == 0:
+                    hdr = row
+                else:
+                    rows_csv.append(row)
+        changed = 0
+        tag = f"backtest-{min(seasons)}-{max(seasons)}"
+        for r in rows_csv:
+            key = (r[0], r[1], r[2])
+            if key not in measured:
+                continue
+            rho, f, n = measured[key]
+            old_rho = r[3]
+            new_rho = f"{rho:.2f}"
+            if old_rho == new_rho and r[4] == tag:
+                continue
+            r[3], r[4] = new_rho, tag
+            r[5] = (f"measured phi={f:+.3f} n={n} -> rho=sin(pi*phi/2)={rho:+.2f} "
+                    f"(was {old_rho})")
+            changed += 1
+        with open(mp, "w", newline="", encoding="utf-8") as fh:
+            w = _csv.writer(fh)
+            w.writerow(hdr)
+            w.writerows(rows_csv)
+        print(f"  ✓ re-seeded {changed} row(s) of config/corr_matrix.csv from measurement")
+
     print("═" * 84)
     print(f"  CORR MATRIX BACKTEST — seasons {seasons}, REG only  "
           f"(φ under-reads Gaussian ρ; check SIGN + ORDERING)")

@@ -278,6 +278,7 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="card"><h2>Calibration (played legs vs TrueP band)</h2><div class="chart"><canvas id="cal"></canvas></div>
 <div class="note">bars = actual hit%; line = perfect calibration. Bands need n≥20-30 before they mean anything.</div></div>
 <div class="card"><h2>Streaks &amp; the $10 ladder</h2>__STREAKS__</div>
+<div class="card"><h2>Correlation coverage (parlay floors depend on these)</h2>__CORR__</div>
 <div class="card"><h2>Cumulative P/L (real stakes)</h2><div class="chart"><canvas id="pl"></canvas></div>
 <p class="note">Only legs carrying a stake from ledgers/played.md. An assumed flat-1u curve is exactly the fake number that file replaces.</p></div>
 <div class="card"><h2>Bankroll ladder ($10 rollover)</h2><div class="chart"><canvas id="br"></canvas></div></div>
@@ -536,6 +537,29 @@ def _table(headers, rows, empty):
             f"<tbody>{b}</tbody></table></div>")
 
 
+def corr_coverage():
+    """Which correlation pairs are MEASURED vs still guessed. rho drives the joint prob
+    of every same-game stack, so a guessed row is an unpriced risk sitting inside the
+    ticket floor — and the 2026-08-09 re-seed showed structural guesses running up to 2x
+    off IN BOTH DIRECTIONS, including two SIGN errors."""
+    fp = REPO / "config" / "corr_matrix.csv"
+    if not fp.exists():
+        return [], {"measured": 0, "structural": 0}
+    rows, tally = [], {"measured": 0, "structural": 0}
+    import csv as _csv
+    for r in _csv.DictReader(fp.read_text(encoding="utf-8").splitlines()):
+        basis = (r.get("basis") or "").strip()
+        meas = basis.startswith("backtest")
+        tally["measured" if meas else "structural"] += 1
+        note = (r.get("note") or "")
+        m = re.search(r"n=(\d+)", note)
+        rows.append({"a": r["family_a"], "b": r["family_b"], "same": r["same_team"],
+                     "rho": r["rho"], "meas": meas, "n": m.group(1) if m else "—",
+                     "basis": basis})
+    rows.sort(key=lambda x: (x["meas"], -abs(float(x["rho"]))), reverse=True)
+    return rows, tally
+
+
 def week_board(title, body):
     """The newest run section, rendered readable on a phone: keep tables + bold lines,
     drop the rest. The point is checking the board without digging through email."""
@@ -586,6 +610,19 @@ def render():
             .replace("__OPEN__", str(s["open"]))
             .replace("__BT__", esc(s["bt"]))
             .replace("__BT_DETAIL__", esc(s["bt_detail"]))
+            .replace("__CORR__", (lambda rc: (
+                f"<div class='kpis'><div class='kpi'><b>{rc[1]['measured']}</b>"
+                f"<span>measured</span></div><div class='kpi'><b>{rc[1]['structural']}"
+                f"</b><span>still guessed</span></div></div>"
+                + _table(["family A", "family B", "same team", "ρ", "basis", "n"],
+                         [[r["a"], r["b"], r["same"], r["rho"],
+                           "✓ measured" if r["meas"] else "guess", r["n"]]
+                          for r in rc[0]],
+                         "no matrix rows")
+                + "<p class='note'>ρ drives the joint probability of every same-game "
+                  "stack, so a guessed row is unpriced risk inside the ticket floor. "
+                  "Re-measure with <code>tools/corr_backtest.py --seasons … --reseed"
+                  "</code>.</p>"))(corr_coverage()))
             .replace("__STREAKS__", streak_panel(live, rolls))
             .replace("__EDGEBUCKETS__", _table(
                 ["edge bucket", "n", "W-L", "hit %"],
