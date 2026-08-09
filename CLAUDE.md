@@ -183,12 +183,13 @@ Work on the designated feature branch (`claude/nfl-parlay-port-plan-3ijsrm`) in 
 sessions; commit + push each unit of work and keep `main` in step (`git push origin HEAD:main`).
 
 **STANDING AUTHORIZATION (user-granted 2026-08-09): fold run output into `main` automatically.**
-Scheduled (trigger-fired) runs natively push only to per-run outcome branches
-(`claude/admiring-johnson-*` — proven 2026-08-08/09). Every run therefore ends with the FOLD:
-(1) commit; (2) `git push` (lands on the outcome branch); (3) load
-`mcp__Claude_Code_Remote__add_repo` via ToolSearch and call it (owner `nns50`, repo
-`nfl_parlay_builder`, access `push`) to widen the session's git grant; (4) `git push origin
-HEAD:main` — on a non-fast-forward rejection, `git fetch origin main`, merge, push again.
+Scheduled (trigger-fired) runs push to per-run outcome branches (`claude/admiring-johnson-*`)
+AND can push `main` directly — both proven 2026-08-09 (run 3 folded to main with no extra
+grant; the claude-code-remote MCP server, and thus `add_repo`, does not exist in trigger
+sessions). Every run therefore ends with the FOLD: (1) commit; (2) `git push` (lands on the
+outcome branch); (3) `git push origin HEAD:main` — on a non-fast-forward rejection,
+`git fetch origin main`, merge (a `docs/index.html` conflict is generated output — resolve
+by re-running `tools/generate_dashboard.py`, never by hand), re-run selftest, push again.
 If the fold still fails, say so in the notification with the branch + SHA — an interactive
 check-in completes the fold and deletes the leftover outcome branch. At run START, fetch +
 merge any `claude/admiring-johnson-*` tip ahead of the clone base (append-only ledgers merge
