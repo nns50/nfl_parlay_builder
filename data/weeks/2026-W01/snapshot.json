@@ -522,12 +522,6 @@
    "p_plays": 0.75,
    "team": "GB"
   },
-  "00-0039141": {
-   "designation": "OUT",
-   "name": "Brian Branch",
-   "p_plays": 0.0,
-   "team": "DET"
-  },
   "00-0039144": {
    "designation": "OUT",
    "name": "Luke Musgrave",
@@ -1318,7 +1312,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-09T02:30:15Z",
+ "taken_at": "2026-08-09T02:58:06Z",
  "week": 1,
  "wind": {}
 }
