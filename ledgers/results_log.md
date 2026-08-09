@@ -103,5 +103,39 @@ every settle.
 | 2025-W10 | Josh Allen Over 249.5 pass yds | 2025-W10:2025_10_BUF_MIA:player_pass_yds:Over:249.5:00-0034857 | QB prop | -110 | demo | 55%* | 50.0% | +5.0 | BT | **W** (Josh Allen 306 vs Over 249.5) | N | — | BT |
 | 2025-W10 | De'Von Achane anytime TD | 2025-W10:2025_10_BUF_MIA:player_anytime_td:Yes::00-0039040 | ATD | -140 | demo | 60%* | 58.3% | +1.7 | BT | **W** (De'Von Achane TDs=2) | N | — | BT |
 | 2025-W10 | MIA team total Over 21 | 2025-W10:2025_10_BUF_MIA:team_total:MIA_Over:21: | team total | -110 | demo | 55%* | 52.4% | +2.6 | BT | **W** (MIA scored 30 vs Over 21) | N | — | BT |
+| 2026-W01 | ARI +10 (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:spreads:ARI:+10: | spread | -110 | BetUS | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LAC -10.5 (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:spreads:LAC:-10.5: | spread | -102 | LowVig.ag | 49.3% | 49.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | ARI@LAC Over 46.5 [adj: none] | 2026-W01:2026_01_ARI_LAC:totals:Over:46.5: | total | -105 | Caesars | 49.4% | 49.4% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | ATL +2.5 (ATL@PIT) [adj: none] ⚠PENDING(Penix Jr Q) | 2026-W01:2026_01_ATL_PIT:spreads:ATL:+2.5: | spread | -102 | FanDuel | 48.1% | 48.1% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | ATL@PIT Under 42 [adj: none] ⚠PENDING(Penix Jr Q) | 2026-W01:2026_01_ATL_PIT:totals:Under:42: | total | -110 | Bovada | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BAL@IND Under 47.5 [adj: none] | 2026-W01:2026_01_BAL_IND:totals:Under:47.5: | total | -105 | Bovada | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BAL@IND Over 48.5 [adj: none] | 2026-W01:2026_01_BAL_IND:totals:Over:48.5: | total | +100 | Caesars | 48.8% | 48.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | HOU -0 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:HOU:-0: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | HOU -1 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:HOU:-1: | spread | -105 | Bovada | 49.4% | 49.4% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CHI -3 (CHI@CAR) [adj: none] | 2026-W01:2026_01_CHI_CAR:spreads:CHI:-3: | spread | +100 | LowVig.ag | 48.8% | 48.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CHI@CAR Under 45.5 [adj: none] | 2026-W01:2026_01_CHI_CAR:totals:Under:45.5: | total | -106 | Caesars | 49.6% | 49.6% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CHI@CAR Under 46.5 [adj: none] | 2026-W01:2026_01_CHI_CAR:totals:Under:46.5: | total | -110 | DraftKings | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DAL -3 (DAL@NYG) [adj: none] | 2026-W01:2026_01_DAL_NYG:spreads:DAL:-3: | spread | +100 | BetUS | 48.3% | 48.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DAL@NYG Under 49 [adj: none] | 2026-W01:2026_01_DAL_NYG:totals:Under:49: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DEN +2.5 (DEN@KC) [adj: none] ⚠PENDING(Mahomes Q) | 2026-W01:2026_01_DEN_KC:spreads:DEN:+2.5: | spread | +101 | Caesars | 48.7% | 48.7% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DEN@KC Under 42.5 [adj: none] ⚠PENDING(Mahomes Q) | 2026-W01:2026_01_DEN_KC:totals:Under:42.5: | total | -107 | Caesars | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DEN@KC Under 43 [adj: none] ⚠PENDING(Mahomes Q) | 2026-W01:2026_01_DEN_KC:totals:Under:43: | total | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | MIN -0 (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:spreads:MIN:-0: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | MIN -1 (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:spreads:MIN:-1: | spread | -109 | BetUS | 49.9% | 49.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | GB@MIN Under 44.5 [adj: none] | 2026-W01:2026_01_GB_MIN:totals:Under:44.5: | total | -105 | FanDuel | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | GB@MIN Under 45.5 [adj: none] | 2026-W01:2026_01_GB_MIN:totals:Under:45.5: | total | -109 | BetRivers | 49.9% | 49.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | MIA +4 (MIA@LV) [adj: none] | 2026-W01:2026_01_MIA_LV:spreads:MIA:+4: | spread | -110 | Bovada | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | MIA@LV Over 40 [adj: none] | 2026-W01:2026_01_MIA_LV:totals:Over:40: | total | -110 | BetRivers | 49.8% | 49.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | SEA -4 (NE@SEA) [adj: none] | 2026-W01:2026_01_NE_SEA:spreads:SEA:-4: | spread | -105 | Bovada | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NO +6.5 (NO@DET) [adj: none] | 2026-W01:2026_01_NO_DET:spreads:NO:+6.5: | spread | +101 | Caesars | 48.2% | 48.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NO@DET Under 49 [adj: none] | 2026-W01:2026_01_NO_DET:totals:Under:49: | total | -102 | LowVig.ag | 49.1% | 49.1% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NYJ +2 (NYJ@TEN) [adj: none] | 2026-W01:2026_01_NYJ_TEN:spreads:NYJ:+2: | spread | +100 | BetUS | 47.8% | 47.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NYJ +2.5 (NYJ@TEN) [adj: none] | 2026-W01:2026_01_NYJ_TEN:spreads:NYJ:+2.5: | spread | +100 | LowVig.ag | 48.8% | 48.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NYJ@TEN Under 39 [adj: none] | 2026-W01:2026_01_NYJ_TEN:totals:Under:39: | total | -110 | Bovada | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NYJ@TEN Under 39.5 [adj: none] | 2026-W01:2026_01_NYJ_TEN:totals:Under:39.5: | total | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NYJ@TEN Under 40 [adj: none] | 2026-W01:2026_01_NYJ_TEN:totals:Under:40: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | TB@CIN Under 51.5 [adj: none] | 2026-W01:2026_01_TB_CIN:totals:Under:51.5: | total | -108 | FanDuel | 49.8% | 49.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | PHI -5.5 (WAS@PHI) [adj: none] | 2026-W01:2026_01_WAS_PHI:spreads:PHI:-5.5: | spread | -105 | FanDuel | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | WAS@PHI Under 47 [adj: none] | 2026-W01:2026_01_WAS_PHI:totals:Under:47: | total | -110 | BetUS | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
 
 ## Rollup (reconciled by calib.py from M6 — until then, raw rows only)
