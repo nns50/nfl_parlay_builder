@@ -60,6 +60,14 @@ else
   echo "     a code bug: add the secret to the environment this session runs in. You MUST"
   echo "     say 'Slack: SKIPPED (webhook unset)' in the run's notification + final message."
 fi
+if [[ -n "${GMAIL_WEBHOOK_URL:-}" ]]; then
+  echo "  ✓ GMAIL_WEBHOOK_URL present — tools/notify_email.sh will POST."
+else
+  echo "  ⛔ GMAIL_WEBHOOK_URL UNSET in THIS environment — notify_email.sh will SKIP and NO"
+  echo "     email will reach realityremixed125@gmail.com. Setup: docs/NOTIFY_EMAIL_SETUP.md."
+  echo "     You MUST say 'Email: SKIPPED (webhook unset)' in the run's final message."
+fi
+echo "  ⛔ NEVER call mcp__Gmail__create_draft from a scheduled run — it prompts and STALLS."
 
 hdr "3. Current week + unsettled legs"
 WK="$(bash tools/nfl_data.sh weekof 2>/dev/null)" || WK=""

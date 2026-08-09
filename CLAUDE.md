@@ -208,11 +208,21 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   none yet proven causal: MLB was created via the web UI (`created_via: http_api`) vs the
   NFL Routines via MCP (`meta_mcp`); MLB env `parlay-test` vs NFL env `nfl-parlay-builder`;
   MLB attaches Gmail only, NFL attaches Gmail + Slack.
-- **No connector-free fallback exists for email.** SMTP 587/465 and IMAP 993 are all BLOCKED
-  from the run container (verified 2026-08-09); only HTTPS egress via the proxy works. That
-  is why Slack could be fixed with a webhook and email cannot be fixed the same way.
-- Until a firing proves otherwise, a run that hits the dialog must SAY SO in Slack + push +
-  its final message — never silently skip, never retry in a loop.
+- **✅ EMAIL IS SOLVED THE SAME WAY SLACK WAS — `tools/notify_email.sh` (owner-directed
+  2026-08-09).** SMTP 587/465 and IMAP 993 are BLOCKED from the container and the
+  `connectors` grant is disabled for this org, but **HTTPS on 443 works** — so the run POSTs
+  its report to a **Google Apps Script web app running as the owner's own Google account**,
+  which delivers to `realityremixed125@gmail.com` (`--draft` for a Gmail draft instead of a
+  send; the owner accepts either). Promptless, no connector, no extra Routine. Reads
+  `GMAIL_WEBHOOK_URL` from the environment exactly like `SLACK_WEBHOOK_URL`; unset ⇒ SKIP
+  exit 0. One-time setup: **`docs/NOTIFY_EMAIL_SETUP.md`**.
+- **EVERY NFL Routine carries this, by construction.** All four run Routines execute
+  `cron_build.sh <type> --prompt-only`, so the single COMMON block reaches wrap, build,
+  designation and lock alike — selftest asserts all four carry email + Slack + the connector
+  ban, and that `cron_build.sh` still parses (a raw-quote injection once broke the whole
+  prompt source; `bash -n` now guards it).
+- A run that cannot deliver a channel must SAY SO in its final message — never silently
+  skip, never retry in a loop.
 
 ## Git workflow (current phase)
 
