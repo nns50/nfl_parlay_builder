@@ -192,17 +192,17 @@
    "p_plays": 0.75,
    "team": "SF"
   },
+  "00-0035890": {
+   "designation": "OUT",
+   "name": "Tershawn Wharton",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
   "00-0035933": {
    "designation": "QUESTIONABLE",
    "name": "Michael Hoecht",
    "p_plays": 0.75,
    "team": "BUF"
-  },
-  "00-0035976": {
-   "designation": "IR",
-   "name": "Dan Chisena",
-   "p_plays": 0.0,
-   "team": "CAR"
   },
   "00-0036224": {
    "designation": "OUT",
@@ -215,12 +215,6 @@
    "name": "Tristan Wirfs",
    "p_plays": 0.75,
    "team": "TB"
-  },
-  "00-0036417": {
-   "designation": "QUESTIONABLE",
-   "name": "Damien Lewis",
-   "p_plays": 0.75,
-   "team": "CAR"
   },
   "00-0036561": {
    "designation": "OUT_ROSTER(RES)",
@@ -335,12 +329,6 @@
    "name": "Alec Pierce",
    "p_plays": 0.0,
    "team": "IND"
-  },
-  "00-0037667": {
-   "designation": "OUT",
-   "name": "Kerby Joseph",
-   "p_plays": 0.0,
-   "team": "DET"
   },
   "00-0037742": {
    "designation": "QUESTIONABLE",
@@ -605,12 +593,6 @@
    "name": "Storm Duck",
    "p_plays": 0.0,
    "team": "MIA"
-  },
-  "00-0039623": {
-   "designation": "OUT",
-   "name": "Mason Tipton",
-   "p_plays": 0.0,
-   "team": "NO"
   },
   "00-0039784": {
    "designation": "OUT",
@@ -1254,7 +1236,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 7.0,
-   "total_line": 49.5
+   "total_line": 48.5
   },
   "2026_01_NYJ_TEN": {
    "away": "NYJ",
@@ -1306,7 +1288,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-09T17:06:09Z",
+ "taken_at": "2026-08-09T19:13:58Z",
  "week": 1,
  "wind": {}
 }
