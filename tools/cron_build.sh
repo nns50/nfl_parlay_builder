@@ -81,7 +81,7 @@ if [[ "$BUILD" == "__detect__" ]]; then
 fi
 [[ -z "$BUILD" ]] && BUILD="$(detect "$NOW")"
 
-COMMON="The session_start.sh digest is already in your context (injected by hook) — selftest, store sync, quota/ODDS_MODE, unsettled proposals, weekcheck, availability, pulse. If the digest is NOT in context (hook did not fire), run bash tools/session_start.sh first. Doctrine: CLAUDE.md. Git — BEFORE working: git fetch origin; if any origin/claude/admiring-johnson-* tip is AHEAD of your clone's base, merge those branches in first (ledgers/builds are append-only, the merge is clean). END of run — the FOLD (standing user authorization 2026-08-09): commit; git push (trigger-fired sessions land on their per-run outcome branch claude/admiring-johnson-* — expected); then git push origin HEAD:main DIRECTLY (proven to work from trigger sessions 2026-08-09 — no add_repo step; that MCP tool does not exist in trigger sessions). Non-fast-forward → git fetch origin main, merge (a docs/index.html conflict is generated output: resolve by re-running python3 tools/generate_dashboard.py, never hand-editing), re-run selftest, push again. State the branch + SHA + fold-to-main result in the notification; if the fold failed, flag it so an interactive check-in completes it. Main drives the Pages dashboard. NOTIFICATIONS: scheduled runs must NOT call mcp__Gmail__create_draft or any other connector WRITE — every such call pops a manual 'Allow once' dialog on the owner's phone that no settings allowlist can suppress (confirmed runs 1-4, owner-directed removal 2026-08-09). The notification = PushNotification (core tool, promptless) + bash tools/notify_slack.sh with the condensed report (webhook to the owner's NFL-Parlay workspace — promptless; SKIPs gracefully if SLACK_WEBHOOK_URL is unset; report its sent/SKIP/FAILED line) + the COMPLETE notification body as your FINAL session message — the routine-level completion email/push/Slack deliver that final message to the owner. Gmail drafts are an interactive-session-only artifact (the mailer routines create them)."
+COMMON="The session_start.sh digest is already in your context (injected by hook) — selftest, store sync, quota/ODDS_MODE, unsettled proposals, weekcheck, availability, pulse. If the digest is NOT in context (hook did not fire), run bash tools/session_start.sh first. Doctrine: CLAUDE.md. Git — BEFORE working: git fetch origin; if any origin/claude/admiring-johnson-* tip is AHEAD of your clone's base, merge those branches in first (ledgers/builds are append-only, the merge is clean). END of run — the FOLD (standing user authorization 2026-08-09): commit; git push (trigger-fired sessions land on their per-run outcome branch claude/admiring-johnson-* — expected); then git push origin HEAD:main DIRECTLY (proven to work from trigger sessions 2026-08-09 — no add_repo step; that MCP tool does not exist in trigger sessions). Non-fast-forward → git fetch origin main, merge (a docs/index.html conflict is generated output: resolve by re-running python3 tools/generate_dashboard.py, never hand-editing), re-run selftest, push again. State the branch + SHA + fold-to-main result in the notification; if the fold failed, flag it so an interactive check-in completes it. Main drives the Pages dashboard. NOTIFICATIONS — every run owns its own full touchpoint, Gmail draft INCLUDED (owner-directed 2026-08-09; this run creates the draft itself, there are no separate mailer routines): (a) mcp__Gmail__create_draft via ToolSearch — to realityremixed125@gmail.com, subject 'NFL Parlay — <season> W<week> <run type>', body = the full report (verdict/tiers/PENDING flags/fold SHA/Odds API credits remaining). The Gmail connector IS attached to these run Routines and .claude/settings.json allowlists the tool — the same configuration under which the MLB routine has drafted from scheduled runs since 2026-05-25. If the call is genuinely denied, say so explicitly in the push + Slack + final message with the reason; do NOT silently skip it and do NOT retry in a loop. (b) PushNotification (core tool, promptless). (c) bash tools/notify_slack.sh with the condensed report (webhook — promptless; SKIPs gracefully if SLACK_WEBHOOK_URL is unset; report its sent/SKIP/FAILED line). (d) the COMPLETE notification body as your FINAL session message. Do the draft AFTER the fold so it can carry the real SHA."
 
 case "$BUILD" in
 wrap)
@@ -92,7 +92,7 @@ wrap)
 3. Full-week review into builds/<week>.md: every game vs active reads; validate/miss each fades.md entry touched (dated W/L + tally); promote lessons per the tiered bar (process 2-3 sightings; hit-rate n≥20-30).
 4. Run tools/calib.py + tools/pulse.py; reconcile the ledger prose rollup with calib output.
 5. Regenerate the dashboard (python3 tools/generate_dashboard.py) and commit it.
-6. NOTIFY (touchpoint 1 of 4): PushNotification (load via ToolSearch) + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — week record, CLV tally, calib/pulse highlights, bankroll state, Odds API credits remaining. NO Gmail draft (see COMMON)."
+6. NOTIFY (touchpoint 1 of 4, see COMMON for the full four-part protocol): Gmail draft + PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — week record, CLV tally, calib/pulse highlights, bankroll state, Odds API credits remaining."
   ;;
 build)
   LABEL="Wed/Thu build — slate-wide scan + initial three tiers"
@@ -106,7 +106,7 @@ build)
 7. Bankroll pick (single safest qualifying favorite, whole board, independent of the parlay).
 8. python3 tools/weekcheck.py snap <season> <week> — commit the premises snapshot.
 9. Append the run to builds/<season>-W<week>.md; regenerate the dashboard; commit+push.
-10. NOTIFY (touchpoint 2 of 4): PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — the three tiers, bankroll pick, PENDING flags, credits remaining. NO Gmail draft (see COMMON)."
+10. NOTIFY (touchpoint 2 of 4, see COMMON for the full four-part protocol): Gmail draft + PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — the three tiers, bankroll pick, PENDING flags, credits remaining."
   ;;
 designation)
   LABEL="Friday designation update — availability haircuts"
@@ -115,7 +115,7 @@ designation)
 2. python3 tools/weekcheck.py diff <season> <week> — every finding invalidates its dependent legs: re-derive TrueP (availability haircut = P(plays) multiplier) or drop; SUPERSEDE rows in the ledger, never edit in place.
 3. Weather now inside horizon for Sunday: python3 tools/weather.py week — apply wind/precip registry adjustments where flagged.
 4. Re-run tools/ticket.py if the leg pool changed; append the revision to builds/<week>.md.
-5. Commit+push. NOTIFY (touchpoint 3 of 4): PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — designation changes, superseded legs, the current build, credits remaining. NO Gmail draft (see COMMON)."
+5. Commit+push. NOTIFY (touchpoint 3 of 4, see COMMON for the full four-part protocol): Gmail draft + PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — designation changes, superseded legs, the current build, credits remaining."
   ;;
 lock)
   LABEL="Window lock — T-3h gate for the imminent window"
@@ -125,7 +125,7 @@ lock)
 3. Final prices: tools/odds_api.sh board reg (this near kickoff, the pull doubles as the close snapshot); props via the scheduler's due list (python3 tools/poll_scheduler.py due <season> <week> --mark).
 4. Lock ONLY this window's legs in builds/<week>.md ('## Locks by window'); the rest of the week stays open.
 5. After the window: python3 tools/clv_capture.py <season> <week> --apply (idempotent; EDGE-GONE warnings mean do NOT re-bet).
-6. Commit+push. NOTIFY (touchpoint 4 of 4, first lock of the day only): PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — locked legs, gate closures, EDGE-GONE flags, credits remaining. NO Gmail draft (see COMMON)."
+6. Commit+push. NOTIFY (touchpoint 4 of 4, first lock of the day only; see COMMON for the full four-part protocol): Gmail draft + PushNotification + Slack via bash tools/notify_slack.sh + the full report as your FINAL message — locked legs, gate closures, EDGE-GONE flags, credits remaining."
   ;;
 *)
   echo "ERROR: unknown run type '$BUILD' (wrap|build|designation|lock)" >&2

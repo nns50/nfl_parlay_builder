@@ -177,24 +177,23 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   designation → first lock of each game day. Body: prose under ~250 words + the run's key
   tables; ALWAYS include `Odds API credits remaining: <N>` (shared key — the burn must
   stay visible).
-- **Scheduled runs (owner-directed 2026-08-09): NO connector writes.** Every
-  `mcp__Gmail__create_draft` call pops a manual 'Allow once' dialog on the owner's phone
-  that no settings allowlist suppresses (confirmed runs 1-4). A scheduled run's touchpoint
-  = `PushNotification` (core tool, promptless) + **Slack via `tools/notify_slack.sh`**
-  (incoming-webhook POST to the owner's NFL-Parlay workspace — plain curl, promptless;
-  reads secret `SLACK_WEBHOOK_URL` from the environment like `ODDS_API_KEY`; SKIPs
-  gracefully where unset) + the complete report as the run's FINAL session message —
-  the routine-level completion email/push/Slack deliver that message.
-- **Per-run Gmail drafts to realityremixed125@gmail.com come from the MAILER routines**
-  (wired 2026-08-09; retimed EVENT-DRIVEN 2026-08-09 per owner): five self-bound triggers
-  on the orchestrating interactive session — where connector writes are proven dialog-free —
-  fire ~5min after each run slot STARTS (Tue/Thu 14:05Z; Fri 21:05Z; Sun 15:35/19:35/23:35Z;
-  Mon/Thu 23:05Z), then WAIT for the run's fold to main (background until-loop polling the
-  remote every ~120s, ≤50min) and create the Gmail draft IMMEDIATELY after the merge lands —
-  the draft tracks the fold event, not a fixed delay. If the run pushed only its outcome
-  branch, the mailer folds it first (draft right after its own merge). Wait expires with
-  nothing new → silent no-op. (Their earlier connector-Slack-DM step is retired — the
-  webhook in the runs supersedes it.)
+- **EVERY RUN OWNS ITS WHOLE TOUCHPOINT — the Gmail draft included** (owner-directed
+  2026-08-09). There are NO separate mailer routines; the run that produces the report is
+  the run that mails it. Four parts, in this order, after the fold (so the draft carries the
+  real SHA): **(a)** `mcp__Gmail__create_draft` (ToolSearch it) → realityremixed125@gmail.com,
+  subject `NFL Parlay — <season> W<week> <run type>`, body = the full report; **(b)**
+  `PushNotification`; **(c)** `bash tools/notify_slack.sh` with the condensed report
+  (incoming-webhook curl, promptless; reads `SLACK_WEBHOOK_URL` like `ODDS_API_KEY`; SKIPs
+  gracefully where unset); **(d)** the complete report as the run's FINAL session message.
+- **The Gmail connector is attached to the run Routines** (same `connector_uuid` as the MLB
+  daily routine, which has drafted from scheduled runs since 2026-05-25) and
+  `.claude/settings.json` allowlists `mcp__Gmail__create_draft`. The earlier doctrine —
+  "scheduled runs can't write connectors, a dialog always pops" — did NOT survive a config
+  audit: the NFL runs carry strictly MORE grant than MLB (same connector + an explicit repo
+  allowlist, where MLB has no allowlist at all), so the mailer-routine workaround was
+  treating a config claim as a law. If a draft call is ever genuinely denied, the run must
+  SAY SO in the push + Slack + final message with the reason — never silently skip it, never
+  retry in a loop.
 
 ## Git workflow (current phase)
 
