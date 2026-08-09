@@ -844,6 +844,54 @@ assert "no runs recorded yet" in gd.health_strip([])
 assert "none yet" in gd.health_timeline([])
 EOF
 
+# ── ported-from-MLB dashboard panels: correct math + graceful empty ─────────
+pyblk "dashboard ports: edge buckets / type split / P-L curve / CLV-vs-result" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+import generate_dashboard as gd
+
+def leg(**k):
+    d = dict(section="P", week="2025-W18", leg="x", leg_id="i", type="ML", price="-110",
+             stake=None, truep=50.0, starred=False, implp=50.0, result=None,
+             played=True, clv="", bucket="S", edge=None)
+    d.update(k); return d
+
+# edge buckets bin on the EDGE column and only count decided legs
+b = {x["label"]: x for x in gd.edge_buckets([
+    leg(edge=-1.0, result="L"), leg(edge=1.0, result="W"), leg(edge=3.0, result="W"),
+    leg(edge=3.5, result="L"), leg(edge=7.0, result="W"), leg(edge=5.0, result=None)])}
+assert b["< 0pp"]["n"] == 1 and b["< 0pp"]["hit"] == 0
+assert b["0–2pp"]["n"] == 1 and b["0–2pp"]["hit"] == 100
+assert b["2–4pp"]["n"] == 2 and b["2–4pp"]["hit"] == 50
+assert b["4–6pp"]["n"] == 0 and b["4–6pp"]["hit"] is None, "undecided legs must not count"
+assert b["6pp+"]["n"] == 1
+
+# type breakdown separates Push from W/L
+t = {x["type"]: x for x in gd.type_breakdown([
+    leg(type="ML", result="W"), leg(type="ML", result="L"), leg(type="TOT", result="Push")])}
+assert t["ML"]["w"] == 1 and t["ML"]["l"] == 1 and t["ML"]["hit"] == 50
+assert t["TOT"]["p"] == 1 and t["TOT"]["hit"] is None
+
+# P/L curve: +100 win on 10 -> +10 ; -200 loss of 20 -> -10 ; Push flat
+c = gd.pl_curve([leg(price="+100", stake=10, result="W", leg_id="a"),
+                 leg(price="-200", stake=20, result="L", leg_id="b"),
+                 leg(price="-110", stake=50, result="Push", leg_id="c")])
+assert c["vals"] == [10.0, -10.0, -10.0], c["vals"]
+# an UNSTAKED leg must never enter the curve (no imputed flat 1u)
+assert gd.pl_curve([leg(price="+100", stake=None, result="W")])["vals"] == []
+
+# CLV vs result
+v = {x["k"]: x for x in gd.clv_vs_result([
+    leg(clv="+ 66%cl", result="W"), leg(clv="+ 70%cl", result="L"),
+    leg(clv="− 30%cl", result="L"), leg(clv="= 50%cl", result="W")])}
+assert v["+"]["w"] == 1 and v["+"]["l"] == 1 and v["+"]["hit"] == 50
+assert v["-"]["l"] == 1 and v["="]["w"] == 1
+
+# every panel degrades to prose on empty input rather than crashing
+for fn in (gd.edge_buckets, gd.type_breakdown, gd.pl_curve, gd.clv_vs_result):
+    fn([])
+assert "no decided legs" in gd._table(["a"], [], "no decided legs yet")
+EOF
+
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
 if [[ "$FAIL" -eq 0 ]]; then

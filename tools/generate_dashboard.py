@@ -277,6 +277,13 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="card"><h2>This week's board (newest run)</h2>__WEEKBOARD__</div>
 <div class="card"><h2>Calibration (played legs vs TrueP band)</h2><div class="chart"><canvas id="cal"></canvas></div>
 <div class="note">bars = actual hit%; line = perfect calibration. Bands need n≥20-30 before they mean anything.</div></div>
+<div class="card"><h2>Cumulative P/L (real stakes)</h2><div class="chart"><canvas id="pl"></canvas></div>
+<p class="note">Only legs carrying a stake from ledgers/played.md. An assumed flat-1u curve is exactly the fake number that file replaces.</p></div>
+<div class="card"><h2>Bankroll ladder ($10 rollover)</h2><div class="chart"><canvas id="br"></canvas></div></div>
+<div class="card"><h2>Hit rate by edge bucket</h2>__EDGEBUCKETS__
+<p class="note">The +2pp gate's own scoreboard: the ≥2pp buckets must out-hit the &lt;2pp ones over a real sample, or the gate is not earning its keep.</p></div>
+<div class="card"><h2>Bet-type breakdown</h2>__TYPES__</div>
+<div class="card"><h2>CLV vs results</h2>__CLVRES__</div>
 <div class="card"><h2>CLV per leg (closing no-vig − bet no-vig)</h2><div class="chart"><canvas id="clv"></canvas></div>
 <div class="note">the primary scoreboard at small samples. `=` dead-band ±0.5pp. Blank cells = capture holes (a measurement leak, not a shrug).</div></div>
 </div>
@@ -290,6 +297,8 @@ __LEGS__</table></div>
 <table><tr><th>Week</th><th>Leg</th><th>Type</th><th>TrueP</th><th>CLV</th><th>Result</th></tr>
 __BT_LEGS__</table></div>
 <div class="card" style="margin-bottom:14px"><h2>Run timeline</h2><div class="scroll">__TIMELINE__</div></div>
+<div class="card" style="margin-bottom:14px"><h2>Parlay tickets</h2>__TICKETS__</div>
+<div class="card" style="margin-bottom:14px"><h2>Active fades &amp; their records</h2>__FADETABLE__</div>
 <div class="card"><h2>Builds · Fades · Bankroll</h2>
 <p class="note" style="margin:0 0 6px"><b>Builds:</b></p>__BUILDS__
 <p class="note" style="margin:10px 0 6px"><b>Fade registry:</b> __FADES__</p>
@@ -300,7 +309,7 @@ __BT_LEGS__</table></div>
 <div class="note">Sources: ledgers/results_log.md · ledgers/fades.md · ledgers/bankroll.md · builds/*.md — parsed by the same code as tools/calib.py. If this page disagrees with calib.py, run tools/generate_dashboard.py --selftest.</div>
 </div>
 <script>
-const CAL=__CAL_JSON__, CLVD=__CLV_JSON__;
+const CAL=__CAL_JSON__, CLVD=__CLV_JSON__, PLD=__PL_JSON__, BRD=__BR_JSON__;
 const GRID='rgba(232,228,216,.07)', TICK='#98a88a';
 if(typeof Chart==='undefined'){document.querySelectorAll('.chart').forEach(
  c=>c.innerHTML='<p class="muted" style="padding-top:80px;text-align:center">charts unavailable — Chart.js CDN unreachable</p>');}
@@ -316,6 +325,14 @@ if(CLVD.labels.length){new Chart(document.getElementById('clv'),{type:'bar',data
  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
  scales:{x:{grid:{color:GRID},ticks:{color:TICK,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:TICK,callback:v=>v+'pp'}}}}});}
 else{document.getElementById('clv').closest('.chart').innerHTML='<p class="muted" style="padding-top:80px;text-align:center">no CLV verdicts captured yet</p>';}
+function line(id,d,label,col,empty){const el=document.getElementById(id);if(!el)return;
+ if(d.labels.length){new Chart(el,{type:'line',data:{labels:d.labels,datasets:[{label:label,data:d.vals,
+  borderColor:col,backgroundColor:col,tension:.25,pointRadius:2,fill:false}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:10,color:TICK}}},
+  scales:{x:{grid:{color:GRID},ticks:{color:TICK,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:TICK}}}}});}
+ else{el.closest('.chart').innerHTML='<p class="muted" style="padding-top:80px;text-align:center">'+empty+'</p>';}}
+line('pl',PLD,'cumulative P/L','#e9a416','no staked, decided legs yet — log bets in ledgers/played.md');
+line('br',BRD,'balance','#4ade80','no rolls logged yet');
 }
 </script></body></html>
 """
@@ -334,6 +351,115 @@ def clv_chart(rows):
         cols.append("#5ad46b" if m.group(1) == "+" else
                     "#c9432f" if m.group(1) == "-" else "#7e8f70")
     return {"labels": labels, "vals": vals, "cols": cols}
+
+
+def _dec(american):
+    """American price → decimal. Shared by every P/L computation on this page."""
+    try:
+        a = float(str(american).replace("−", "-").replace("+", "").strip())
+    except (TypeError, ValueError):
+        return None
+    if a == 0:
+        return None
+    return 1 + (a / 100.0 if a > 0 else 100.0 / -a)
+
+
+def edge_buckets(live):
+    """Hit rate by EDGE bucket — ported from the MLB dashboard. This is the panel that
+    actually tests the +2pp gate: if the ≥2pp buckets do not out-hit the <2pp ones over a
+    real sample, the gate is not earning its keep."""
+    rows = [r for r in live if r["result"] in ("W", "L") and r["edge"] is not None]
+    bins = [("< 0pp", -99, 0), ("0–2pp", 0, 2), ("2–4pp", 2, 4),
+            ("4–6pp", 4, 6), ("6pp+", 6, 99)]
+    out = []
+    for label, lo, hi in bins:
+        legs = [r for r in rows if lo <= r["edge"] < hi]
+        w = sum(r["result"] == "W" for r in legs)
+        out.append({"label": label, "n": len(legs),
+                    "hit": round(w / len(legs) * 100) if legs else None, "w": w,
+                    "l": len(legs) - w})
+    return out
+
+
+def type_breakdown(live):
+    """Record by bet type (calib.py §2 rendered). Shows WHICH markets earn."""
+    agg = {}
+    for r in live:
+        if r["result"] not in ("W", "L", "Push"):
+            continue
+        a = agg.setdefault(r["type"] or "?", {"w": 0, "l": 0, "p": 0})
+        a["w" if r["result"] == "W" else "l" if r["result"] == "L" else "p"] += 1
+    out = []
+    for t, a in sorted(agg.items(), key=lambda kv: -(kv[1]["w"] + kv[1]["l"])):
+        d = a["w"] + a["l"]
+        out.append({"type": t, "w": a["w"], "l": a["l"], "p": a["p"],
+                    "hit": round(a["w"] / d * 100) if d else None})
+    return out
+
+
+def pl_curve(live):
+    """Cumulative REAL-STAKE P/L. Only legs carrying a stake count — an assumed flat
+    1u curve is the fake number ledgers/played.md exists to replace."""
+    rows = [r for r in live if r["played"] and r["stake"] is not None
+            and r["result"] in ("W", "L", "Push")]
+    rows.sort(key=lambda r: (r["week"], r["leg_id"]))
+    labels, vals, run = [], [], 0.0
+    for r in rows:
+        d = _dec(r["price"])
+        if d is None:
+            continue
+        run += (r["stake"] * (d - 1) if r["result"] == "W"
+                else -r["stake"] if r["result"] == "L" else 0.0)
+        labels.append(r["week"])
+        vals.append(round(run, 2))
+    return {"labels": labels, "vals": vals}
+
+
+def bankroll_curve(rolls):
+    """The $10 rollover ladder as a curve (MLB's bankroll panel, NFL ledger)."""
+    labels, vals = [], []
+    for c in rolls:
+        bal = None
+        for cell in reversed(c):
+            m = re.search(r"\$?\s*(\d+(?:\.\d+)?)", cell or "")
+            if m:
+                bal = float(m.group(1))
+                break
+        if bal is not None:
+            labels.append(c[0])
+            vals.append(bal)
+    return {"labels": labels, "vals": vals}
+
+
+def clv_vs_result(live):
+    """Does a positive close predict a win? The CLV thesis, testable once results land."""
+    cells = {"+": [0, 0], "=": [0, 0], "-": [0, 0]}
+    for r in live:
+        if r["result"] not in ("W", "L"):
+            continue
+        # clv_capture writes a UNICODE minus (U+2212) for negative verdicts; calib.py
+        # normalises it and so must this, or every negative-CLV leg silently vanishes
+        # from the panel. Caught by selftest before it ever rendered a wrong number.
+        m = re.match(r"([+=\-])", (r["clv"] or "").replace("−", "-").strip())
+        if not m:
+            continue
+        cells[m.group(1)][0 if r["result"] == "W" else 1] += 1
+    out = []
+    for k, name in (("+", "beat the close"), ("=", "flat"), ("-", "lost to the close")):
+        w, l = cells[k]
+        out.append({"k": k, "name": name, "w": w, "l": l,
+                    "hit": round(w / (w + l) * 100) if (w + l) else None})
+    return out
+
+
+def _table(headers, rows, empty):
+    if not rows:
+        return f"<p class='note'>{esc(empty)}</p>"
+    h = "".join(f"<th>{esc(x)}</th>" for x in headers)
+    b = "".join("<tr>" + "".join(f"<td>{esc(str(c))}</td>" for c in r) + "</tr>"
+                for r in rows)
+    return (f"<div class='scroll'><table><thead><tr>{h}</tr></thead>"
+            f"<tbody>{b}</tbody></table></div>")
 
 
 def week_board(title, body):
@@ -386,6 +512,36 @@ def render():
             .replace("__OPEN__", str(s["open"]))
             .replace("__BT__", esc(s["bt"]))
             .replace("__BT_DETAIL__", esc(s["bt_detail"]))
+            .replace("__EDGEBUCKETS__", _table(
+                ["edge bucket", "n", "W-L", "hit %"],
+                [[b["label"], b["n"], f"{b['w']}-{b['l']}",
+                  f"{b['hit']}%" if b["hit"] is not None else "—"]
+                 for b in edge_buckets(live)],
+                "no decided legs yet — this panel tests whether the +2pp gate earns its keep"))
+            .replace("__TYPES__", _table(
+                ["bet type", "W", "L", "Push", "hit %"],
+                [[t["type"], t["w"], t["l"], t["p"],
+                  f"{t['hit']}%" if t["hit"] is not None else "—"]
+                 for t in type_breakdown(live)],
+                "no decided legs yet"))
+            .replace("__CLVRES__", _table(
+                ["closing line", "W", "L", "hit %"],
+                [[c["name"], c["w"], c["l"],
+                  f"{c['hit']}%" if c["hit"] is not None else "—"]
+                 for c in clv_vs_result(live)],
+                "needs decided legs WITH captured CLV — the thesis is that beating the "
+                "close predicts winning"))
+            .replace("__FADETABLE__", _table(
+                ["id", "entry", "status"],
+                [[f["id"], f["name"], f["status"]] for f in fades],
+                "empty — fades must be EARNED by the NFL ledger; MLB entries do not port"))
+            .replace("__TICKETS__", _table(
+                ["week", "ticket", "stake", "return", "P/L", "result"],
+                [[c[1][:10], c[2][:44], c[4], c[5], c[6], c[7]] for c in tickets
+                 if len(c) >= 8],
+                "no parlay tickets logged yet"))
+            .replace("__PL_JSON__", json.dumps(pl_curve(live)))
+            .replace("__BR_JSON__", json.dumps(bankroll_curve(rolls)))
             .replace("__HEALTH__", health_strip(health))
             .replace("__TIMELINE__", health_timeline(health))
             .replace("__PIPELINE__", pipeline_panel(live, bt))
@@ -407,6 +563,32 @@ def render():
     return html
 
 
+def _calib_truth():
+    """Run calib.py and read back ITS numbers. Ported from the MLB dashboard, where the
+    lesson was that a dashboard which merely agrees with ITSELF can still disagree with
+    the source of truth — and the page is what the owner actually looks at. calib.py is
+    the authority; if these drift, the page is wrong."""
+    import subprocess
+    try:
+        out = subprocess.run([sys.executable, str(REPO / "tools" / "calib.py")],
+                             capture_output=True, text=True, timeout=60).stdout
+    except Exception:
+        return {}
+    t = {}
+    m = re.search(r"live rows:\s*(\d+)", out)
+    if m:
+        t["live"] = int(m.group(1))
+    m = re.search(r"BT validation rows:\s*(\d+)", out)
+    if m:
+        t["bt"] = int(m.group(1))
+    m = re.search(r"legs\s+\d+\s+\d+-\d+.*?P/L\s+([+-][\d.]+)", out)
+    if m:
+        t["pl"] = float(m.group(1))
+    if "PARSER GUARD" in out:
+        t["orphans"] = True
+    return t
+
+
 def selftest():
     live, bt, tickets, builds, fades, rolls, health = load()
     checks = [
@@ -420,6 +602,21 @@ def selftest():
          summarize(live, bt)["decided"]
          == sum(r["result"] in ("W", "L", "Push") for r in live)),
     ]
+    # ── reconciliation with calib.py (the source of truth), ported from MLB ──
+    truth = _calib_truth()
+    if truth:
+        checks.append(("live-row count reconciles with calib.py",
+                       truth.get("live") == len(live)))
+        checks.append(("BT-row count reconciles with calib.py",
+                       truth.get("bt") == len(bt)))
+        checks.append(("calib.py reports no orphaned rows", not truth.get("orphans")))
+        if "pl" in truth:
+            page_pl = pl_curve(live)["vals"]
+            checks.append(("cumulative P/L reconciles with calib.py §3b",
+                           abs((page_pl[-1] if page_pl else 0.0) - truth["pl"]) < 0.01))
+    else:
+        checks.append(("calib.py reachable for reconciliation", False))
+
     bad = [n for n, ok in checks if not ok]
     for n, ok in checks:
         print(f"  {'✓' if ok else '✗'} {n}")

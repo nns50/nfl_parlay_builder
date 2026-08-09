@@ -64,7 +64,7 @@ tr:hover td{background:rgba(233,164,22,.05)}
 .scroll table{min-width:100%;white-space:nowrap}
 </style></head><body><div class="wrap">
 <header class="hero"><h1>🏈 NFL Parlay Builder <span class="badge fresh">● live</span></h1>
-<div class="sub">read-only measurement dashboard · generated 2026-08-09 18:15Z · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div></header>
+<div class="sub">read-only measurement dashboard · generated 2026-08-09 18:29Z · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div></header>
 
 <div class="tiles">
 <div class="tile"><div class="v">0</div><div class="k">decided live legs</div></div>
@@ -80,6 +80,13 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="card"><h2>This week's board (newest run)</h2><p class='note' style='margin:0 0 8px'><b>Run 8 — BUILD (2026-08-09 17:02Z, scheduled)</b></p><p class='note'>Result: NO BET (all three tiers) + NO bankroll pick. T-31d to the Wed opener. This run</p><p class='sub'>Pre-lock gates</p><div class='scroll'><table><thead><tr><th>Gate</th><th>✓/⚠</th><th>Evidence</th></tr></thead><tbody><tr><td>Selftest</td><td>✓</td><td>79/79 checks passed</td></tr><tr><td>Store synced</td><td>✓</td><td>schedules 7548 · players 25044 · depth_charts:2026 3231 · ro</td></tr><tr><td>weekcheck diff (pre-run)</td><td>✓</td><td>premises stand vs 16:23Z snapshot — no QB change, no availab</td></tr><tr><td>Availability</td><td>✓ 16/16</td><td>ESPN live, 143 listings, **0** name-fallback joins, 47 roste</td></tr><tr><td>Weather</td><td>✓</td><td>4 DOME + 12 HORIZON (31-36d out) — no number invented</td></tr><tr><td>Pulse governor</td><td>idle</td><td>0 decided legs in window — build normally</td></tr><tr><td>Git predecessors merged</td><td>✓</td><td>all 7 `origin/claude/*` tips contained in `origin/main` (`me</td></tr></tbody></table></div><p class='sub'>Implied team totals (16 games)</p><p class='sub'>Slate-wide scan — 86 rungs / 172 priced legs / 16 games</p><div class='scroll'><table><thead><tr><th></th><th>value</th></tr></thead><tbody><tr><td>Best leg on the entire board</td><td>**−0.12pp** (SF@LA ±3.5, the tightest rung, hold +0.24pp)</td></tr><tr><td>Worst leg</td><td>−2.73pp (BUF@HOU ±1.0 / GB@MIN ±1.0 @BetRivers)</td></tr><tr><td>Legs clearing +2pp standalone</td><td>**0 / 172**</td></tr><tr><td>Arbs</td><td>**0 / 86 rungs** (hold +0.24pp .. +5.43pp)</td></tr></tbody></table></div><p class='sub'>Registry — nothing fires</p><p class='note'>- `dome_pass_over` (the only weather-family adjustment live at this range): 4 true domes.</p><p class='note'>- `key_number_edge` — re-tested on ATL@PIT and re-killed for the third run running. The</p><p class='sub'>Props — the posting curve advanced, still not constructible</p><p class='note'>NE@SEA (earliest kickoff, T-31d) probed on all 8 core markets: `player_anytime_td` now</p><p class='sub'>Three tiers</p><p class='note'>- Tier 1 (best standalone): NO BET. Best leg on the board is −0.12pp; the gate is +2pp.</p><p class='note'>- Tier 2 (highest-floor 2-leg): NO BET — no anchor clears +3-4pp, so there is no floor</p><p class='note'>- Tier 3 (~+200 band): NO BET — floor cost is moot with an empty qualifying pool.</p><p class='sub'>Bankroll</p><p class='note'>NO BET — no devigged ≥+2pp favourite anywhere on the board. Balance carries at $10,</p><p class='sub'>Ledger</p><p class='note'>0 new rows. All 83 logged 2026-W01 leg_ids remain on the board (5 apparent drops are</p><p class='sub'>PENDING flags (standing)</p><p class='note'>- Mahomes (KC) Q — surgery, ret 2026-08-15 → every DEN@KC leg stays PENDING.</p><p class='note'>- Penix Jr (ATL) Q — surgery, ret 2026-08-28 → every ATL@PIT leg stays PENDING.</p><p class='sub'>Provenance</p><p class='note'>Odds API credits remaining: 19,422 (used 578 this month).</p></div>
 <div class="card"><h2>Calibration (played legs vs TrueP band)</h2><div class="chart"><canvas id="cal"></canvas></div>
 <div class="note">bars = actual hit%; line = perfect calibration. Bands need n≥20-30 before they mean anything.</div></div>
+<div class="card"><h2>Cumulative P/L (real stakes)</h2><div class="chart"><canvas id="pl"></canvas></div>
+<p class="note">Only legs carrying a stake from ledgers/played.md. An assumed flat-1u curve is exactly the fake number that file replaces.</p></div>
+<div class="card"><h2>Bankroll ladder ($10 rollover)</h2><div class="chart"><canvas id="br"></canvas></div></div>
+<div class="card"><h2>Hit rate by edge bucket</h2><div class='scroll'><table><thead><tr><th>edge bucket</th><th>n</th><th>W-L</th><th>hit %</th></tr></thead><tbody><tr><td>&lt; 0pp</td><td>0</td><td>0-0</td><td>—</td></tr><tr><td>0–2pp</td><td>0</td><td>0-0</td><td>—</td></tr><tr><td>2–4pp</td><td>0</td><td>0-0</td><td>—</td></tr><tr><td>4–6pp</td><td>0</td><td>0-0</td><td>—</td></tr><tr><td>6pp+</td><td>0</td><td>0-0</td><td>—</td></tr></tbody></table></div>
+<p class="note">The +2pp gate's own scoreboard: the ≥2pp buckets must out-hit the &lt;2pp ones over a real sample, or the gate is not earning its keep.</p></div>
+<div class="card"><h2>Bet-type breakdown</h2><p class='note'>no decided legs yet</p></div>
+<div class="card"><h2>CLV vs results</h2><div class='scroll'><table><thead><tr><th>closing line</th><th>W</th><th>L</th><th>hit %</th></tr></thead><tbody><tr><td>beat the close</td><td>0</td><td>0</td><td>—</td></tr><tr><td>flat</td><td>0</td><td>0</td><td>—</td></tr><tr><td>lost to the close</td><td>0</td><td>0</td><td>—</td></tr></tbody></table></div></div>
 <div class="card"><h2>CLV per leg (closing no-vig − bet no-vig)</h2><div class="chart"><canvas id="clv"></canvas></div>
 <div class="note">the primary scoreboard at small samples. `=` dead-band ±0.5pp. Blank cells = capture holes (a measurement leak, not a shrug).</div></div>
 </div>
@@ -123,6 +130,8 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <tr><td>2025-W10</td><td>CHI -4.5 (NYG@CHI close)</td><td>spread</td><td class='mono'>55.0</td><td class='mono'>= 50%cl bf</td><td class='neg'>L</td></tr>
 <tr><td>2025-W10</td><td>CHI ML (NYG@CHI close)</td><td>ML-fav</td><td class='mono'>68.0</td><td class='mono'>+ 66%cl bf</td><td class='pos'>W</td></tr></table></div>
 <div class="card" style="margin-bottom:14px"><h2>Run timeline</h2><div class="scroll"><table><thead><tr><th>when</th><th>type</th><th>selftest</th><th>fold</th><th>email</th><th>slack</th><th>push</th><th>credits</th><th>verdict</th></tr></thead><tbody><tr><td>2026-08-09T17:07</td><td>build</td><td>79/79</td><td><code>0b1d9ff</code></td><td>ok</td><td>ok</td><td>ok</td><td>19428</td><td>NO BET</td></tr><tr><td>2026-08-09T16:31</td><td>build</td><td>77/77</td><td><code>2c47f1d</code></td><td>FAILED</td><td>SKIP</td><td>ok</td><td>19428</td><td>NO BET</td></tr><tr><td>2026-08-09T15:51</td><td>build</td><td>77/77</td><td><code>c4d5791</code></td><td>n/a</td><td>SKIP</td><td>ok</td><td>19432</td><td>NO BET</td></tr></tbody></table></div></div>
+<div class="card" style="margin-bottom:14px"><h2>Parlay tickets</h2><p class='note'>no parlay tickets logged yet</p></div>
+<div class="card" style="margin-bottom:14px"><h2>Active fades &amp; their records</h2><p class='note'>empty — fades must be EARNED by the NFL ledger; MLB entries do not port</p></div>
 <div class="card"><h2>Builds · Fades · Bankroll</h2>
 <p class="note" style="margin:0 0 6px"><b>Builds:</b></p><p class='note' style='margin:2px 0'>2026-W01.md — Build — 2026 Week 1 (REG) — PAPER (pre-season soak; no real stakes)</p>
 <p class="note" style="margin:10px 0 6px"><b>Fade registry:</b> empty (entries must be earned by the NFL ledger)</p>
@@ -133,7 +142,7 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="note">Sources: ledgers/results_log.md · ledgers/fades.md · ledgers/bankroll.md · builds/*.md — parsed by the same code as tools/calib.py. If this page disagrees with calib.py, run tools/generate_dashboard.py --selftest.</div>
 </div>
 <script>
-const CAL={"labels": [], "hit": [], "mid": []}, CLVD={"labels": ["SEA ML (NE@SEA, We", "NE@SEA Under 44.0 ", "CHI ML (NYG@CHI cl", "CHI -4.5 (NYG@CHI ", "NO-CAR Under 38.5 ", "JAX ML (JAX@HOU cl"], "vals": [-0.3, 0.0, 0.2, -0.4, 2.2, -2.2], "cols": ["#7e8f70", "#7e8f70", "#5ad46b", "#7e8f70", "#5ad46b", "#c9432f"]};
+const CAL={"labels": [], "hit": [], "mid": []}, CLVD={"labels": ["SEA ML (NE@SEA, We", "NE@SEA Under 44.0 ", "CHI ML (NYG@CHI cl", "CHI -4.5 (NYG@CHI ", "NO-CAR Under 38.5 ", "JAX ML (JAX@HOU cl"], "vals": [-0.3, 0.0, 0.2, -0.4, 2.2, -2.2], "cols": ["#7e8f70", "#7e8f70", "#5ad46b", "#7e8f70", "#5ad46b", "#c9432f"]}, PLD={"labels": [], "vals": []}, BRD={"labels": [], "vals": []};
 const GRID='rgba(232,228,216,.07)', TICK='#98a88a';
 if(typeof Chart==='undefined'){document.querySelectorAll('.chart').forEach(
  c=>c.innerHTML='<p class="muted" style="padding-top:80px;text-align:center">charts unavailable — Chart.js CDN unreachable</p>');}
@@ -149,5 +158,13 @@ if(CLVD.labels.length){new Chart(document.getElementById('clv'),{type:'bar',data
  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
  scales:{x:{grid:{color:GRID},ticks:{color:TICK,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:TICK,callback:v=>v+'pp'}}}}});}
 else{document.getElementById('clv').closest('.chart').innerHTML='<p class="muted" style="padding-top:80px;text-align:center">no CLV verdicts captured yet</p>';}
+function line(id,d,label,col,empty){const el=document.getElementById(id);if(!el)return;
+ if(d.labels.length){new Chart(el,{type:'line',data:{labels:d.labels,datasets:[{label:label,data:d.vals,
+  borderColor:col,backgroundColor:col,tension:.25,pointRadius:2,fill:false}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:10,color:TICK}}},
+  scales:{x:{grid:{color:GRID},ticks:{color:TICK,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:TICK}}}}});}
+ else{el.closest('.chart').innerHTML='<p class="muted" style="padding-top:80px;text-align:center">'+empty+'</p>';}}
+line('pl',PLD,'cumulative P/L','#e9a416','no staked, decided legs yet — log bets in ledgers/played.md');
+line('br',BRD,'balance','#4ade80','no rolls logged yet');
 }
 </script></body></html>

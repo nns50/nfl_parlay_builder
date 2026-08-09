@@ -57,10 +57,24 @@ claims). MLB burn history does not port.**
   credits — the alarm, so it sits first), **Pipeline** (legs logged · decided · played ·
   staked · BT, plus the first date anything *can* settle — an empty ledger must read as
   EARLY, not BROKEN), **This week's board** (the newest `## Run` section rendered
-  mobile-readable, so the board is checkable without digging through email), calibration +
-  CLV charts, recent legs, BT rows, **Run timeline** (last 12 runs from
-  `run_health.jsonl`), and Builds · Fades · Bankroll. Regenerate it in every run and stage
-  `docs/index.html` in the build commit; it only READS the ledgers.
+  mobile-readable), **Cumulative P/L** (real stakes only), **Bankroll ladder**, **Hit rate
+  by edge bucket**, **Bet-type breakdown**, **CLV vs results**, calibration + CLV-per-leg
+  charts, recent legs, BT rows, **Parlay tickets**, **Active fades**, **Run timeline**, and
+  Builds · Fades · Bankroll. Regenerate it in every run and stage `docs/index.html` in the
+  build commit; it only READS the ledgers.
+- **Ported from the MLB dashboard (2026-08-09), adapted not copied.** The measurement
+  panels came across because they test *this* system's thesis: **hit-rate-by-edge-bucket is
+  the +2pp gate's own scoreboard** (the ≥2pp buckets must out-hit the <2pp ones or the gate
+  is not earning its keep) and **CLV-vs-results** tests whether beating the close predicts
+  winning. **`--selftest` now reconciles the page against `calib.py`** — live/BT row counts,
+  the orphan guard, and cumulative P/L — because a dashboard that merely agrees with
+  ITSELF can still disagree with the source of truth, and the page is what the owner
+  actually reads. Verified to FAIL on injected drift, not just to pass when healthy.
+  **Deliberately NOT ported: NRFI/YRFI** (`nrfi_tracker.md`, `nrfi_digest.py`,
+  `nrfi_settle.py`) — it is a first-inning baseball market with no NFL equivalent, and
+  inventing a "first drive" analog would manufacture doctrine this ledger has not earned.
+  `kprice.py` is already covered by `propquote.py`, and `recheck.py` (SP-scratch snapshot →
+  diff) by `weekcheck.py snap/diff`.
 - **Notifications are DIFF-FIRST**: open with what changed since the prior run section and
   say "no material change vs <run>" outright when nothing moved — runs 6-8 matched to the
   hundredth of a point, and an unscannable wall of repeated tables is how a real change
