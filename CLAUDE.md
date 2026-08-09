@@ -194,15 +194,25 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   interactive session). **FIX: add `SLACK_WEBHOOK_URL` to the nfl-parlay-builder
   environment** — it is an env-config gap, not a code bug. `session_start.sh` §2b now
   prints the channel state every run, so this can never fail silently again.
-- **The Gmail connector is attached to the run Routines** (same `connector_uuid` as the MLB
-  daily routine, which has drafted from scheduled runs since 2026-05-25) and
-  `.claude/settings.json` allowlists `mcp__Gmail__create_draft`. The earlier doctrine —
-  "scheduled runs can't write connectors, a dialog always pops" — did NOT survive a config
-  audit: the NFL runs carry strictly MORE grant than MLB (same connector + an explicit repo
-  allowlist, where MLB has no allowlist at all), so the mailer-routine workaround was
-  treating a config claim as a law. If a draft call is ever genuinely denied, the run must
-  SAY SO in the push + Slack + final message with the reason — never silently skip it, never
-  retry in a loop.
+- **⛔ THE GMAIL DIALOG IS REAL — re-proven run 7 (2026-08-09 16:16Z), with a screenshot.**
+  `mcp__Gmail__create_draft` from an NFL trigger session pops "Create Draft requests
+  permission / Allow once / Deny" on the owner's phone and BLOCKS there. Attaching the
+  connector to the Routine (`mcp_connections` carries Gmail) and allowlisting the tool in
+  `.claude/settings.json` do **NOT** suppress it — connector *attachment* is not connector
+  *auto-approval*, and a config audit that confirms the former proves nothing about the
+  latter. An earlier revision of this file claimed the audit had disproven the dialog; that
+  was wrong and cost run 7 its draft. **Do not re-litigate this from configuration alone —
+  only a live trigger firing settles it.**
+- **The MLB daily routine genuinely does NOT prompt** (owner-confirmed) — so a promptless
+  scheduled draft IS possible; the NFL Routines just aren't in that state. Known differences,
+  none yet proven causal: MLB was created via the web UI (`created_via: http_api`) vs the
+  NFL Routines via MCP (`meta_mcp`); MLB env `parlay-test` vs NFL env `nfl-parlay-builder`;
+  MLB attaches Gmail only, NFL attaches Gmail + Slack.
+- **No connector-free fallback exists for email.** SMTP 587/465 and IMAP 993 are all BLOCKED
+  from the run container (verified 2026-08-09); only HTTPS egress via the proxy works. That
+  is why Slack could be fixed with a webhook and email cannot be fixed the same way.
+- Until a firing proves otherwise, a run that hits the dialog must SAY SO in Slack + push +
+  its final message — never silently skip, never retry in a loop.
 
 ## Git workflow (current phase)
 
