@@ -182,3 +182,10 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
 Work on the designated feature branch (`claude/nfl-parlay-port-plan-3ijsrm` for this effort);
 commit + push each milestone. **No auto-merge to main** — that authorization is MLB-repo
 doctrine and has not been granted here.
+
+Scheduled (trigger-fired) runs push to **per-run outcome branches** (`claude/admiring-johnson-*`)
+— they cannot write the feature branch or main (proven 2026-08-08/09). Two rules keep that
+coherent: (1) every run fetches and merges any predecessor outcome branch ahead of its clone
+base BEFORE working, so the ledger accumulates across runs; (2) outcome branches are folded
+into main and deleted at interactive check-ins — main drives the Pages dashboard, so an
+unfolded run is invisible on the dashboard until folded.
