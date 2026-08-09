@@ -1,13 +1,17 @@
 {
+  "permissions": {
+    "allow": [
+      "PushNotification",
+      "mcp__Gmail__create_draft",
+      "mcp__Claude_Code_Remote__add_repo"
+    ]
+  },
   "hooks": {
     "UserPromptSubmit": [
       {
         "matcher": "",
         "hooks": [
-          {
-            "type": "command",
-            "command": "bash .claude/hooks/session-start.sh"
-          }
+          { "type": "command", "command": "bash .claude/hooks/session-start.sh" }
         ]
       }
     ]
