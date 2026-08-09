@@ -17,9 +17,26 @@ claims). MLB burn history does not port.**
   a run draft the Gmail email without a permission dialog. Never replace one with an
   agent-minted Routine.** Each run delivers its own email + push + Slack; there are no mailer
   Routines. Pages is live at https://nns50.github.io/nfl_parlay_builder/ (deploys from `main`).
-- ⏳ **Remaining before live money: the preseason soak — 1-2 paper weeks** → REG Week 1
-  (kickoff Wed 2026-09-09). Everything else is in place; the soak is what earns trust in
-  the numbers, not more plumbing.
+- ✅ **Ledger loop VALIDATED against real completed games (2026-08-09).** Settlement and
+  CLV had never run on finished games — all 83 live rows are future REG W1 — so both were
+  proven against real 2025 W18 results, with expected values HAND-COMPUTED from published
+  box scores / closing prices rather than derived from the tools themselves:
+  - `tools/validate_settle.py` — **29/29 correct**: spreads by MARGIN (a −2.5 favourite
+    winning by 2 LOSES), integer pushes on spreads/totals/team-totals/props, AWAY-team
+    margins, kicking points (3·FG+PAT), anytime-TD, and the MANUAL classes (defensive,
+    longest-play, DNP). Store-gated (SKIPs pre-sync), runs on a temp `NFL_LEDGER`.
+  - **CLV closed out** with one 30-credit historical snapshot (2026-01-04T17:58Z, one
+    window = 6 games). Six verdicts written and independently re-devigged by hand (ATL
+    −198/NO +189 → no-vig 65.76/34.24 → `+`/`−`, matching exactly). The two refusals were
+    CORRECT: the closing board no longer quoted the logged total (36.5 vs 43.0) or spread
+    rung, and fabricating a comparison there would invent CLV. **`clv_backfill.py` imports
+    `verdict_from_close`/`close_novig` FROM `clv_capture.py`, so the LIVE path's verdict
+    engine is what got proven** — now pinned offline in selftest at 0 credits.
+- ⏳ **Remaining before live money: the numbers themselves.** The plumbing and the ledger
+  loop are done and guarded; what is still unearned is calibration — 0 decided legs, pulse
+  idle. **nflverse carries NO preseason games in any season**, so nothing can settle before
+  REG Week 1 (kickoff Wed 2026-09-09); a "paper week" before then would add runs but zero
+  measurement. Calibration genuinely begins at Week 1.
 
 ## Ops — the weekly rhythm (`session_start.sh` + `cron_build.sh` + the hook)
 

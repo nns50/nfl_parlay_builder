@@ -732,6 +732,35 @@ if [[ "$CLEAN" != *"PARSER GUARD"* ]]; then
 else no "calib.py parser guard stays silent on the healthy live ledger" "$CLEAN"; fi
 rm -rf "$GUARD_TMP"
 
+# ── CLV verdict engine — pinned against REAL 2025 W18 closes (0 credits) ────
+# The 2026-01-04 17:58Z historical snapshot (30 cr, spent once) returned these actual
+# closing prices; the devig + sign + dead-band are re-derived here offline forever.
+# clv_backfill.py imports verdict_from_close/close_novig FROM clv_capture.py, so this
+# pins the LIVE capture path too, not a parallel copy.
+pyblk "clv verdict engine: real 2025 W18 closes → correct +/−/= and dead band" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from clv_capture import verdict_from_close
+
+def sign(closing, logged):          # cell is "+ 66%cl" — the verdict is its first char
+    return verdict_from_close(closing, logged).split()[0]
+
+# ATL closed -198 vs NO +189 → no-vig ATL 65.76% / NO 34.24% (hand-devigged).
+assert sign(65.76, 55.0) == "+", "line moved TO our side must read +"
+assert sign(34.24, 45.0) == "−", "line moved AWAY must read −"
+# the cell also carries the rounded closing prob, which the dashboard renders
+assert verdict_from_close(65.76, 55.0) == "+ 66%cl", verdict_from_close(65.76, 55.0)
+# dead band: |Δ| ≤ 0.5pp is a wash, just past it is not
+assert sign(55.4, 55.0) == "=", "+0.4pp inside the dead band"
+assert sign(54.6, 55.0) == "=", "-0.4pp inside the dead band"
+assert sign(55.6, 55.0) == "+", "+0.6pp clears the dead band"
+assert sign(54.4, 55.0) == "−", "-0.6pp clears the dead band"
+# the other real closes from that same snapshot
+for close, logged in ((79.1, 50.0), (81.4, 60.0), (85.0, 66.0), (84.3, 40.0)):
+    assert sign(close, logged) == "+", (close, logged)
+# missing inputs never fabricate a verdict
+assert verdict_from_close(None, 55.0) is None and verdict_from_close(65.0, None) is None
+EOF
+
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
 if [[ "$FAIL" -eq 0 ]]; then
