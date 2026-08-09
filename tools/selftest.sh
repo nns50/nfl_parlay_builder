@@ -687,17 +687,6 @@ if jq -e '.text | contains("quoted")' <<<"$DRY" >/dev/null 2>&1; then
   ok "notify_slack.sh --dry-run emits valid JSON with escaped content"
 else no "notify_slack.sh --dry-run emits valid JSON with escaped content" "$DRY"; fi
 
-# ── notify_email.sh — the promptless email path (connector is BANNED in runs) ─
-OUT="$(env -u GMAIL_WEBHOOK_URL bash tools/notify_email.sh "subj" "body" 2>&1)"
-if [[ $? -eq 0 && "$OUT" == *SKIP* ]]; then
-  ok "notify_email.sh SKIPs (exit 0) when GMAIL_WEBHOOK_URL is unset"
-else no "notify_email.sh SKIPs (exit 0) when GMAIL_WEBHOOK_URL is unset" "$OUT"; fi
-DRY="$(bash tools/notify_email.sh --dry-run 'subj "q" & <x>' 'body
-line2' 2>&1)"
-if jq -e '.to == "realityremixed125@gmail.com" and (.subject|contains("q")) and (.body|contains("line2"))' <<<"$DRY" >/dev/null 2>&1; then
-  ok "notify_email.sh --dry-run emits valid JSON addressed to the owner"
-else no "notify_email.sh --dry-run emits valid JSON addressed to the owner" "$DRY"; fi
-
 # ── cron_build.sh is the SINGLE prompt source — a syntax break kills EVERY run.
 # (2026-08-09: raw double quotes were once injected into the double-quoted COMMON
 #  string, breaking the whole script. bash -n catches that class instantly.)
@@ -707,13 +696,13 @@ else no "cron_build.sh parses (bash -n) — the prompt source is not broken" "$(
 MISSING=""
 for RT in wrap build designation lock; do
   P="$(bash tools/cron_build.sh "$RT" --prompt-only 2>/dev/null)"
-  [[ "$P" == *notify_email.sh* ]] || MISSING="$MISSING $RT:email"
+  [[ "$P" == *mcp__Gmail__create_draft* ]] || MISSING="$MISSING $RT:email"
   [[ "$P" == *notify_slack.sh* ]] || MISSING="$MISSING $RT:slack"
-  [[ "$P" == *"NEVER call mcp__Gmail__create_draft"* ]] || MISSING="$MISSING $RT:ban"
+  [[ "$P" == *realityremixed125@gmail.com* ]] || MISSING="$MISSING $RT:to"
 done
 if [[ -z "$MISSING" ]]; then
-  ok "every run type (wrap/build/designation/lock) carries email + Slack + the connector ban"
-else no "every run type (wrap/build/designation/lock) carries email + Slack + the connector ban" "missing:$MISSING"; fi
+  ok "every run type (wrap/build/designation/lock) carries the Gmail draft + Slack"
+else no "every run type (wrap/build/designation/lock) carries the Gmail draft + Slack" "missing:$MISSING"; fi
 
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"

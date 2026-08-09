@@ -194,33 +194,29 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   interactive session). **FIX: add `SLACK_WEBHOOK_URL` to the nfl-parlay-builder
   environment** — it is an env-config gap, not a code bug. `session_start.sh` §2b now
   prints the channel state every run, so this can never fail silently again.
-- **⛔ THE GMAIL DIALOG IS REAL — re-proven run 7 (2026-08-09 16:16Z), with a screenshot.**
-  `mcp__Gmail__create_draft` from an NFL trigger session pops "Create Draft requests
-  permission / Allow once / Deny" on the owner's phone and BLOCKS there. Attaching the
-  connector to the Routine (`mcp_connections` carries Gmail) and allowlisting the tool in
-  `.claude/settings.json` do **NOT** suppress it — connector *attachment* is not connector
-  *auto-approval*, and a config audit that confirms the former proves nothing about the
-  latter. An earlier revision of this file claimed the audit had disproven the dialog; that
-  was wrong and cost run 7 its draft. **Do not re-litigate this from configuration alone —
-  only a live trigger firing settles it.**
-- **The MLB daily routine genuinely does NOT prompt** (owner-confirmed) — so a promptless
-  scheduled draft IS possible; the NFL Routines just aren't in that state. Known differences,
-  none yet proven causal: MLB was created via the web UI (`created_via: http_api`) vs the
-  NFL Routines via MCP (`meta_mcp`); MLB env `parlay-test` vs NFL env `nfl-parlay-builder`;
-  MLB attaches Gmail only, NFL attaches Gmail + Slack.
-- **✅ EMAIL IS SOLVED THE SAME WAY SLACK WAS — `tools/notify_email.sh` (owner-directed
-  2026-08-09).** SMTP 587/465 and IMAP 993 are BLOCKED from the container and the
-  `connectors` grant is disabled for this org, but **HTTPS on 443 works** — so the run POSTs
-  its report to a **Google Apps Script web app running as the owner's own Google account**,
-  which delivers to `realityremixed125@gmail.com` (`--draft` for a Gmail draft instead of a
-  send; the owner accepts either). Promptless, no connector, no extra Routine. Reads
-  `GMAIL_WEBHOOK_URL` from the environment exactly like `SLACK_WEBHOOK_URL`; unset ⇒ SKIP
-  exit 0. One-time setup: **`docs/NOTIFY_EMAIL_SETUP.md`**.
-- **EVERY NFL Routine carries this, by construction.** All four run Routines execute
+- **⚠ THE ROOT CAUSE WAS WHO CREATED THE ROUTINE — not NFL, not the environment, not the
+  repo settings.** A Routine minted by an agent over MCP (`created_via: meta_mcp`) does NOT
+  carry the owner's connector authority: its sessions are tagged `routine:agent-minted`, and
+  every `mcp__Gmail__create_draft` call falls back to an "Allow once / Deny" dialog on the
+  owner's phone that **STALLS the run** (runs 1-4; re-proven run 7 with a screenshot).
+  A Routine the owner creates in the web UI (`created_via: http_api`) carries that authority
+  and drafts silently — which is why the MLB daily routine has always worked with one plain
+  line and needed no machinery at all.
+- **FIX (2026-08-09): the four agent-minted NFL Routines were DELETED and recreated by the
+  owner in the web UI.** The runs call `mcp__Gmail__create_draft` directly, exactly like MLB.
+  Diagnostics that led here, so they are not re-run: attaching the connector and allowlisting
+  the tool in `.claude/settings.json` do NOT suppress the dialog (connector *attachment* is
+  not *auto-approval*); `create_trigger`'s `connectors` grant is **disabled for this org**;
+  SMTP 587/465 and IMAP 993 are **blocked** from the container.
+- **Do not rebuild a webhook/Apps-Script email path.** One was built and then removed the
+  same day — it was scaffolding around an agent-minted Routine, not a real limitation. If a
+  draft ever prompts again, the Routine is agent-minted: **recreate it in the web UI**, do
+  not engineer around it.
+- **EVERY NFL Routine carries the touchpoint by construction.** All four run Routines execute
   `cron_build.sh <type> --prompt-only`, so the single COMMON block reaches wrap, build,
-  designation and lock alike — selftest asserts all four carry email + Slack + the connector
-  ban, and that `cron_build.sh` still parses (a raw-quote injection once broke the whole
-  prompt source; `bash -n` now guards it).
+  designation and lock alike — selftest asserts all four carry the Gmail draft (addressed to
+  realityremixed125@gmail.com) plus Slack, and that `cron_build.sh` still parses (a raw-quote
+  injection once broke the whole prompt source; `bash -n` now guards it).
 - A run that cannot deliver a channel must SAY SO in its final message — never silently
   skip, never retry in a loop.
 
