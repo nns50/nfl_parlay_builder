@@ -1056,7 +1056,11 @@ assert not missing, f"page uses undefined CSS classes: {missing}"
 for cls in ("tiles", "kpis"):
     m = re.search(rf"^\.{cls}\{{([^}}]*)", css, re.M)
     assert m and "display:grid" in m.group(1), f".{cls} must be a grid, got: {m and m.group(1)[:60]}"
-    assert "auto-fit" in m.group(1), f".{cls} needs auto-fit columns to align"
+    # auto-fit OR auto-fill — both align tiles into equal tracks. (.kpis deliberately
+    # uses auto-fill: auto-fit collapses empty tracks and stretched a 2-tile row across
+    # a full-width card.) What must never return is a content-sized flex row.
+    assert re.search(r"repeat\(auto-(fit|fill),\s*minmax", m.group(1)), \
+        f".{cls} needs repeat(auto-fit|auto-fill, minmax(...)) columns, got: {m.group(1)[:70]}"
 EOF
 
 # ── summary ──────────────────────────────────────────────────────────────────

@@ -237,7 +237,13 @@ border-top:2px solid var(--gold);border-radius:10px;padding:11px 14px 10px}
 .tile .v{font-family:'Oswald',sans-serif;font-weight:600;font-size:25px;color:var(--gold);
 letter-spacing:.5px;font-variant-numeric:tabular-nums}
 .tile .k{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+/* align-items:start is load-bearing: the default (stretch) inflates BOTH cards in a
+   row to the taller one's height, so a 2-line Streaks card next to a 21-row table
+   rendered as a huge empty void. Cards now size to their own content. Genuinely tall
+   cards take .wide and span the full width instead of pairing badly. */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;
+ align-items:start}
+.card.wide{grid-column:1/-1}
 .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
 .chart{height:230px;position:relative}
 table{width:100%;border-collapse:collapse;font-size:12.5px}
@@ -253,7 +259,10 @@ tr:hover td{background:rgba(233,164,22,.05)}
    (tiles size to content, so they never line up in columns) plus hardcoded grey
    #1b1b20/#9ca3af that clashed with the gridiron palette. It now reuses .tiles'
    grid and .tile's visual language, so every tile on the page aligns. */
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+/* auto-FILL, not auto-fit: auto-fit COLLAPSES the empty tracks, so a 2-tile row in a
+   full-width card stretched each tile across half the page. auto-fill keeps the unused
+   tracks, so tiles stay their natural size whether there are 2 of them or 6. */
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
  gap:10px;margin-bottom:10px}
 .kpi{background:linear-gradient(180deg,var(--panel),#0a1007);
  border:1px solid var(--border);border-radius:10px;padding:10px 12px;text-align:center}
@@ -293,11 +302,10 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="grid">
 <div class="card"><h2>Run health — last scheduled run</h2>__HEALTH__</div>
 <div class="card"><h2>Pipeline</h2>__PIPELINE__</div>
-<div class="card"><h2>This week's board (newest run)</h2>__WEEKBOARD__</div>
+<div class="card wide"><h2>This week's board (newest run)</h2>__WEEKBOARD__</div>
+<div class="card"><h2>Streaks &amp; the $10 ladder</h2>__STREAKS__</div>
 <div class="card"><h2>Calibration (played legs vs TrueP band)</h2><div class="chart"><canvas id="cal"></canvas></div>
 <div class="note">bars = actual hit%; line = perfect calibration. Bands need n≥20-30 before they mean anything.</div></div>
-<div class="card"><h2>Streaks &amp; the $10 ladder</h2>__STREAKS__</div>
-<div class="card"><h2>Correlation coverage (parlay floors depend on these)</h2>__CORR__</div>
 <div class="card"><h2>Cumulative P/L (real stakes)</h2><div class="chart"><canvas id="pl"></canvas></div>
 <p class="note">Only legs carrying a stake from ledgers/played.md. An assumed flat-1u curve is exactly the fake number that file replaces.</p></div>
 <div class="card"><h2>Bankroll ladder ($10 rollover)</h2><div class="chart"><canvas id="br"></canvas></div></div>
@@ -307,6 +315,7 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="card"><h2>CLV vs results</h2>__CLVRES__</div>
 <div class="card"><h2>CLV per leg (closing no-vig − bet no-vig)</h2><div class="chart"><canvas id="clv"></canvas></div>
 <div class="note">the primary scoreboard at small samples. `=` dead-band ±0.5pp. Blank cells = capture holes (a measurement leak, not a shrug).</div></div>
+<div class="card wide"><h2>Correlation coverage (parlay floors depend on these)</h2>__CORR__</div>
 </div>
 
 <div class="card" style="margin-bottom:14px"><h2>Recent legs (live ledger, newest first)</h2>
