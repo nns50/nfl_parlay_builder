@@ -132,12 +132,6 @@
    "p_plays": 0.0,
    "team": "HOU"
   },
-  "00-0035118": {
-   "designation": "OUT",
-   "name": "Matt Orzech",
-   "p_plays": 0.0,
-   "team": "GB"
-  },
   "00-0035149": {
    "designation": "QUESTIONABLE",
    "name": "Nick Allegretti",
@@ -215,6 +209,12 @@
    "name": "Tristan Wirfs",
    "p_plays": 0.75,
    "team": "TB"
+  },
+  "00-0036417": {
+   "designation": "QUESTIONABLE",
+   "name": "Damien Lewis",
+   "p_plays": 0.75,
+   "team": "CAR"
   },
   "00-0036561": {
    "designation": "OUT_ROSTER(RES)",
@@ -305,12 +305,6 @@
    "name": "James Houston",
    "p_plays": 0.75,
    "team": "DAL"
-  },
-  "00-0037321": {
-   "designation": "OUT",
-   "name": "Chase Lucas",
-   "p_plays": 0.0,
-   "team": "TB"
   },
   "00-0037457": {
    "designation": "QUESTIONABLE",
@@ -1282,7 +1276,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-09T19:41:15Z",
+ "taken_at": "2026-08-09T23:42:27Z",
  "week": 1,
  "wind": {}
 }
