@@ -18,10 +18,10 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv.gz"
  },
  "schedules": {
-  "fetched_at": "2026-08-09T15:37:24Z",
+  "fetched_at": "2026-08-09T16:11:49Z",
   "missing_cols": [],
   "rows": 7548,
-  "source_last_modified": "Sun, 09 Aug 2026 15:36:25 GMT",
+  "source_last_modified": "Sun, 09 Aug 2026 16:06:29 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
@@ -45,7 +45,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv.gz"
  },
  "snap_counts:2026": {
-  "checked_at": "2026-08-09T15:37:24Z",
+  "checked_at": "2026-08-09T16:12:03Z",
   "note": "current-season asset not published yet (no games played)",
   "status": "ABSENT",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.csv.gz"
@@ -69,7 +69,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2025.csv.gz"
  },
  "stats_player:2026": {
-  "checked_at": "2026-08-09T15:37:24Z",
+  "checked_at": "2026-08-09T16:12:03Z",
   "note": "current-season asset not published yet (no games played)",
   "status": "ABSENT",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv.gz"

@@ -185,6 +185,15 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   `PushNotification`; **(c)** `bash tools/notify_slack.sh` with the condensed report
   (incoming-webhook curl, promptless; reads `SLACK_WEBHOOK_URL` like `ODDS_API_KEY`; SKIPs
   gracefully where unset); **(d)** the complete report as the run's FINAL session message.
+- **⚠ TWO ENVIRONMENTS, and only one is wired.** The run Routines fire in
+  `env_016czcjdFNb2qPStdfxfkxay` (**nfl-parlay-builder**); the orchestrating interactive
+  session and the MLB daily routine both live in `env_01BbCZZcyZK6n1zUkrvn5qHY`
+  (**parlay-test**). `SLACK_WEBHOOK_URL` is set in parlay-test only, so
+  `notify_slack.sh` SKIPs in every scheduled run — that is why run 6 (2026-08-09 15:40Z)
+  delivered no Slack message. The webhook itself is valid (verified by a POST from the
+  interactive session). **FIX: add `SLACK_WEBHOOK_URL` to the nfl-parlay-builder
+  environment** — it is an env-config gap, not a code bug. `session_start.sh` §2b now
+  prints the channel state every run, so this can never fail silently again.
 - **The Gmail connector is attached to the run Routines** (same `connector_uuid` as the MLB
   daily routine, which has drafted from scheduled runs since 2026-05-25) and
   `.claude/settings.json` allowlists `mcp__Gmail__create_draft`. The earlier doctrine —

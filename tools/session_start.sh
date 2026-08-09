@@ -51,6 +51,16 @@ elif (( REM >= 5000 )); then echo "  ODDS_MODE=rich — props tooling unlocked."
 else echo "  ODDS_MODE=standard — featured markets only; hand-price props."
 fi
 
+hdr "2b. Notification channels (this session can only deliver what is wired HERE)"
+if [[ -n "${SLACK_WEBHOOK_URL:-}" ]]; then
+  echo "  ✓ SLACK_WEBHOOK_URL present — tools/notify_slack.sh will POST."
+else
+  echo "  ⛔ SLACK_WEBHOOK_URL UNSET in THIS environment — notify_slack.sh will SKIP and"
+  echo "     NO Slack message will reach the owner. This is an ENVIRONMENT config gap, not"
+  echo "     a code bug: add the secret to the environment this session runs in. You MUST"
+  echo "     say 'Slack: SKIPPED (webhook unset)' in the run's notification + final message."
+fi
+
 hdr "3. Current week + unsettled legs"
 WK="$(bash tools/nfl_data.sh weekof 2>/dev/null)" || WK=""
 echo "  weekof: ${WK:-unresolved (sync the store)}"
