@@ -181,13 +181,15 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   gracefully where unset) + the complete report as the run's FINAL session message —
   the routine-level completion email/push/Slack deliver that message.
 - **Per-run Gmail drafts to realityremixed125@gmail.com come from the MAILER routines**
-  (wired 2026-08-09): five self-bound triggers on the orchestrating interactive session —
-  where connector writes are proven dialog-free — fire ~35-40min after each run slot
-  (Tue/Thu 14:40Z; Fri 21:40Z; Sun 16:10/20:10Z; Mon 00:10Z; Mon/Thu 23:40Z), read the
-  newest `## Run` section from `builds/` on origin/main, and create the Gmail draft.
-  They also sweep-fold any outcome branch that failed to reach main. No new run → silent
-  no-op. (Their earlier connector-Slack-DM step is retired — the webhook in the runs
-  supersedes it.)
+  (wired 2026-08-09; retimed EVENT-DRIVEN 2026-08-09 per owner): five self-bound triggers
+  on the orchestrating interactive session — where connector writes are proven dialog-free —
+  fire ~5min after each run slot STARTS (Tue/Thu 14:05Z; Fri 21:05Z; Sun 15:35/19:35/23:35Z;
+  Mon/Thu 23:05Z), then WAIT for the run's fold to main (background until-loop polling the
+  remote every ~120s, ≤50min) and create the Gmail draft IMMEDIATELY after the merge lands —
+  the draft tracks the fold event, not a fixed delay. If the run pushed only its outcome
+  branch, the mailer folds it first (draft right after its own merge). Wait expires with
+  nothing new → silent no-op. (Their earlier connector-Slack-DM step is retired — the
+  webhook in the runs supersedes it.)
 
 ## Git workflow (current phase)
 
