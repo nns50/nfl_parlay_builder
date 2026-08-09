@@ -175,18 +175,19 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
 - **Scheduled runs (owner-directed 2026-08-09): NO connector writes.** Every
   `mcp__Gmail__create_draft` call pops a manual 'Allow once' dialog on the owner's phone
   that no settings allowlist suppresses (confirmed runs 1-4). A scheduled run's touchpoint
-  = `PushNotification` (core tool, promptless) + the complete report as the run's FINAL
-  session message — the routine-level completion email/push/Slack (enabled on all four
-  routines) deliver that message.
-- **Per-run Gmail drafts to realityremixed125@gmail.com AND a Slack DM come from the
-  MAILER routines** (wired 2026-08-09): five self-bound triggers on the orchestrating
-  interactive session — where connector writes are proven dialog-free — fire ~35-40min
-  after each run slot (Tue/Thu 14:40Z; Fri 21:40Z; Sun 16:10/20:10Z; Mon 00:10Z; Mon/Thu
-  23:40Z), read the newest `## Run` section from `builds/` on origin/main, create the
-  Gmail draft, and send the same condensed report as a Slack DM (`slack_send_message`,
-  channel_id `U0BBSLZAEQ5` = the owner's self-DM; headline verdict first, dashboard link
-  last). They also sweep-fold any outcome branch that failed to reach main. No new run →
-  silent no-op.
+  = `PushNotification` (core tool, promptless) + **Slack via `tools/notify_slack.sh`**
+  (incoming-webhook POST to the owner's NFL-Parlay workspace — plain curl, promptless;
+  reads secret `SLACK_WEBHOOK_URL` from the environment like `ODDS_API_KEY`; SKIPs
+  gracefully where unset) + the complete report as the run's FINAL session message —
+  the routine-level completion email/push/Slack deliver that message.
+- **Per-run Gmail drafts to realityremixed125@gmail.com come from the MAILER routines**
+  (wired 2026-08-09): five self-bound triggers on the orchestrating interactive session —
+  where connector writes are proven dialog-free — fire ~35-40min after each run slot
+  (Tue/Thu 14:40Z; Fri 21:40Z; Sun 16:10/20:10Z; Mon 00:10Z; Mon/Thu 23:40Z), read the
+  newest `## Run` section from `builds/` on origin/main, and create the Gmail draft.
+  They also sweep-fold any outcome branch that failed to reach main. No new run → silent
+  no-op. (Their earlier connector-Slack-DM step is retired — the webhook in the runs
+  supersedes it.)
 
 ## Git workflow (current phase)
 

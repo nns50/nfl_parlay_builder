@@ -676,6 +676,17 @@ if python3 tools/ingest.py sync not-a-dataset >/dev/null 2>&1; then
   no "ingest.py sync rejects unknown dataset"
 else ok "ingest.py sync rejects unknown dataset"; fi
 
+# ── notify_slack.sh — webhook notifier degrades gracefully, payload is valid ─
+OUT="$(env -u SLACK_WEBHOOK_URL bash tools/notify_slack.sh "test" 2>&1)"
+if [[ $? -eq 0 && "$OUT" == *SKIP* ]]; then
+  ok "notify_slack.sh SKIPs (exit 0) when SLACK_WEBHOOK_URL is unset"
+else no "notify_slack.sh SKIPs (exit 0) when SLACK_WEBHOOK_URL is unset" "$OUT"; fi
+DRY="$(bash tools/notify_slack.sh --dry-run 'line1
+"quoted" & <chars>' 2>&1)"
+if jq -e '.text | contains("quoted")' <<<"$DRY" >/dev/null 2>&1; then
+  ok "notify_slack.sh --dry-run emits valid JSON with escaped content"
+else no "notify_slack.sh --dry-run emits valid JSON with escaped content" "$DRY"; fi
+
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
 if [[ "$FAIL" -eq 0 ]]; then
