@@ -35,6 +35,10 @@ DB = os.environ.get("NFL_DB", os.path.join(REPO, "data", "context.db"))
 CONF = os.path.join(REPO, "config", "markets.conf")
 ODDS = os.path.join(HERE, "odds_api.sh")
 
+# Binary (Yes/No) prop markets have no _alternate variant — asking for one makes the
+# whole call fail with INVALID_MARKET, taking the standard market down with it.
+NO_ALTERNATE = {"player_anytime_td", "player_1st_td", "player_last_td"}
+
 
 def conf(key, default=None):
     with open(CONF, encoding="utf-8") as fh:
@@ -166,8 +170,9 @@ def main():
 
     floor = int(conf("CREDIT_FLOOR_PROPS", "1000"))
     rem = quota_remaining()
-    markets = args.market if args.standard_only else f"{args.market},{args.market}_alternate"
-    ncred = 1 if args.standard_only else 2
+    solo = args.standard_only or args.market in NO_ALTERNATE
+    markets = args.market if solo else f"{args.market},{args.market}_alternate"
+    ncred = 1 if solo else 2
     if not args.force and (rem is None or rem < floor):
         sys.exit(f"⛔ REFUSING to spend ~{ncred} credit(s): API reports {rem} remaining "
                  f"(< CREDIT_FLOOR_PROPS={floor}). Hand-price from a book, or --force.")
