@@ -1133,7 +1133,7 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T20:25:00Z",
-   "spread_line": 10.5,
+   "spread_line": null,
    "total_line": null
   },
   "2026_01_ATL_PIT": {
@@ -1145,8 +1145,8 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
-   "spread_line": 3.0,
-   "total_line": 41.5
+   "spread_line": null,
+   "total_line": null
   },
   "2026_01_BAL_IND": {
    "away": "BAL",
@@ -1157,8 +1157,8 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
-   "spread_line": -3.5,
-   "total_line": 49.5
+   "spread_line": null,
+   "total_line": null
   },
   "2026_01_BUF_HOU": {
    "away": "BUF",
@@ -1193,7 +1193,7 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
-   "spread_line": 7.5,
+   "spread_line": null,
    "total_line": 40.5
   },
   "2026_01_DAL_NYG": {
@@ -1206,7 +1206,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-14T00:20:00Z",
    "spread_line": null,
-   "total_line": 48.5
+   "total_line": null
   },
   "2026_01_DEN_KC": {
    "away": "DEN",
@@ -1217,8 +1217,8 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-15T00:15:00Z",
-   "spread_line": 3.0,
-   "total_line": 43.5
+   "spread_line": null,
+   "total_line": null
   },
   "2026_01_GB_MIN": {
    "away": "GB",
@@ -1230,7 +1230,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T20:25:00Z",
    "spread_line": null,
-   "total_line": 46.5
+   "total_line": null
   },
   "2026_01_MIA_LV": {
    "away": "MIA",
@@ -1253,8 +1253,8 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-10T00:20:00Z",
-   "spread_line": 3.5,
-   "total_line": 44.5
+   "spread_line": null,
+   "total_line": null
   },
   "2026_01_NO_DET": {
    "away": "NO",
@@ -1265,7 +1265,7 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
-   "spread_line": 7.0,
+   "spread_line": null,
    "total_line": null
   },
   "2026_01_NYJ_TEN": {
@@ -1277,8 +1277,8 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
-   "spread_line": 3.0,
-   "total_line": 39.5
+   "spread_line": null,
+   "total_line": null
   },
   "2026_01_SF_LA": {
    "away": "SF",
@@ -1289,7 +1289,7 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-11T00:35:00Z",
-   "spread_line": 3.5,
+   "spread_line": null,
    "total_line": null
   },
   "2026_01_TB_CIN": {
@@ -1301,8 +1301,8 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
-   "spread_line": 3.5,
-   "total_line": 52.5
+   "spread_line": null,
+   "total_line": null
   },
   "2026_01_WAS_PHI": {
    "away": "WAS",
@@ -1318,7 +1318,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-09T15:50:19Z",
+ "taken_at": "2026-08-09T16:23:03Z",
  "week": 1,
  "wind": {}
 }
