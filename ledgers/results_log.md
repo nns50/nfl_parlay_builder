@@ -39,6 +39,38 @@ every settle.
 | 2026-W01 | SEA ML (NE@SEA, Wed opener) [adj: none] | 2026-W01:2026_01_NE_SEA:h2h:SEA:: | ML-fav | -190 | BetMGM | 64.3% | 64.3% | +0.0 | scan | TBD | N | = 64%cl | S |
 | 2026-W01 | NE@SEA Under 44.0 [adj: none] | 2026-W01:2026_01_NE_SEA:totals:Under:44: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | = 50%cl | S |
 
+| 2026-W01 | NE@SEA Under 44.5 [adj: none] | 2026-W01:2026_01_NE_SEA:totals:Under:44.5: | total | -105 | FanDuel | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LA ML (SF@LA) [adj: none] | 2026-W01:2026_01_SF_LA:h2h:LA:: | ML-fav | -190 | BetMGM | 64.2% | 64.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | SF@LA Under 48.5 [adj: none] | 2026-W01:2026_01_SF_LA:totals:Under:48.5: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | PIT ML (ATL@PIT) [adj: none] | 2026-W01:2026_01_ATL_PIT:h2h:PIT:: | ML-fav | -152 | FanDuel | 60.1% | 60.1% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | ATL@PIT Under 41.5 [adj: none] | 2026-W01:2026_01_ATL_PIT:totals:Under:41.5: | total | -105 | DraftKings | 49.8% | 49.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BAL ML (BAL@IND) [adj: none] | 2026-W01:2026_01_BAL_IND:h2h:BAL:: | ML-fav | -180 | DraftKings | 63.0% | 63.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BAL@IND Under 48 [adj: none] | 2026-W01:2026_01_BAL_IND:totals:Under:48: | total | -108 | Caesars | 50.7% | 50.7% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BUF ML (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:h2h:BUF:: | ML-fav | -105 | BetMGM | 50.6% | 50.6% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BUF@HOU Under 44.5 [adj: none] | 2026-W01:2026_01_BUF_HOU:totals:Under:44.5: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CHI ML (CHI@CAR) [adj: none] | 2026-W01:2026_01_CHI_CAR:h2h:CHI:: | ML-fav | -145 | LowVig.ag | 58.2% | 58.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CHI@CAR Under 46 [adj: none] | 2026-W01:2026_01_CHI_CAR:totals:Under:46: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CIN ML (TB@CIN) [adj: none] | 2026-W01:2026_01_TB_CIN:h2h:CIN:: | ML-fav | -185 | Bovada | 64.2% | 64.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | TB@CIN Under 51 [adj: none] | 2026-W01:2026_01_TB_CIN:totals:Under:51: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | JAX ML (CLE@JAX) [adj: none] | 2026-W01:2026_01_CLE_JAX:h2h:JAX:: | ML-fav | -360 | BetUS | 76.7% | 76.7% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CLE@JAX Under 40.5 [adj: none] | 2026-W01:2026_01_CLE_JAX:totals:Under:40.5: | total | -104 | FanDuel | 49.7% | 49.7% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DET ML (NO@DET) [adj: none] | 2026-W01:2026_01_NO_DET:h2h:DET:: | ML-fav | -325 | DraftKings | 74.0% | 74.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NO@DET Under 49.5 [adj: none] | 2026-W01:2026_01_NO_DET:totals:Under:49.5: | total | -110 | Bovada | 50.9% | 50.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | TEN ML (NYJ@TEN) [adj: none] | 2026-W01:2026_01_NYJ_TEN:h2h:TEN:: | ML-fav | -138 | FanDuel | 57.1% | 57.1% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | NYJ@TEN Under 38.5 [adj: none] | 2026-W01:2026_01_NYJ_TEN:totals:Under:38.5: | total | -104 | Caesars | 49.3% | 49.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LAC ML (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:h2h:LAC:: | ML-fav | -500 | BetRivers | 82.2% | 82.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | ARI@LAC Under 46 [adj: none] | 2026-W01:2026_01_ARI_LAC:totals:Under:46: | total | -108 | Caesars | 50.3% | 50.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | MIN ML (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:h2h:MIN:: | ML-fav | -105 | DraftKings | 50.6% | 50.6% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | GB@MIN Under 45 [adj: none] | 2026-W01:2026_01_GB_MIN:totals:Under:45: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LV ML (MIA@LV) [adj: none] | 2026-W01:2026_01_MIA_LV:h2h:LV:: | ML-fav | -190 | BetUS | 64.3% | 64.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | MIA@LV Under 40.5 [adj: none] | 2026-W01:2026_01_MIA_LV:totals:Under:40.5: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | PHI ML (WAS@PHI) [adj: none] | 2026-W01:2026_01_WAS_PHI:h2h:PHI:: | ML-fav | -215 | BetUS | 67.0% | 67.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | WAS@PHI Under 47.5 [adj: none] | 2026-W01:2026_01_WAS_PHI:totals:Under:47.5: | total | -105 | FanDuel | 50.4% | 50.4% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DAL ML (DAL@NYG) [adj: none] | 2026-W01:2026_01_DAL_NYG:h2h:DAL:: | ML-fav | -145 | BetOnline.ag | 58.2% | 58.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DAL@NYG Under 48.5 [adj: none] | 2026-W01:2026_01_DAL_NYG:totals:Under:48.5: | total | -109 | Caesars | 50.5% | 50.5% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | KC ML (DEN@KC) [adj: none] | 2026-W01:2026_01_DEN_KC:h2h:KC:: | ML-fav | -148 | LowVig.ag | 58.5% | 58.5% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DEN@KC Under 43.5 [adj: none] | 2026-W01:2026_01_DEN_KC:totals:Under:43.5: | total | -110 | BetRivers | 50.7% | 50.7% | +0.0 | scan | TBD | N | — | S |
+
 ### Played-ticket record (parlays)
 
 | Week | Ticket | Odds | Stake | Return | P-L | Result |

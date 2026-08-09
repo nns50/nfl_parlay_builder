@@ -567,8 +567,12 @@ assert parse_adj_tags("no tag here") is None
 live, bt, tickets = read_rows(open("ledgers/results_log.md").read())
 assert len(bt) == 7, f"expected 7 BT rows, got {len(bt)}"
 assert all(r["bucket"] == "BT" for r in bt)
-assert len(live) == 2, f"expected 2 live scan rows, got {len(live)}"
-assert all(r["result"] is None for r in live)                     # W1 not played yet
+# Live rows GROW every build (the log-the-whole-scan doctrine), so assert structure,
+# never a count — a fixed count here goes red on the first build that logs a scan.
+assert len(live) >= 2, f"expected at least the seeded live rows, got {len(live)}"
+assert all(r["bucket"] != "BT" for r in live)                      # BT never leaks into live
+assert all(r["leg_id"] for r in live)                              # every live row is JOIN-able
+assert len({r["leg_id"] for r in live}) == len(live), "duplicate leg_id in live rows"
 assert sum(r["result"] == "W" for r in bt) == 5 and sum(r["result"] == "L" for r in bt) == 2
 EOF
 

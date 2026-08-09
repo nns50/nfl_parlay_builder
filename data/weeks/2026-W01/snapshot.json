@@ -252,12 +252,6 @@
    "p_plays": 0.0,
    "team": "JAX"
   },
-  "00-0036711": {
-   "designation": "IR",
-   "name": "Charles Snowden",
-   "p_plays": 0.0,
-   "team": "DAL"
-  },
   "00-0036902": {
    "designation": "OUT",
    "name": "Joseph Ossai",
@@ -630,12 +624,6 @@
    "p_plays": 0.0,
    "team": "MIA"
   },
-  "00-0039620": {
-   "designation": "IR",
-   "name": "Rico Payton",
-   "p_plays": 0.0,
-   "team": "NYG"
-  },
   "00-0039623": {
    "designation": "OUT",
    "name": "Mason Tipton",
@@ -822,6 +810,12 @@
    "p_plays": 0.75,
    "team": "CIN"
   },
+  "00-0040765": {
+   "designation": "QUESTIONABLE",
+   "name": "Valentin Senn",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
   "00-0040770": {
    "designation": "OUT_ROSTER(RES)",
    "name": "Ajani Carter",
@@ -947,12 +941,6 @@
    "name": "Jimmy Kibble",
    "p_plays": 0.0,
    "team": "NE"
-  },
-  "00-0041328": {
-   "designation": "OUT",
-   "name": "Zxavian Harris",
-   "p_plays": 0.0,
-   "team": "NO"
   },
   "00-0041360": {
    "designation": "IR",
@@ -1158,7 +1146,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 3.0,
-   "total_line": 42.5
+   "total_line": 41.5
   },
   "2026_01_BAL_IND": {
    "away": "BAL",
@@ -1330,7 +1318,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-08T20:22:02Z",
+ "taken_at": "2026-08-09T01:28:39Z",
  "week": 1,
  "wind": {}
 }
