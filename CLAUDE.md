@@ -177,8 +177,13 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   that no settings allowlist suppresses (confirmed runs 1-4). A scheduled run's touchpoint
   = `PushNotification` (core tool, promptless) + the complete report as the run's FINAL
   session message — the routine-level completion email/push/Slack (enabled on all four
-  routines) deliver that message. Gmail drafts to **realityremixed125@gmail.com** are
-  created only from interactive sessions, where a human is present.
+  routines) deliver that message.
+- **Per-run Gmail drafts to realityremixed125@gmail.com come from the MAILER routines**
+  (wired 2026-08-09): five self-bound triggers on the orchestrating interactive session —
+  where Gmail draft-creation is proven dialog-free — fire ~35-40min after each run slot
+  (Tue/Thu 14:40Z; Fri 21:40Z; Sun 16:10/20:10Z; Mon 00:10Z; Mon/Thu 23:40Z), read the
+  newest `## Run` section from `builds/` on origin/main, and create the draft. They also
+  sweep-fold any outcome branch that failed to reach main. No new run → silent no-op.
 
 ## Git workflow (current phase)
 
