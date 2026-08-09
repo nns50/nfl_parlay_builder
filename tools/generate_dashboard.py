@@ -277,6 +277,7 @@ tr:hover td{background:rgba(233,164,22,.05)}
 <div class="card"><h2>This week's board (newest run)</h2>__WEEKBOARD__</div>
 <div class="card"><h2>Calibration (played legs vs TrueP band)</h2><div class="chart"><canvas id="cal"></canvas></div>
 <div class="note">bars = actual hit%; line = perfect calibration. Bands need n≥20-30 before they mean anything.</div></div>
+<div class="card"><h2>Streaks &amp; the $10 ladder</h2>__STREAKS__</div>
 <div class="card"><h2>Cumulative P/L (real stakes)</h2><div class="chart"><canvas id="pl"></canvas></div>
 <p class="note">Only legs carrying a stake from ledgers/played.md. An assumed flat-1u curve is exactly the fake number that file replaces.</p></div>
 <div class="card"><h2>Bankroll ladder ($10 rollover)</h2><div class="chart"><canvas id="br"></canvas></div></div>
@@ -415,20 +416,93 @@ def pl_curve(live):
     return {"labels": labels, "vals": vals}
 
 
+# bankroll row: | Attempt | Week | Roll | Bal before | Bet | TrueP | Result | Bal after | Note |
+BR = {"attempt": 0, "week": 1, "roll": 2, "before": 3, "bet": 4, "truep": 5,
+      "result": 6, "after": 7}
+
+
 def bankroll_curve(rolls):
-    """The $10 rollover ladder as a curve (MLB's bankroll panel, NFL ledger)."""
+    """The $10 rollover ladder as a curve. Reads the Balance-after COLUMN explicitly —
+    scanning for 'the last number in the row' would happily pick up a stray figure in
+    the Note cell."""
     labels, vals = [], []
     for c in rolls:
-        bal = None
-        for cell in reversed(c):
-            m = re.search(r"\$?\s*(\d+(?:\.\d+)?)", cell or "")
-            if m:
-                bal = float(m.group(1))
-                break
-        if bal is not None:
-            labels.append(c[0])
-            vals.append(bal)
+        if len(c) <= BR["after"]:
+            continue
+        m = re.search(r"(\d+(?:\.\d+)?)", (c[BR["after"]] or "").replace("$", ""))
+        if m:
+            labels.append(f"A{c[BR['attempt']]}·R{c[BR['roll']]}")
+            vals.append(float(m.group(1)))
     return {"labels": labels, "vals": vals}
+
+
+def streaks(live):
+    """Current / longest runs over DECIDED legs, oldest→newest. Push breaks nothing —
+    it is not a loss, so it is skipped rather than ending a run.
+    → {'current': signed int, 'best_w': int, 'best_l': int, 'last': 'W'|'L'|None}"""
+    chron = [r for r in live if r["result"] in ("W", "L")]
+    chron.sort(key=lambda r: (r["week"], r["leg_id"]))
+    if not chron:
+        return {"current": 0, "best_w": 0, "best_l": 0, "last": None}
+    last = chron[-1]["result"]
+    cur = 0
+    for r in reversed(chron):
+        if r["result"] != last:
+            break
+        cur += 1
+    best_w = best_l = rw = rl = 0
+    for r in chron:
+        rw = rw + 1 if r["result"] == "W" else 0
+        rl = rl + 1 if r["result"] == "L" else 0
+        best_w, best_l = max(best_w, rw), max(best_l, rl)
+    return {"current": cur if last == "W" else -cur,
+            "best_w": best_w, "best_l": best_l, "last": last}
+
+
+def ladder_state(rolls):
+    """The $10 ladder's live state. NOT decorative: doctrine says 4 CONSECUTIVE WINS →
+    STOP & WITHDRAW, and any loss restarts at $10. That rule currently depends on a human
+    remembering, so compute it and let the UI shout."""
+    st = {"attempt": None, "wins": 0, "balance": 10.0, "stop": False, "rolls": len(rolls)}
+    if not rolls:
+        return st
+    cur_attempt = rolls[-1][BR["attempt"]]
+    st["attempt"] = cur_attempt
+    for c in rolls:
+        if len(c) <= BR["after"] or c[BR["attempt"]] != cur_attempt:
+            continue
+        res = (c[BR["result"]] or "").upper()
+        m = re.search(r"(\d+(?:\.\d+)?)", (c[BR["after"]] or "").replace("$", ""))
+        if m:
+            st["balance"] = float(m.group(1))
+        if res.startswith("W"):
+            st["wins"] += 1
+        elif res.startswith("L"):
+            st["wins"] = 0            # a loss ends the attempt; next roll restarts at $10
+    st["stop"] = st["wins"] >= 4
+    return st
+
+
+def streak_panel(live, rolls):
+    s, ld = streaks(live), ladder_state(rolls)
+    if s["last"] is None:
+        legs = "<p class='note'>no decided legs yet — streaks begin at Week 1</p>"
+    else:
+        cur = s["current"]
+        cls = "ok" if cur > 0 else "bad"
+        legs = (f"<div class='strip'>current <span class='pill {cls}'>"
+                f"{'W' if cur > 0 else 'L'}{abs(cur)}</span>"
+                f" · longest win run <b>{s['best_w']}</b>"
+                f" · longest losing run <b>{s['best_l']}</b></div>")
+    bar = (f"<div class='strip'>ladder attempt <b>{esc(str(ld['attempt'] or '—'))}</b>"
+           f" · consecutive wins <span class='pill "
+           f"{'ok' if ld['wins'] else 'na'}'>{ld['wins']}/4</span>"
+           f" · balance <b>${ld['balance']:.2f}</b></div>")
+    if ld["stop"]:
+        bar += ("<p class='note' style='color:#4ade80;font-weight:700'>"
+                "★ 4 CONSECUTIVE WINS — doctrine says STOP &amp; WITHDRAW; "
+                "the next roll restarts at $10.</p>")
+    return legs + bar
 
 
 def clv_vs_result(live):
@@ -512,6 +586,7 @@ def render():
             .replace("__OPEN__", str(s["open"]))
             .replace("__BT__", esc(s["bt"]))
             .replace("__BT_DETAIL__", esc(s["bt_detail"]))
+            .replace("__STREAKS__", streak_panel(live, rolls))
             .replace("__EDGEBUCKETS__", _table(
                 ["edge bucket", "n", "W-L", "hit %"],
                 [[b["label"], b["n"], f"{b['w']}-{b['l']}",

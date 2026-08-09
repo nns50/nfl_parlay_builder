@@ -892,6 +892,72 @@ for fn in (gd.edge_buckets, gd.type_breakdown, gd.pl_curve, gd.clv_vs_result):
 assert "no decided legs" in gd._table(["a"], [], "no decided legs yet")
 EOF
 
+# ── streaks + the $10 ladder STOP rule ──────────────────────────────────────
+pyblk "streaks: current/longest runs; ladder computes the 4-win STOP trigger" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+import generate_dashboard as gd
+
+def leg(res, i):
+    return dict(section="P", week="2026-W01", leg="x", leg_id=f"{i:03}", type="ML",
+                price="-110", stake=None, truep=50.0, starred=False, implp=50.0,
+                result=res, played=True, clv="", bucket="S", edge=None)
+
+# W W L W W W  → current +3, longest W 3, longest L 1
+s = gd.streaks([leg(r, i) for i, r in enumerate("WWLWWW")])
+assert (s["current"], s["best_w"], s["best_l"], s["last"]) == (3, 3, 1, "W"), s
+# trailing losses report a NEGATIVE current
+s2 = gd.streaks([leg(r, i) for i, r in enumerate("WWLL")])
+assert s2["current"] == -2 and s2["best_w"] == 2, s2
+# Push must not break a run (it is not a loss)
+s3 = gd.streaks([leg(r, i) for i, r in enumerate(["W", "Push", "W"])])
+assert s3["current"] == 2, s3
+assert gd.streaks([])["last"] is None                       # empty degrades, no crash
+
+# ladder: rows are | Attempt | Week | Roll | before | bet | TrueP | Result | after | note |
+def roll(att, n, res, after):
+    return [str(att), "2026-W0%d" % n, str(n), "10", "x", "60%", res, str(after), ""]
+ld = gd.ladder_state([roll(1, 1, "W", 18), roll(1, 2, "W", 33)])
+assert ld["wins"] == 2 and ld["balance"] == 33.0 and not ld["stop"], ld
+# FOUR consecutive wins must raise the STOP flag — this is doctrine, not decoration
+ld4 = gd.ladder_state([roll(1, i, "W", 10 * (i + 1)) for i in range(1, 5)])
+assert ld4["wins"] == 4 and ld4["stop"] is True, ld4
+# a loss resets the count inside the attempt
+ldl = gd.ladder_state([roll(2, 1, "W", 18), roll(2, 2, "L", 0), roll(2, 3, "W", 19)])
+assert ldl["wins"] == 1 and not ldl["stop"], ldl
+# only the CURRENT attempt counts — a finished 4-win attempt must not stick
+ldp = gd.ladder_state([roll(1, i, "W", 20) for i in range(1, 5)] + [roll(2, 5, "W", 18)])
+assert ldp["attempt"] == "2" and ldp["wins"] == 1 and not ldp["stop"], ldp
+assert gd.ladder_state([])["balance"] == 10.0
+EOF
+
+# ── shell lint: an unescaped $<digit> in an EXPANDED double-quoted string ───
+# session_start.sh once printed a header containing "$10"; bash expanded it as $1
+# followed by "0" and `set -u` aborted the whole digest at runtime. bash -n cannot see
+# this (it is valid syntax). The check must skip QUOTED heredoc bodies (<<'EOF'), whose
+# contents bash never expands — a naive grep flags those and is worse than no lint.
+pyblk "no unescaped \$NN currency in expanded double-quoted shell strings (\$10 trap)" <<'PYEOF_LINT'
+import glob, re, sys
+bad = []
+for path in sorted(glob.glob("tools/*.sh")):
+    delim = None
+    for n, line in enumerate(open(path, encoding="utf-8"), 1):
+        if delim is not None:                       # inside a heredoc body
+            if line.strip() == delim:
+                delim = None
+            continue
+        m = re.search(r"<<-?\s*'([A-Za-z_][A-Za-z0-9_]*)'", line)
+        if m:                                       # QUOTED heredoc → bash won't expand
+            delim = m.group(1)
+            continue
+        code = line.split("#", 1)[0] if not line.lstrip().startswith("#") else ""
+        for lit in re.findall(r'"((?:[^"\\]|\\.)*)"', code):
+            # TWO+ digits only: bash cannot read $10 as a positional parameter (that
+            # needs ${10}), so it is currency ~always. Bare $1-$9 are legitimate params.
+            if re.search(r"(?<!\\)\$[0-9]{2,}", lit):
+                bad.append(f"{path}:{n}: {lit[:70]}")
+assert not bad, "unescaped $<digit> in an expanded string:\n  " + "\n  ".join(bad)
+PYEOF_LINT
+
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
 if [[ "$FAIL" -eq 0 ]]; then

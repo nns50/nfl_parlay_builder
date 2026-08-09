@@ -135,6 +135,29 @@ EOF
   fi
 fi
 
+hdr '6b. Streaks + the $10 ladder (the 4-win STOP rule is doctrine, not a suggestion)'
+python3 - <<'PYSTREAK' | sed 's/^/  /'
+import sys
+sys.path.insert(0, "tools")
+try:
+    import generate_dashboard as gd
+    live, bt, tickets, builds, fades, rolls, health = gd.load()
+    s, ld = gd.streaks(live), gd.ladder_state(rolls)
+    if s["last"] is None:
+        print("legs: no decided legs yet — streaks begin at Week 1")
+    else:
+        c = s["current"]
+        print(f"legs: current {'W' if c > 0 else 'L'}{abs(c)} · "
+              f"longest win run {s['best_w']} · longest losing run {s['best_l']}")
+    print(f"ladder: attempt {ld['attempt'] or '—'} · consecutive wins {ld['wins']}/4 · "
+          f"balance ${ld['balance']:.2f}")
+    if ld["stop"]:
+        print("*** 4 CONSECUTIVE WINS — STOP & WITHDRAW. Do NOT roll again this week; "
+              "the next attempt restarts at $10. ***")
+except Exception as e:
+    print(f"(streaks unavailable: {e})")
+PYSTREAK
+
 hdr "7. PULSE — exposure governor (APPLY its actions in any build this session)"
 python3 tools/pulse.py 2>/dev/null | sed 's/^/  /' || echo "  (pulse failed — run manually)"
 

@@ -57,8 +57,8 @@ claims). MLB burn history does not port.**
   credits — the alarm, so it sits first), **Pipeline** (legs logged · decided · played ·
   staked · BT, plus the first date anything *can* settle — an empty ledger must read as
   EARLY, not BROKEN), **This week's board** (the newest `## Run` section rendered
-  mobile-readable), **Cumulative P/L** (real stakes only), **Bankroll ladder**, **Hit rate
-  by edge bucket**, **Bet-type breakdown**, **CLV vs results**, calibration + CLV-per-leg
+  mobile-readable), **Streaks & the $10 ladder**, **Cumulative P/L** (real stakes only),
+  **Bankroll ladder**, **Hit rate by edge bucket**, **Bet-type breakdown**, **CLV vs results**, calibration + CLV-per-leg
   charts, recent legs, BT rows, **Parlay tickets**, **Active fades**, **Run timeline**, and
   Builds · Fades · Bankroll. Regenerate it in every run and stage `docs/index.html` in the
   build commit; it only READS the ledgers.
@@ -75,6 +75,13 @@ claims). MLB burn history does not port.**
   inventing a "first drive" analog would manufacture doctrine this ledger has not earned.
   `kprice.py` is already covered by `propquote.py`, and `recheck.py` (SP-scratch snapshot →
   diff) by `weekcheck.py snap/diff`.
+- **Streaks are a RULE TRIGGER, not decoration.** `streaks()` reports the current run
+  (signed), longest win run and longest losing run over decided legs — a Push breaks
+  nothing, since it is not a loss. `ladder_state()` computes the $10 ladder's live state
+  and raises **STOP** at **4 consecutive wins within the current attempt**, which is the
+  ledger's own withdraw rule; a loss resets the count and a finished attempt never carries
+  over. It prints in `session_start.sh §6b` so a run sees it BEFORE picking the week's roll,
+  and shouts on the dashboard.
 - **Notifications are DIFF-FIRST**: open with what changed since the prior run section and
   say "no material change vs <run>" outright when nothing moved — runs 6-8 matched to the
   hundredth of a point, and an unscannable wall of repeated tables is how a real change
