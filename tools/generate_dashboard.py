@@ -54,7 +54,96 @@ def load():
             c = [x.strip() for x in ln.strip("|").split("|")]
             if len(c) >= 8 and re.match(r"^\d+$", c[0] or ""):
                 rolls.append(c)
-    return live, bt, tickets, builds, fades, rolls
+    health = []
+    hp = REPO / "ledgers" / "run_health.jsonl"
+    if hp.exists():
+        for ln in hp.read_text(encoding="utf-8").split("\n"):
+            ln = ln.strip()
+            if not ln:
+                continue
+            try:
+                health.append(json.loads(ln))
+            except json.JSONDecodeError:
+                continue          # one corrupt line must not blind the strip
+    return live, bt, tickets, builds, fades, rolls, health
+
+
+def latest_run_section():
+    """Newest '## Run' block of the newest build file → (title, body_lines). Pure-ish."""
+    files = sorted((REPO / "builds").glob("*-W*.md"))
+    if not files:
+        return None, []
+    txt = files[-1].read_text(encoding="utf-8").split("\n")
+    starts = [i for i, l in enumerate(txt) if l.startswith("## Run")]
+    if not starts:
+        return files[-1].name, []
+    return txt[starts[-1]].lstrip("# ").strip(), txt[starts[-1] + 1:]
+
+
+def health_strip(health):
+    """Last run's gates + channels. This is the panel that would have caught run 6's
+    silent Slack skip on day one instead of a day later."""
+    if not health:
+        return ("<p class='note'>no runs recorded yet — the next scheduled run writes "
+                "the first line via tools/run_health.py</p>")
+    r = health[-1]
+    def dot(v):
+        cls = {"ok": "ok", "SKIP": "warn", "FAILED": "bad"}.get(v, "na")
+        return f"<span class='pill {cls}'>{esc(str(v))}</span>"
+    st_ok = r.get("selftest_green")
+    st = (f"<span class='pill {'ok' if st_ok else 'bad'}'>"
+          f"{esc(r.get('selftest') or '?')}</span>")
+    fold = esc((r.get("fold") or "—")[:8])
+    return (
+        f"<p class='note' style='margin:0 0 8px'>last run <b>{esc(r.get('run_type') or '?')}"
+        f"</b> at {esc(r.get('at') or '?')} · verdict {esc(r.get('verdict') or '—')}</p>"
+        f"<div class='strip'>selftest {st} · fold <code>{fold}</code> · email {dot(r.get('email'))}"
+        f" · slack {dot(r.get('slack'))} · push {dot(r.get('push'))}"
+        f" · credits <b>{esc(str(r.get('credits') or '—'))}</b></div>")
+
+
+def health_timeline(health, limit=12):
+    if not health:
+        return "<p class='note'>none yet</p>"
+    rows = []
+    for r in reversed(health[-limit:]):
+        rows.append(
+            "<tr><td>{}</td><td>{}</td><td>{}</td><td><code>{}</code></td>"
+            "<td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>".format(
+                esc((r.get("at") or "")[:16]), esc(r.get("run_type") or "?"),
+                esc(r.get("selftest") or "?"), esc((r.get("fold") or "—")[:8]),
+                esc(str(r.get("email") or "—")), esc(str(r.get("slack") or "—")),
+                esc(str(r.get("push") or "—")), esc(str(r.get("credits") or "—")),
+                esc((r.get("verdict") or "")[:26])))
+    return ("<table><thead><tr><th>when</th><th>type</th><th>selftest</th><th>fold</th>"
+            "<th>email</th><th>slack</th><th>push</th><th>credits</th><th>verdict</th>"
+            "</tr></thead><tbody>" + "".join(rows) + "</tbody></table>")
+
+
+def pipeline_panel(live, bt):
+    """An empty ledger should read as EARLY, not BROKEN. Says what is pending and when
+    it can possibly settle."""
+    decided = sum(r["result"] in ("W", "L", "Push") for r in live)
+    played = sum(1 for r in live if r["played"])
+    staked = sum(1 for r in live if r.get("stake") is not None)
+    first = "—"
+    try:
+        import sqlite3
+        db = os.environ.get("NFL_DB", str(REPO / "data" / "context.db"))
+        con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        row = con.execute("SELECT MIN(kickoff_utc) FROM games WHERE game_type='REG' "
+                          "AND kickoff_utc > strftime('%Y-%m-%dT%H:%M:%SZ','now')"
+                          ).fetchone()
+        first = (row[0] or "—")[:10] if row else "—"
+    except Exception:
+        pass
+    items = [("legs logged", len(live)), ("decided", decided), ("played", played),
+             ("with a real stake", staked), ("backtest rows", len(bt))]
+    cells = "".join(f"<div class='kpi'><b>{v}</b><span>{esc(k)}</span></div>"
+                    for k, v in items)
+    note = ("Calibration needs decided legs. nflverse carries no preseason games, so "
+            f"nothing can settle before the first REG kickoff ({esc(first)}).")
+    return f"<div class='kpis'>{cells}</div><p class='note'>{note}</p>"
 
 
 def summarize(live, bt):
@@ -160,6 +249,16 @@ tr:hover td{background:rgba(233,164,22,.05)}
 .pos{color:var(--pos);font-weight:600}.neg{color:var(--neg);font-weight:600}
 .note{color:var(--muted);font-size:11.5px;margin-top:8px}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.hero::after{display:none}}
+.pill{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700}
+.pill.ok{background:#123d24;color:#4ade80}.pill.warn{background:#4a3410;color:#fbbf24}
+.pill.bad{background:#4a1520;color:#f87171}.pill.na{background:#26262b;color:#9ca3af}
+.strip{font-size:13px;line-height:2}
+.kpis{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+.kpi{background:#1b1b20;border-radius:8px;padding:8px 12px;min-width:84px}
+.kpi b{display:block;font-size:19px}.kpi span{font-size:11px;color:#9ca3af}
+.sub{font-size:12px;color:#cbd5e1;font-weight:700;margin:10px 0 4px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll table{min-width:100%;white-space:nowrap}
 </style></head><body><div class="wrap">
 <header class="hero"><h1>🏈 NFL Parlay Builder <span class="badge __FRESH_CLS__">__FRESH_TXT__</span></h1>
 <div class="sub">read-only measurement dashboard · generated __UPDATED__ · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div></header>
@@ -173,6 +272,9 @@ tr:hover td{background:rgba(233,164,22,.05)}
 </div>
 
 <div class="grid">
+<div class="card"><h2>Run health — last scheduled run</h2>__HEALTH__</div>
+<div class="card"><h2>Pipeline</h2>__PIPELINE__</div>
+<div class="card"><h2>This week's board (newest run)</h2>__WEEKBOARD__</div>
 <div class="card"><h2>Calibration (played legs vs TrueP band)</h2><div class="chart"><canvas id="cal"></canvas></div>
 <div class="note">bars = actual hit%; line = perfect calibration. Bands need n≥20-30 before they mean anything.</div></div>
 <div class="card"><h2>CLV per leg (closing no-vig − bet no-vig)</h2><div class="chart"><canvas id="clv"></canvas></div>
@@ -187,6 +289,7 @@ __LEGS__</table></div>
 <div class="card"><h2>Backtest / pipeline-validation rows (BT — never in live stats)</h2>
 <table><tr><th>Week</th><th>Leg</th><th>Type</th><th>TrueP</th><th>CLV</th><th>Result</th></tr>
 __BT_LEGS__</table></div>
+<div class="card" style="margin-bottom:14px"><h2>Run timeline</h2><div class="scroll">__TIMELINE__</div></div>
 <div class="card"><h2>Builds · Fades · Bankroll</h2>
 <p class="note" style="margin:0 0 6px"><b>Builds:</b></p>__BUILDS__
 <p class="note" style="margin:10px 0 6px"><b>Fade registry:</b> __FADES__</p>
@@ -233,8 +336,42 @@ def clv_chart(rows):
     return {"labels": labels, "vals": vals, "cols": cols}
 
 
+def week_board(title, body):
+    """The newest run section, rendered readable on a phone: keep tables + bold lines,
+    drop the rest. The point is checking the board without digging through email."""
+    if not title:
+        return "<p class='note'>no build file yet</p>"
+    out, tbl = [f"<p class='note' style='margin:0 0 8px'><b>{esc(title)}</b></p>"], []
+    for ln in body[:220]:
+        t = ln.rstrip()
+        if t.startswith("## "):
+            break                                  # next run section — stop
+        if t.startswith("|"):
+            tbl.append([c.strip() for c in t.strip("|").split("|")])
+            continue
+        if tbl:
+            out.append(_tbl(tbl)); tbl = []
+        if t.startswith("### "):
+            out.append(f"<p class='sub'>{esc(t[4:])}</p>")
+        elif t.startswith("**") or t.startswith("- **"):
+            out.append(f"<p class='note'>{esc(t.replace('**',''))[:220]}</p>")
+    if tbl:
+        out.append(_tbl(tbl))
+    return "".join(out)
+
+
+def _tbl(rows):
+    rows = [r for r in rows if not all(set(c) <= set("-: ") for c in r)]
+    if not rows:
+        return ""
+    head = "".join(f"<th>{esc(c)}</th>" for c in rows[0])
+    body = "".join("<tr>" + "".join(f"<td>{esc(c)[:60]}</td>" for c in r) + "</tr>"
+                   for r in rows[1:])
+    return f"<div class='scroll'><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>"
+
+
 def render():
-    live, bt, tickets, builds, fades, rolls = load()
+    live, bt, tickets, builds, fades, rolls, health = load()
     s = summarize(live, bt)
     bands = calib_bands(live)
     weeks = sorted({r["week"] for r in live + bt})
@@ -249,6 +386,10 @@ def render():
             .replace("__OPEN__", str(s["open"]))
             .replace("__BT__", esc(s["bt"]))
             .replace("__BT_DETAIL__", esc(s["bt_detail"]))
+            .replace("__HEALTH__", health_strip(health))
+            .replace("__TIMELINE__", health_timeline(health))
+            .replace("__PIPELINE__", pipeline_panel(live, bt))
+            .replace("__WEEKBOARD__", week_board(*latest_run_section()))
             .replace("__LEGS__", leg_table(live))
             .replace("__BT_LEGS__", leg_table(bt))
             .replace("__BUILDS__", "".join(
@@ -267,7 +408,7 @@ def render():
 
 
 def selftest():
-    live, bt, tickets, builds, fades, rolls = load()
+    live, bt, tickets, builds, fades, rolls, health = load()
     checks = [
         ("ledger parses ≥2 live rows", len(live) >= 2),
         ("ledger parses ≥7 BT rows", len(bt) >= 7),

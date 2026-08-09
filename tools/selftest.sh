@@ -761,6 +761,89 @@ for close, logged in ((79.1, 50.0), (81.4, 60.0), (85.0, 66.0), (84.3, 40.0)):
 assert verdict_from_close(None, 55.0) is None and verdict_from_close(65.0, None) is None
 EOF
 
+# ── M9: Stake column, played reconcile, run health ──────────────────────────
+pyblk "legs.cell()/parse_stake: legacy rows without a Stake cell still parse" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from legs import cell, is_leg_row, parse_stake, split_row
+new = "| 2026-W01 | x | 2026-W01:2026_01_NE_SEA:h2h:SEA:: | ML | -190 | B | 64.3% | 64.3% | +0.0 | scan | TBD | Y | = | S | 25 |"
+old = "| 2026-W01 | x | 2026-W01:2026_01_NE_SEA:h2h:SEA:: | ML | -190 | B | 64.3% | 64.3% | +0.0 | scan | TBD | N | = | S |"
+assert is_leg_row(new) and is_leg_row(old), "BOTH shapes must parse — requiring Stake would silently drop legacy rows"
+assert cell(split_row(new), "stake") == "25" and parse_stake(split_row(new)) == 25.0
+assert cell(split_row(old), "stake") == "" and parse_stake(split_row(old)) is None
+assert cell(split_row(new), "bucket") == "S", "adding Stake must not shift earlier indexes"
+for raw, want in (("$25", 25.0), ("2u", 2.0), ("", None), ("—", None), ("abc", None)):
+    row = new.replace("| 25 |", f"| {raw} |")
+    assert parse_stake(split_row(row)) == want, (raw, want)
+EOF
+
+pyblk "reconcile_played: parses bets, rejects bad leg_id / dupes / non-numeric stakes" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+from reconcile_played import parse_played
+good = """## Bets
+2026-W01:2026_01_NE_SEA:h2h:SEA:: | 25
+2026-W01:2026_01_NE_SEA:totals:Under:44.5: | $10   # comment ignored
+"""
+e, err = parse_played(good)
+assert not err and len(e) == 2 and e[0][1] == 25.0 and e[1][1] == 10.0, (e, err)
+# lines OUTSIDE '## Bets' must be ignored (the file's own docs contain examples)
+assert parse_played("2026-W01:2026_01_NE_SEA:h2h:SEA:: | 25")[0] == []
+for bad in ("## Bets\nnot-a-leg-id | 25\n",
+            "## Bets\n2026-W01:2026_01_NE_SEA:h2h:SEA:: | abc\n",
+            "## Bets\n2026-W01:2026_01_NE_SEA:h2h:SEA:: | -5\n",
+            "## Bets\n2026-W01:2026_01_NE_SEA:h2h:SEA:: | 5\n2026-W01:2026_01_NE_SEA:h2h:SEA:: | 7\n"):
+    assert parse_played(bad)[1], f"must ERROR, not silently skip: {bad!r}"
+EOF
+
+pyblk "run_health: records, validates channels, survives a corrupt line" <<'EOF'
+import os, subprocess, sys, tempfile
+sys.path.insert(0, "tools")
+d = tempfile.mkdtemp(); hp = os.path.join(d, "h.jsonl")
+env = dict(os.environ, NFL_HEALTH=hp)
+r = subprocess.run([sys.executable, "tools/run_health.py", "record", "--run-type", "build",
+                    "--selftest", "84/84", "--fold", "abc1234", "--email", "ok",
+                    "--slack", "SKIP", "--push", "ok", "--credits", "19392"],
+                   capture_output=True, text=True, env=env)
+assert r.returncode == 0 and "slack=SKIP" in r.stdout, r.stdout + r.stderr
+bad = subprocess.run([sys.executable, "tools/run_health.py", "record", "--slack", "maybe"],
+                     capture_output=True, text=True, env=env)
+assert bad.returncode != 0, "an invalid channel value must fail loudly"
+open(hp, "a").write("{ not json\n")          # a corrupt line must not blind the record
+import run_health
+run_health.HEALTH = hp
+rows = run_health.load()
+assert len(rows) == 1 and rows[0]["selftest_green"] is True and rows[0]["slack"] == "SKIP"
+EOF
+
+pyblk "calib §3b: real-stake ROI arithmetic (W pays the price, L loses stake, Push flat)" <<'EOF'
+import subprocess, sys, tempfile, os
+hdr = ("## Played legs\n\n| Week | Leg | leg_id | Type | Price | Book | TrueP | ImplP "
+       "| Edge | Grade | Result | Played | CLV | Bucket | Stake |\n"
+       "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n")
+def row(gid, price, res, stake):
+    return (f"| 2025-W18 | x | 2025-W18:{gid}:h2h:ATL:: | ML | {price} | B | 50.0% "
+            f"| 50.0% | +0.0 | g | **{res}** | Y | = | S | {stake} |\n")
+# +100 win on 10 → +10 ; -200 loss of 20 → -20 ; push on 50 → 0. Staked 80, P/L -10.
+led = hdr + row("g1", "+100", "W", 10) + row("g2", "-200", "L", 20) + row("g3", "-110", "Push", 50)
+f = tempfile.NamedTemporaryFile("w", suffix=".md", delete=False); f.write(led); f.close()
+out = subprocess.run([sys.executable, "tools/calib.py"], capture_output=True, text=True,
+                     env=dict(os.environ, NFL_LEDGER=f.name)).stdout
+os.unlink(f.name)
+line = [l for l in out.split("\n") if "staked" in l and "ROI" in l and "legs" in l]
+assert line, out
+assert "staked 80.00" in line[0] and "P/L -10.00" in line[0] and "-12.5%" in line[0], line[0]
+EOF
+
+pyblk "dashboard: health strip / pipeline / week board / timeline all render" <<'EOF'
+import sys; sys.path.insert(0, "tools")
+import generate_dashboard as gd
+page = gd.render()
+for needle in ("Run health", "Pipeline", "This week's board", "Run timeline"):
+    assert needle in page, needle
+# an empty health record must degrade to a note, never crash the page
+assert "no runs recorded yet" in gd.health_strip([])
+assert "none yet" in gd.health_timeline([])
+EOF
+
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
 if [[ "$FAIL" -eq 0 ]]; then

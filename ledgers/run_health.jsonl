@@ -1,0 +1,3 @@
+{"at":"2026-08-09T15:51:00Z","run_type":"build","season":"2026","week":"1","verdict":"NO BET","selftest":"77/77","selftest_green":true,"fold":"c4d5791","email":"n/a","slack":"SKIP","push":"ok","credits":19432,"note":"Slack skipped: webhook not yet in env"}
+{"at":"2026-08-09T16:31:00Z","run_type":"build","season":"2026","week":"1","verdict":"NO BET","selftest":"77/77","selftest_green":true,"fold":"2c47f1d","email":"FAILED","slack":"SKIP","push":"ok","credits":19428,"note":"Gmail dialog stalled the draft (agent-minted Routine)"}
+{"at":"2026-08-09T17:07:00Z","run_type":"build","season":"2026","week":"1","verdict":"NO BET","selftest":"79/79","selftest_green":true,"fold":"0b1d9ff","email":"ok","slack":"ok","push":"ok","credits":19428,"note":null}

@@ -50,6 +50,30 @@ if   (( REM < 20 ));   then echo "  ODDS_MODE=low_quota — no API spends this s
 elif (( REM >= 5000 )); then echo "  ODDS_MODE=rich — props tooling unlocked."
 else echo "  ODDS_MODE=standard — featured markets only; hand-price props."
 fi
+# RUNWAY (2026-08-09). The key is SHARED with the MLB app and props get expensive once
+# markets post, so "credits remaining" alone hides the wall. Project it: burn/run comes
+# from run_health.jsonl when it has history, else the observed 3-6 cr featured baseline.
+python3 - "$REM" <<'PYRUN' | sed 's/^/  /'
+import json, os, sys
+rem = int(sys.argv[1] or 0)
+hist = os.path.join("ledgers", "run_health.jsonl")
+per, src = 5.0, "baseline (featured board ~3-6 cr/run)"
+try:
+    cr = [json.loads(l)["credits"] for l in open(hist) if l.strip()]
+    cr = [c for c in cr if isinstance(c, int)]
+    drops = [a - b for a, b in zip(cr, cr[1:]) if 0 < a - b < 2000]
+    if len(drops) >= 3:
+        per, src = sum(drops) / len(drops), f"measured over {len(drops)} runs"
+except Exception:
+    pass
+RUNS_WK = 8                       # 4 Routines, 8 firings/week
+wk = rem / (per * RUNS_WK) if per else 0
+print(f"RUNWAY: ~{per:.1f} cr/run ({src}) x {RUNS_WK} runs/wk "
+      f"= ~{per*RUNS_WK:.0f} cr/wk -> ~{wk:.0f} weeks of headroom")
+if wk < 22:
+    print(f"  ! a full REG season is 18 weeks + playoffs; {wk:.0f} weeks is TIGHT — "
+          "props will raise burn, so plan the quota before Week 1")
+PYRUN
 
 hdr "2b. Notification channels (this session can only deliver what is wired HERE)"
 if [[ -n "${SLACK_WEBHOOK_URL:-}" ]]; then

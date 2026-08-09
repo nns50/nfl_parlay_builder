@@ -28,8 +28,30 @@ import re
 # pipe-split indexes for a ledger row line ("|" col0 empty | Week=1 | ... )
 COL = {"week": 1, "leg": 2, "leg_id": 3, "type": 4, "price": 5, "book": 6,
        "truep": 7, "implp": 8, "edge": 9, "grade": 10, "result": 11,
-       "played": 12, "clv": 13, "bucket": 14}
-N_COLS = 15   # includes leading empty + trailing empty after last pipe
+       "played": 12, "clv": 13, "bucket": 14, "stake": 15}
+# Minimum cells for a row to COUNT as a leg row. Deliberately 15 (i.e. through
+# "bucket") and NOT 16: Stake was appended 2026-08-09, and a hand-written row that
+# omits it must still parse. Requiring it would silently drop such rows — the exact
+# failure class calib.py's parser guard exists to catch. Read late columns with
+# cell() below, never c[COL[...]] directly.
+N_COLS = 15
+
+
+def cell(cells, name):
+    """Safe read of a possibly-absent trailing column (e.g. stake on legacy rows)."""
+    i = COL[name]
+    return cells[i].strip() if i < len(cells) else ""
+
+
+def parse_stake(cells):
+    """Stake cell → float units/dollars, or None. Accepts '25', '$25', '2u', ''."""
+    raw = cell(cells, "stake").replace("$", "").replace("u", "").strip()
+    if not raw or raw in ("—", "-"):
+        return None
+    try:
+        return float(raw)
+    except ValueError:
+        return None
 
 # market key → how it settles from the store
 #   ("game",)                     : from games scores (h2h/spreads/totals/team_total)

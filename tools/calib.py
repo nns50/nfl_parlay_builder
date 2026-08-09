@@ -26,7 +26,7 @@ from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from legs import COL, is_leg_row, parse_leg_id, split_row  # noqa: E402
+from legs import COL, is_leg_row, parse_leg_id, parse_stake, split_row  # noqa: E402
 
 REPO = os.path.dirname(HERE)
 LEDGER = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1].endswith(".md") else \
@@ -123,6 +123,7 @@ def read_rows(text):
             ordered.append({
                 "section": cur, "week": c[COL["week"]], "leg": c[COL["leg"]],
                 "leg_id": c[COL["leg_id"]], "type": c[COL["type"]],
+                "price": c[COL["price"]], "stake": parse_stake(c),
                 "truep": truep, "starred": starred, "implp": implp,
                 "result": parse_result(c[COL["result"]]),
                 "played": c[COL["played"]].upper() == "Y",
@@ -277,6 +278,46 @@ def main():
               f"P/L {pl:+.2f}u  ROI {pl/stake*100 if stake else 0:+.1f}%")
     else:
         print("   (no decided ticket rows)")
+
+    # §3b per-leg REAL-STAKE ROI. Doctrine: ROI is fiction until actual stakes are
+    # logged (ledgers/played.md → reconcile_played.py). Assumed-flat-1u ROI is exactly
+    # the fake number this section exists to replace, so legs WITHOUT a stake are
+    # excluded and counted separately rather than silently imputed.
+    def dec(american):
+        a = parse_num(american)
+        if a is None or a == 0:
+            return None
+        return 1 + (a / 100.0 if a > 0 else 100.0 / -a)
+
+    staked = pl_legs = 0.0
+    n_w = n_l = n_p = 0
+    unstaked = [r for r in live
+                if r["played"] and r["result"] in ("W", "L", "Push")
+                and r["stake"] is None]
+    for r in live:
+        if not r["played"] or r["result"] not in ("W", "L", "Push"):
+            continue
+        st, d = r["stake"], dec(r["price"])
+        if st is None or d is None:
+            continue
+        staked += st
+        if r["result"] == "W":
+            pl_legs += st * (d - 1); n_w += 1
+        elif r["result"] == "L":
+            pl_legs -= st; n_l += 1
+        else:
+            n_p += 1                      # Push: stake returned, P/L 0
+    print("\n-- 3b. Played SINGLE-LEG real-stake ROI --")
+    if staked:
+        print(f"   legs {n_w + n_l + n_p}  {n_w}-{n_l}"
+              f"{f' +{n_p}P' if n_p else ''}  staked {staked:.2f}  "
+              f"P/L {pl_legs:+.2f}  ROI {pl_legs / staked * 100:+.1f}%")
+    else:
+        print("   (no decided played legs carrying a real stake — log bets in "
+              "ledgers/played.md)")
+    if unstaked:
+        print(f"   ⚠ {len(unstaked)} decided played leg(s) have NO stake — excluded. "
+              f"ROI above covers only staked legs.")
 
     # §4 recommended-not-played
     rec = [r for r in live if r["section"] == "R" and not r["played"]

@@ -52,6 +52,19 @@ claims). MLB burn history does not port.**
 - `tools/clv_backfill.py <S> <W> [--apply]` — historical closes for missed windows
   (30 cr/snapshot; windows cluster; plan-mode default; rich-tier + --max-credits gated;
   ' bf' provenance marker; validated live against real 2025 closes).
+- **Dashboard (`tools/generate_dashboard.py` → `docs/index.html`, Pages from `main`).**
+  Panels, in page order: **Run health** (last run's selftest / fold / email / Slack / push /
+  credits — the alarm, so it sits first), **Pipeline** (legs logged · decided · played ·
+  staked · BT, plus the first date anything *can* settle — an empty ledger must read as
+  EARLY, not BROKEN), **This week's board** (the newest `## Run` section rendered
+  mobile-readable, so the board is checkable without digging through email), calibration +
+  CLV charts, recent legs, BT rows, **Run timeline** (last 12 runs from
+  `run_health.jsonl`), and Builds · Fades · Bankroll. Regenerate it in every run and stage
+  `docs/index.html` in the build commit; it only READS the ledgers.
+- **Notifications are DIFF-FIRST**: open with what changed since the prior run section and
+  say "no material change vs <run>" outright when nothing moved — runs 6-8 matched to the
+  hundredth of a point, and an unscannable wall of repeated tables is how a real change
+  gets missed.
 
 ## Repo map
 
@@ -177,6 +190,37 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
   actually drops windows — NFL kickoffs cluster, so one snapshot covers a whole window.)
 - **`builds/<season>-W<week>.md`** — append-only per-run build file (gates → scan → tiers →
   locks by window → results). `ledgers/bankroll.md` — the $10 ladder, one roll per week.
+
+### Real stakes — `ledgers/played.md` → `tools/reconcile_played.py` (M9, 2026-08-09)
+
+Every logged row is a leg the system **recommended**; nothing recorded which ones were
+actually taken. The schema now carries a **`Stake` column** (appended at index 15 so no
+earlier index shifted; `legs.cell()`/`parse_stake()` read it, and a row WITHOUT the cell
+still parses — requiring it would silently drop legacy rows, the exact failure the parser
+guard exists to catch).
+
+**The loop:** the owner appends `<leg_id> | <stake>` lines to `ledgers/played.md` from a
+phone via GitHub's web UI between runs; **every run starts by running
+`reconcile_played.py --apply`**, which sets `Played=Y` + `Stake` on the matching rows.
+Idempotent, so re-running never double-counts. A leg_id that matches nothing, a duplicate,
+or a non-numeric stake is a **hard error that refuses to write** — a typo'd bet that
+silently vanishes is worse than a stop. `calib.py §3b` then reports **real-stake single-leg
+ROI**; legs without a stake are excluded and counted, never imputed at a flat 1u (assumed
+ROI is precisely the fake number this replaces).
+
+### Run health — `ledgers/run_health.jsonl` → `tools/run_health.py`
+
+Run 6 delivered no Slack message and reported success: `notify_slack.sh` hit its
+"secret unset → SKIP, exit 0" branch and nothing recorded it, so the failure stayed
+invisible for a day. Every run now ends with `run_health.py record` — selftest N/N, fold
+SHA, per-channel `ok|SKIP|FAILED|n/a`, credits, verdict — appended as one JSON line and
+rendered as the dashboard's health strip. **`SKIP` (never wired) and `FAILED` (wired,
+errored) are different problems; keep them apart.**
+
+`session_start.sh` §2 also projects **credit runway** (burn/run measured from
+`run_health.jsonl` once it has ≥3 runs, else the 3-6 cr featured baseline × 8 runs/week),
+and warns when the headroom is under ~22 weeks — the key is shared with the MLB app and
+props raise burn sharply once markets post.
 
 ## Betting doctrine seed
 
