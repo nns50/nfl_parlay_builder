@@ -1025,6 +1025,40 @@ guessed = [(r["a"], r["b"]) for r in cov if not r["meas"]]
 assert all(a == b for a, b in guessed), f"unmeasured non-blocked pair: {guessed}"
 EOF
 
+# ── dashboard CSS hygiene: no duplicate class rules, no orphan classes ──────
+# A duplicate ".sub" rule once silently restyled the PAGE HEADER (the later definition
+# won), and a parallel .kpi tile system used flex+hardcoded greys so its tiles never
+# lined up with the grid-based .tile row. Both are invisible to every other check —
+# the page still renders, it just looks wrong.
+pyblk "dashboard CSS: no duplicate class rules; every class used; tiles share the grid" <<'EOF'
+import re, sys
+sys.path.insert(0, "tools")
+import generate_dashboard as gd
+
+css = gd.HTML.split("<style>", 1)[1].split("</style>", 1)[0]
+page = gd.render()
+
+# 1. no class defined twice at top level (the .sub collision)
+defs = re.findall(r"^\.([A-Za-z][\w-]*)\{", css, re.M)
+dupes = sorted({c for c in defs if defs.count(c) > 1})
+assert not dupes, f"duplicate CSS class rules (later silently wins): {dupes}"
+
+# 2. every class the page USES is defined (a typo'd class renders unstyled)
+used = set(re.findall(r"class=['\"]([^'\"]+)['\"]", page))
+used = {c for grp in used for c in grp.split()}
+# classes can be defined as descendant/compound selectors too (.tile .v, .pill.ok),
+# so collect every .name token appearing anywhere in the stylesheet, not just ^.name{
+known = set(re.findall(r"\.([A-Za-z][\w-]*)", css)) | {"chart"}
+missing = sorted(c for c in used if c not in known and not c.startswith("pill"))
+assert not missing, f"page uses undefined CSS classes: {missing}"
+
+# 3. BOTH tile systems must be grids, or their tiles cannot align in columns
+for cls in ("tiles", "kpis"):
+    m = re.search(rf"^\.{cls}\{{([^}}]*)", css, re.M)
+    assert m and "display:grid" in m.group(1), f".{cls} must be a grid, got: {m and m.group(1)[:60]}"
+    assert "auto-fit" in m.group(1), f".{cls} needs auto-fit columns to align"
+EOF
+
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
 if [[ "$FAIL" -eq 0 ]]; then

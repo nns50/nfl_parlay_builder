@@ -249,14 +249,33 @@ tr:hover td{background:rgba(233,164,22,.05)}
 .pos{color:var(--pos);font-weight:600}.neg{color:var(--neg);font-weight:600}
 .note{color:var(--muted);font-size:11.5px;margin-top:8px}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.hero::after{display:none}}
-.pill{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700}
-.pill.ok{background:#123d24;color:#4ade80}.pill.warn{background:#4a3410;color:#fbbf24}
-.pill.bad{background:#4a1520;color:#f87171}.pill.na{background:#26262b;color:#9ca3af}
-.strip{font-size:13px;line-height:2}
-.kpis{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px}
-.kpi{background:#1b1b20;border-radius:8px;padding:8px 12px;min-width:84px}
-.kpi b{display:block;font-size:19px}.kpi span{font-size:11px;color:#9ca3af}
-.sub{font-size:12px;color:#cbd5e1;font-weight:700;margin:10px 0 4px}
+/* ONE tile system. .kpi previously invented a second one — flex-with-min-width
+   (tiles size to content, so they never line up in columns) plus hardcoded grey
+   #1b1b20/#9ca3af that clashed with the gridiron palette. It now reuses .tiles'
+   grid and .tile's visual language, so every tile on the page aligns. */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+ gap:10px;margin-bottom:10px}
+.kpi{background:linear-gradient(180deg,var(--panel),#0a1007);
+ border:1px solid var(--border);border-radius:10px;padding:10px 12px;text-align:center}
+.kpi b{display:block;font-family:'Oswald',sans-serif;font-weight:600;font-size:22px;
+ line-height:1.15;color:var(--gold)}
+.kpi span{display:block;color:var(--muted);font-size:10.5px;text-transform:uppercase;
+ letter-spacing:1px;margin-top:2px}
+/* pills: theme tokens, not ad-hoc hexes; vertical-align keeps them on the text baseline */
+.pill{display:inline-block;padding:1px 8px;border-radius:9px;font-size:11px;
+ font-weight:700;vertical-align:baseline}
+.pill.ok{background:rgba(90,212,107,.16);color:var(--pos)}
+.pill.warn{background:rgba(233,164,22,.16);color:var(--gold)}
+.pill.bad{background:rgba(239,106,85,.16);color:var(--neg)}
+.pill.na{background:rgba(152,168,138,.14);color:var(--muted)}
+.strip{font-size:13px;line-height:1.9;color:var(--chalk)}
+.strip b{color:var(--fg)}
+.strip code{color:var(--muted)}
+/* board section heading. NOT '.sub' — that class already styles the header subtitle,
+   and redefining it silently restyled the page header (bold/uppercase instead of small
+   muted). Never reuse an existing class name for a new purpose. */
+.bsub{font-size:12px;color:var(--chalk);font-weight:700;margin:12px 0 4px;
+ text-transform:uppercase;letter-spacing:.6px}
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .scroll table{min-width:100%;white-space:nowrap}
 </style></head><body><div class="wrap">
@@ -576,7 +595,7 @@ def week_board(title, body):
         if tbl:
             out.append(_tbl(tbl)); tbl = []
         if t.startswith("### "):
-            out.append(f"<p class='sub'>{esc(t[4:])}</p>")
+            out.append(f"<p class='bsub'>{esc(t[4:])}</p>")
         elif t.startswith("**") or t.startswith("- **"):
             out.append(f"<p class='note'>{esc(t.replace('**',''))[:220]}</p>")
     if tbl:
