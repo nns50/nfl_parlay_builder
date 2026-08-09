@@ -70,6 +70,22 @@ every settle.
 | 2026-W01 | DAL@NYG Under 48.5 [adj: none] | 2026-W01:2026_01_DAL_NYG:totals:Under:48.5: | total | -109 | Caesars | 50.5% | 50.5% | +0.0 | scan | TBD | N | — | S |
 | 2026-W01 | KC ML (DEN@KC) [adj: none] | 2026-W01:2026_01_DEN_KC:h2h:KC:: | ML-fav | -148 | LowVig.ag | 58.5% | 58.5% | +0.0 | scan | TBD | N | — | S |
 | 2026-W01 | DEN@KC Under 43.5 [adj: none] | 2026-W01:2026_01_DEN_KC:totals:Under:43.5: | total | -110 | BetRivers | 50.7% | 50.7% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | SEA -3.5 (NE@SEA) [adj: none] | 2026-W01:2026_01_NE_SEA:spreads:SEA:-3.5: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LA -3.5 (SF@LA) [adj: none] | 2026-W01:2026_01_SF_LA:spreads:LA:-3.5: | spread | -105 | Bovada | 51.1% | 51.1% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | PIT -3 (ATL@PIT) [adj: none] ⚠PENDING(Penix Jr Q) | 2026-W01:2026_01_ATL_PIT:spreads:PIT:-3: | spread | -105 | BetRivers | 50.6% | 50.6% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BAL -3.5 (BAL@IND) [adj: none] | 2026-W01:2026_01_BAL_IND:spreads:BAL:-3.5: | spread | +100 | LowVig.ag | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | BUF -1.5 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:BUF:-1.5: | spread | +100 | Caesars | 48.6% | 48.6% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CHI -2.5 (CHI@CAR) [adj: none] | 2026-W01:2026_01_CHI_CAR:spreads:CHI:-2.5: | spread | -114 | BetRivers | 51.3% | 51.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | CIN -3.5 (TB@CIN) [adj: none] | 2026-W01:2026_01_TB_CIN:spreads:CIN:-3.5: | spread | +100 | LowVig.ag | 49.4% | 49.4% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | JAX -7.5 (CLE@JAX) [adj: none] | 2026-W01:2026_01_CLE_JAX:spreads:JAX:-7.5: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DET -7 (NO@DET) [adj: none] | 2026-W01:2026_01_NO_DET:spreads:DET:-7: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | TEN -3 (NYJ@TEN) [adj: none] | 2026-W01:2026_01_NYJ_TEN:spreads:TEN:-3: | spread | +100 | DraftKings | 47.8% | 47.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LAC -11.5 (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:spreads:LAC:-11.5: | spread | -110 | DraftKings | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | GB -1.5 (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:spreads:GB:-1.5: | spread | +100 | DraftKings | 47.8% | 47.8% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | LV -3.5 (MIA@LV) [adj: none] | 2026-W01:2026_01_MIA_LV:spreads:LV:-3.5: | spread | -110 | DraftKings | 51.2% | 51.2% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | PHI -4.5 (WAS@PHI) [adj: none] | 2026-W01:2026_01_WAS_PHI:spreads:PHI:-4.5: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | DAL -2.5 (DAL@NYG) [adj: none] | 2026-W01:2026_01_DAL_NYG:spreads:DAL:-2.5: | spread | -115 | DraftKings | 52.3% | 52.3% | +0.0 | scan | TBD | N | — | S |
+| 2026-W01 | KC -3 (DEN@KC) [adj: none] ⚠PENDING(Mahomes Q) | 2026-W01:2026_01_DEN_KC:spreads:KC:-3: | spread | +103 | LowVig.ag | 48.0% | 48.0% | +0.0 | scan | TBD | N | — | S |
 
 ### Played-ticket record (parlays)
 
