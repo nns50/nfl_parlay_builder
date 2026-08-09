@@ -169,13 +169,16 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
 ## Notifications & email
 
 - Consolidated four-touchpoint cadence (resolved decision Q3): wrap → build →
-  designation → first lock of each game day. Each touchpoint sends a push notification
-  (`PushNotification` via ToolSearch) AND a Gmail draft to **realityremixed125@gmail.com**
-  (`mcp__Gmail__create_draft` via ToolSearch; the routines carry the Gmail connector).
-  Body: prose under ~250 words + the run's key tables; ALWAYS include `Odds API credits
-  remaining: <N>` (shared key — the burn must stay visible).
-- Routine-level completion notifications (push+email) are ALSO enabled on the scheduled
-  routines themselves — they fire when a run finishes with something noteworthy.
+  designation → first lock of each game day. Body: prose under ~250 words + the run's key
+  tables; ALWAYS include `Odds API credits remaining: <N>` (shared key — the burn must
+  stay visible).
+- **Scheduled runs (owner-directed 2026-08-09): NO connector writes.** Every
+  `mcp__Gmail__create_draft` call pops a manual 'Allow once' dialog on the owner's phone
+  that no settings allowlist suppresses (confirmed runs 1-4). A scheduled run's touchpoint
+  = `PushNotification` (core tool, promptless) + the complete report as the run's FINAL
+  session message — the routine-level completion email/push/Slack (enabled on all four
+  routines) deliver that message. Gmail drafts to **realityremixed125@gmail.com** are
+  created only from interactive sessions, where a human is present.
 
 ## Git workflow (current phase)
 

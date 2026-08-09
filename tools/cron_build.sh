@@ -81,7 +81,7 @@ if [[ "$BUILD" == "__detect__" ]]; then
 fi
 [[ -z "$BUILD" ]] && BUILD="$(detect "$NOW")"
 
-COMMON="The session_start.sh digest is already in your context (injected by hook) — selftest, store sync, quota/ODDS_MODE, unsettled proposals, weekcheck, availability, pulse. If the digest is NOT in context (hook did not fire), run bash tools/session_start.sh first. Doctrine: CLAUDE.md. Git — BEFORE working: git fetch origin; if any origin/claude/admiring-johnson-* tip is AHEAD of your clone's base, merge those branches in first (ledgers/builds are append-only, the merge is clean). END of run — the FOLD (standing user authorization 2026-08-09): commit; git push (trigger-fired sessions land on their per-run outcome branch claude/admiring-johnson-* — expected); then git push origin HEAD:main DIRECTLY (proven to work from trigger sessions 2026-08-09 — no add_repo step; that MCP tool does not exist in trigger sessions). Non-fast-forward → git fetch origin main, merge (a docs/index.html conflict is generated output: resolve by re-running python3 tools/generate_dashboard.py, never hand-editing), re-run selftest, push again. State the branch + SHA + fold-to-main result in the notification; if the fold failed, flag it so an interactive check-in completes it. Main drives the Pages dashboard."
+COMMON="The session_start.sh digest is already in your context (injected by hook) — selftest, store sync, quota/ODDS_MODE, unsettled proposals, weekcheck, availability, pulse. If the digest is NOT in context (hook did not fire), run bash tools/session_start.sh first. Doctrine: CLAUDE.md. Git — BEFORE working: git fetch origin; if any origin/claude/admiring-johnson-* tip is AHEAD of your clone's base, merge those branches in first (ledgers/builds are append-only, the merge is clean). END of run — the FOLD (standing user authorization 2026-08-09): commit; git push (trigger-fired sessions land on their per-run outcome branch claude/admiring-johnson-* — expected); then git push origin HEAD:main DIRECTLY (proven to work from trigger sessions 2026-08-09 — no add_repo step; that MCP tool does not exist in trigger sessions). Non-fast-forward → git fetch origin main, merge (a docs/index.html conflict is generated output: resolve by re-running python3 tools/generate_dashboard.py, never hand-editing), re-run selftest, push again. State the branch + SHA + fold-to-main result in the notification; if the fold failed, flag it so an interactive check-in completes it. Main drives the Pages dashboard. NOTIFICATIONS: scheduled runs must NOT call mcp__Gmail__create_draft or any other connector WRITE — every such call pops a manual 'Allow once' dialog on the owner's phone that no settings allowlist can suppress (confirmed runs 1-4, owner-directed removal 2026-08-09). The notification = PushNotification (core tool, promptless) + the COMPLETE notification body as your FINAL session message — the routine-level completion email/push/Slack deliver that final message to the owner. Gmail drafts are an interactive-session-only artifact."
 
 case "$BUILD" in
 wrap)
@@ -92,7 +92,7 @@ wrap)
 3. Full-week review into builds/<week>.md: every game vs active reads; validate/miss each fades.md entry touched (dated W/L + tally); promote lessons per the tiered bar (process 2-3 sightings; hit-rate n≥20-30).
 4. Run tools/calib.py + tools/pulse.py; reconcile the ledger prose rollup with calib output.
 5. Regenerate the dashboard (python3 tools/generate_dashboard.py) and commit it.
-6. NOTIFY (touchpoint 1 of 4): PushNotification (load via ToolSearch) + Gmail draft to realityremixed125@gmail.com (mcp__Gmail__create_draft via ToolSearch, subject 'NFL Parlay — <season> W<week> wrap') — week record, CLV tally, calib/pulse highlights, bankroll state, Odds API credits remaining."
+6. NOTIFY (touchpoint 1 of 4): PushNotification (load via ToolSearch) + the full report as your FINAL message — week record, CLV tally, calib/pulse highlights, bankroll state, Odds API credits remaining. NO Gmail draft (see COMMON)."
   ;;
 build)
   LABEL="Wed/Thu build — slate-wide scan + initial three tiers"
@@ -106,7 +106,7 @@ build)
 7. Bankroll pick (single safest qualifying favorite, whole board, independent of the parlay).
 8. python3 tools/weekcheck.py snap <season> <week> — commit the premises snapshot.
 9. Append the run to builds/<season>-W<week>.md; regenerate the dashboard; commit+push.
-10. NOTIFY (touchpoint 2 of 4): PushNotification + Gmail draft to realityremixed125@gmail.com (subject 'NFL Parlay — <season> W<week> build') — the three tiers, bankroll pick, PENDING flags, credits remaining."
+10. NOTIFY (touchpoint 2 of 4): PushNotification + the full report as your FINAL message — the three tiers, bankroll pick, PENDING flags, credits remaining. NO Gmail draft (see COMMON)."
   ;;
 designation)
   LABEL="Friday designation update — availability haircuts"
@@ -115,7 +115,7 @@ designation)
 2. python3 tools/weekcheck.py diff <season> <week> — every finding invalidates its dependent legs: re-derive TrueP (availability haircut = P(plays) multiplier) or drop; SUPERSEDE rows in the ledger, never edit in place.
 3. Weather now inside horizon for Sunday: python3 tools/weather.py week — apply wind/precip registry adjustments where flagged.
 4. Re-run tools/ticket.py if the leg pool changed; append the revision to builds/<week>.md.
-5. Commit+push. NOTIFY (touchpoint 3 of 4): PushNotification + Gmail draft to realityremixed125@gmail.com (subject 'NFL Parlay — <season> W<week> designations') — designation changes, superseded legs, the current build, credits remaining."
+5. Commit+push. NOTIFY (touchpoint 3 of 4): PushNotification + the full report as your FINAL message — designation changes, superseded legs, the current build, credits remaining. NO Gmail draft (see COMMON)."
   ;;
 lock)
   LABEL="Window lock — T-3h gate for the imminent window"
@@ -125,7 +125,7 @@ lock)
 3. Final prices: tools/odds_api.sh board reg (this near kickoff, the pull doubles as the close snapshot); props via the scheduler's due list (python3 tools/poll_scheduler.py due <season> <week> --mark).
 4. Lock ONLY this window's legs in builds/<week>.md ('## Locks by window'); the rest of the week stays open.
 5. After the window: python3 tools/clv_capture.py <season> <week> --apply (idempotent; EDGE-GONE warnings mean do NOT re-bet).
-6. Commit+push. NOTIFY (touchpoint 4 of 4, first lock of the day only): PushNotification + Gmail draft to realityremixed125@gmail.com (subject 'NFL Parlay — <season> W<week> locks') — locked legs, gate closures, EDGE-GONE flags, credits remaining."
+6. Commit+push. NOTIFY (touchpoint 4 of 4, first lock of the day only): PushNotification + the full report as your FINAL message — locked legs, gate closures, EDGE-GONE flags, credits remaining. NO Gmail draft (see COMMON)."
   ;;
 *)
   echo "ERROR: unknown run type '$BUILD' (wrap|build|designation|lock)" >&2
