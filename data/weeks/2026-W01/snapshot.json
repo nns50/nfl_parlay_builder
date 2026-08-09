@@ -546,12 +546,6 @@
    "p_plays": 0.75,
    "team": "NYG"
   },
-  "00-0039362": {
-   "designation": "OUT",
-   "name": "Giovanni Manu",
-   "p_plays": 0.0,
-   "team": "DET"
-  },
   "00-0039364": {
    "designation": "QUESTIONABLE",
    "name": "Sione Vaki",
@@ -1288,7 +1282,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-09T19:13:58Z",
+ "taken_at": "2026-08-09T19:41:15Z",
  "week": 1,
  "wind": {}
 }
