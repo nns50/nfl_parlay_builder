@@ -3,39 +3,65 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NFL Parlay Builder — dashboard</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--fg:#e6edf3;--muted:#8b949e;
---blue:#3b82f6;--green:#22c55e;--red:#ef4444;--amber:#f59e0b}
+/* Night-game gridiron theme. Chart status pair #5ad46b/#c9432f is CVD-validated
+   (deutan ΔE 19.5); bar direction doubles as the non-color encoding. Gold #e9a416
+   is a deliberate lone-accent series (contrast vs surface passes). */
+:root{--bg:#0b1108;--card:#141f0f;--panel:#0d1409;--border:#2b3d20;--fg:#e9eede;
+--muted:#98a88a;--chalk:#e8e4d8;--gold:#e9a416;--leather:#a86b32;
+--pos:#5ad46b;--neg:#ef6a55}
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font:14px/1.45 -apple-system,'Segoe UI',Roboto,sans-serif;padding:20px}
+body{background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,'Segoe UI',Roboto,sans-serif;padding:20px}
 .wrap{max-width:1080px;margin:0 auto}
-h1{font-size:19px;margin-bottom:2px} h2{font-size:14px;margin:0 0 10px}
-.sub{color:var(--muted);font-size:12px;margin-bottom:18px}
-.badge{display:inline-block;border:1px solid var(--border);border-radius:12px;padding:1px 9px;font-size:11px;margin-left:8px}
-.fresh{color:var(--green)} .stale{color:var(--amber)}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}
-.tile{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px}
-.tile .v{font-size:20px;font-weight:700} .tile .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+.hero{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:12px;
+padding:20px 24px 16px;margin-bottom:16px;
+background:repeating-linear-gradient(90deg,transparent 0 88px,rgba(232,228,216,.055) 88px 90px),
+repeating-linear-gradient(90deg,rgba(255,255,255,.024) 0 45px,transparent 45px 90px),
+linear-gradient(180deg,#17230e,#0f190b)}
+.hero::after{content:"50";position:absolute;right:20px;bottom:-16px;font-family:'Oswald',sans-serif;
+font-size:72px;font-weight:600;color:rgba(232,228,216,.06);letter-spacing:2px;pointer-events:none}
+h1{font-family:'Oswald',-apple-system,sans-serif;font-weight:600;font-size:23px;
+text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+h2{font-family:'Oswald',-apple-system,sans-serif;font-weight:500;font-size:13.5px;
+text-transform:uppercase;letter-spacing:1px;color:var(--chalk);margin:0 0 10px;
+border-left:3px solid var(--gold);padding-left:9px}
+.sub{color:var(--muted);font-size:12px}
+.badge{display:inline-block;border:1px solid rgba(233,164,22,.45);border-radius:12px;
+padding:1px 10px;font-size:11px;margin-left:10px;font-family:-apple-system,'Segoe UI',sans-serif;
+text-transform:none;letter-spacing:0;vertical-align:3px}
+.fresh{color:var(--gold)} .stale{color:var(--leather)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.tile{background:linear-gradient(180deg,var(--panel),#0a1007);border:1px solid var(--border);
+border-top:2px solid var(--gold);border-radius:10px;padding:11px 14px 10px}
+.tile .v{font-family:'Oswald',sans-serif;font-weight:600;font-size:25px;color:var(--gold);
+letter-spacing:.5px;font-variant-numeric:tabular-nums}
+.tile .k{color:var(--muted);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
 .chart{height:230px;position:relative}
 table{width:100%;border-collapse:collapse;font-size:12.5px}
-th{color:var(--muted);text-align:left;font-weight:600;padding:5px 8px;border-bottom:1px solid var(--border)}
-td{padding:5px 8px;border-bottom:1px solid rgba(48,54,61,.5)}
-.mono{font-family:ui-monospace,monospace}.muted{color:var(--muted)}.pos{color:var(--green)}.neg{color:var(--red)}
+th{color:var(--muted);text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;
+letter-spacing:.7px;padding:5px 8px;border-bottom:1px solid var(--border)}
+td{padding:5px 8px;border-bottom:1px solid rgba(43,61,32,.55)}
+tr:hover td{background:rgba(233,164,22,.05)}
+.mono{font-family:ui-monospace,monospace}.muted{color:var(--muted)}
+.pos{color:var(--pos);font-weight:600}.neg{color:var(--neg);font-weight:600}
 .note{color:var(--muted);font-size:11.5px;margin-top:8px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.hero::after{display:none}}
 </style></head><body><div class="wrap">
-<h1>NFL Parlay Builder <span class="badge fresh">● live</span></h1>
-<div class="sub">read-only measurement dashboard · generated 2026-08-09 02:03Z · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div>
+<header class="hero"><h1>🏈 NFL Parlay Builder <span class="badge fresh">● live</span></h1>
+<div class="sub">read-only measurement dashboard · generated 2026-08-09 02:11Z · doctrine: NO BET is a valid output; parlays are chalk×vig — the standalone is where measured edge lives</div></header>
 
 <div class="tiles">
 <div class="tile"><div class="v">0</div><div class="k">decided live legs</div></div>
 <div class="tile"><div class="v">0-0</div><div class="k">record </div></div>
 <div class="tile"><div class="v">0/2/0</div><div class="k">CLV +/=/−</div></div>
 <div class="tile"><div class="v">33</div><div class="k">open legs</div></div>
-<div class="tile"><div class="v">5-2 (7/7 settled)</div><div class="k">pipeline validation (BT)</div></div>
+<div class="tile"><div class="v">5-2</div><div class="k">pipeline validation (BT) · 7/7 settled</div></div>
 </div>
 
 <div class="grid">
@@ -93,16 +119,21 @@ td{padding:5px 8px;border-bottom:1px solid rgba(48,54,61,.5)}
 <div class="note">Sources: ledgers/results_log.md · ledgers/fades.md · ledgers/bankroll.md · builds/*.md — parsed by the same code as tools/calib.py. If this page disagrees with calib.py, run tools/generate_dashboard.py --selftest.</div>
 </div>
 <script>
-const CAL={"labels": [], "hit": [], "mid": []}, CLVD={"labels": ["SEA ML (NE@SEA, We", "NE@SEA Under 44.0 ", "CHI ML (NYG@CHI cl", "CHI -4.5 (NYG@CHI ", "NO-CAR Under 38.5 ", "JAX ML (JAX@HOU cl"], "vals": [-0.3, 0.0, 0.2, -0.4, 2.2, -2.2], "cols": ["#8b949e", "#8b949e", "#22c55e", "#8b949e", "#22c55e", "#ef4444"]};
+const CAL={"labels": [], "hit": [], "mid": []}, CLVD={"labels": ["SEA ML (NE@SEA, We", "NE@SEA Under 44.0 ", "CHI ML (NYG@CHI cl", "CHI -4.5 (NYG@CHI ", "NO-CAR Under 38.5 ", "JAX ML (JAX@HOU cl"], "vals": [-0.3, 0.0, 0.2, -0.4, 2.2, -2.2], "cols": ["#7e8f70", "#7e8f70", "#5ad46b", "#7e8f70", "#5ad46b", "#c9432f"]};
+const GRID='rgba(232,228,216,.07)', TICK='#98a88a';
+if(typeof Chart==='undefined'){document.querySelectorAll('.chart').forEach(
+ c=>c.innerHTML='<p class="muted" style="padding-top:80px;text-align:center">charts unavailable — Chart.js CDN unreachable</p>');}
+else{
 if(CAL.labels.length){new Chart(document.getElementById('cal'),{data:{labels:CAL.labels,
- datasets:[{type:'bar',label:'actual hit %',data:CAL.hit,backgroundColor:'rgba(59,130,246,.75)',borderRadius:3},
- {type:'line',label:'perfect calibration',data:CAL.mid,borderColor:'#f59e0b',borderDash:[5,4],pointRadius:3,fill:false}]},
- options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:10,color:'#8b949e'}}},
- scales:{x:{grid:{color:'#21262d'},ticks:{color:'#8b949e'}},y:{min:0,max:100,grid:{color:'#21262d'},ticks:{color:'#8b949e',callback:v=>v+'%'}}}}});}
+ datasets:[{type:'bar',label:'actual hit %',data:CAL.hit,backgroundColor:'rgba(233,164,22,.85)',borderRadius:4},
+ {type:'line',label:'perfect calibration',data:CAL.mid,borderColor:'#e8e4d8',borderDash:[6,5],pointRadius:3,fill:false}]},
+ options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{boxWidth:10,color:TICK}}},
+ scales:{x:{grid:{color:GRID},ticks:{color:TICK}},y:{min:0,max:100,grid:{color:GRID},ticks:{color:TICK,callback:v=>v+'%'}}}}});}
 else{document.getElementById('cal').closest('.chart').innerHTML='<p class="muted" style="padding-top:80px;text-align:center">no decided played legs yet</p>';}
 if(CLVD.labels.length){new Chart(document.getElementById('clv'),{type:'bar',data:{labels:CLVD.labels,
- datasets:[{data:CLVD.vals,backgroundColor:CLVD.cols,borderRadius:3}]},
+ datasets:[{data:CLVD.vals,backgroundColor:CLVD.cols,borderRadius:4}]},
  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
- scales:{x:{grid:{color:'#21262d'},ticks:{color:'#8b949e',font:{size:9}}},y:{grid:{color:'#21262d'},ticks:{color:'#8b949e',callback:v=>v+'pp'}}}}});}
+ scales:{x:{grid:{color:GRID},ticks:{color:TICK,font:{size:9}}},y:{grid:{color:GRID},ticks:{color:TICK,callback:v=>v+'pp'}}}}});}
 else{document.getElementById('clv').closest('.chart').innerHTML='<p class="muted" style="padding-top:80px;text-align:center">no CLV verdicts captured yet</p>';}
+}
 </script></body></html>
