@@ -10,9 +10,14 @@ claims). MLB burn history does not port.**
 
 - ✅ **ALL MILESTONES COMPLETE** (M0–M8, 2026-08-08): scaffold, context ingest, market
   layer, domain gates, pricing/construction, ledger loop, measurement, dashboard, ops.
-  The system is ready for the preseason soak (paper mode) → REG Week 1 (kickoff Wed
-  2026-09-09). Remaining before live money: wire the external cron (crontab sketch in
-  `tools/cron_build.sh`), merge to main to activate Pages, run 1-2 paper weeks.
+- ✅ **Scheduling wired + verified (2026-08-09).** The external cron is the four CCR run
+  Routines (Tue/Thu 14:00Z wrap+build · Fri 21:00Z designation · Sun 15:30/19:30/23:30Z
+  locks · Mon/Thu 23:00Z TNF+MNF locks) = 8 firings/week, each paired 1:1 with an
+  event-timed mailer Routine. Pages is live at
+  https://nns50.github.io/nfl_parlay_builder/ (deploys from `main`).
+- ⏳ **Remaining before live money: the preseason soak — 1-2 paper weeks** → REG Week 1
+  (kickoff Wed 2026-09-09). Everything else is in place; the soak is what earns trust in
+  the numbers, not more plumbing.
 
 ## Ops — the weekly rhythm (`session_start.sh` + `cron_build.sh` + the hook)
 
