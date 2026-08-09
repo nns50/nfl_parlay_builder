@@ -33,7 +33,7 @@ def esc(s):
 
 
 def load():
-    live, bt, tickets = read_rows(LEDGER.read_text(encoding="utf-8"))
+    live, bt, tickets, _orphans = read_rows(LEDGER.read_text(encoding="utf-8"))
     builds = []
     for p in sorted((REPO / "builds").glob("*-W*.md")):
         head = p.read_text(encoding="utf-8").split("\n", 1)[0].lstrip("# ")

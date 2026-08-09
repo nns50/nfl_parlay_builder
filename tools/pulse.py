@@ -124,7 +124,7 @@ def actions_for(recent):
 
 def main():
     with open(LEDGER, encoding="utf-8") as fh:
-        live, _bt, _tickets = read_rows(fh.read())
+        live, _bt, _tickets, _orphans = read_rows(fh.read())
     recent = window_rows(live)
     dims, acts = actions_for(recent)
     print("═" * 72)

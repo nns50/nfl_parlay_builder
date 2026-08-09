@@ -134,7 +134,14 @@ def read_rows(text):
     live, bt = {}, {}
     for r in ordered:
         (bt if r["bucket"] == "BT" else live)[r["leg_id"]] = r
-    return list(live.values()), list(bt.values()), tickets
+
+    # PARSER GUARD (2026-08-09). Rows are only ingested when they sit under a declared
+    # "## " section header; a renamed/removed header leaves cur=None and EVERY row is
+    # skipped in silence — calibration then reads 0 and reports nothing wrong. That is
+    # the same silent-drop class generate_dashboard.py --selftest already guards. Count
+    # well-formed leg rows in the raw file and flag any the sectioniser did not claim.
+    orphans = sum(1 for ln in text.split("\n") if is_leg_row(ln)) - len(ordered)
+    return list(live.values()), list(bt.values()), tickets, max(orphans, 0)
 
 
 def band(p):
@@ -145,11 +152,19 @@ def band(p):
 def main():
     with open(LEDGER, encoding="utf-8") as fh:
         text = fh.read()
-    live, bt, tickets = read_rows(text)
+    live, bt, tickets, orphans = read_rows(text)
 
     print("=" * 64)
     print(f"  CALIBRATION / ROI RECOMPUTE (read-only) — {os.path.relpath(LEDGER)}")
     print(f"  live rows: {len(live)} (deduped by leg_id)   BT validation rows: {len(bt)}")
+    if orphans:
+        print(f"  ⛔ PARSER GUARD: {orphans} well-formed leg row(s) sit OUTSIDE any "
+              f"'## ' section")
+        print("     and were NOT counted. Every number below is computed from a partial "
+              "ledger.")
+        print("     Fix the section headers (## Recommended but NOT played / ## Played "
+              "legs / ## Backtest)")
+        print("     before trusting or acting on this output.")
     print("=" * 64)
 
     # §1 calibration bands — played, explicit TrueP, decided

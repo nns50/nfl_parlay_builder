@@ -564,7 +564,7 @@ assert parse_pct("**64.3%**") == (64.3, False)                    # bold ≠ sta
 assert parse_adj_tags("SEA ML [adj: none]") == []
 assert parse_adj_tags("x [adj: wind_under+4, rest_edge+2]") == ["wind_under", "rest_edge"]
 assert parse_adj_tags("no tag here") is None
-live, bt, tickets = read_rows(open("ledgers/results_log.md").read())
+live, bt, tickets, _orphans = read_rows(open("ledgers/results_log.md").read())
 assert len(bt) == 7, f"expected 7 BT rows, got {len(bt)}"
 assert all(r["bucket"] == "BT" for r in bt)
 # Live rows GROW every build (the log-the-whole-scan doctrine), so assert structure,
@@ -703,6 +703,34 @@ done
 if [[ -z "$MISSING" ]]; then
   ok "every run type (wrap/build/designation/lock) carries the Gmail draft + Slack"
 else no "every run type (wrap/build/designation/lock) carries the Gmail draft + Slack" "missing:$MISSING"; fi
+
+# ── settle.py vs REAL 2025 W18 finals — 29 hand-computed verdicts ────────────
+# Settlement is what money depends on and had never run against completed games.
+# Expected verdicts are literals derived from the published box scores, so this
+# catches a WRONG settle, not merely an inconsistent one. Store-gated: SKIPs on a
+# pre-sync environment instead of failing. Uses a temp ledger (NFL_LEDGER).
+SV="$(python3 tools/validate_settle.py --quiet 2>&1)"
+if [[ "$SV" == SKIP:* ]]; then
+  ok "settle.py verdicts vs real 2025 W18 finals — SKIPPED (store not synced)"
+elif [[ "$SV" == *"29/29 correct"* ]]; then
+  ok "settle.py settles all 29 real 2025 W18 cases correctly (margin/push/prop/MANUAL)"
+else no "settle.py settles all 29 real 2025 W18 cases correctly (margin/push/prop/MANUAL)" "$SV"; fi
+
+# ── calib.py parser guard — orphaned rows must SCREAM, not read as zero ──────
+# A renamed "## " section silently drops every row and calibration reports 0 without
+# complaint. Feed it a ledger whose header was renamed and assert the guard fires.
+GUARD_TMP="$(mktemp -d)"
+{ echo "# ledger"; echo; echo "## (header renamed by a reformat)"; echo;
+  grep -E "^\| (Week|-|2026-W)" ledgers/results_log.md | head -20; } > "$GUARD_TMP/led.md"
+GOUT="$(NFL_LEDGER="$GUARD_TMP/led.md" python3 tools/calib.py 2>&1 | head -6)"
+if [[ "$GOUT" == *"PARSER GUARD"* ]]; then
+  ok "calib.py parser guard flags leg rows orphaned outside a '## ' section"
+else no "calib.py parser guard flags leg rows orphaned outside a '## ' section" "$GOUT"; fi
+CLEAN="$(python3 tools/calib.py 2>&1 | head -6)"
+if [[ "$CLEAN" != *"PARSER GUARD"* ]]; then
+  ok "calib.py parser guard stays silent on the healthy live ledger"
+else no "calib.py parser guard stays silent on the healthy live ledger" "$CLEAN"; fi
+rm -rf "$GUARD_TMP"
 
 # ── summary ──────────────────────────────────────────────────────────────────
 echo "────────────────────────────────────"
