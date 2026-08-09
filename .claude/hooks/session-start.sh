@@ -12,7 +12,12 @@ SESSION_SENTINEL="/tmp/nfl_session_init_${CLAUDE_SESSION_ID:-$$}"
 [[ -f "$SESSION_SENTINEL" ]] && exit 0
 touch "$SESSION_SENTINEL"
 
-cd "${CLAUDE_PROJECT_DIR:-/home/user/nfl_parlay_builder}" || exit 0
+# Resolve the repo root from this script's own location (.claude/hooks/ → two up).
+# The 2026-08-08 test firing proved trigger-fired sessions clone to a different path
+# with no CLAUDE_PROJECT_DIR — the old hardcoded fallback cd failed and the hook
+# exited silently. BASH_SOURCE works from any clone path.
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." 2>/dev/null && pwd)"
+cd "${REPO_ROOT:-${CLAUDE_PROJECT_DIR:-/home/user/nfl_parlay_builder}}" || exit 0
 
 echo ""
 echo "╔══════════════════════════════════════════════════════════════════╗"
