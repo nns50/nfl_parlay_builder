@@ -12,9 +12,11 @@ claims). MLB burn history does not port.**
   layer, domain gates, pricing/construction, ledger loop, measurement, dashboard, ops.
 - ✅ **Scheduling wired + verified (2026-08-09).** The external cron is the four CCR run
   Routines (Tue/Thu 14:00Z wrap+build · Fri 21:00Z designation · Sun 15:30/19:30/23:30Z
-  locks · Mon/Thu 23:00Z TNF+MNF locks) = 8 firings/week, each paired 1:1 with an
-  event-timed mailer Routine. Pages is live at
-  https://nns50.github.io/nfl_parlay_builder/ (deploys from `main`).
+  locks · Mon/Thu 23:00Z TNF+MNF locks) = 8 firings/week. **All four are OWNER-CREATED in
+  the web UI (`created_via: http_api`) — that is load-bearing, not cosmetic: it is what lets
+  a run draft the Gmail email without a permission dialog. Never replace one with an
+  agent-minted Routine.** Each run delivers its own email + push + Slack; there are no mailer
+  Routines. Pages is live at https://nns50.github.io/nfl_parlay_builder/ (deploys from `main`).
 - ⏳ **Remaining before live money: the preseason soak — 1-2 paper weeks** → REG Week 1
   (kickoff Wed 2026-09-09). Everything else is in place; the soak is what earns trust in
   the numbers, not more plumbing.
@@ -226,7 +228,8 @@ Work on the designated feature branch (`claude/nfl-parlay-port-plan-3ijsrm`) in 
 sessions; commit + push each unit of work and keep `main` in step (`git push origin HEAD:main`).
 
 **STANDING AUTHORIZATION (user-granted 2026-08-09): fold run output into `main` automatically.**
-Scheduled (trigger-fired) runs push to per-run outcome branches (`claude/admiring-johnson-*`)
+Scheduled (trigger-fired) runs push to per-run outcome branches (each Routine has its OWN
+randomly-named `claude/<adjective>-<name>` branch — never hardcode the pattern)
 AND can push `main` directly — both proven 2026-08-09 (run 3 folded to main with no extra
 grant; the claude-code-remote MCP server, and thus `add_repo`, does not exist in trigger
 sessions). Every run therefore ends with the FOLD: (1) commit; (2) `git push` (lands on the
@@ -234,7 +237,7 @@ outcome branch); (3) `git push origin HEAD:main` — on a non-fast-forward rejec
 `git fetch origin main`, merge (a `docs/index.html` conflict is generated output — resolve
 by re-running `tools/generate_dashboard.py`, never by hand), re-run selftest, push again.
 If the fold still fails, say so in the notification with the branch + SHA — an interactive
-check-in completes the fold and deletes the leftover outcome branch. At run START, fetch +
-merge any `claude/admiring-johnson-*` tip ahead of the clone base (append-only ledgers merge
-clean) so no predecessor run is lost. `main` drives the Pages dashboard — an unfolded run is
+check-in completes the fold and deletes the leftover outcome branch. At run START, fetch + merge ANY `origin/claude/*` tip not
+already contained in `origin/main` (append-only ledgers merge clean) so no predecessor run is
+lost — test containment with `git merge-base --is-ancestor`, do not match on branch name. `main` drives the Pages dashboard — an unfolded run is
 invisible until folded.
