@@ -179,13 +179,18 @@ MIN ACCEPTABLE SGP QUOTE — below that number, bet the legs separately.
 
 ## Git workflow (current phase)
 
-Work on the designated feature branch (`claude/nfl-parlay-port-plan-3ijsrm` for this effort);
-commit + push each milestone. **No auto-merge to main** — that authorization is MLB-repo
-doctrine and has not been granted here.
+Work on the designated feature branch (`claude/nfl-parlay-port-plan-3ijsrm`) in interactive
+sessions; commit + push each unit of work and keep `main` in step (`git push origin HEAD:main`).
 
-Scheduled (trigger-fired) runs push to **per-run outcome branches** (`claude/admiring-johnson-*`)
-— they cannot write the feature branch or main (proven 2026-08-08/09). Two rules keep that
-coherent: (1) every run fetches and merges any predecessor outcome branch ahead of its clone
-base BEFORE working, so the ledger accumulates across runs; (2) outcome branches are folded
-into main and deleted at interactive check-ins — main drives the Pages dashboard, so an
-unfolded run is invisible on the dashboard until folded.
+**STANDING AUTHORIZATION (user-granted 2026-08-09): fold run output into `main` automatically.**
+Scheduled (trigger-fired) runs natively push only to per-run outcome branches
+(`claude/admiring-johnson-*` — proven 2026-08-08/09). Every run therefore ends with the FOLD:
+(1) commit; (2) `git push` (lands on the outcome branch); (3) load
+`mcp__Claude_Code_Remote__add_repo` via ToolSearch and call it (owner `nns50`, repo
+`nfl_parlay_builder`, access `push`) to widen the session's git grant; (4) `git push origin
+HEAD:main` — on a non-fast-forward rejection, `git fetch origin main`, merge, push again.
+If the fold still fails, say so in the notification with the branch + SHA — an interactive
+check-in completes the fold and deletes the leftover outcome branch. At run START, fetch +
+merge any `claude/admiring-johnson-*` tip ahead of the clone base (append-only ledgers merge
+clean) so no predecessor run is lost. `main` drives the Pages dashboard — an unfolded run is
+invisible until folded.
