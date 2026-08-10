@@ -54,6 +54,12 @@
    "p_plays": 0.0,
    "team": "CLE"
   },
+  "00-0033288": {
+   "designation": "OUT",
+   "name": "George Kittle",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
   "00-0033455": {
    "designation": "QUESTIONABLE",
    "name": "Anthony Firkser",
@@ -83,12 +89,6 @@
    "name": "Deatrich Wise Jr.",
    "p_plays": 0.0,
    "team": "WAS"
-  },
-  "00-0034270": {
-   "designation": "OUT",
-   "name": "Tyler Conklin",
-   "p_plays": 0.0,
-   "team": "DET"
   },
   "00-0034355": {
    "designation": "OUT",
@@ -150,11 +150,11 @@
    "p_plays": 0.0,
    "team": "ATL"
   },
-  "00-0035237": {
-   "designation": "OUT",
-   "name": "Jawaan Taylor",
-   "p_plays": 0.0,
-   "team": "ATL"
+  "00-0035245": {
+   "designation": "QUESTIONABLE",
+   "name": "Max Scharping",
+   "p_plays": 0.75,
+   "team": "WAS"
   },
   "00-0035317": {
    "designation": "OUT_ROSTER(RET)",
@@ -179,12 +179,6 @@
    "name": "Jalen Thompson",
    "p_plays": 0.75,
    "team": "DAL"
-  },
-  "00-0035717": {
-   "designation": "QUESTIONABLE",
-   "name": "Nick Bosa",
-   "p_plays": 0.75,
-   "team": "SF"
   },
   "00-0035890": {
    "designation": "OUT",
@@ -324,12 +318,6 @@
    "p_plays": 0.0,
    "team": "IND"
   },
-  "00-0037742": {
-   "designation": "QUESTIONABLE",
-   "name": "Treylon Burks",
-   "p_plays": 0.75,
-   "team": "WAS"
-  },
   "00-0037756": {
    "designation": "OUT",
    "name": "Travis Jones",
@@ -372,12 +360,6 @@
    "p_plays": 0.75,
    "team": "BUF"
   },
-  "00-0038557": {
-   "designation": "QUESTIONABLE",
-   "name": "Dorian Williams",
-   "p_plays": 0.75,
-   "team": "BUF"
-  },
   "00-0038566": {
    "designation": "OUT_ROSTER(RES)",
    "name": "Nick Saldiveri",
@@ -395,12 +377,6 @@
    "name": "Justin Shorter",
    "p_plays": 0.0,
    "team": "LV"
-  },
-  "00-0038611": {
-   "designation": "QUESTIONABLE",
-   "name": "Chris Rodriguez Jr.",
-   "p_plays": 0.75,
-   "team": "JAX"
   },
   "00-0038649": {
    "designation": "QUESTIONABLE",
@@ -462,12 +438,6 @@
    "p_plays": 0.0,
    "team": "DET"
   },
-  "00-0038866": {
-   "designation": "QUESTIONABLE",
-   "name": "AJ Finley",
-   "p_plays": 0.75,
-   "team": "SEA"
-  },
   "00-0038958": {
    "designation": "OUT_ROSTER(RET)",
    "name": "Markees Watts",
@@ -503,12 +473,6 @@
    "name": "Keion White",
    "p_plays": 0.75,
    "team": "SF"
-  },
-  "00-0039158": {
-   "designation": "QUESTIONABLE",
-   "name": "Blake Freeland",
-   "p_plays": 0.75,
-   "team": "IND"
   },
   "00-0039165": {
    "designation": "OUT",
@@ -618,12 +582,6 @@
    "p_plays": 0.75,
    "team": "ATL"
   },
-  "00-0040034": {
-   "designation": "OUT",
-   "name": "Brant Banks",
-   "p_plays": 0.0,
-   "team": "GB"
-  },
   "00-0040044": {
    "designation": "QUESTIONABLE",
    "name": "Zion Childress",
@@ -641,12 +599,6 @@
    "name": "Reuben Lowery",
    "p_plays": 0.0,
    "team": "IND"
-  },
-  "00-0040138": {
-   "designation": "OUT",
-   "name": "Jaylin Noel",
-   "p_plays": 0.0,
-   "team": "HOU"
   },
   "00-0040156": {
    "designation": "OUT",
@@ -1091,7 +1043,7 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T20:25:00Z",
-   "spread_line": 11.5,
+   "spread_line": 10.5,
    "total_line": 46.5
   },
   "2026_01_ATL_PIT": {
@@ -1104,7 +1056,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 3.0,
-   "total_line": 41.5
+   "total_line": 42.5
   },
   "2026_01_BAL_IND": {
    "away": "BAL",
@@ -1224,7 +1176,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 7.0,
-   "total_line": 48.5
+   "total_line": 49.5
   },
   "2026_01_NYJ_TEN": {
    "away": "NYJ",
@@ -1276,7 +1228,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-09T23:42:27Z",
+ "taken_at": "2026-08-10T23:11:15Z",
  "week": 1,
  "wind": {}
 }

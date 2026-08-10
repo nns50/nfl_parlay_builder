@@ -138,4 +138,16 @@ every settle.
 | 2026-W01 | PHI -5.5 (WAS@PHI) [adj: none] | 2026-W01:2026_01_WAS_PHI:spreads:PHI:-5.5: | spread | -105 | FanDuel | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | WAS@PHI Under 47 [adj: none] | 2026-W01:2026_01_WAS_PHI:totals:Under:47: | total | -110 | BetUS | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
 
+<!-- Run 12 (2026-08-10 23:0xZ build): 9 rungs newly quoted since the run-11 board; one row per RUNG
+     (the two sides of a rung are one observation), side = the better-edge side. -->
+| 2026-W01 | ARI +9.5 (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:spreads:ARI:+9.5: | spread | -110 | BetRivers | 49.7% | 49.7% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | ATL@PIT Over 42.5 [adj: none] ⚠PENDING(Penix Jr Q) | 2026-W01:2026_01_ATL_PIT:totals:Over:42.5: | total | -105 | DraftKings | 49.8% | 49.8% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | IND +3 (BAL@IND) [adj: none] | 2026-W01:2026_01_BAL_IND:spreads:IND:+3: | spread | +100 | Bovada | 47.8% | 47.8% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | HOU -1.5 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:HOU:-1.5: | spread | -102 | FanDuel | 48.1% | 48.1% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | HOU +1 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:HOU:+1: | spread | -110 | BetRivers | 49.7% | 49.7% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | MIN -1.5 (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:spreads:MIN:-1.5: | spread | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | GB -1 (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:spreads:GB:-1: | spread | -110 | BetRivers | 49.7% | 49.7% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | NE@SEA Under 43.5 [adj: none] | 2026-W01:2026_01_NE_SEA:totals:Under:43.5: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | WAS@PHI Over 46.5 [adj: none] | 2026-W01:2026_01_WAS_PHI:totals:Over:46.5: | total | -105 | FanDuel | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |  |
+
 ## Rollup (reconciled by calib.py from M6 — until then, raw rows only)
