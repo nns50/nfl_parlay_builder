@@ -174,6 +174,21 @@ absent ⇒ the board says DEGRADED and only roster hard-OUTs are marked — desi
 never invented. Weather: dome short-circuit (static-outdoor VETOES per-game roof values —
 neutral-site rows inherit the home team's roof template); beyond the 16-day horizon ⇒
 HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adjustment.
+- **EARNED RULE (4 sightings, runs 9-12; promoted at the run-13 wrap 2026-08-11) — the
+  VENUE-TYPE AUTHORITY IS `weather.py`, NOT the schedules row, and not the run's own prose.**
+  A neutral-site game inherits the *home team's* roof template, so `schedules` says
+  `roof='dome'` for **SF@LA at the Melbourne Cricket Ground — which is open-air**. The code
+  has always been right (`stadiums.csv` marks it `outdoor`, `is_dome()` vetoes on
+  static-outdoor, `weather.py week` prints it HORIZON, `selftest.sh:330` asserts the veto).
+  The *prose* regressed: run 4 wrote "4 domes + the MCG", **run 5 caught and corrected it**,
+  and runs 9-12 each re-added it and listed `SF@LA Over` as a `dome_pass_over` candidate —
+  an unearned **+2pp** on an outdoor game. It never reached a leg (all 92 rows are
+  `[adj: none]`, `grep -c dome_pass_over ledgers/results_log.md` = 0) only because nothing
+  was near the gate. **Before writing ANY weather-family adjustment, read the venue off
+  `weather.py week` — a DOME row is the only licence for `dome_pass_over`.** The general
+  lesson, which is why this is in doctrine and not just a build file: **a correction written
+  only into `builds/` does not survive — it has to reach CLAUDE.md or it will regress.**
+
 `weekcheck.py diff` is the pre-lock gate: QB change / availability drop / spread ≥1.5 /
 total ≥2.0 / wind crossing 15mph / kickoff moved / started — any finding invalidates the
 dependent legs until re-verified.
