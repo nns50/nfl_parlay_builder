@@ -303,15 +303,17 @@ props raise burn sharply once markets post.
   `PushNotification`; **(c)** `bash tools/notify_slack.sh` with the condensed report
   (incoming-webhook curl, promptless; reads `SLACK_WEBHOOK_URL` like `ODDS_API_KEY`; SKIPs
   gracefully where unset); **(d)** the complete report as the run's FINAL session message.
-- **⚠ TWO ENVIRONMENTS, and only one is wired.** The run Routines fire in
-  `env_016czcjdFNb2qPStdfxfkxay` (**nfl-parlay-builder**); the orchestrating interactive
-  session and the MLB daily routine both live in `env_01BbCZZcyZK6n1zUkrvn5qHY`
-  (**parlay-test**). `SLACK_WEBHOOK_URL` is set in parlay-test only, so
-  `notify_slack.sh` SKIPs in every scheduled run — that is why run 6 (2026-08-09 15:40Z)
-  delivered no Slack message. The webhook itself is valid (verified by a POST from the
-  interactive session). **FIX: add `SLACK_WEBHOOK_URL` to the nfl-parlay-builder
-  environment** — it is an env-config gap, not a code bug. `session_start.sh` §2b now
-  prints the channel state every run, so this can never fail silently again.
+- **✅ RESOLVED — the Slack env gap is CLOSED (confirmed by the run-13 wrap, 2026-08-11).**
+  Historical record, kept because the diagnosis is what made it fixable: the run Routines
+  fire in `env_016czcjdFNb2qPStdfxfkxay` (**nfl-parlay-builder**) while the orchestrating
+  interactive session and the MLB daily routine live in `env_01BbCZZcyZK6n1zUkrvn5qHY`
+  (**parlay-test**). `SLACK_WEBHOOK_URL` was set in parlay-test ONLY, so `notify_slack.sh`
+  hit its "secret unset → SKIP, exit 0" branch in every scheduled run — that is why run 6
+  (2026-08-09 15:40Z) delivered no Slack message and reported success. It was an env-config
+  gap, never a code bug. **The variable is now present in nfl-parlay-builder**: run 13's
+  `session_start.sh §2b` printed `✓ SLACK_WEBHOOK_URL present` and its `notify_slack.sh`
+  POSTed 2,207 chars from a scheduled session. §2b keeps printing the channel state every
+  run, so a regression here can never be silent again.
 - **⚠ THE ROOT CAUSE WAS WHO CREATED THE ROUTINE — not NFL, not the environment, not the
   repo settings.** A Routine minted by an agent over MCP (`created_via: meta_mcp`) does NOT
   carry the owner's connector authority: its sessions are tagged `routine:agent-minted`, and
