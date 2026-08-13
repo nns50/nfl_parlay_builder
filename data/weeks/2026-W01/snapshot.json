@@ -1133,7 +1133,7 @@
    "home_qb": null,
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T20:25:00Z",
-   "spread_line": -1.5,
+   "spread_line": 1.5,
    "total_line": 45.5
   },
   "2026_01_MIA_LV": {
@@ -1222,7 +1222,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-13T14:19:16Z",
+ "taken_at": "2026-08-13T23:14:56Z",
  "week": 1,
  "wind": {}
 }
