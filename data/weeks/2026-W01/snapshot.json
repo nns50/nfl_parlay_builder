@@ -24,6 +24,12 @@
    "p_plays": 0.75,
    "team": "SF"
   },
+  "00-0031610": {
+   "designation": "QUESTIONABLE",
+   "name": "Darren Waller",
+   "p_plays": 0.75,
+   "team": "CAR"
+  },
   "00-0032667": {
    "designation": "OUT",
    "name": "Roy Robertson-Harris",
@@ -60,12 +66,6 @@
    "p_plays": 0.0,
    "team": "SF"
   },
-  "00-0033455": {
-   "designation": "QUESTIONABLE",
-   "name": "Anthony Firkser",
-   "p_plays": 0.75,
-   "team": "DET"
-  },
   "00-0033553": {
    "designation": "QUESTIONABLE",
    "name": "James Conner",
@@ -96,6 +96,12 @@
    "p_plays": 0.0,
    "team": "HOU"
   },
+  "00-0034381": {
+   "designation": "OUT",
+   "name": "Josh Sweat",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
   "00-0034773": {
    "designation": "QUESTIONABLE",
    "name": "Vita Vea",
@@ -119,12 +125,6 @@
    "name": "B.J. Hill",
    "p_plays": 0.0,
    "team": "CIN"
-  },
-  "00-0034828": {
-   "designation": "OUT",
-   "name": "Harold Landry III",
-   "p_plays": 0.0,
-   "team": "NE"
   },
   "00-0034987": {
    "designation": "OUT",
@@ -156,6 +156,12 @@
    "p_plays": 0.75,
    "team": "WAS"
   },
+  "00-0035278": {
+   "designation": "QUESTIONABLE",
+   "name": "Byron Cowart",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
   "00-0035317": {
    "designation": "OUT_ROSTER(RET)",
    "name": "Joshua Miles",
@@ -179,6 +185,12 @@
    "name": "Jalen Thompson",
    "p_plays": 0.75,
    "team": "DAL"
+  },
+  "00-0035717": {
+   "designation": "QUESTIONABLE",
+   "name": "Nick Bosa",
+   "p_plays": 0.75,
+   "team": "SF"
   },
   "00-0035890": {
    "designation": "OUT",
@@ -216,6 +228,12 @@
    "p_plays": 0.0,
    "team": "JAX"
   },
+  "00-0036589": {
+   "designation": "QUESTIONABLE",
+   "name": "Nick McCloud",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
   "00-0036603": {
    "designation": "QUESTIONABLE",
    "name": "Alaric Jackson",
@@ -239,6 +257,12 @@
    "name": "Cole Van Lanen",
    "p_plays": 0.0,
    "team": "JAX"
+  },
+  "00-0036850": {
+   "designation": "QUESTIONABLE",
+   "name": "Cameron Sample",
+   "p_plays": 0.75,
+   "team": "ATL"
   },
   "00-0036902": {
    "designation": "OUT",
@@ -270,12 +294,6 @@
    "p_plays": 0.75,
    "team": "NYG"
   },
-  "00-0037096": {
-   "designation": "OUT",
-   "name": "Elijah Hicks",
-   "p_plays": 0.0,
-   "team": "CHI"
-  },
   "00-0037141": {
    "designation": "QUESTIONABLE",
    "name": "Joey Blount",
@@ -300,6 +318,12 @@
    "p_plays": 0.75,
    "team": "DAL"
   },
+  "00-0037321": {
+   "designation": "OUT",
+   "name": "Chase Lucas",
+   "p_plays": 0.0,
+   "team": "TB"
+  },
   "00-0037457": {
    "designation": "QUESTIONABLE",
    "name": "Jake Hansen",
@@ -317,6 +341,12 @@
    "name": "Alec Pierce",
    "p_plays": 0.0,
    "team": "IND"
+  },
+  "00-0037667": {
+   "designation": "OUT",
+   "name": "Kerby Joseph",
+   "p_plays": 0.0,
+   "team": "DET"
   },
   "00-0037756": {
    "designation": "OUT",
@@ -340,12 +370,6 @@
    "designation": "QUESTIONABLE",
    "name": "Coby Bryant",
    "p_plays": 0.75,
-   "team": "CHI"
-  },
-  "00-0038390": {
-   "designation": "OUT",
-   "name": "Noah Sewell",
-   "p_plays": 0.0,
    "team": "CHI"
   },
   "00-0038408": {
@@ -426,12 +450,6 @@
    "p_plays": 0.75,
    "team": "CAR"
   },
-  "00-0038795": {
-   "designation": "IR",
-   "name": "PJ Mustipher",
-   "p_plays": 0.0,
-   "team": "ARI"
-  },
   "00-0038820": {
    "designation": "OUT",
    "name": "Christian Izien",
@@ -468,11 +486,11 @@
    "p_plays": 0.75,
    "team": "GB"
   },
-  "00-0039148": {
-   "designation": "QUESTIONABLE",
-   "name": "Keion White",
-   "p_plays": 0.75,
-   "team": "SF"
+  "00-0039141": {
+   "designation": "OUT",
+   "name": "Brian Branch",
+   "p_plays": 0.0,
+   "team": "DET"
   },
   "00-0039165": {
    "designation": "OUT",
@@ -522,12 +540,6 @@
    "p_plays": 0.75,
    "team": "HOU"
   },
-  "00-0039399": {
-   "designation": "IR",
-   "name": "Tanner McLachlan",
-   "p_plays": 0.0,
-   "team": "SF"
-  },
   "00-0039406": {
    "designation": "QUESTIONABLE",
    "name": "Nathaniel Watson",
@@ -551,6 +563,12 @@
    "name": "Justin Dedich",
    "p_plays": 0.0,
    "team": "LAR"
+  },
+  "00-0039789": {
+   "designation": "QUESTIONABLE",
+   "name": "Qwan'tez Stiggers",
+   "p_plays": 0.75,
+   "team": "NYJ"
   },
   "00-0039883": {
    "designation": "OUT_ROSTER(RES)",
@@ -619,7 +637,7 @@
    "team": "BUF"
   },
   "00-0040214": {
-   "designation": "IR",
+   "designation": "OUT_ROSTER(RES)",
    "name": "Kobe King",
    "p_plays": 0.0,
    "team": "NYJ"
@@ -696,12 +714,6 @@
    "p_plays": 0.0,
    "team": "CHI"
   },
-  "00-0040741": {
-   "designation": "OUT",
-   "name": "Shemar Turner",
-   "p_plays": 0.0,
-   "team": "CHI"
-  },
   "00-0040748": {
    "designation": "OUT",
    "name": "Omarr Norman-Lott",
@@ -763,7 +775,7 @@
    "team": "KC"
   },
   "00-0041005": {
-   "designation": "IR",
+   "designation": "OUT_ROSTER(RES)",
    "name": "Corey Rucker",
    "p_plays": 0.0,
    "team": "LV"
@@ -780,23 +792,11 @@
    "p_plays": 0.75,
    "team": "NYJ"
   },
-  "00-0041047": {
-   "designation": "IR",
-   "name": "Chris Brazzell II",
-   "p_plays": 0.0,
-   "team": "CAR"
-  },
   "00-0041052": {
    "designation": "QUESTIONABLE",
    "name": "Kaelon Black",
    "p_plays": 0.75,
    "team": "SF"
-  },
-  "00-0041085": {
-   "designation": "OUT",
-   "name": "Keyshaun Elliott",
-   "p_plays": 0.0,
-   "team": "CHI"
   },
   "00-0041142": {
    "designation": "OUT_ROSTER(RES)",
@@ -900,12 +900,6 @@
    "p_plays": 0.75,
    "team": "DET"
   },
-  "00-0041457": {
-   "designation": "QUESTIONABLE",
-   "name": "Miles Kitselman",
-   "p_plays": 0.75,
-   "team": "DET"
-  },
   "00-0041484": {
    "designation": "OUT",
    "name": "Anterio Thompson",
@@ -973,7 +967,7 @@
    "team": "AZ"
   },
   "00-0041556": {
-   "designation": "QUESTIONABLE",
+   "designation": "OUT_ROSTER(RES)",
    "name": "Romello Height",
    "p_plays": 0.0,
    "team": "SF"
@@ -1176,7 +1170,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 7.0,
-   "total_line": 49.5
+   "total_line": 48.5
   },
   "2026_01_NYJ_TEN": {
    "away": "NYJ",
@@ -1228,7 +1222,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-10T23:11:15Z",
+ "taken_at": "2026-08-13T14:19:16Z",
  "week": 1,
  "wind": {}
 }

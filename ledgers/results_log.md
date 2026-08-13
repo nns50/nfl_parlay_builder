@@ -86,6 +86,8 @@ every settle.
 | 2026-W01 | PHI -4.5 (WAS@PHI) [adj: none] | 2026-W01:2026_01_WAS_PHI:spreads:PHI:-4.5: | spread | -105 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | DAL -2.5 (DAL@NYG) [adj: none] | 2026-W01:2026_01_DAL_NYG:spreads:DAL:-2.5: | spread | -115 | DraftKings | 52.3% | 52.3% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | KC -3 (DEN@KC) [adj: none] ⚠PENDING(Mahomes Q) | 2026-W01:2026_01_DEN_KC:spreads:KC:-3: | spread | +103 | LowVig.ag | 48.0% | 48.0% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | NO@DET Under 48.5 [adj: none] | 2026-W01:2026_01_NO_DET:totals:Under:48.5: | total | -102 | DraftKings | 48.3% | 48.3% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | HOU +0.5 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:HOU:+0.5: | spread | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
 
 ### Played-ticket record (parlays)
 
