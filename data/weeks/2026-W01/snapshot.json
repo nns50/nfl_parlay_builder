@@ -42,12 +42,6 @@
    "p_plays": 0.0,
    "team": "MIN"
   },
-  "00-0033055": {
-   "designation": "OUT",
-   "name": "Jalen Ramsey",
-   "p_plays": 0.0,
-   "team": "PIT"
-  },
   "00-0033109": {
    "designation": "OUT",
    "name": "Javon Hargrave",
@@ -65,12 +59,6 @@
    "name": "George Kittle",
    "p_plays": 0.0,
    "team": "SF"
-  },
-  "00-0033553": {
-   "designation": "QUESTIONABLE",
-   "name": "James Conner",
-   "p_plays": 0.75,
-   "team": "ARI"
   },
   "00-0033868": {
    "designation": "QUESTIONABLE",
@@ -276,12 +264,6 @@
    "p_plays": 0.0,
    "team": "CLE"
   },
-  "00-0036932": {
-   "designation": "OUT",
-   "name": "Micah Parsons",
-   "p_plays": 0.0,
-   "team": "GB"
-  },
   "00-0036942": {
    "designation": "QUESTIONABLE",
    "name": "Osa Odighizuwa",
@@ -305,12 +287,6 @@
    "name": "Sauce Gardner",
    "p_plays": 0.75,
    "team": "IND"
-  },
-  "00-0037205": {
-   "designation": "OUT",
-   "name": "Brenden Schooler",
-   "p_plays": 0.0,
-   "team": "NE"
   },
   "00-0037310": {
    "designation": "QUESTIONABLE",
@@ -449,12 +425,6 @@
    "name": "Thomas Incoom",
    "p_plays": 0.75,
    "team": "CAR"
-  },
-  "00-0038820": {
-   "designation": "OUT",
-   "name": "Christian Izien",
-   "p_plays": 0.0,
-   "team": "DET"
   },
   "00-0038958": {
    "designation": "OUT_ROSTER(RET)",
@@ -624,6 +594,12 @@
    "p_plays": 0.0,
    "team": "ATL"
   },
+  "00-0040177": {
+   "designation": "QUESTIONABLE",
+   "name": "Jordan James",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
   "00-0040196": {
    "designation": "OUT",
    "name": "Tyler Baron",
@@ -641,12 +617,6 @@
    "name": "Kobe King",
    "p_plays": 0.0,
    "team": "NYJ"
-  },
-  "00-0040232": {
-   "designation": "OUT",
-   "name": "Donte Kent",
-   "p_plays": 0.0,
-   "team": "PIT"
   },
   "00-0040240": {
    "designation": "QUESTIONABLE",
@@ -677,12 +647,6 @@
    "name": "Beaux Collins",
    "p_plays": 0.75,
    "team": "NYG"
-  },
-  "00-0040570": {
-   "designation": "IR",
-   "name": "Jeremiah Webb",
-   "p_plays": 0.0,
-   "team": "NE"
   },
   "00-0040634": {
    "designation": "OUT",
@@ -852,12 +816,6 @@
    "p_plays": 0.0,
    "team": "NO"
   },
-  "00-0041360": {
-   "designation": "IR",
-   "name": "Mikail Kamara",
-   "p_plays": 0.0,
-   "team": "SF"
-  },
   "00-0041387": {
    "designation": "OUT",
    "name": "Isaiah World",
@@ -887,18 +845,6 @@
    "name": "Eddie Walls III",
    "p_plays": 0.0,
    "team": "LAR"
-  },
-  "00-0041441": {
-   "designation": "QUESTIONABLE",
-   "name": "Derrick Moore",
-   "p_plays": 0.75,
-   "team": "DET"
-  },
-  "00-0041442": {
-   "designation": "QUESTIONABLE",
-   "name": "Jimmy Rolder",
-   "p_plays": 0.75,
-   "team": "DET"
   },
   "00-0041484": {
    "designation": "OUT",
@@ -1050,7 +996,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 3.0,
-   "total_line": 42.5
+   "total_line": 41.5
   },
   "2026_01_BAL_IND": {
    "away": "BAL",
@@ -1170,7 +1116,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 7.0,
-   "total_line": 48.5
+   "total_line": 49.5
   },
   "2026_01_NYJ_TEN": {
    "away": "NYJ",
@@ -1222,7 +1168,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-13T23:14:56Z",
+ "taken_at": "2026-08-14T21:19:01Z",
  "week": 1,
  "wind": {}
 }
