@@ -188,6 +188,20 @@ HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adj
   `weather.py week` — a DOME row is the only licence for `dome_pass_over`.** The general
   lesson, which is why this is in doctrine and not just a build file: **a correction written
   only into `builds/` does not survive — it has to reach CLAUDE.md or it will regress.**
+- **EARNED RULE (2 sightings, runs 17-18; promoted at run 18 on its pre-registered condition
+  2026-08-16) — CROSS-CHECK A PROP BOOK AGAINST `availability` BEFORE USING IT AS A DEVIG
+  BASELINE.** Fanatics — and only Fanatics — quotes anytime-TD on players the store lists
+  **P(plays)=0**: **George Kittle** (SF, OUT/Surgery) at +250 and **Zach Charbonnet** (SEA,
+  OUT/Surgery) at +110, both still quoted at run 18 while **DraftKings and Caesars quote
+  neither**. Run 17 registered the promotion condition in advance ("re-check next run; if
+  Fanatics still quotes OUT players, promote it") and run 18 met it. **A book quoting
+  P(plays)=0 players is not injury-aware; its no-vig is an opening midpoint, not a market
+  consensus.** This bites hardest exactly where it is least visible: the same single book is
+  the sole source of every two-sided prop market on the W1 board, so the season's first
+  devigable prop baselines all come from a quote-set demonstrably not pricing availability.
+  **Before devigging a new book's prop board, join its quotes against `availability`; if it
+  prices OUT players, flag the baseline `⚠1-BOOK BASELINE` and treat a gate clearance as
+  evidence of WIDTH, not edge.**
 
 `weekcheck.py diff` is the pre-lock gate: QB change / availability drop / spread ≥1.5 /
 total ≥2.0 / wind crossing 15mph / kickoff moved / started — any finding invalidates the

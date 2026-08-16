@@ -240,12 +240,6 @@
    "p_plays": 0.75,
    "team": "IND"
   },
-  "00-0037310": {
-   "designation": "QUESTIONABLE",
-   "name": "James Houston",
-   "p_plays": 0.75,
-   "team": "DAL"
-  },
   "00-0037321": {
    "designation": "OUT",
    "name": "Chase Lucas",
@@ -437,6 +431,12 @@
    "name": "Junior Colson",
    "p_plays": 0.75,
    "team": "LAC"
+  },
+  "00-0039364": {
+   "designation": "QUESTIONABLE",
+   "name": "Sione Vaki",
+   "p_plays": 0.75,
+   "team": "DET"
   },
   "00-0039367": {
    "designation": "OUT_ROSTER(RES)",
@@ -1120,7 +1120,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-16T15:47:07Z",
+ "taken_at": "2026-08-16T19:46:20Z",
  "week": 1,
  "wind": {}
 }
