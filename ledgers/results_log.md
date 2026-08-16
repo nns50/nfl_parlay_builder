@@ -151,5 +151,10 @@ every settle.
 | 2026-W01 | GB -1 (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:spreads:GB:-1: | spread | -110 | BetRivers | 49.7% | 49.7% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | NE@SEA Under 43.5 [adj: none] | 2026-W01:2026_01_NE_SEA:totals:Under:43.5: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | WAS@PHI Over 46.5 [adj: none] | 2026-W01:2026_01_WAS_PHI:totals:Over:46.5: | total | -105 | FanDuel | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | CAR +2 (CHI@CAR) [adj: none] | 2026-W01:2026_01_CHI_CAR:spreads:CAR:+2: | spread | +100 | BetUS | 47.8% | 47.8% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | DAL@NYG Over 48 [adj: none] | 2026-W01:2026_01_DAL_NYG:totals:Over:48: | total | -110 | Fanatics | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | Drake Maye Over 215.5 pass yds (NE@SEA) [adj: script_pass_dog+3] ⚠1-BOOK BASELINE (Fanatics only, hold 6.9pp) — clears no-vig gate, FAILS the price test (-120 be 54.55% vs TrueP 54.0% = -0.55pp) → NO BET | 2026-W01:2026_01_NE_SEA:player_pass_yds:Over:215.5:00-0039851 | prop | -120 | Fanatics | 54.0% | 51.0% | +3.0 | scan (1-book, unbettable price) | TBD | N | — | S |  |
+| 2026-W01 | Jaxon Smith-Njigba Over 90.5 rec yds (NE@SEA) [adj: none] ⚠1-BOOK BASELINE (Fanatics only, hold 6.9pp) | 2026-W01:2026_01_NE_SEA:player_reception_yds:Over:90.5:00-0038543 | prop | -110 | Fanatics | 49.0% | 49.0% | +0.0 | scan (1-book) | TBD | N | — | S |  |
+| 2026-W01 | Sam Darnold Over 5.5 rush yds (NE@SEA) [adj: none] ⚠1-BOOK BASELINE (Fanatics only, hold 7.1pp) | 2026-W01:2026_01_NE_SEA:player_rush_yds:Over:5.5:00-0034869 | prop | -140 | Fanatics | 54.5% | 54.5% | +0.0 | scan (1-book) | TBD | N | — | S |  |
 
 ## Rollup (reconciled by calib.py from M6 — until then, raw rows only)
