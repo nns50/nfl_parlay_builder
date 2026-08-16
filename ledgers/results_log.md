@@ -88,6 +88,11 @@ every settle.
 | 2026-W01 | KC -3 (DEN@KC) [adj: none] ⚠PENDING(Mahomes Q) | 2026-W01:2026_01_DEN_KC:spreads:KC:-3: | spread | +103 | LowVig.ag | 48.0% | 48.0% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | NO@DET Under 48.5 [adj: none] | 2026-W01:2026_01_NO_DET:totals:Under:48.5: | total | -102 | DraftKings | 48.3% | 48.3% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | HOU +0.5 (BUF@HOU) [adj: none] | 2026-W01:2026_01_BUF_HOU:spreads:HOU:+0.5: | spread | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | CHI@CAR Under 47.5 [adj: none] — NEW RUNG (run 19): the CHI@CAR total moved UP ~1pt since run 18; the 45.5 and 46 rungs are gone and 12 of 22 quotes now sit on 47.5 | 2026-W01:2026_01_CHI_CAR:totals:Under:47.5: | total | -105 | Bovada | 49.8% | 49.8% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | CHI@CAR Under 47 [adj: none] — NEW RUNG (run 19) | 2026-W01:2026_01_CHI_CAR:totals:Under:47: | total | -109 | Caesars | 49.9% | 49.9% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | CLE +7 (CLE@JAX) [adj: none] — NEW RUNG (run 19): a 7.0 rung appeared alongside the 7.5, which makes the already-logged CLE +7.5 a genuine key-7 cross for the first time | 2026-W01:2026_01_CLE_JAX:spreads:CLE:+7: | spread | -105 | Fanatics | 48.9% | 48.9% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | Cooper Kupp Over 30.5 rec yds (NE@SEA) [adj: none] ⚠1-BOOK BASELINE (Fanatics only, hold 7.1pp) — NEW MARKET (run 19), replaced the JSN rec-yds market. Kupp is SEA WR3 (behind JSN and Shaheed); 2025 base rate 9/16 (56.3%) sits just under the -140 breakeven of 58.33% | 2026-W01:2026_01_NE_SEA:player_reception_yds:Over:30.5:00-0033908 | prop | -140 | Fanatics | 54.5% | 54.5% | +0.0 | scan (1-book) | TBD | N | — | S |  |
+| 2026-W01 | Sam Darnold Over 235.5 pass yds (NE@SEA) [adj: none] ⚠1-BOOK BASELINE (Fanatics only, hold 7.0pp) — NEW MARKET (run 19), replaced the Maye pass-yds market. Darnold is on the FAVOURITE so script_pass_dog does NOT fire; 2025 base rate 10/17 (58.8%) is a raw prior-season rate, not a TrueP | 2026-W01:2026_01_NE_SEA:player_pass_yds:Over:235.5:00-0034869 | prop | -115 | Fanatics | 50.0% | 50.0% | +0.0 | scan (1-book) | TBD | N | — | S |  |
 
 ### Played-ticket record (parlays)
 

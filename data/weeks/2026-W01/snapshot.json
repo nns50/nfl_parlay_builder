@@ -150,6 +150,12 @@
    "p_plays": 0.0,
    "team": "PHI"
   },
+  "00-0036348": {
+   "designation": "QUESTIONABLE",
+   "name": "Joshua Metellus",
+   "p_plays": 0.75,
+   "team": "MIN"
+  },
   "00-0036406": {
    "designation": "QUESTIONABLE",
    "name": "Tristan Wirfs",
@@ -161,6 +167,12 @@
    "name": "Damien Lewis",
    "p_plays": 0.75,
    "team": "CAR"
+  },
+  "00-0036480": {
+   "designation": "QUESTIONABLE",
+   "name": "Dayo Odeyingbo",
+   "p_plays": 0.75,
+   "team": "CHI"
   },
   "00-0036561": {
    "designation": "OUT_ROSTER(RES)",
@@ -299,6 +311,12 @@
    "name": "Ben VanSumeren",
    "p_plays": 0.75,
    "team": "BUF"
+  },
+  "00-0038506": {
+   "designation": "OUT",
+   "name": "Jordon Riley",
+   "p_plays": 0.0,
+   "team": "GB"
   },
   "00-0038566": {
    "designation": "OUT_ROSTER(RES)",
@@ -456,6 +474,12 @@
    "p_plays": 0.75,
    "team": "CLE"
   },
+  "00-0039442": {
+   "designation": "QUESTIONABLE",
+   "name": "Kingsley Eguakun",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
   "00-0039660": {
    "designation": "QUESTIONABLE",
    "name": "Thomas Harper",
@@ -564,6 +588,12 @@
    "p_plays": 0.0,
    "team": "NYJ"
   },
+  "00-0040215": {
+   "designation": "QUESTIONABLE",
+   "name": "Gavin Bartholomew",
+   "p_plays": 0.75,
+   "team": "MIN"
+  },
   "00-0040217": {
    "designation": "QUESTIONABLE",
    "name": "Chase Lundt",
@@ -623,6 +653,12 @@
    "name": "Jakob Robinson",
    "p_plays": 0.75,
    "team": "SF"
+  },
+  "00-0040624": {
+   "designation": "QUESTIONABLE",
+   "name": "Elijah Williams",
+   "p_plays": 0.75,
+   "team": "MIN"
   },
   "00-0040634": {
    "designation": "OUT",
@@ -1120,7 +1156,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-16T19:46:20Z",
+ "taken_at": "2026-08-16T23:47:22Z",
  "week": 1,
  "wind": {}
 }
