@@ -84,6 +84,12 @@
    "p_plays": 0.75,
    "team": "WAS"
   },
+  "00-0035227": {
+   "designation": "QUESTIONABLE",
+   "name": "P.J. Locke",
+   "p_plays": 0.75,
+   "team": "DAL"
+  },
   "00-0035235": {
    "designation": "OUT_ROSTER(RET)",
    "name": "Kaleb McGary",
@@ -257,12 +263,6 @@
    "name": "Chase Lucas",
    "p_plays": 0.0,
    "team": "TB"
-  },
-  "00-0037457": {
-   "designation": "QUESTIONABLE",
-   "name": "Jake Hansen",
-   "p_plays": 0.75,
-   "team": "HOU"
   },
   "00-0037664": {
    "designation": "OUT",
@@ -540,17 +540,17 @@
    "p_plays": 0.75,
    "team": "ATL"
   },
+  "00-0040017": {
+   "designation": "QUESTIONABLE",
+   "name": "Ajani Cornelius",
+   "p_plays": 0.75,
+   "team": "DAL"
+  },
   "00-0040023": {
    "designation": "QUESTIONABLE",
    "name": "John Williams",
    "p_plays": 0.75,
    "team": "GB"
-  },
-  "00-0040044": {
-   "designation": "QUESTIONABLE",
-   "name": "Zion Childress",
-   "p_plays": 0.75,
-   "team": "DAL"
   },
   "00-0040069": {
    "designation": "OUT",
@@ -563,6 +563,12 @@
    "name": "Reuben Lowery",
    "p_plays": 0.0,
    "team": "IND"
+  },
+  "00-0040145": {
+   "designation": "QUESTIONABLE",
+   "name": "Caleb Ransaw",
+   "p_plays": 0.75,
+   "team": "JAX"
   },
   "00-0040177": {
    "designation": "QUESTIONABLE",
@@ -689,12 +695,6 @@
    "name": "Ozzy Trapilo",
    "p_plays": 0.0,
    "team": "CHI"
-  },
-  "00-0040748": {
-   "designation": "OUT",
-   "name": "Omarr Norman-Lott",
-   "p_plays": 0.0,
-   "team": "KC"
   },
   "00-0040756": {
    "designation": "QUESTIONABLE",
@@ -1104,7 +1104,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 7.0,
-   "total_line": 48.5
+   "total_line": 49.5
   },
   "2026_01_NYJ_TEN": {
    "away": "NYJ",
@@ -1156,7 +1156,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-16T23:47:22Z",
+ "taken_at": "2026-08-17T23:09:38Z",
  "week": 1,
  "wind": {}
 }
