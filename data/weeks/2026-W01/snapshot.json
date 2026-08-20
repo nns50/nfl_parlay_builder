@@ -102,6 +102,12 @@
    "p_plays": 0.75,
    "team": "LA"
   },
+  "00-0033869": {
+   "designation": "QUESTIONABLE",
+   "name": "Mitchell Trubisky",
+   "p_plays": 0.75,
+   "team": "TEN"
+  },
   "00-0033872": {
    "designation": "IR",
    "name": "Jamal Adams",
@@ -113,12 +119,6 @@
    "name": "Patrick Mahomes",
    "p_plays": 0.75,
    "team": "KC"
-  },
-  "00-0033901": {
-   "designation": "QUESTIONABLE",
-   "name": "Ethan Pocic",
-   "p_plays": 0.75,
-   "team": "BAL"
   },
   "00-0033906": {
    "designation": "QUESTIONABLE",
@@ -161,12 +161,6 @@
    "name": "Charvarius Ward",
    "p_plays": 0.75,
    "team": "IND"
-  },
-  "00-0034827": {
-   "designation": "QUESTIONABLE",
-   "name": "DJ Moore",
-   "p_plays": 0.75,
-   "team": "BUF"
   },
   "00-0035020": {
    "designation": "IR",
@@ -288,6 +282,12 @@
    "p_plays": 0.75,
    "team": "BUF"
   },
+  "00-0035973": {
+   "designation": "IR",
+   "name": "Patrick Taylor Jr.",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
   "00-0036032": {
    "designation": "QUESTIONABLE",
    "name": "Sean McKeon",
@@ -295,9 +295,9 @@
    "team": "IND"
   },
   "00-0036215": {
-   "designation": "QUESTIONABLE",
+   "designation": "DOUBTFUL",
    "name": "Danny Pinter",
-   "p_plays": 0.75,
+   "p_plays": 0.25,
    "team": "BAL"
   },
   "00-0036220": {
@@ -420,6 +420,12 @@
    "p_plays": 0.75,
    "team": "PIT"
   },
+  "00-0036741": {
+   "designation": "IR",
+   "name": "Jack Stoll",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
   "00-0036775": {
    "designation": "QUESTIONABLE",
    "name": "Brandon Smith",
@@ -437,12 +443,6 @@
    "name": "Nate Hobbs",
    "p_plays": 0.75,
    "team": "SF"
-  },
-  "00-0036893": {
-   "designation": "QUESTIONABLE",
-   "name": "Najee Harris",
-   "p_plays": 0.75,
-   "team": "NYG"
   },
   "00-0036912": {
    "designation": "QUESTIONABLE",
@@ -479,6 +479,12 @@
    "name": "Odafe Oweh",
    "p_plays": 0.75,
    "team": "WAS"
+  },
+  "00-0036980": {
+   "designation": "QUESTIONABLE",
+   "name": "Elijah Moore",
+   "p_plays": 0.75,
+   "team": "PHI"
   },
   "00-0036983": {
    "designation": "IR",
@@ -552,6 +558,12 @@
    "p_plays": 0.75,
    "team": "DET"
   },
+  "00-0037251": {
+   "designation": "QUESTIONABLE",
+   "name": "Alex Wright",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
   "00-0037256": {
    "designation": "QUESTIONABLE",
    "name": "Rachaad White",
@@ -563,6 +575,18 @@
    "name": "Dameon Pierce",
    "p_plays": 0.75,
    "team": "PHI"
+  },
+  "00-0037261": {
+   "designation": "QUESTIONABLE",
+   "name": "Khalil Shakir",
+   "p_plays": 0.75,
+   "team": "BUF"
+  },
+  "00-0037266": {
+   "designation": "QUESTIONABLE",
+   "name": "Matt Waletzko",
+   "p_plays": 0.75,
+   "team": "KC"
   },
   "00-0037267": {
    "designation": "IR",
@@ -659,12 +683,6 @@
    "name": "Sam Okuayinonu",
    "p_plays": 0.75,
    "team": "SF"
-  },
-  "00-0037605": {
-   "designation": "IR",
-   "name": "Andrew Rupcich",
-   "p_plays": 0.0,
-   "team": "NE"
   },
   "00-0037661": {
    "designation": "QUESTIONABLE",
@@ -930,11 +948,23 @@
    "p_plays": 0.75,
    "team": "ARI"
   },
+  "00-0039065": {
+   "designation": "QUESTIONABLE",
+   "name": "Sam LaPorta",
+   "p_plays": 0.75,
+   "team": "DET"
+  },
   "00-0039071": {
    "designation": "QUESTIONABLE",
    "name": "Tyrique Stevenson",
    "p_plays": 0.75,
    "team": "CHI"
+  },
+  "00-0039072": {
+   "designation": "QUESTIONABLE",
+   "name": "Jakorian Bennett",
+   "p_plays": 0.75,
+   "team": "PHI"
   },
   "00-0039074": {
    "designation": "QUESTIONABLE",
@@ -1097,12 +1127,6 @@
    "name": "Levelle Bailey",
    "p_plays": 0.75,
    "team": "DEN"
-  },
-  "00-0039582": {
-   "designation": "IR",
-   "name": "Marcus Banks",
-   "p_plays": 0.0,
-   "team": "TB"
   },
   "00-0039603": {
    "designation": "QUESTIONABLE",
@@ -1380,12 +1404,6 @@
    "p_plays": 0.0,
    "team": "MIA"
   },
-  "00-0040328": {
-   "designation": "IR",
-   "name": "Ethan Downs",
-   "p_plays": 0.0,
-   "team": "KC"
-  },
   "00-0040393": {
    "designation": "IR",
    "name": "Kye Robichaux",
@@ -1566,10 +1584,16 @@
    "p_plays": 0.0,
    "team": "PHI"
   },
-  "00-0040955": {
-   "designation": "IR",
-   "name": "John Michael Gyllenborg",
-   "p_plays": 0.0,
+  "00-0040939": {
+   "designation": "QUESTIONABLE",
+   "name": "Michael Trigg",
+   "p_plays": 0.75,
+   "team": "DAL"
+  },
+  "00-0040953": {
+   "designation": "QUESTIONABLE",
+   "name": "Jeff Caldwell",
+   "p_plays": 0.75,
    "team": "KC"
   },
   "00-0040988": {
@@ -1823,6 +1847,12 @@
    "name": "Max Iheanachor",
    "p_plays": 0.75,
    "team": "PIT"
+  },
+  "00-0041505": {
+   "designation": "QUESTIONABLE",
+   "name": "Francis Mauigoa",
+   "p_plays": 0.75,
+   "team": "NYG"
   },
   "00-0041525": {
    "designation": "QUESTIONABLE",
@@ -2134,7 +2164,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-20T14:15:17Z",
+ "taken_at": "2026-08-20T23:09:40Z",
  "week": 1,
  "wind": {}
 }

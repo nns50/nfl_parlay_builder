@@ -187,4 +187,7 @@ every settle.
 | 2026-W01 | DAL@NYG Over 48 [adj: none] — SUPERSEDES the run-16 row: book moved Bovada → MyBookie.ag at -110, no-vig 51.2%→50.0% (-1.20pp; the paired Under moved harder) | 2026-W01:2026_01_DAL_NYG:totals:Over:48: | total | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan (reprice) | TBD | N | — | S |  |
 | 2026-W01 | TEN -3 (NYJ@TEN) [adj: none] — SUPERSEDES the run-19 row: price flipped -105 → +100 @DraftKings, no-vig 47.8%→48.8% (+1.04pp toward the Titans) | 2026-W01:2026_01_NYJ_TEN:spreads:TEN:-3: | spread | +100 | DraftKings | 48.8% | 48.8% | +0.0 | scan (reprice) | TBD | N | — | S |  |
 
+| 2026-W01 | CHI@CAR Over 48 [adj: none] — SUPERSEDES the run-20 row: book of record moved Bovada -110 → MyBookie.ag -110, no-vig 51.2%→50.0% (-1.20pp; the paired Under repriced harder) | 2026-W01:2026_01_CHI_CAR:totals:Over:48: | total | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan (reprice) | TBD | N | — | S |  |
+| 2026-W01 | CHI@CAR Under 48 [adj: none] — SUPERSEDES the run-20 row: price moved BetUS +100 → MyBookie.ag -110, no-vig 48.8%→50.0% (+1.20pp toward the Under) | 2026-W01:2026_01_CHI_CAR:totals:Under:48: | total | -110 | MyBookie.ag | 50.0% | 50.0% | +0.0 | scan (reprice) | TBD | N | — | S |  |
+
 ## Rollup (reconciled by calib.py from M6 — until then, raw rows only)
