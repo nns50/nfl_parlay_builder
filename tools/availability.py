@@ -122,6 +122,35 @@ def fetch_espn():
         return None
 
 
+def canon_abbr(con, season):
+    """Return canon(abbr) -> the abbreviation THIS SEASON'S `games` rows use.
+
+    The nflverse sources do not agree with each other on team abbreviations, and
+    `games` is the one that matters: every gate join, every leg_id and every slate
+    row keys on it. Two disagreements are live in the 2026 store (verified
+    2026-08-20, run 22):
+      • `teams` carries BOTH 'LA' and 'LAR' for "Los Angeles Rams", so a plain
+        team_name→abbr dict kept whichever came last (LAR) and filed every Rams
+        ESPN listing under a team the SF@LA gate row never looks up — Puka Nacua
+        (Q), Myles Garrett (Q), Alaric Jackson (Q) and Justin Dedich (OUT) were
+        all invisible to the gate while it read a healthy 'LA:2'.
+      • `rosters` files Arizona as 'AZ' while `games` says 'ARI', so an Arizona
+        roster hard-OUT lands off the ARI gate row the same way.
+    Aliases are applied ONLY when their target is an abbreviation this season's
+    schedule actually uses, so a stale alias can never invent a team.
+    """
+    live = {r[0] for r in con.execute(
+        "SELECT away_team FROM games WHERE season=? "
+        "UNION SELECT home_team FROM games WHERE season=?", (season, season))}
+    alias = {k: v for k, v in (("AZ", "ARI"), ("LAR", "LA")) if v in live}
+
+    def canon(ab):
+        if not ab or ab in live:
+            return ab
+        return alias.get(ab, ab)
+    return canon, live
+
+
 def roster_floor(con, season, week):
     """{gsis: (status, name, position, team)} from the latest roster week ≤ target
     (falls back to the latest available)."""
@@ -134,8 +163,9 @@ def roster_floor(con, season, week):
     rows = con.execute(
         "SELECT gsis_id, status, full_name, position, team FROM rosters "
         "WHERE season=? AND week=? AND gsis_id IS NOT NULL", (season, wk)).fetchall()
-    return {r["gsis_id"]: (r["status"], r["full_name"], r["position"], r["team"])
-            for r in rows}, wk
+    canon, _ = canon_abbr(con, season)
+    return {r["gsis_id"]: (r["status"], r["full_name"], r["position"],
+                           canon(r["team"])) for r in rows}, wk
 
 
 def cmd_sync(season, week, use_espn=True):
@@ -148,12 +178,19 @@ def cmd_sync(season, week, use_espn=True):
     espn_bridge = {r["espn_id"]: r["gsis_id"] for r in
                    con.execute("SELECT espn_id, gsis_id FROM players "
                                "WHERE espn_id IS NOT NULL")}
+    canon, live_abbrs = canon_abbr(con, season)
     name_bridge = {}
     for r in con.execute("SELECT gsis_id, display_name, latest_team FROM players"):
         name_bridge[(re.sub(r"[^a-z]", "", (r["display_name"] or "").lower()),
-                     r["latest_team"])] = r["gsis_id"]
-    team_abbr = {r["team_name"]: r["team_abbr"] for r in
-                 con.execute("SELECT team_name, team_abbr FROM teams")}
+                     canon(r["latest_team"]))] = r["gsis_id"]
+    # team_name → abbr, PREFERRING the abbreviation this season's games use. Without
+    # the preference the Rams' duplicate `teams` row (LA + LAR) silently wins on
+    # whichever row is read last — see canon_abbr().
+    team_abbr = {}
+    for r in con.execute("SELECT team_name, team_abbr FROM teams"):
+        name, ab = r["team_name"], r["team_abbr"]
+        if name not in team_abbr or (ab in live_abbrs and team_abbr[name] not in live_abbrs):
+            team_abbr[name] = ab
 
     con.execute("DELETE FROM availability WHERE season=? AND week=?", (season, week))
     n_roster_out = 0
@@ -192,7 +229,7 @@ def cmd_sync(season, week, use_espn=True):
                     (season, week, gsis, ath.get("displayName"),
                      (ath.get("position") or {}).get("abbreviation")
                      if isinstance(ath.get("position"), dict) else ath.get("position"),
-                     abbr or floor.get(gsis, (None, None, None, None))[3],
+                     canon(abbr) or floor.get(gsis, (None, None, None, None))[3],
                      desig, det.get("detail") or det.get("type"),
                      det.get("returnDate"), p_plays(desig, rstat), src,
                      inj.get("status"), now))
