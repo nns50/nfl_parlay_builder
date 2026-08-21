@@ -270,6 +270,12 @@
    "p_plays": 0.75,
    "team": "SF"
   },
+  "00-0035829": {
+   "designation": "QUESTIONABLE",
+   "name": "Austen Pleasants",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
   "00-0035890": {
    "designation": "OUT",
    "name": "Tershawn Wharton",
@@ -337,9 +343,9 @@
    "team": "KC"
   },
   "00-0036376": {
-   "designation": "DOUBTFUL",
+   "designation": "OUT",
    "name": "Tyler Biadasz",
-   "p_plays": 0.25,
+   "p_plays": 0.0,
    "team": "LAC"
   },
   "00-0036409": {
@@ -438,6 +444,12 @@
    "p_plays": 0.75,
    "team": "NO"
   },
+  "00-0036870": {
+   "designation": "QUESTIONABLE",
+   "name": "Buddy Johnson",
+   "p_plays": 0.75,
+   "team": "LV"
+  },
   "00-0036871": {
    "designation": "QUESTIONABLE",
    "name": "Nate Hobbs",
@@ -522,6 +534,12 @@
    "p_plays": 0.0,
    "team": "CHI"
   },
+  "00-0037082": {
+   "designation": "QUESTIONABLE",
+   "name": "Dominique Robinson",
+   "p_plays": 0.75,
+   "team": "HOU"
+  },
   "00-0037086": {
    "designation": "QUESTIONABLE",
    "name": "Grant Calcaterra",
@@ -558,6 +576,12 @@
    "p_plays": 0.75,
    "team": "DET"
   },
+  "00-0037198": {
+   "designation": "IR",
+   "name": "Nazeeh Johnson",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
   "00-0037251": {
    "designation": "QUESTIONABLE",
    "name": "Alex Wright",
@@ -582,23 +606,11 @@
    "p_plays": 0.75,
    "team": "BUF"
   },
-  "00-0037266": {
-   "designation": "QUESTIONABLE",
-   "name": "Matt Waletzko",
-   "p_plays": 0.75,
-   "team": "KC"
-  },
   "00-0037267": {
    "designation": "IR",
    "name": "Jerome Ford",
    "p_plays": 0.0,
    "team": "WAS"
-  },
-  "00-0037268": {
-   "designation": "QUESTIONABLE",
-   "name": "Zyon McCollum",
-   "p_plays": 0.75,
-   "team": "TB"
   },
   "00-0037278": {
    "designation": "QUESTIONABLE",
@@ -678,12 +690,6 @@
    "p_plays": 0.75,
    "team": "CHI"
   },
-  "00-0037602": {
-   "designation": "QUESTIONABLE",
-   "name": "Sam Okuayinonu",
-   "p_plays": 0.75,
-   "team": "SF"
-  },
   "00-0037661": {
    "designation": "QUESTIONABLE",
    "name": "Ja'Marcus Ingram",
@@ -727,9 +733,9 @@
    "team": "PHI"
   },
   "00-0037833": {
-   "designation": "QUESTIONABLE",
+   "designation": "IR",
    "name": "Tariq Castro-Fields",
-   "p_plays": 0.75,
+   "p_plays": 0.0,
    "team": "PHI"
   },
   "00-0038105": {
@@ -863,6 +869,12 @@
    "name": "Princeton Fant",
    "p_plays": 0.0,
    "team": "DAL"
+  },
+  "00-0038752": {
+   "designation": "QUESTIONABLE",
+   "name": "Jake Bobo",
+   "p_plays": 0.75,
+   "team": "SEA"
   },
   "00-0038797": {
    "designation": "QUESTIONABLE",
@@ -1038,6 +1050,12 @@
    "p_plays": 0.75,
    "team": "BAL"
   },
+  "00-0039269": {
+   "designation": "QUESTIONABLE",
+   "name": "James Ester",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
   "00-0039337": {
    "designation": "QUESTIONABLE",
    "name": "Malik Nabers",
@@ -1049,6 +1067,12 @@
    "name": "Tyler Guyton",
    "p_plays": 0.75,
    "team": "DAL"
+  },
+  "00-0039345": {
+   "designation": "QUESTIONABLE",
+   "name": "Renardo Green",
+   "p_plays": 0.75,
+   "team": "SF"
   },
   "00-0039351": {
    "designation": "QUESTIONABLE",
@@ -1122,12 +1146,6 @@
    "p_plays": 0.75,
    "team": "ARI"
   },
-  "00-0039565": {
-   "designation": "QUESTIONABLE",
-   "name": "Levelle Bailey",
-   "p_plays": 0.75,
-   "team": "DEN"
-  },
   "00-0039603": {
    "designation": "QUESTIONABLE",
    "name": "British Brooks",
@@ -1139,6 +1157,18 @@
    "name": "Cole Burgess",
    "p_plays": 0.0,
    "team": "PIT"
+  },
+  "00-0039676": {
+   "designation": "QUESTIONABLE",
+   "name": "Chigozie Anusiem",
+   "p_plays": 0.75,
+   "team": "LV"
+  },
+  "00-0039737": {
+   "designation": "OUT",
+   "name": "Tip Reiman",
+   "p_plays": 0.0,
+   "team": "ARI"
   },
   "00-0039784": {
    "designation": "OUT",
@@ -1266,6 +1296,12 @@
    "p_plays": 0.0,
    "team": "CLE"
   },
+  "00-0040044": {
+   "designation": "QUESTIONABLE",
+   "name": "Zion Childress",
+   "p_plays": 0.75,
+   "team": "DAL"
+  },
   "00-0040069": {
    "designation": "QUESTIONABLE",
    "name": "Teddye Buchanan",
@@ -1309,9 +1345,9 @@
    "team": "TB"
   },
   "00-0040130": {
-   "designation": "DOUBTFUL",
+   "designation": "IR",
    "name": "Jayden Higgins",
-   "p_plays": 0.25,
+   "p_plays": 0.0,
    "team": "HOU"
   },
   "00-0040138": {
@@ -1422,6 +1458,12 @@
    "p_plays": 0.0,
    "team": "NYJ"
   },
+  "00-0040461": {
+   "designation": "IR",
+   "name": "Luke Grimm",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
   "00-0040494": {
    "designation": "QUESTIONABLE",
    "name": "Max Brosmer",
@@ -1493,6 +1535,12 @@
    "name": "Mykel Williams",
    "p_plays": 0.0,
    "team": "SF"
+  },
+  "00-0040727": {
+   "designation": "QUESTIONABLE",
+   "name": "Tre' Harris",
+   "p_plays": 0.75,
+   "team": "LAC"
   },
   "00-0040731": {
    "designation": "QUESTIONABLE",
@@ -1569,12 +1617,6 @@
   "00-0040901": {
    "designation": "IR",
    "name": "Jaren Kanak",
-   "p_plays": 0.0,
-   "team": "TEN"
-  },
-  "00-0040913": {
-   "designation": "IR",
-   "name": "Sean Brown",
    "p_plays": 0.0,
    "team": "TEN"
   },
@@ -1758,9 +1800,9 @@
    "p_plays": 0.75,
    "team": "CLE"
   },
-  "00-0041313": {
+  "00-0041312": {
    "designation": "QUESTIONABLE",
-   "name": "Collin Wright",
+   "name": "Noah Whittington",
    "p_plays": 0.75,
    "team": "HOU"
   },
@@ -1824,6 +1866,12 @@
    "p_plays": 0.75,
    "team": "TEN"
   },
+  "00-0041442": {
+   "designation": "QUESTIONABLE",
+   "name": "Jimmy Rolder",
+   "p_plays": 0.75,
+   "team": "DET"
+  },
   "00-0041443": {
    "designation": "QUESTIONABLE",
    "name": "Skyler Bell",
@@ -1835,6 +1883,12 @@
    "name": "Colton Hood",
    "p_plays": 0.75,
    "team": "NYG"
+  },
+  "00-0041465": {
+   "designation": "QUESTIONABLE",
+   "name": "Wade Woodaz",
+   "p_plays": 0.75,
+   "team": "HOU"
   },
   "00-0041468": {
    "designation": "IR",
@@ -2164,7 +2218,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-20T23:09:40Z",
+ "taken_at": "2026-08-21T21:20:22Z",
  "week": 1,
  "wind": {}
 }

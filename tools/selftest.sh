@@ -483,6 +483,15 @@ h = parse_leg_id("2026-W01:2026_01_NE_SEA:h2h:SEA::")
 assert h["point"] is None and h["gsis_id"] is None
 sp = parse_leg_id(format_leg_id(2026, 1, "G", "spreads", "NE", 3.5))
 assert sp["point"] == 3.5
+# A pick'em spread is ONE rung. float(-0.0) formats "-0" and float(0.0) formats "+0",
+# so an unnormalised codec forks the same rung into two leg_ids and a rung already in
+# the ledger reads brand new. Sighted runs 23 + 24; "-0" is the ledger's canonical form.
+pk = format_leg_id(2026, 1, "2026_01_GB_MIN", "spreads", "MIN", 0.0)
+assert pk == format_leg_id(2026, 1, "2026_01_GB_MIN", "spreads", "MIN", -0.0) == \
+       format_leg_id(2026, 1, "2026_01_GB_MIN", "spreads", "MIN", 0), "pick'em leg_id forked on signed zero"
+assert pk == "2026-W01:2026_01_GB_MIN:spreads:MIN:-0:"
+assert parse_leg_id(pk)["point"] == 0
+assert format_leg_id(2026, 1, "G", "totals", "Over", 0.0) == "2026-W01:G:totals:Over:0:"  # non-spreads unsigned
 assert parse_leg_id("**2026-W01:G:h2h:SEA::**") is not None    # markdown noise stripped
 assert parse_leg_id("not a leg id") is None
 assert ou_verdict("Over", 44.0, 44) == "Push"                  # integer push

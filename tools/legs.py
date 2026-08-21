@@ -91,7 +91,17 @@ LEGID_RX = re.compile(
 
 
 def format_leg_id(season, week, game_id, market, side, point=None, gsis_id=None):
-    pt = "" if point is None else (f"{point:+g}" if market == "spreads" else f"{point:g}")
+    # A pick'em spread is ONE rung, but "+0" and "-0" are two strings: float(-0.0)
+    # formats as "-0" and float(0.0) as "+0", so the same rung forks into two leg_ids
+    # and a rung already in the ledger reads as brand new. Normalise the signed zero
+    # to a single canonical form before formatting. (Sighted runs 23 + 24; selftest
+    # pins it.) The canonical form is "-0", which is what the ledger already carries.
+    if point is None:
+        pt = ""
+    elif market == "spreads":
+        pt = "-0" if point == 0 else f"{point:+g}"
+    else:
+        pt = f"{abs(point):g}" if point == 0 else f"{point:g}"
     return f"{season}-W{week:02d}:{game_id}:{market}:{side}:{pt}:{gsis_id or ''}"
 
 
