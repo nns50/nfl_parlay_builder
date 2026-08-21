@@ -42,6 +42,30 @@ grep -q '^SPORT_KEY_PRE=americanfootball_nfl_preseason$' config/markets.conf \
 grep -Eq '^CADENCE_FEATURED=([0-9]+:[0-9]+,)*[0-9]+:[0-9]+$' config/markets.conf \
   && ok "markets.conf cadence lines parse" || no "markets.conf cadence lines parse"
 
+# ── 2b. odds_api props: every documented alias resolves, and an ERROR is never
+#        rendered as an ABSENCE. Run 24 read a LIVE 4-book prop board as "withdrawn"
+#        because 'keys' was documented but unimplemented: it went to the API as a
+#        literal market name, came back INVALID_MARKET, and the renderer printed
+#        "no prop markets posted". A false negative is worse than a loud failure.
+PROPS_CASE=$(sed -n '/^cmd_props()/,/^}/p' tools/odds_api.sh)
+ALIAS_MISS=""
+for a in core kicking defense longest keys; do
+  grep -qE "^[[:space:]]*${a}\)" <<<"$PROPS_CASE" || ALIAS_MISS="$ALIAS_MISS $a"
+done
+[[ -z "$ALIAS_MISS" ]] && ok "odds_api props: every CLAUDE.md alias (core|kicking|defense|longest|keys) resolves" \
+  || no "odds_api props: unimplemented alias falls through as a literal market" "missing:$ALIAS_MISS"
+grep -q 'PROP CALL FAILED' <<<"$PROPS_CASE" \
+  && grep -q 'has("message") or has("error_code")' <<<"$PROPS_CASE" \
+  && ok "odds_api props: API error fails loudly, never renders as 'no props posted'" \
+  || no "odds_api props: API error fails loudly, never renders as 'no props posted'"
+# the error guard must sit BEFORE the observation log, so a failed call logs nothing
+if [[ $(grep -n 'PROP CALL FAILED' <<<"$PROPS_CASE" | cut -d: -f1) -lt \
+      $(grep -n 'observation log' <<<"$PROPS_CASE" | cut -d: -f1) ]]; then
+  ok "odds_api props: error guard precedes the market_log write"
+else
+  no "odds_api props: error guard precedes the market_log write"
+fi
+
 # ── 3. stadiums.csv — every 2026 venue resolvable, sane coords/enums ─────────
 pyblk "stadiums.csv: coords/roof/tz sane + every 2026 venue name resolves" <<'EOF'
 import csv, sys

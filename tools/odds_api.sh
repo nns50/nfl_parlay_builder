@@ -243,11 +243,27 @@ cmd_props() {
     kicking) markets="$(conf PROPS_OPTIN_KICKING)" ;;
     defense) markets="$(conf PROPS_OPTIN_DEFENSE)" ;;
     longest) markets="$(conf PROPS_OPTIN_LONGEST)" ;;
+    # 'keys' is the cheap 1-credit "are ANY props posted for this event?" probe. It was
+    # documented in CLAUDE.md but never implemented, so it fell through as a literal
+    # market name and the API answered INVALID_MARKET — which the renderer below then
+    # displayed as "no prop markets posted". A whole run read a live prop board as absent.
+    keys)    markets="$(conf PROPS_CORE | cut -d, -f1)" ;;
   esac
   local ncred; ncred=$(( $(tr ',' '\n' <<<"$markets" | grep -c .) ))
   echo "ℹ PER-EVENT prop call — ~${ncred} credit(s). Markets: $markets" >&2
   local raw; raw="$(api_get "sports/${sport}/events/${eid}/odds?regions=${REGIONS}&markets=${markets}&oddsFormat=american&dateFormat=iso")"
   quota_line
+  # An API ERROR IS NOT AN ABSENCE. The renderer below reports a bookmaker-less response as
+  # "no prop markets posted", which is the correct reading of a real empty board and a
+  # DANGEROUS one for an error payload: an invalid market, a bad key or a 4xx would be
+  # recorded as "the books have not posted yet". Fail loudly instead, and never log an
+  # observation row for a call that did not observe anything.
+  if echo "$raw" | jq -e 'type == "object" and (has("message") or has("error_code"))' >/dev/null 2>&1; then
+    echo "⛔ PROP CALL FAILED — this is an ERROR, not an absence. Do NOT read it as 'no props posted':" >&2
+    echo "$raw" | jq -c '{error_code, message}' >&2
+    rm -f "$HDRS_FILE"
+    return 1
+  fi
   # observation log: one line per requested market with books-offering count
   if echo "$raw" | jq -e 'has("bookmakers")' >/dev/null 2>&1; then
     local ts; ts="$(date -u +%FT%TZ)"
