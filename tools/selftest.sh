@@ -1001,6 +1001,21 @@ for path in sorted(glob.glob("tools/*.sh")):
 assert not bad, "unescaped $<digit> in an expanded string:\n  " + "\n  ".join(bad)
 PYEOF_LINT
 
+# ── session_start: the availability sync must PRECEDE the weekcheck diff ────
+# Runs 24 and 25 both read "premises stand" from the digest and then, re-running the
+# identical command after the sync, got exit 1 with 15 and 43 findings. A gate diffed
+# against a store the run has not refreshed yet reads clean when it has in fact fired.
+# Pin the order so it cannot regress into a stale reading again.
+pyblk "session_start: availability.py sync runs BEFORE weekcheck.py diff" <<'EOF'
+src = open("tools/session_start.sh", encoding="utf-8").read()
+sync = src.index("tools/availability.py sync")
+diff = src.index("tools/weekcheck.py diff")
+assert sync < diff, (
+    "session_start.sh runs `weekcheck.py diff` BEFORE `availability.py sync`, so the "
+    "digest's pre-lock gate reading is PRE-SYNC and can read clean on a fired gate "
+    f"(sync at char {sync}, diff at char {diff})")
+EOF
+
 # ── pulse: MARKET-SHADE must fire on CLV ALONE (governor live from Week 1) ──
 pyblk "pulse: CLV-only window fires MARKET-SHADE with ZERO decided legs" <<'EOF'
 import os, subprocess, sys, tempfile

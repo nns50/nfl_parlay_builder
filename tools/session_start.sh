@@ -99,15 +99,22 @@ if [[ -n "$WK" ]]; then
   done
 fi
 
-hdr "4. Weekcheck (pre-lock premises diff)"
+# ORDER IS LOAD-BEARING: the availability sync MUST run BEFORE the weekcheck diff.
+# Runs 24 and 25 both printed "premises stand" here and then, re-running the very same
+# command after the sync had written fresh ESPN listings, got exit 1 with 15 and 43
+# findings respectively. Neither reading was wrong — they diff against different store
+# states — but a PRE-SYNC gate reading is a stale one, and the digest is what a run reads
+# first. Diffing against a store the run has not yet refreshed is how a fired gate reads
+# clean. Do not reorder these two blocks.
+hdr "4. Availability (ESPN best-effort over the roster floor)"
+python3 tools/availability.py sync 2>&1 | sed 's/^/  /'
+
+hdr "5. Weekcheck (pre-lock premises diff — POST-sync, so this is the run's real verdict)"
 if [[ -n "${WK:-}" ]]; then
   read -r S W _ <<<"$WK"
   python3 tools/weekcheck.py diff "$S" "$W" 2>/dev/null | sed 's/^/  /' \
     || echo "  ⚠ findings above invalidate dependent legs until re-verified"
 fi
-
-hdr "5. Availability (ESPN best-effort over the roster floor)"
-python3 tools/availability.py sync 2>&1 | sed 's/^/  /'
 
 # 6. CLV auto-apply — window phase only (a pre-game capture hours early is premature;
 #    the T-5m scheduler poll is the real close. This catches the batch after each window.)

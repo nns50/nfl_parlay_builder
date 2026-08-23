@@ -868,3 +868,131 @@
 {"ts":"2026-08-21T21:21:58Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
 {"ts":"2026-08-21T21:21:58Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
 {"ts":"2026-08-21T21:24:22Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_pass_yds","books":2,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_pass_tds","books":2,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_pass_interceptions","books":0,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_rush_yds","books":2,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_rush_attempts","books":0,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_receptions","books":2,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_reception_yds","books":2,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:51Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_anytime_td","books":3,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_pass_yds","books":2,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_pass_tds","books":2,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_pass_interceptions","books":0,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_rush_yds","books":2,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_rush_attempts","books":0,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_receptions","books":2,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_reception_yds","books":2,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"acc580d74344ea3b31bbcdd057fe6a9c","market":"player_anytime_td","books":3,"commence":"2026-09-11T00:35:00Z","matchup":"San Francisco 49ers @ Los Angeles Rams"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"95c01d1bb797d6df14824b106c5a9130","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Atlanta Falcons @ Pittsburgh Steelers"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:52Z","event":"b6cfdcbafa61ce220ba87dc2d9b80c77","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Baltimore Ravens @ Indianapolis Colts"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:53Z","event":"7e09efed7e12c659b82740b67ce2f9a1","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Buffalo Bills @ Houston Texans"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"fc362aff0d889ec52d358307a70c32ed","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Chicago Bears @ Carolina Panthers"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"ed6d24ff979f9c71979fead577b0b3f7","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Tampa Bay Buccaneers @ Cincinnati Bengals"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:41:54Z","event":"e55c6fe19fce094ce214c8b0e5b504e9","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"Cleveland Browns @ Jacksonville Jaguars"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:06Z","event":"c1d3fcec25aaeb06ebd2244d33d338e0","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New Orleans Saints @ Detroit Lions"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_pass_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_pass_tds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_rush_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_rush_attempts","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_receptions","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_reception_yds","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:07Z","event":"7dddb296a42e7a41a774b24bd1709ce1","market":"player_anytime_td","books":0,"commence":"2026-09-13T17:00:00Z","matchup":"New York Jets @ Tennessee Titans"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_pass_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_pass_tds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_rush_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_rush_attempts","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_receptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_reception_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"1edfa5ceaa1ad2cb57df1c1b908731f6","market":"player_anytime_td","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Arizona Cardinals @ Los Angeles Chargers"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_pass_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_pass_tds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_rush_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_rush_attempts","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_receptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_reception_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"cb77efed7e711d25a72c1a2a0a1af119","market":"player_anytime_td","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Green Bay Packers @ Minnesota Vikings"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_pass_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_pass_tds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_rush_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_rush_attempts","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_receptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_reception_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:08Z","event":"c5d95f48a16849ab6bebc68fbbfcb74a","market":"player_anytime_td","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Miami Dolphins @ Las Vegas Raiders"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_pass_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_pass_tds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_pass_interceptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_rush_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_rush_attempts","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_receptions","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_reception_yds","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:09Z","event":"17885cb8dcade8f6c3bce14b2de805e8","market":"player_anytime_td","books":0,"commence":"2026-09-13T20:25:00Z","matchup":"Washington Commanders @ Philadelphia Eagles"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_pass_yds","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_pass_tds","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_pass_interceptions","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_rush_yds","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_rush_attempts","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_receptions","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_reception_yds","books":0,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_anytime_td","books":2,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_pass_yds","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_pass_tds","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_pass_interceptions","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_rush_yds","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_rush_attempts","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_receptions","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_reception_yds","books":0,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}
+{"ts":"2026-08-23T15:42:10Z","event":"5ad8135dc2b5f27de0b777acd317855a","market":"player_anytime_td","books":1,"commence":"2026-09-15T00:15:00Z","matchup":"Denver Broncos @ Kansas City Chiefs"}

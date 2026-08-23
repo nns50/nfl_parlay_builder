@@ -203,6 +203,36 @@ HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adj
   prices OUT players, flag the baseline `⚠1-BOOK BASELINE` and treat a gate clearance as
   evidence of WIDTH, not edge.**
 
+- **EARNED RULE (2 sightings, runs 24-25; promoted at run 25 on its pre-registered condition
+  2026-08-23) — A PRE-LOCK GATE READ BEFORE THE AVAILABILITY SYNC IS A STALE READ, AND
+  `session_start.sh` NOW ENFORCES THE ORDER.** The digest ran `weekcheck.py diff` (§4) *before*
+  `availability.py sync` (§5), so it diffed live data against a store the run had not yet
+  refreshed. Both runs printed **"✓ no QB changes, no availability drops — premises stand"**
+  and then, re-running the identical command after the sync, got **exit 1 — run 24 with 15
+  findings, run 25 with 43, including a starting QB (J.J. McCarthy, MIN)**. Neither reading is
+  wrong in itself; they diff different store states. But **a fired gate that reads clean is the
+  one failure mode a gate may never have**, and the digest is the first thing a run reads.
+  **FIXED IN CODE, not in prose** (the run-13 lesson: a correction written only into `builds/`
+  regresses): the two blocks are swapped — §4 is now the availability sync, §5 the post-sync
+  diff — and `selftest.sh` asserts `availability.py sync` precedes `weekcheck.py diff` in the
+  file, verified to FAIL on injected drift. **A run must still treat the digest's gate line as
+  the verdict only because the sync now precedes it; if you ever see the two reorder, the
+  digest's reading is void.**
+- **EARNED RULE — REFINEMENT to the run-18 prop-baseline rule (2 sightings, runs 24-25;
+  promoted at run 25 on run 24's pre-registered condition) — A `P(plays)=0` WHOSE `ret_date`
+  HAS ALREADY ARRIVED IS A *CONTESTED* AVAILABILITY, NOT A BOOK ERROR.** Run 18's rule flags a
+  prop book as not-injury-aware when it quotes store-OUT players; its discriminator was that
+  *one* book did so while others did not. That test stops discriminating when **every** book
+  agrees: **George Kittle (SF, OUT/Surgery, P(plays)=0.0) is quoted by DraftKings, Caesars AND
+  FanDuel on both runs — and his `ret_date` is 2026-09-10, which is SF@LA's kickoff day
+  itself.** Three books pricing him ~30% to score is not obviously sloppier than a store row
+  his own return date contradicts. So: when a store-OUT player is quoted by *all* books on a
+  board and `ret_date ≤ kickoff`, **the flag belongs on the STORE ROW, not on the devig
+  baseline** — do not discard the book's baseline for it. The run-18 rule stands unchanged
+  where books DISAGREE (that still names a bad book). Note what saved both runs from acting on
+  it: Kittle appears **only in `player_anytime_td`, which is quoted one-sided and therefore
+  never devigged**, so he contaminated no two-sided baseline either time.
+
 `weekcheck.py diff` is the pre-lock gate: QB change / availability drop / spread ≥1.5 /
 total ≥2.0 / wind crossing 15mph / kickoff moved / started — any finding invalidates the
 dependent legs until re-verified.
