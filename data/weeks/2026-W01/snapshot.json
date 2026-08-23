@@ -73,9 +73,9 @@
    "team": "SF"
   },
   "00-0033288": {
-   "designation": "OUT",
+   "designation": "QUESTIONABLE",
    "name": "George Kittle",
-   "p_plays": 0.0,
+   "p_plays": 0.75,
    "team": "SF"
   },
   "00-0033553": {
@@ -174,11 +174,23 @@
    "p_plays": 0.75,
    "team": "SF"
   },
+  "00-0034779": {
+   "designation": "QUESTIONABLE",
+   "name": "Ronnie Harrison Jr.",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
   "00-0034960": {
    "designation": "QUESTIONABLE",
    "name": "Jakobi Meyers",
    "p_plays": 0.75,
    "team": "JAX"
+  },
+  "00-0034987": {
+   "designation": "OUT",
+   "name": "E.J. Speed",
+   "p_plays": 0.0,
+   "team": "HOU"
   },
   "00-0035020": {
    "designation": "IR",
@@ -355,7 +367,7 @@
    "team": "KC"
   },
   "00-0036376": {
-   "designation": "OUT",
+   "designation": "IR",
    "name": "Tyler Biadasz",
    "p_plays": 0.0,
    "team": "LAC"
@@ -401,12 +413,6 @@
    "name": "Keith Taylor",
    "p_plays": 0.0,
    "team": "JAX"
-  },
-  "00-0036563": {
-   "designation": "QUESTIONABLE",
-   "name": "Deommodore Lenoir",
-   "p_plays": 0.75,
-   "team": "SF"
   },
   "00-0036603": {
    "designation": "QUESTIONABLE",
@@ -607,9 +613,9 @@
    "team": "TEN"
   },
   "00-0037251": {
-   "designation": "QUESTIONABLE",
+   "designation": "IR",
    "name": "Alex Wright",
-   "p_plays": 0.75,
+   "p_plays": 0.0,
    "team": "CLE"
   },
   "00-0037256": {
@@ -755,6 +761,12 @@
    "name": "Zachary Carter",
    "p_plays": 0.75,
    "team": "ARI"
+  },
+  "00-0037807": {
+   "designation": "QUESTIONABLE",
+   "name": "Joshua Ezeudu",
+   "p_plays": 0.75,
+   "team": "NYG"
   },
   "00-0037808": {
    "designation": "OUT",
@@ -1181,12 +1193,6 @@
    "name": "Jaylen Harrell",
    "p_plays": 0.0,
    "team": "TEN"
-  },
-  "00-0039458": {
-   "designation": "IR",
-   "name": "Brenden Bates",
-   "p_plays": 0.0,
-   "team": "CLE"
   },
   "00-0039521": {
    "designation": "QUESTIONABLE",
@@ -2046,6 +2052,12 @@
    "p_plays": 0.75,
    "team": "MIA"
   },
+  "00-0041526": {
+   "designation": "QUESTIONABLE",
+   "name": "Trey Moore",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
   "00-0041548": {
    "designation": "OUT_ROSTER(RES)",
    "name": "Jude Bowry",
@@ -2356,7 +2368,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-23T15:48:12Z",
+ "taken_at": "2026-08-23T19:46:03Z",
  "week": 1,
  "wind": {}
 }
