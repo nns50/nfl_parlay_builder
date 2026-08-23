@@ -188,6 +188,19 @@ HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adj
   `weather.py week` — a DOME row is the only licence for `dome_pass_over`.** The general
   lesson, which is why this is in doctrine and not just a build file: **a correction written
   only into `builds/` does not survive — it has to reach CLAUDE.md or it will regress.**
+  - **SECOND MEMBER OF THE SAME CLASS (run 26, caught at run 27 2026-08-24) — THE ROSTER
+    AUTHORITY IS THE STORE, NOT REMEMBERED REAL-WORLD TEAMS.** Run 26 called the NE@SEA prop
+    feed "cross-team contamination — A.J. Brown (PHI) and Romeo Doubs (GB) quoted on the
+    board". **The store disagrees, unanimously and freshly:** `rosters` (2026 W1),
+    `players.latest_team` and `depth` (all gsis-joined, all 0h old) put **A.J. Brown on NE as
+    WR1 and Romeo Doubs on NE as WR2** — and Mike Evans on SF, Deebo Samuel on SF. The books
+    quote them on exactly the games the store says they play. This season's rosters are not
+    the ones in memory. **This one DID cost something**, unlike the MCG error: excluding two
+    NE receivers as "contamination" removed them from the `script_pass_dog` dog-family scan
+    entirely, and A.J. Brown O4.5 receptions reads **+1.87pp** — the second-best prop read on
+    the board. An earlier run had him correctly as "A.J. Brown (NE)", so this was a
+    REGRESSION, which is the run-13 lesson repeating. **Resolve every player→team by store ID
+    join before excluding a quote, and never call a book's roster wrong from memory.**
 - **EARNED RULE (2 sightings, runs 17-18; promoted at run 18 on its pre-registered condition
   2026-08-16) — CROSS-CHECK A PROP BOOK AGAINST `availability` BEFORE USING IT AS A DEVIG
   BASELINE.** Fanatics — and only Fanatics — quotes anytime-TD on players the store lists
@@ -228,7 +241,10 @@ HORIZON, never a fabricated number; fetch failure ⇒ UNVERIFIED, no weather adj
   itself.** Three books pricing him ~30% to score is not obviously sloppier than a store row
   his own return date contradicts. So: when a store-OUT player is quoted by *all* books on a
   board and `ret_date ≤ kickoff`, **the flag belongs on the STORE ROW, not on the devig
-  baseline** — do not discard the book's baseline for it. The run-18 rule stands unchanged
+  baseline** — do not discard the book's baseline for it. **CONFIRMED BY OUTCOME (run 27):
+  the STORE ROW is what moved. Kittle is now `QUESTIONABLE, P(plays)=0.75` — the three books
+  were right and the `OUT/P=0.0` row was the stale side, exactly as this refinement called
+  it.** The run-18 rule stands unchanged
   where books DISAGREE (that still names a bad book). Note what saved both runs from acting on
   it: Kittle appears **only in `player_anytime_td`, which is quoted one-sided and therefore
   never devigged**, so he contaminated no two-sided baseline either time.

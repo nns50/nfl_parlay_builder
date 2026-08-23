@@ -642,12 +642,6 @@
    "p_plays": 0.0,
    "team": "KC"
   },
-  "00-0037267": {
-   "designation": "IR",
-   "name": "Jerome Ford",
-   "p_plays": 0.0,
-   "team": "WAS"
-  },
   "00-0037278": {
    "designation": "QUESTIONABLE",
    "name": "Luke Wattenberg",
@@ -1422,6 +1416,12 @@
    "p_plays": 0.0,
    "team": "IND"
   },
+  "00-0040122": {
+   "designation": "QUESTIONABLE",
+   "name": "Ashton Jeanty",
+   "p_plays": 0.75,
+   "team": "LV"
+  },
   "00-0040127": {
    "designation": "QUESTIONABLE",
    "name": "Kenneth Grant",
@@ -1920,6 +1920,12 @@
    "p_plays": 0.0,
    "team": "JAX"
   },
+  "00-0041212": {
+   "designation": "QUESTIONABLE",
+   "name": "Devon Marshall",
+   "p_plays": 0.75,
+   "team": "JAX"
+  },
   "00-0041219": {
    "designation": "OUT_ROSTER(RET)",
    "name": "Jordan White",
@@ -2101,7 +2107,7 @@
    "team": "ARI"
   },
   "00-0041556": {
-   "designation": "OUT_ROSTER(RES)",
+   "designation": "QUESTIONABLE",
    "name": "Romello Height",
    "p_plays": 0.0,
    "team": "SF"
@@ -2368,7 +2374,7 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-23T19:46:03Z",
+ "taken_at": "2026-08-23T23:51:21Z",
  "week": 1,
  "wind": {}
 }

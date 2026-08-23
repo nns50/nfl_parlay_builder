@@ -1,6 +1,6 @@
 {
  "depth_charts:2026": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 3281,
   "source_last_modified": "Sun, 23 Aug 2026 07:28:30 GMT",
@@ -9,7 +9,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/depth_charts/depth_charts_2026.csv.gz"
  },
  "players": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 25050,
   "source_last_modified": "Sun, 23 Aug 2026 08:23:39 GMT",
@@ -18,16 +18,16 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv.gz"
  },
  "schedules": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 7548,
-  "source_last_modified": "Sun, 23 Aug 2026 14:36:32 GMT",
+  "source_last_modified": "Sun, 23 Aug 2026 23:16:38 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
  },
  "snap_counts:2024": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 26615,
   "source_last_modified": "Mon, 06 Oct 2025 06:51:20 GMT",
@@ -36,7 +36,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2024.csv.gz"
  },
  "snap_counts:2025": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 26612,
   "source_last_modified": "Mon, 09 Feb 2026 13:39:50 GMT",
@@ -45,13 +45,13 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv.gz"
  },
  "snap_counts:2026": {
-  "checked_at": "2026-08-23T15:37:51Z",
+  "checked_at": "2026-08-23T23:37:45Z",
   "note": "current-season asset not published yet (no games played)",
   "status": "ABSENT",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.csv.gz"
  },
  "stats_player:2024": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 18983,
   "source_last_modified": "Thu, 13 Aug 2026 16:49:10 GMT",
@@ -60,7 +60,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2024.csv.gz"
  },
  "stats_player:2025": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 19422,
   "source_last_modified": "Thu, 13 Aug 2026 16:51:22 GMT",
@@ -69,13 +69,13 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2025.csv.gz"
  },
  "stats_player:2026": {
-  "checked_at": "2026-08-23T15:37:51Z",
+  "checked_at": "2026-08-23T23:37:45Z",
   "note": "current-season asset not published yet (no games played)",
   "status": "ABSENT",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv.gz"
  },
  "teams": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 36,
   "source_last_modified": "Fri, 27 Mar 2026 15:49:46 GMT",
@@ -84,7 +84,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/teams/teams_colors_logos.csv"
  },
  "weekly_rosters:2024": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 46579,
   "source_last_modified": "Fri, 14 Mar 2025 07:16:06 GMT",
@@ -93,7 +93,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_2024.csv.gz"
  },
  "weekly_rosters:2025": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 46849,
   "source_last_modified": "Sat, 14 Mar 2026 07:33:06 GMT",
@@ -102,7 +102,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_2025.csv.gz"
  },
  "weekly_rosters:2026": {
-  "fetched_at": "2026-08-23T15:37:51Z",
+  "fetched_at": "2026-08-23T23:37:45Z",
   "missing_cols": [],
   "rows": 2930,
   "source_last_modified": "Sun, 23 Aug 2026 07:27:25 GMT",

@@ -264,6 +264,10 @@ cmd_props() {
     rm -f "$HDRS_FILE"
     return 1
   fi
+  # Cache the RAW payload. The renderer below is lossy (it prints, it does not keep), so a
+  # build that wants to devig the prop board had to re-poll and pay the credits twice.
+  # Written only after the error guard above, so an error payload is never cached as a board.
+  echo "$raw" > "$CACHE_DIR/props_${eid}.json"
   # observation log: one line per requested market with books-offering count
   if echo "$raw" | jq -e 'has("bookmakers")' >/dev/null 2>&1; then
     local ts; ts="$(date -u +%FT%TZ)"
