@@ -114,6 +114,12 @@
    "p_plays": 0.75,
    "team": "KC"
   },
+  "00-0033906": {
+   "designation": "QUESTIONABLE",
+   "name": "Alvin Kamara",
+   "p_plays": 0.75,
+   "team": "NO"
+  },
   "00-0033955": {
    "designation": "QUESTIONABLE",
    "name": "Jeremy McNichols",
@@ -265,9 +271,9 @@
    "team": "DEN"
   },
   "00-0035700": {
-   "designation": "QUESTIONABLE",
+   "designation": "OUT",
    "name": "Josh Jacobs",
-   "p_plays": 0.75,
+   "p_plays": 0.0,
    "team": "GB"
   },
   "00-0035859": {
@@ -491,6 +497,12 @@
    "name": "Paulson Adebo",
    "p_plays": 0.75,
    "team": "NYG"
+  },
+  "00-0036952": {
+   "designation": "OUT",
+   "name": "Jonathon Cooper",
+   "p_plays": 0.0,
+   "team": "DEN"
   },
   "00-0036956": {
    "designation": "IR",
@@ -1158,12 +1170,6 @@
    "p_plays": 0.75,
    "team": "HOU"
   },
-  "00-0039427": {
-   "designation": "QUESTIONABLE",
-   "name": "Solomon Byrd",
-   "p_plays": 0.75,
-   "team": "HOU"
-  },
   "00-0039436": {
    "designation": "IR",
    "name": "Jaylen Harrell",
@@ -1506,6 +1512,12 @@
    "p_plays": 0.75,
    "team": "TEN"
   },
+  "00-0040212": {
+   "designation": "IR",
+   "name": "Branson Taylor",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
   "00-0040214": {
    "designation": "OUT_ROSTER(RES)",
    "name": "Kobe King",
@@ -1529,12 +1541,6 @@
    "name": "LeQuint Allen Jr.",
    "p_plays": 0.75,
    "team": "JAX"
-  },
-  "00-0040240": {
-   "designation": "QUESTIONABLE",
-   "name": "Caleb Lohner",
-   "p_plays": 0.75,
-   "team": "DEN"
   },
   "00-0040242": {
    "designation": "QUESTIONABLE",
@@ -1782,6 +1788,12 @@
    "p_plays": 0.75,
    "team": "ARI"
   },
+  "00-0041029": {
+   "designation": "DOUBTFUL",
+   "name": "Jordyn Tyson",
+   "p_plays": 0.25,
+   "team": "NO"
+  },
   "00-0041031": {
    "designation": "QUESTIONABLE",
    "name": "Rueben Bain Jr.",
@@ -2017,8 +2029,8 @@
    "team": "LA"
   },
   "00-0041429": {
-   "designation": "OUT_ROSTER(RES)",
-   "name": "Eddie Walls",
+   "designation": "IR",
+   "name": "Eddie Walls III",
    "p_plays": 0.0,
    "team": "LA"
   },
@@ -2364,7 +2376,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 7.0,
-   "total_line": 48.5
+   "total_line": 49.5
   },
   "2026_01_NYJ_TEN": {
    "away": "NYJ",
@@ -2400,7 +2412,7 @@
    "home_qb_id": null,
    "kickoff_utc": "2026-09-13T17:00:00Z",
    "spread_line": 3.5,
-   "total_line": 50.5
+   "total_line": 51.5
   },
   "2026_01_WAS_PHI": {
    "away": "WAS",
@@ -2416,19 +2428,16 @@
   }
  },
  "season": 2026,
- "taken_at": "2026-08-30T15:48:27Z",
+ "taken_at": "2026-08-30T19:49:39Z",
  "week": 1,
  "wind": {
-  "2026_01_ATL_PIT": 8.7,
-  "2026_01_BAL_IND": 5.3,
-  "2026_01_BUF_HOU": 11.5,
-  "2026_01_CHI_CAR": 3.6,
-  "2026_01_CLE_JAX": 12.6,
-  "2026_01_DAL_NYG": 11.6,
-  "2026_01_NE_SEA": 6.9,
-  "2026_01_NYJ_TEN": 4.3,
-  "2026_01_SF_LA": 13.4,
-  "2026_01_TB_CIN": 2.5,
-  "2026_01_WAS_PHI": 10.5
+  "2026_01_ATL_PIT": 9.3,
+  "2026_01_BUF_HOU": 5.1,
+  "2026_01_CHI_CAR": 3.1,
+  "2026_01_DAL_NYG": 12.8,
+  "2026_01_NE_SEA": 8.0,
+  "2026_01_NYJ_TEN": 6.9,
+  "2026_01_SF_LA": 11.4,
+  "2026_01_WAS_PHI": 12.1
  }
 }
