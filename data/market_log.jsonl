@@ -1096,3 +1096,11 @@
 {"ts":"2026-08-28T21:15:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_receptions","books":4,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
 {"ts":"2026-08-28T21:15:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_reception_yds","books":4,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
 {"ts":"2026-08-28T21:15:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_anytime_td","books":5,"commence":"2026-09-10T00:15:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_pass_yds","books":6,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_pass_tds","books":6,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_pass_interceptions","books":3,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_rush_yds","books":6,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_rush_attempts","books":3,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_receptions","books":6,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_reception_yds","books":6,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
+{"ts":"2026-09-06T19:42:01Z","event":"8c94552d022acec4a0458d70c19d3da9","market":"player_anytime_td","books":8,"commence":"2026-09-10T00:20:00Z","matchup":"New England Patriots @ Seattle Seahawks"}
