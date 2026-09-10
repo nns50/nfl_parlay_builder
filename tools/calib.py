@@ -125,6 +125,7 @@ def read_rows(text):
                 "leg_id": c[COL["leg_id"]], "type": c[COL["type"]],
                 "price": c[COL["price"]], "stake": parse_stake(c),
                 "truep": truep, "starred": starred, "implp": implp,
+                "edge": parse_num(c[COL["edge"]]),
                 "result": parse_result(c[COL["result"]]),
                 "played": c[COL["played"]].upper() == "Y",
                 "clv": c[COL["clv"]].replace("−", "-"),
