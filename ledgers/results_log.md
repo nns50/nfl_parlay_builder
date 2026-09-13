@@ -61,7 +61,7 @@ every settle.
 | 2026-W01 | LAC ML (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:h2h:LAC:: | ML-fav | -500 | BetRivers | 82.2% | 82.2% | +0.0 | scan | TBD | N | − 80%cl | S |  |
 | 2026-W01 | ARI@LAC Under 46 [adj: none] | 2026-W01:2026_01_ARI_LAC:totals:Under:46: | total | -108 | Caesars | 50.3% | 50.3% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | MIN ML (GB@MIN) [adj: none] | 2026-W01:2026_01_GB_MIN:h2h:MIN:: | ML-fav | -105 | DraftKings | 50.6% | 50.6% | +0.0 | scan | TBD | N | + 54%cl | S |  |
-| 2026-W01 | GB@MIN Under 45 [adj: none] | 2026-W01:2026_01_GB_MIN:totals:Under:45: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | GB@MIN Under 45 [adj: none] | 2026-W01:2026_01_GB_MIN:totals:Under:45: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | = 50%cl | S |  |
 | 2026-W01 | LV ML (MIA@LV) [adj: none] | 2026-W01:2026_01_MIA_LV:h2h:LV:: | ML-fav | -190 | BetUS | 64.3% | 64.3% | +0.0 | scan | TBD | N | − 60%cl | S |  |
 | 2026-W01 | MIA@LV Under 40.5 [adj: none] | 2026-W01:2026_01_MIA_LV:totals:Under:40.5: | total | -107 | LowVig.ag | 50.0% | 50.0% | +0.0 | scan | TBD | N | + 51%cl | S |  |
 | 2026-W01 | PHI ML (WAS@PHI) [adj: none] | 2026-W01:2026_01_WAS_PHI:h2h:PHI:: | ML-fav | -215 | BetUS | 67.0% | 67.0% | +0.0 | scan | TBD | N | + 70%cl | S |  |
@@ -121,7 +121,7 @@ every settle.
 | 2025-W10 | MIA team total Over 21 | 2025-W10:2025_10_BUF_MIA:team_total:MIA_Over:21: | team total | -110 | demo | 55%* | 52.4% | +2.6 | BT | **W** (MIA scored 30 vs Over 21) | N | — | BT |  |
 | 2026-W01 | ARI +10 (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:spreads:ARI:+10: | spread | -110 | BetUS | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | LAC -10.5 (ARI@LAC) [adj: none] | 2026-W01:2026_01_ARI_LAC:spreads:LAC:-10.5: | spread | -102 | LowVig.ag | 49.3% | 49.3% | +0.0 | scan | TBD | N | — | S |  |
-| 2026-W01 | ARI@LAC Over 46.5 [adj: none] | 2026-W01:2026_01_ARI_LAC:totals:Over:46.5: | total | -105 | Caesars | 49.4% | 49.4% | +0.0 | scan | TBD | N | — | S |  |
+| 2026-W01 | ARI@LAC Over 46.5 [adj: none] | 2026-W01:2026_01_ARI_LAC:totals:Over:46.5: | total | -105 | Caesars | 49.4% | 49.4% | +0.0 | scan | TBD | N | + 50%cl | S |  |
 | 2026-W01 | ATL +2.5 (ATL@PIT) [adj: none] ⚠PENDING(Penix Jr Q) | 2026-W01:2026_01_ATL_PIT:spreads:ATL:+2.5: | spread | -102 | FanDuel | 48.1% | 48.1% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | ATL@PIT Under 42 [adj: none] ⚠PENDING(Penix Jr Q) | 2026-W01:2026_01_ATL_PIT:totals:Under:42: | total | -110 | Bovada | 50.0% | 50.0% | +0.0 | scan | TBD | N | — | S |  |
 | 2026-W01 | BAL@IND Under 47.5 [adj: none] | 2026-W01:2026_01_BAL_IND:totals:Under:47.5: | total | -105 | Bovada | 48.9% | 48.9% | +0.0 | scan | TBD | N | = 49%cl | S |  |
