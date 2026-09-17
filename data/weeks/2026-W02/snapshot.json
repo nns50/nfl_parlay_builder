@@ -1,0 +1,2670 @@
+{
+ "availability": {
+  "00-0011237": {
+   "designation": "OUT",
+   "name": "Blake Miller",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0027962": {
+   "designation": "QUESTIONABLE",
+   "name": "Cameron Jordan",
+   "p_plays": 0.75,
+   "team": "NO"
+  },
+  "00-0028292": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Nick Bellore",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0029892": {
+   "designation": "QUESTIONABLE",
+   "name": "Kyle Juszczyk",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
+  "00-0030035": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Adam Thielen",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0031237": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Teddy Bridgewater",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0031364": {
+   "designation": "QUESTIONABLE",
+   "name": "Jadeveon Clowney",
+   "p_plays": 0.75,
+   "team": "HOU"
+  },
+  "00-0031921": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Kendall Lamm",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0032103": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Denzel Perryman",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
+  "00-0032380": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Laremy Tunsil",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0032399": {
+   "designation": "QUESTIONABLE",
+   "name": "Miles Killebrew",
+   "p_plays": 0.75,
+   "team": "TB"
+  },
+  "00-0032667": {
+   "designation": "IR",
+   "name": "Roy Robertson-Harris",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0032762": {
+   "designation": "QUESTIONABLE",
+   "name": "Chris Jones",
+   "p_plays": 0.75,
+   "team": "KC"
+  },
+  "00-0032918": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "C.J. Ham",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0032954": {
+   "designation": "QUESTIONABLE",
+   "name": "Isaac Seumalo",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0032965": {
+   "designation": "QUESTIONABLE",
+   "name": "Ronnie Stanley",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0033063": {
+   "designation": "OUT",
+   "name": "Zach Wood",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0033109": {
+   "designation": "QUESTIONABLE",
+   "name": "Javon Hargrave",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0033131": {
+   "designation": "QUESTIONABLE",
+   "name": "Maliek Collins",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
+  "00-0033284": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Taylor Moton",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0033288": {
+   "designation": "QUESTIONABLE",
+   "name": "George Kittle",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
+  "00-0033375": {
+   "designation": "IR",
+   "name": "Tim Patrick",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0033546": {
+   "designation": "QUESTIONABLE",
+   "name": "Dalvin Tomlinson",
+   "p_plays": 0.75,
+   "team": "LAC"
+  },
+  "00-0033553": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "James Conner",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0033579": {
+   "designation": "QUESTIONABLE",
+   "name": "Xavier Woods",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0033752": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Storm Norton",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0033783": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Ahkello Witherspoon",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0033868": {
+   "designation": "OUT",
+   "name": "Myles Garrett",
+   "p_plays": 0.0,
+   "team": "LA"
+  },
+  "00-0033872": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jamal Adams",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0033877": {
+   "designation": "DOUBTFUL",
+   "name": "Malik Hooker",
+   "p_plays": 0.25,
+   "team": "DAL"
+  },
+  "00-0033902": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tanoh Kpassagnon",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0033908": {
+   "designation": "QUESTIONABLE",
+   "name": "Cooper Kupp",
+   "p_plays": 0.75,
+   "team": "SEA"
+  },
+  "00-0033935": {
+   "designation": "QUESTIONABLE",
+   "name": "Trey Hendrickson",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0033947": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Deatrich Wise",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0033955": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jeremy McNichols",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0034158": {
+   "designation": "QUESTIONABLE",
+   "name": "Brian O'Neill",
+   "p_plays": 0.75,
+   "team": "MIN"
+  },
+  "00-0034173": {
+   "designation": "QUESTIONABLE",
+   "name": "Eddy Pineiro",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
+  "00-0034277": {
+   "designation": "IR",
+   "name": "DeShon Elliott",
+   "p_plays": 0.0,
+   "team": "PIT"
+  },
+  "00-0034302": {
+   "designation": "QUESTIONABLE",
+   "name": "Frankie Luvu",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0034333": {
+   "designation": "QUESTIONABLE",
+   "name": "Daron Payne",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0034355": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "M.J. Stewart",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0034371": {
+   "designation": "IR",
+   "name": "Da'Shawn Hand",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0034373": {
+   "designation": "QUESTIONABLE",
+   "name": "Dorance Armstrong",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0034384": {
+   "designation": "QUESTIONABLE",
+   "name": "D.J. Reed",
+   "p_plays": 0.75,
+   "team": "DET"
+  },
+  "00-0034413": {
+   "designation": "QUESTIONABLE",
+   "name": "Foyesade Oluokun",
+   "p_plays": 0.75,
+   "team": "JAX"
+  },
+  "00-0034720": {
+   "designation": "QUESTIONABLE",
+   "name": "Robert Spillane",
+   "p_plays": 0.75,
+   "team": "NE"
+  },
+  "00-0034775": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Christian Kirk",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0034778": {
+   "designation": "QUESTIONABLE",
+   "name": "Carlton Davis III",
+   "p_plays": 0.75,
+   "team": "NE"
+  },
+  "00-0034779": {
+   "designation": "QUESTIONABLE",
+   "name": "Ronnie Harrison Jr.",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
+  "00-0034789": {
+   "designation": "DOUBTFUL",
+   "name": "Minkah Fitzpatrick",
+   "p_plays": 0.25,
+   "team": "NYJ"
+  },
+  "00-0034828": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Harold Landry III",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0034836": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Braden Smith",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0034869": {
+   "designation": "OUT",
+   "name": "Sam Darnold",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0034960": {
+   "designation": "QUESTIONABLE",
+   "name": "Jakobi Meyers",
+   "p_plays": 0.75,
+   "team": "JAX"
+  },
+  "00-0034987": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "E.J. Speed",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0035021": {
+   "designation": "QUESTIONABLE",
+   "name": "Ashton Dulin",
+   "p_plays": 0.75,
+   "team": "IND"
+  },
+  "00-0035045": {
+   "designation": "IR",
+   "name": "D.J. Montgomery",
+   "p_plays": 0.0,
+   "team": "IND"
+  },
+  "00-0035062": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Sam Mustipher",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0035112": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Patrick Mekari",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0035228": {
+   "designation": "QUESTIONABLE",
+   "name": "Kyler Murray",
+   "p_plays": 0.75,
+   "team": "MIN"
+  },
+  "00-0035235": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Kaleb McGary",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0035251": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Will Grier",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0035272": {
+   "designation": "QUESTIONABLE",
+   "name": "Andrew Van Ginkel",
+   "p_plays": 0.75,
+   "team": "MIN"
+  },
+  "00-0035276": {
+   "designation": "QUESTIONABLE",
+   "name": "Blake Cashman",
+   "p_plays": 0.75,
+   "team": "MIN"
+  },
+  "00-0035279": {
+   "designation": "QUESTIONABLE",
+   "name": "Charles Omenihu",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0035317": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Joshua Miles",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0035359": {
+   "designation": "IR",
+   "name": "David Sills V",
+   "p_plays": 0.0,
+   "team": "TB"
+  },
+  "00-0035526": {
+   "designation": "QUESTIONABLE",
+   "name": "Elgton Jenkins",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
+  "00-0035537": {
+   "designation": "QUESTIONABLE",
+   "name": "Ty Johnson",
+   "p_plays": 0.75,
+   "team": "BUF"
+  },
+  "00-0035630": {
+   "designation": "QUESTIONABLE",
+   "name": "Chris Lindstrom",
+   "p_plays": 0.75,
+   "team": "ATL"
+  },
+  "00-0035639": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Parris Campbell",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0035645": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Gunner Olszewski",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0035665": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "David Long",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0035676": {
+   "designation": "IR",
+   "name": "A.J. Brown",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0035678": {
+   "designation": "QUESTIONABLE",
+   "name": "Dre'Mont Jones",
+   "p_plays": 0.75,
+   "team": "NE"
+  },
+  "00-0035686": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Michael Deiter",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0035688": {
+   "designation": "QUESTIONABLE",
+   "name": "Trey Pipkins III",
+   "p_plays": 0.75,
+   "team": "LAC"
+  },
+  "00-0035700": {
+   "designation": "OUT_ROSTER(EXE)",
+   "name": "Josh Jacobs",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0035743": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brett Toth",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0035829": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Austen Pleasants",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0035890": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tershawn Wharton",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0035992": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Trystan Colon",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0036032": {
+   "designation": "QUESTIONABLE",
+   "name": "Sean McKeon",
+   "p_plays": 0.75,
+   "team": "IND"
+  },
+  "00-0036040": {
+   "designation": "QUESTIONABLE",
+   "name": "Juwan Johnson",
+   "p_plays": 0.75,
+   "team": "NO"
+  },
+  "00-0036130": {
+   "designation": "QUESTIONABLE",
+   "name": "Nnamdi Madubuike",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0036166": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Dane Jackson",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0036181": {
+   "designation": "QUESTIONABLE",
+   "name": "Teair Tart",
+   "p_plays": 0.75,
+   "team": "LAC"
+  },
+  "00-0036212": {
+   "designation": "QUESTIONABLE",
+   "name": "Tua Tagovailoa",
+   "p_plays": 0.75,
+   "team": "ATL"
+  },
+  "00-0036215": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Danny Pinter",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0036224": {
+   "designation": "QUESTIONABLE",
+   "name": "Jonathan Greenard",
+   "p_plays": 0.75,
+   "team": "PHI"
+  },
+  "00-0036239": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jonathan Garvin",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0036252": {
+   "designation": "QUESTIONABLE",
+   "name": "Michael Pittman Jr.",
+   "p_plays": 0.75,
+   "team": "PIT"
+  },
+  "00-0036275": {
+   "designation": "QUESTIONABLE",
+   "name": "D'Andre Swift",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0036285": {
+   "designation": "QUESTIONABLE",
+   "name": "A.J. Terrell Jr.",
+   "p_plays": 0.75,
+   "team": "ATL"
+  },
+  "00-0036286": {
+   "designation": "QUESTIONABLE",
+   "name": "K'Lavon Chaisson",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0036295": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Matt Hennessy",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0036310": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Hakeem Adeniji",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0036341": {
+   "designation": "QUESTIONABLE",
+   "name": "Khalid Kareem",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
+  "00-0036349": {
+   "designation": "QUESTIONABLE",
+   "name": "Kam Curl",
+   "p_plays": 0.75,
+   "team": "LA"
+  },
+  "00-0036363": {
+   "designation": "QUESTIONABLE",
+   "name": "Josh Jones",
+   "p_plays": 0.75,
+   "team": "SEA"
+  },
+  "00-0036366": {
+   "designation": "QUESTIONABLE",
+   "name": "Neville Gallimore",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0036369": {
+   "designation": "QUESTIONABLE",
+   "name": "John Simpson",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0036376": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tyler Biadasz",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
+  "00-0036396": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jack Driscoll",
+   "p_plays": 0.0,
+   "team": "PIT"
+  },
+  "00-0036442": {
+   "designation": "QUESTIONABLE",
+   "name": "Joe Burrow",
+   "p_plays": 0.75,
+   "team": "CIN"
+  },
+  "00-0036480": {
+   "designation": "QUESTIONABLE",
+   "name": "Dayo Odeyingbo",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0036500": {
+   "designation": "QUESTIONABLE",
+   "name": "Jamien Sherwood",
+   "p_plays": 0.75,
+   "team": "NYJ"
+  },
+  "00-0036511": {
+   "designation": "IR",
+   "name": "Milo Eifler",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0036551": {
+   "designation": "QUESTIONABLE",
+   "name": "Aaron Banks",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0036554": {
+   "designation": "QUESTIONABLE",
+   "name": "Nico Collins",
+   "p_plays": 0.75,
+   "team": "HOU"
+  },
+  "00-0036568": {
+   "designation": "QUESTIONABLE",
+   "name": "Roy Lopez",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0036619": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Dillon Radunz",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0036634": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tony Fields II",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0036638": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Darrick Forrest",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0036655": {
+   "designation": "QUESTIONABLE",
+   "name": "Cole Van Lanen",
+   "p_plays": 0.75,
+   "team": "JAX"
+  },
+  "00-0036842": {
+   "designation": "QUESTIONABLE",
+   "name": "Kene Nwangwu",
+   "p_plays": 0.75,
+   "team": "NYJ"
+  },
+  "00-0036871": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nate Hobbs",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0036885": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tre Brown",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0036902": {
+   "designation": "QUESTIONABLE",
+   "name": "Joseph Ossai",
+   "p_plays": 0.75,
+   "team": "NYJ"
+  },
+  "00-0036903": {
+   "designation": "QUESTIONABLE",
+   "name": "Bobby Brown III",
+   "p_plays": 0.75,
+   "team": "CAR"
+  },
+  "00-0036915": {
+   "designation": "OUT",
+   "name": "Jeremiah Owusu-Koramoah",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0036926": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Payton Turner",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0036932": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Micah Parsons",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0036940": {
+   "designation": "QUESTIONABLE",
+   "name": "Odafe Oweh",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0036952": {
+   "designation": "OUT",
+   "name": "Jonathon Cooper",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0036953": {
+   "designation": "QUESTIONABLE",
+   "name": "Teven Jenkins",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
+  "00-0036967": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Joe Tryon",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0036968": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brady Christensen",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0036983": {
+   "designation": "IR",
+   "name": "Kendrick Green",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0036984": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Trey Sermon",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0036992": {
+   "designation": "QUESTIONABLE",
+   "name": "Elijah Molden",
+   "p_plays": 0.75,
+   "team": "LAC"
+  },
+  "00-0037002": {
+   "designation": "IR",
+   "name": "Landon Dickerson",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0037007": {
+   "designation": "QUESTIONABLE",
+   "name": "Patrick Jones II",
+   "p_plays": 0.75,
+   "team": "CAR"
+  },
+  "00-0037031": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nikola Kalinic",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0037057": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Keir Thomas",
+   "p_plays": 0.0,
+   "team": "LA"
+  },
+  "00-0037075": {
+   "designation": "QUESTIONABLE",
+   "name": "Devonte Wyatt",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0037078": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Cole Turner",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0037086": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Grant Calcaterra",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0037112": {
+   "designation": "IR",
+   "name": "Jake Tonges",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0037141": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Joey Blount",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0037156": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Irvin Charles",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0037197": {
+   "designation": "IR",
+   "name": "Isiah Pacheco",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0037203": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "LaBryan Ray",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0037205": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brenden Schooler",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0037229": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ikem Ekwonu",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0037243": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tyler Smith",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0037251": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Alex Wright",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0037260": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "D.J. Davidson",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0037266": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Matt Waletzko",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0037276": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ty Chandler",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0037281": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Damone Clark",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0037297": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Cade Mays",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0037303": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Matt Henningsen",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0037307": {
+   "designation": "IR",
+   "name": "Ja'Sir Taylor",
+   "p_plays": 0.0,
+   "team": "CIN"
+  },
+  "00-0037310": {
+   "designation": "QUESTIONABLE",
+   "name": "James Houston",
+   "p_plays": 0.75,
+   "team": "DAL"
+  },
+  "00-0037320": {
+   "designation": "QUESTIONABLE",
+   "name": "Deane Leonard",
+   "p_plays": 0.75,
+   "team": "LAC"
+  },
+  "00-0037327": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Skylar Thompson",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0037329": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brittain Brown",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0037395": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Dallis Flowers",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0037413": {
+   "designation": "QUESTIONABLE",
+   "name": "Ben Brown",
+   "p_plays": 0.75,
+   "team": "NE"
+  },
+  "00-0037431": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kingsley Jonathan",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0037525": {
+   "designation": "IR",
+   "name": "Jordan Mason",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0037544": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nephi Sewell",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0037549": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Darrell Baker Jr.",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0037563": {
+   "designation": "IR",
+   "name": "Malik Davis",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0037587": {
+   "designation": "QUESTIONABLE",
+   "name": "Nate Landman",
+   "p_plays": 0.75,
+   "team": "LA"
+  },
+  "00-0037596": {
+   "designation": "QUESTIONABLE",
+   "name": "Jack Gibbens",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0037602": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Sam Okuayinonu",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0037633": {
+   "designation": "DOUBTFUL",
+   "name": "Jake Hummel",
+   "p_plays": 0.25,
+   "team": "HOU"
+  },
+  "00-0037661": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ja'Marcus Ingram",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0037667": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kerby Joseph",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0037686": {
+   "designation": "QUESTIONABLE",
+   "name": "Tucker Addington",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
+  "00-0037804": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Zachary Carter",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0037808": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "DeAngelo Malone",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0037809": {
+   "designation": "QUESTIONABLE",
+   "name": "Chig Okonkwo",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0037817": {
+   "designation": "QUESTIONABLE",
+   "name": "Zach Bako-Bewele",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0037831": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nick Zakelj",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0037832": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kalia Davis",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0037837": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Calvin Austin III",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0038043": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Joshua Williams",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0038099": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Phidarian Mathis",
+   "p_plays": 0.0,
+   "team": "BUF"
+  },
+  "00-0038105": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Damarri Mathis",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0038111": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kyler Gordon",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0038136": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Coby Bryant",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0038145": {
+   "designation": "OUT_ROSTER(EXE)",
+   "name": "Thomas Odukoya",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0038386": {
+   "designation": "QUESTIONABLE",
+   "name": "Jalen Carter",
+   "p_plays": 0.75,
+   "team": "PHI"
+  },
+  "00-0038390": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Noah Sewell",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0038394": {
+   "designation": "IR",
+   "name": "Will Mallory",
+   "p_plays": 0.0,
+   "team": "IND"
+  },
+  "00-0038401": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jarrick Bernard-Converse",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0038506": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jordon Riley",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0038556": {
+   "designation": "QUESTIONABLE",
+   "name": "DeMarvion Overshown",
+   "p_plays": 0.75,
+   "team": "DAL"
+  },
+  "00-0038566": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nick Saldiveri",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0038585": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Cameron Mitchell",
+   "p_plays": 0.0,
+   "team": "IND"
+  },
+  "00-0038590": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Justin Shorter",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0038599": {
+   "designation": "IR",
+   "name": "Henry To'oTo'o",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0038610": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Bryce Baringer",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0038614": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Scott Matlock",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
+  "00-0038679": {
+   "designation": "OUT",
+   "name": "Tyrell Shavers",
+   "p_plays": 0.0,
+   "team": "BUF"
+  },
+  "00-0038703": {
+   "designation": "IR",
+   "name": "Kendell Brooks",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0038720": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Julian Hill",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0038724": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ali Gaye",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0038735": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Princeton Fant",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0038752": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jake Bobo",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0038765": {
+   "designation": "QUESTIONABLE",
+   "name": "Ty Okada",
+   "p_plays": 0.75,
+   "team": "SEA"
+  },
+  "00-0038781": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Rejzohn Wright",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0038865": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Andrew Farmer",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0038932": {
+   "designation": "QUESTIONABLE",
+   "name": "Darnell Wright",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0038958": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Markees Watts",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0038976": {
+   "designation": "QUESTIONABLE",
+   "name": "Marvin Mims Jr.",
+   "p_plays": 0.75,
+   "team": "DEN"
+  },
+  "00-0038977": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tank Dell",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0038995": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Bryan Bresee",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0039007": {
+   "designation": "QUESTIONABLE",
+   "name": "Garrett Williams",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0039009": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Dylan Horton",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0039014": {
+   "designation": "QUESTIONABLE",
+   "name": "Dawand Jones",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
+  "00-0039020": {
+   "designation": "QUESTIONABLE",
+   "name": "Anthony Bradford",
+   "p_plays": 0.75,
+   "team": "SEA"
+  },
+  "00-0039051": {
+   "designation": "IR",
+   "name": "Josh Hayes",
+   "p_plays": 0.0,
+   "team": "TB"
+  },
+  "00-0039064": {
+   "designation": "QUESTIONABLE",
+   "name": "Zay Flowers",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0039072": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jakorian Bennett",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0039112": {
+   "designation": "QUESTIONABLE",
+   "name": "Lukas Van Ness",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0039141": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brian Branch",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0039144": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Luke Musgrave",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0039148": {
+   "designation": "QUESTIONABLE",
+   "name": "Keion White",
+   "p_plays": 0.75,
+   "team": "SF"
+  },
+  "00-0039164": {
+   "designation": "QUESTIONABLE",
+   "name": "Anthony Richardson Sr.",
+   "p_plays": 0.75,
+   "team": "IND"
+  },
+  "00-0039165": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Zach Charbonnet",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0039167": {
+   "designation": "QUESTIONABLE",
+   "name": "Joey Porter Jr.",
+   "p_plays": 0.75,
+   "team": "PIT"
+  },
+  "00-0039178": {
+   "designation": "QUESTIONABLE",
+   "name": "Austin Ajiake",
+   "p_plays": 0.75,
+   "team": "IND"
+  },
+  "00-0039234": {
+   "designation": "QUESTIONABLE",
+   "name": "T.J. Tampa",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0039236": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Johnny Wilson",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0039244": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Chris Collier",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0039267": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Andre' Sam",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0039338": {
+   "designation": "QUESTIONABLE",
+   "name": "Brock Bowers",
+   "p_plays": 0.75,
+   "team": "LV"
+  },
+  "00-0039352": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Marist Liufau",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0039362": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Giovanni Manu",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0039363": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Isaac Guerendo",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0039368": {
+   "designation": "IR",
+   "name": "Jordan Magee",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0039370": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "JD Bertrand",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0039373": {
+   "designation": "IR",
+   "name": "Audric Estime",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0039384": {
+   "designation": "QUESTIONABLE",
+   "name": "Tyrone Tracy Jr.",
+   "p_plays": 0.75,
+   "team": "NYG"
+  },
+  "00-0039388": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jaylan Ford",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0039389": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Logan Lee",
+   "p_plays": 0.0,
+   "team": "PIT"
+  },
+  "00-0039408": {
+   "designation": "OUT",
+   "name": "Christian Mahogany",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0039419": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Michael Jurgens",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0039427": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Solomon Byrd",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0039430": {
+   "designation": "QUESTIONABLE",
+   "name": "James Williams Sr.",
+   "p_plays": 0.75,
+   "team": "TEN"
+  },
+  "00-0039436": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jaylen Harrell",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0039438": {
+   "designation": "OUT",
+   "name": "Nick Gargiulo",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0039481": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Storm Duck",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0039491": {
+   "designation": "QUESTIONABLE",
+   "name": "Jalen Coker",
+   "p_plays": 0.75,
+   "team": "CAR"
+  },
+  "00-0039565": {
+   "designation": "IR",
+   "name": "Levelle Bailey",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0039568": {
+   "designation": "IR",
+   "name": "Frank Crum",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0039620": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Rico Payton",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0039622": {
+   "designation": "QUESTIONABLE",
+   "name": "Isaiah Stalbird",
+   "p_plays": 0.75,
+   "team": "NO"
+  },
+  "00-0039623": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Mason Tipton",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0039626": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Cole Burgess",
+   "p_plays": 0.0,
+   "team": "PIT"
+  },
+  "00-0039676": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Chigozie Anusiem",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0039710": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jeshaun Jones",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0039720": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Taki Taimani",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0039737": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tip Reiman",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0039764": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Elijah Chatman",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0039774": {
+   "designation": "QUESTIONABLE",
+   "name": "Omar Speights",
+   "p_plays": 0.75,
+   "team": "LA"
+  },
+  "00-0039784": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Justin Dedich",
+   "p_plays": 0.0,
+   "team": "LA"
+  },
+  "00-0039807": {
+   "designation": "QUESTIONABLE",
+   "name": "Max Melton",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0039808": {
+   "designation": "QUESTIONABLE",
+   "name": "Isaiah Adams",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0039812": {
+   "designation": "QUESTIONABLE",
+   "name": "Ty'Ron Hopper",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0039834": {
+   "designation": "QUESTIONABLE",
+   "name": "Kamren Kinchens",
+   "p_plays": 0.75,
+   "team": "LA"
+  },
+  "00-0039836": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brennan Jackson",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0039841": {
+   "designation": "QUESTIONABLE",
+   "name": "Cooper DeJean",
+   "p_plays": 0.75,
+   "team": "PHI"
+  },
+  "00-0039858": {
+   "designation": "QUESTIONABLE",
+   "name": "Cedric Gray",
+   "p_plays": 0.75,
+   "team": "TEN"
+  },
+  "00-0039864": {
+   "designation": "QUESTIONABLE",
+   "name": "Dadrion Taylor-Demerson",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0039871": {
+   "designation": "QUESTIONABLE",
+   "name": "Troy Fautanu",
+   "p_plays": 0.75,
+   "team": "PIT"
+  },
+  "00-0039872": {
+   "designation": "QUESTIONABLE",
+   "name": "Cole Bishop",
+   "p_plays": 0.75,
+   "team": "BUF"
+  },
+  "00-0039877": {
+   "designation": "IR",
+   "name": "Mohamed Kamara",
+   "p_plays": 0.0,
+   "team": "TB"
+  },
+  "00-0039878": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Edefuan Ulofoshio",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0039883": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Daequan Hardy",
+   "p_plays": 0.0,
+   "team": "PIT"
+  },
+  "00-0039893": {
+   "designation": "QUESTIONABLE",
+   "name": "Brian Thomas Jr.",
+   "p_plays": 0.75,
+   "team": "JAX"
+  },
+  "00-0039903": {
+   "designation": "OUT_ROSTER(EXE)",
+   "name": "Terrion Arnold",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0039906": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jer'Zhan Newton",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0039907": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Ja'Lynn Polk",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0039911": {
+   "designation": "QUESTIONABLE",
+   "name": "Chop Robinson",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
+  "00-0039915": {
+   "designation": "QUESTIONABLE",
+   "name": "Ladd McConkey",
+   "p_plays": 0.75,
+   "team": "LAC"
+  },
+  "00-0039916": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ricky Pearsall",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0039917": {
+   "designation": "QUESTIONABLE",
+   "name": "Michael Penix Jr.",
+   "p_plays": 0.75,
+   "team": "ATL"
+  },
+  "00-0039921": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Trey Benson",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0039936": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Thomas Yassmin",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0040009": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Savion Williams",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0040010": {
+   "designation": "QUESTIONABLE",
+   "name": "Barryn Sorrell",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0040012": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Collin Oliver",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0040016": {
+   "designation": "QUESTIONABLE",
+   "name": "Warren Brinson",
+   "p_plays": 0.75,
+   "team": "GB"
+  },
+  "00-0040033": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Johnathan Baldwin",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0040069": {
+   "designation": "QUESTIONABLE",
+   "name": "Teddye Buchanan",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0040073": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Bilhal Kone",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0040104": {
+   "designation": "QUESTIONABLE",
+   "name": "Keondre Jackson",
+   "p_plays": 0.75,
+   "team": "BAL"
+  },
+  "00-0040106": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Reuben Lowery",
+   "p_plays": 0.0,
+   "team": "IND"
+  },
+  "00-0040118": {
+   "designation": "IR",
+   "name": "Cooper McDonald",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0040120": {
+   "designation": "IR",
+   "name": "Jimmy Holiday",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0040127": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kenneth Grant",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0040130": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jayden Higgins",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0040135": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nick Martin",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0040143": {
+   "designation": "QUESTIONABLE",
+   "name": "Jacob Parrish",
+   "p_plays": 0.75,
+   "team": "TB"
+  },
+  "00-0040162": {
+   "designation": "IR",
+   "name": "Dylan Sampson",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0040164": {
+   "designation": "QUESTIONABLE",
+   "name": "Jaylin Lane",
+   "p_plays": 0.75,
+   "team": "WAS"
+  },
+  "00-0040167": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ruben Hyppolite II",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0040184": {
+   "designation": "IR",
+   "name": "KeAndre Lambert-Smith",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
+  "00-0040196": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tyler Baron",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0040197": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Dorian Strong",
+   "p_plays": 0.0,
+   "team": "BUF"
+  },
+  "00-0040211": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Graham Mertz",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0040212": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Branson Taylor",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
+  "00-0040226": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Marcus Bryant",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0040230": {
+   "designation": "IR",
+   "name": "Kitan Crawford",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0040232": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Donte Kent",
+   "p_plays": 0.0,
+   "team": "PIT"
+  },
+  "00-0040236": {
+   "designation": "QUESTIONABLE",
+   "name": "Kyle Monangai",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0040238": {
+   "designation": "QUESTIONABLE",
+   "name": "LeQuint Allen Jr.",
+   "p_plays": 0.75,
+   "team": "JAX"
+  },
+  "00-0040240": {
+   "designation": "IR",
+   "name": "Caleb Lohner",
+   "p_plays": 0.0,
+   "team": "DEN"
+  },
+  "00-0040243": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Korie Black",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0040244": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Moliki Matavao",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0040289": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Bam Martin-Scott",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0040328": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ethan Downs",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0040329": {
+   "designation": "IR",
+   "name": "B.J. Green II",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0040395": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jared Bartlett",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0040413": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "K.C. Ossai",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0040432": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Beaux Collins",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0040488": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Carter Runyon",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0040492": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tyler Batty",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0040503": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Dorian Mausi",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0040509": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Ben Yurosek",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0040570": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jeremiah Webb",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0040577": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jalon Walker",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0040578": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "James Pearce Jr.",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0040581": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Dont'e Thornton Jr.",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0040641": {
+   "designation": "QUESTIONABLE",
+   "name": "Darien Porter",
+   "p_plays": 0.75,
+   "team": "LV"
+  },
+  "00-0040644": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Trevor Etienne",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0040645": {
+   "designation": "QUESTIONABLE",
+   "name": "Cody Simon",
+   "p_plays": 0.75,
+   "team": "ARI"
+  },
+  "00-0040649": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Robbie Ouzts",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0040652": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Mason Richman",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0040660": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Mykel Williams",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0040687": {
+   "designation": "IR",
+   "name": "Cameron Williams",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0040704": {
+   "designation": "IR",
+   "name": "Dillon Gabriel",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0040721": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Alfred Collins",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0040724": {
+   "designation": "QUESTIONABLE",
+   "name": "T.J. Sanders",
+   "p_plays": 0.75,
+   "team": "BUF"
+  },
+  "00-0040730": {
+   "designation": "QUESTIONABLE",
+   "name": "RJ Harvey",
+   "p_plays": 0.75,
+   "team": "DEN"
+  },
+  "00-0040731": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Trey Amos",
+   "p_plays": 0.0,
+   "team": "WAS"
+  },
+  "00-0040733": {
+   "designation": "QUESTIONABLE",
+   "name": "Nick Emmanwori",
+   "p_plays": 0.75,
+   "team": "SEA"
+  },
+  "00-0040740": {
+   "designation": "QUESTIONABLE",
+   "name": "Ozzy Trapilo",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0040741": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Shemar Turner",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0040746": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Nic Scourton",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0040748": {
+   "designation": "OUT",
+   "name": "Omarr Norman-Lott",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0040853": {
+   "designation": "IR",
+   "name": "Carson Towt",
+   "p_plays": 0.0,
+   "team": "IND"
+  },
+  "00-0040870": {
+   "designation": "IR",
+   "name": "Ja'Kobi Lane",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0040875": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Devin Moore",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0040888": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Adam Randall",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0040901": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jaren Kanak",
+   "p_plays": 0.0,
+   "team": "TEN"
+  },
+  "00-0040929": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tucker Large",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0040933": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kelvin Gilliam",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0040938": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "DJ Rogers",
+   "p_plays": 0.0,
+   "team": "DAL"
+  },
+  "00-0040953": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jeff Caldwell",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0040955": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "John Michael Gyllenborg",
+   "p_plays": 0.0,
+   "team": "KC"
+  },
+  "00-0040988": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jahquez Robinson",
+   "p_plays": 0.0,
+   "team": "BAL"
+  },
+  "00-0041003": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Justin Pickett",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0041005": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Corey Rucker",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0041029": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jordyn Tyson",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0041035": {
+   "designation": "OUT",
+   "name": "De'Zhaun Stribling",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0041038": {
+   "designation": "QUESTIONABLE",
+   "name": "D'Angelo Ponds",
+   "p_plays": 0.75,
+   "team": "NYJ"
+  },
+  "00-0041041": {
+   "designation": "QUESTIONABLE",
+   "name": "Oscar Delp",
+   "p_plays": 0.75,
+   "team": "NO"
+  },
+  "00-0041047": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Chris Brazzell II",
+   "p_plays": 0.0,
+   "team": "CAR"
+  },
+  "00-0041060": {
+   "designation": "QUESTIONABLE",
+   "name": "Malik Muhammad II",
+   "p_plays": 0.75,
+   "team": "CHI"
+  },
+  "00-0041073": {
+   "designation": "QUESTIONABLE",
+   "name": "Parker Brailsford",
+   "p_plays": 0.75,
+   "team": "CLE"
+  },
+  "00-0041087": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Joe Royer",
+   "p_plays": 0.0,
+   "team": "CLE"
+  },
+  "00-0041089": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Lorenzo Styles Jr.",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0041091": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Zane Durant",
+   "p_plays": 0.0,
+   "team": "BUF"
+  },
+  "00-0041097": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Anez Cooper",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0041098": {
+   "designation": "IR",
+   "name": "Brian Parker II",
+   "p_plays": 0.0,
+   "team": "CIN"
+  },
+  "00-0041103": {
+   "designation": "QUESTIONABLE",
+   "name": "Dametrious Crownover",
+   "p_plays": 0.75,
+   "team": "NE"
+  },
+  "00-0041120": {
+   "designation": "IR",
+   "name": "VJ Payne",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0041122": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Zach Durfee",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0041127": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Parker Hughes",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0041136": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Rene Konga",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0041142": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Thaddeus Dixon",
+   "p_plays": 0.0,
+   "team": "NYG"
+  },
+  "00-0041161": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Le'Veon Moss",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0041170": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Hayden Large",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0041206": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Alex Bullock",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0041208": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Garrett DiGiorgio",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0041219": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Jordan White",
+   "p_plays": 0.0,
+   "team": "JAX"
+  },
+  "00-0041239": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Chip Trayanum",
+   "p_plays": 0.0,
+   "team": "NYJ"
+  },
+  "00-0041265": {
+   "designation": "OUT_ROSTER(RET)",
+   "name": "Squirrel White",
+   "p_plays": 0.0,
+   "team": "CHI"
+  },
+  "00-0041303": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Sam Hagen",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0041321": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Khalil Jacobs",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0041323": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Myles Montgomery",
+   "p_plays": 0.0,
+   "team": "NE"
+  },
+  "00-0041339": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Deshawn McKnight",
+   "p_plays": 0.0,
+   "team": "TB"
+  },
+  "00-0041344": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Tyreek Chappell",
+   "p_plays": 0.0,
+   "team": "MIN"
+  },
+  "00-0041360": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Mikail Kamara",
+   "p_plays": 0.0,
+   "team": "SF"
+  },
+  "00-0041366": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Jameson Geers",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0041387": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Isaiah World",
+   "p_plays": 0.0,
+   "team": "LAC"
+  },
+  "00-0041394": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Keagen Trost",
+   "p_plays": 0.0,
+   "team": "LA"
+  },
+  "00-0041414": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Matthew Caldwell",
+   "p_plays": 0.0,
+   "team": "LA"
+  },
+  "00-0041429": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Eddie Walls III",
+   "p_plays": 0.0,
+   "team": "LA"
+  },
+  "00-0041440": {
+   "designation": "IR",
+   "name": "Kayden McDonald",
+   "p_plays": 0.0,
+   "team": "HOU"
+  },
+  "00-0041446": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Kendrick Law",
+   "p_plays": 0.0,
+   "team": "DET"
+  },
+  "00-0041451": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Brock Rechsteiner",
+   "p_plays": 0.0,
+   "team": "NO"
+  },
+  "00-0041463": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Bud Clark",
+   "p_plays": 0.0,
+   "team": "SEA"
+  },
+  "00-0041468": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Chase Bisontis",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0041483": {
+   "designation": "IR",
+   "name": "Eli Stowers",
+   "p_plays": 0.0,
+   "team": "PHI"
+  },
+  "00-0041484": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Anterio Thompson",
+   "p_plays": 0.0,
+   "team": "ATL"
+  },
+  "00-0041493": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Marlon Jones",
+   "p_plays": 0.0,
+   "team": "GB"
+  },
+  "00-0041511": {
+   "designation": "QUESTIONABLE",
+   "name": "Omar Cooper Jr.",
+   "p_plays": 0.75,
+   "team": "NYJ"
+  },
+  "00-0041526": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Trey Moore",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0041527": {
+   "designation": "IR",
+   "name": "Kyle Louis",
+   "p_plays": 0.0,
+   "team": "MIA"
+  },
+  "00-0041553": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Keyron Crawford",
+   "p_plays": 0.0,
+   "team": "LV"
+  },
+  "00-0041555": {
+   "designation": "IR",
+   "name": "Kaleb Proctor",
+   "p_plays": 0.0,
+   "team": "ARI"
+  },
+  "00-0041579": {
+   "designation": "QUESTIONABLE",
+   "name": "Seydou Traore",
+   "p_plays": 0.75,
+   "team": "MIA"
+  },
+  "00-0041587": {
+   "designation": "OUT_ROSTER(RES)",
+   "name": "Daniel Rickert",
+   "p_plays": 0.0,
+   "team": "LA"
+  }
+ },
+ "games": {
+  "2026_02_CAR_ATL": {
+   "away": "CAR",
+   "away_qb": "Bryce Young",
+   "away_qb_id": "00-0039150",
+   "final": false,
+   "home": "ATL",
+   "home_qb": "Tua Tagovailoa",
+   "home_qb_id": "00-0036212",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": -2.5,
+   "total_line": 43.5
+  },
+  "2026_02_CIN_HOU": {
+   "away": "CIN",
+   "away_qb": "Joe Burrow",
+   "away_qb_id": "00-0036442",
+   "final": false,
+   "home": "HOU",
+   "home_qb": "C.J. Stroud",
+   "home_qb_id": "00-0039163",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": 2.5,
+   "total_line": 46.5
+  },
+  "2026_02_CLE_TB": {
+   "away": "CLE",
+   "away_qb": "Deshaun Watson",
+   "away_qb_id": "00-0033537",
+   "final": false,
+   "home": "TB",
+   "home_qb": "Baker Mayfield",
+   "home_qb_id": "00-0034855",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": 8.5,
+   "total_line": 41.5
+  },
+  "2026_02_DET_BUF": {
+   "away": "DET",
+   "away_qb": "Jared Goff",
+   "away_qb_id": "00-0033106",
+   "final": false,
+   "home": "BUF",
+   "home_qb": "Josh Allen",
+   "home_qb_id": "00-0034857",
+   "kickoff_utc": "2026-09-18T00:15:00Z",
+   "spread_line": 5.5,
+   "total_line": 54.5
+  },
+  "2026_02_GB_NYJ": {
+   "away": "GB",
+   "away_qb": "Jordan Love",
+   "away_qb_id": "00-0036264",
+   "final": false,
+   "home": "NYJ",
+   "home_qb": "Geno Smith",
+   "home_qb_id": "00-0030565",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": -3.5,
+   "total_line": 44.5
+  },
+  "2026_02_IND_KC": {
+   "away": "IND",
+   "away_qb": "Daniel Jones",
+   "away_qb_id": "00-0035710",
+   "final": false,
+   "home": "KC",
+   "home_qb": "Patrick Mahomes",
+   "home_qb_id": "00-0033873",
+   "kickoff_utc": "2026-09-21T00:20:00Z",
+   "spread_line": 6.5,
+   "total_line": 46.5
+  },
+  "2026_02_JAX_DEN": {
+   "away": "JAX",
+   "away_qb": "Trevor Lawrence",
+   "away_qb_id": "00-0036971",
+   "final": false,
+   "home": "DEN",
+   "home_qb": "Bo Nix",
+   "home_qb_id": "00-0039732",
+   "kickoff_utc": "2026-09-20T20:05:00Z",
+   "spread_line": 2.5,
+   "total_line": 45.5
+  },
+  "2026_02_LV_LAC": {
+   "away": "LV",
+   "away_qb": "Kirk Cousins",
+   "away_qb_id": "00-0029604",
+   "final": false,
+   "home": "LAC",
+   "home_qb": "Justin Herbert",
+   "home_qb_id": "00-0036355",
+   "kickoff_utc": "2026-09-20T20:05:00Z",
+   "spread_line": 6.5,
+   "total_line": 43.5
+  },
+  "2026_02_MIA_SF": {
+   "away": "MIA",
+   "away_qb": "Malik Willis",
+   "away_qb_id": "00-0038128",
+   "final": false,
+   "home": "SF",
+   "home_qb": "Brock Purdy",
+   "home_qb_id": "00-0037834",
+   "kickoff_utc": "2026-09-20T20:25:00Z",
+   "spread_line": 13.5,
+   "total_line": 44.5
+  },
+  "2026_02_MIN_CHI": {
+   "away": "MIN",
+   "away_qb": "Kyler Murray",
+   "away_qb_id": "00-0035228",
+   "final": false,
+   "home": "CHI",
+   "home_qb": "Caleb Williams",
+   "home_qb_id": "00-0039918",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": 4.5,
+   "total_line": 48.5
+  },
+  "2026_02_NO_BAL": {
+   "away": "NO",
+   "away_qb": "Tyler Shough",
+   "away_qb_id": "00-0040743",
+   "final": false,
+   "home": "BAL",
+   "home_qb": "Lamar Jackson",
+   "home_qb_id": "00-0034796",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": 8.5,
+   "total_line": 46.5
+  },
+  "2026_02_NYG_LA": {
+   "away": "NYG",
+   "away_qb": "Jaxson Dart",
+   "away_qb_id": "00-0040691",
+   "final": false,
+   "home": "LA",
+   "home_qb": "Matthew Stafford",
+   "home_qb_id": "00-0026498",
+   "kickoff_utc": "2026-09-22T00:15:00Z",
+   "spread_line": 7.0,
+   "total_line": 47.5
+  },
+  "2026_02_PHI_TEN": {
+   "away": "PHI",
+   "away_qb": "Jalen Hurts",
+   "away_qb_id": "00-0036389",
+   "final": false,
+   "home": "TEN",
+   "home_qb": "Cam Ward",
+   "home_qb_id": "00-0040676",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": -7.0,
+   "total_line": 39.5
+  },
+  "2026_02_PIT_NE": {
+   "away": "PIT",
+   "away_qb": "Aaron Rodgers",
+   "away_qb_id": "00-0023459",
+   "final": false,
+   "home": "NE",
+   "home_qb": "Drake Maye",
+   "home_qb_id": "00-0039851",
+   "kickoff_utc": "2026-09-20T17:00:00Z",
+   "spread_line": 5.5,
+   "total_line": 41.5
+  },
+  "2026_02_SEA_ARI": {
+   "away": "SEA",
+   "away_qb": "Drew Lock",
+   "away_qb_id": "00-0035704",
+   "final": false,
+   "home": "ARI",
+   "home_qb": "Jacoby Brissett",
+   "home_qb_id": "00-0033119",
+   "kickoff_utc": "2026-09-20T20:25:00Z",
+   "spread_line": -3.5,
+   "total_line": 41.5
+  },
+  "2026_02_WAS_DAL": {
+   "away": "WAS",
+   "away_qb": "Jayden Daniels",
+   "away_qb_id": "00-0039910",
+   "final": false,
+   "home": "DAL",
+   "home_qb": "Dak Prescott",
+   "home_qb_id": "00-0033077",
+   "kickoff_utc": "2026-09-20T20:25:00Z",
+   "spread_line": 4.5,
+   "total_line": 50.5
+  }
+ },
+ "season": 2026,
+ "taken_at": "2026-09-17T14:25:34Z",
+ "week": 2,
+ "wind": {
+  "2026_02_CAR_ATL": 4.1,
+  "2026_02_DET_BUF": 3.6,
+  "2026_02_MIA_SF": 10.0,
+  "2026_02_MIN_CHI": 14.7,
+  "2026_02_PHI_TEN": 7.0,
+  "2026_02_PIT_NE": 5.7,
+  "2026_02_SEA_ARI": 9.4
+ }
+}

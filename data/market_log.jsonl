@@ -1120,3 +1120,19 @@
 {"ts":"2026-09-13T23:40:56Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_receptions","books":6,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
 {"ts":"2026-09-13T23:40:56Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_reception_yds","books":6,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
 {"ts":"2026-09-13T23:40:56Z","event":"3e646c7479c57f5d9752d8c7dfe7059b","market":"player_anytime_td","books":8,"commence":"2026-09-14T00:20:00Z","matchup":"Dallas Cowboys @ New York Giants"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_pass_yds","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_pass_tds","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_pass_interceptions","books":5,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_rush_yds","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_rush_attempts","books":4,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_receptions","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_reception_yds","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:54Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_anytime_td","books":8,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_pass_yds","books":6,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_pass_tds","books":5,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_pass_interceptions","books":3,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_rush_yds","books":6,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_rush_attempts","books":3,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_receptions","books":5,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_reception_yds","books":6,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
+{"ts":"2026-09-17T14:17:56Z","event":"0283a29e1b38ef78b29b904fd56a16dd","market":"player_anytime_td","books":8,"commence":"2026-09-20T17:00:00Z","matchup":"Minnesota Vikings @ Chicago Bears"}
