@@ -1144,3 +1144,35 @@
 {"ts":"2026-09-17T23:08:07Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_receptions","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
 {"ts":"2026-09-17T23:08:07Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_reception_yds","books":7,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
 {"ts":"2026-09-17T23:08:07Z","event":"56e8897681915f7ec92baeee952bb1ae","market":"player_anytime_td","books":8,"commence":"2026-09-18T00:15:00Z","matchup":"Detroit Lions @ Buffalo Bills"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_pass_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_pass_tds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_pass_interceptions","books":5,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_rush_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_rush_attempts","books":4,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_receptions","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_reception_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:03Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_anytime_td","books":8,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_pass_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_pass_tds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_pass_interceptions","books":5,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_rush_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_rush_attempts","books":5,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_receptions","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_reception_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:04Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_anytime_td","books":8,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_pass_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_pass_tds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_pass_interceptions","books":5,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_rush_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_rush_attempts","books":4,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_receptions","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_reception_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:09Z","event":"1fd6628c781f556a7a19638e97d7107f","market":"player_anytime_td","books":8,"commence":"2026-09-20T20:05:00Z","matchup":"Jacksonville Jaguars @ Denver Broncos"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_pass_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_pass_tds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_pass_interceptions","books":5,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_rush_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_rush_attempts","books":5,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_receptions","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_reception_yds","books":7,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
+{"ts":"2026-09-20T19:43:10Z","event":"71b3b83747589efdc5baef2c5cf811bf","market":"player_anytime_td","books":8,"commence":"2026-09-20T20:05:00Z","matchup":"Las Vegas Raiders @ Los Angeles Chargers"}
