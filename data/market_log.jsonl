@@ -1192,3 +1192,19 @@
 {"ts":"2026-09-20T23:43:03Z","event":"50bc247030707d823b9c3581d7eb5760","market":"player_receptions","books":7,"commence":"2026-09-21T00:20:00Z","matchup":"Indianapolis Colts @ Kansas City Chiefs"}
 {"ts":"2026-09-20T23:43:03Z","event":"50bc247030707d823b9c3581d7eb5760","market":"player_reception_yds","books":7,"commence":"2026-09-21T00:20:00Z","matchup":"Indianapolis Colts @ Kansas City Chiefs"}
 {"ts":"2026-09-20T23:43:03Z","event":"50bc247030707d823b9c3581d7eb5760","market":"player_anytime_td","books":8,"commence":"2026-09-21T00:20:00Z","matchup":"Indianapolis Colts @ Kansas City Chiefs"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_pass_yds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_pass_tds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_pass_interceptions","books":5,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_rush_yds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_rush_attempts","books":4,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_receptions","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_reception_yds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:44Z","event":"32367f882fac1a0c20a6335619922025","market":"player_anytime_td","books":8,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_pass_yds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_pass_tds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_pass_interceptions","books":5,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_rush_yds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_rush_attempts","books":4,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_receptions","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_reception_yds","books":7,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
+{"ts":"2026-09-21T23:07:48Z","event":"32367f882fac1a0c20a6335619922025","market":"player_anytime_td","books":8,"commence":"2026-09-22T00:15:00Z","matchup":"New York Giants @ Los Angeles Rams"}
