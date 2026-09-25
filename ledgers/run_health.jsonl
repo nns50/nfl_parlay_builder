@@ -59,3 +59,4 @@
 {"at":"2026-09-22T14:09:29Z","run_type":"wrap","season":"2026","week":"2","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"9ce934b","email":"ok","slack":"ok","push":"ok","credits":19493,"note":null}
 {"at":"2026-09-24T14:22:43Z","run_type":"build","season":"2026","week":"3","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"59b8557","email":"ok","slack":"ok","push":"ok","credits":19442,"note":null}
 {"at":"2026-09-24T23:17:33Z","run_type":"lock","season":"2026","week":"3","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"56b3112","email":"ok","slack":"ok","push":"ok","credits":19387,"note":null}
+{"at":"2026-09-25T21:20:07Z","run_type":"designation","season":"2026","week":"3","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"a5870c3","email":"ok","slack":"ok","push":"ok","credits":19375,"note":null}
