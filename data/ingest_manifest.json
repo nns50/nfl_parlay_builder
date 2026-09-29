@@ -1,27 +1,27 @@
 {
  "depth_charts:2026": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
-  "rows": 2296,
-  "source_last_modified": "Mon, 28 Sep 2026 15:17:55 GMT",
+  "rows": 2254,
+  "source_last_modified": "Tue, 29 Sep 2026 13:59:29 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/depth_charts/depth_charts_2026.csv.gz"
  },
  "players": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
-  "rows": 24833,
-  "source_last_modified": "Mon, 28 Sep 2026 16:20:56 GMT",
+  "rows": 24834,
+  "source_last_modified": "Tue, 29 Sep 2026 14:32:37 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv.gz"
  },
  "schedules": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
   "rows": 7548,
-  "source_last_modified": "Mon, 28 Sep 2026 23:06:27 GMT",
+  "source_last_modified": "Tue, 29 Sep 2026 15:06:32 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
@@ -45,10 +45,10 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv.gz"
  },
  "snap_counts:2026": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
-  "rows": 4394,
-  "source_last_modified": "Mon, 28 Sep 2026 11:02:43 GMT",
+  "rows": 4488,
+  "source_last_modified": "Tue, 29 Sep 2026 11:01:26 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.csv.gz"
@@ -72,10 +72,10 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2025.csv.gz"
  },
  "stats_player:2026": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
-  "rows": 3274,
-  "source_last_modified": "Mon, 28 Sep 2026 17:40:27 GMT",
+  "rows": 3339,
+  "source_last_modified": "Tue, 29 Sep 2026 11:34:04 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.csv.gz"
@@ -90,7 +90,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/teams/teams_colors_logos.csv"
  },
  "weekly_rosters:2024": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
   "rows": 46579,
   "source_last_modified": "Fri, 14 Mar 2025 07:16:06 GMT",
@@ -99,7 +99,7 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_2024.csv.gz"
  },
  "weekly_rosters:2025": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
   "rows": 46849,
   "source_last_modified": "Sat, 14 Mar 2026 07:33:06 GMT",
@@ -108,10 +108,10 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_2025.csv.gz"
  },
  "weekly_rosters:2026": {
-  "fetched_at": "2026-09-28T23:11:08Z",
+  "fetched_at": "2026-09-29T15:13:40Z",
   "missing_cols": [],
-  "rows": 8036,
-  "source_last_modified": "Mon, 28 Sep 2026 15:24:11 GMT",
+  "rows": 10562,
+  "source_last_modified": "Tue, 29 Sep 2026 14:03:35 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/weekly_rosters/roster_weekly_2026.csv.gz"
