@@ -80,3 +80,4 @@
 {"at":"2026-10-05T23:16:29Z","run_type":"lock","season":"2026","week":"4","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"f8498c1","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-10-06T14:09:20Z","run_type":"wrap","season":"2026","week":"4","verdict":"NO BET (API key deactivated)","selftest":"101/101","selftest_green":true,"fold":"6d14218","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-10-08T14:29:03Z","run_type":"build","season":"2026","week":"5","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"b2507dc","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
+{"at":"2026-10-08T23:18:23Z","run_type":"lock","season":"2026","week":"5","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"597f2ce81967a467913c5198b50646aee3a29b6e","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
