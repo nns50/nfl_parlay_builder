@@ -87,3 +87,4 @@
 {"at":"2026-10-11T23:49:33Z","run_type":"lock","season":"2026","week":"5","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"placeholder","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-10-11T23:49:47Z","run_type":"lock","season":"2026","week":"5","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"ee8f1b1","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-10-12T23:24:36Z","run_type":"lock","season":"2026","week":"5","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"769c8f790dbd2532d6e3d5e8f0d48e4159e92a5a","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
+{"at":"2026-10-13T14:20:56Z","run_type":"wrap","season":"2026","week":"5","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"927f8f39","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
