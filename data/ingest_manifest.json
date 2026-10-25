@@ -18,10 +18,10 @@
   "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv.gz"
  },
  "schedules": {
-  "fetched_at": "2026-10-25T15:31:35Z",
+  "fetched_at": "2026-10-25T15:39:05Z",
   "missing_cols": [],
   "rows": 7548,
-  "source_last_modified": "Sun, 25 Oct 2026 15:16:18 GMT",
+  "source_last_modified": "Sun, 25 Oct 2026 15:36:24 GMT",
   "source_length": "0",
   "status": "OK",
   "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
