@@ -106,3 +106,4 @@
 {"at":"2026-10-27T14:17:07Z","run_type":"wrap","season":"2026","week":"7","verdict":"NO BET (API key deactivated)","selftest":"101/101","selftest_green":true,"fold":"081f133","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-10-29T14:38:07Z","run_type":"build","season":"2026","week":"8","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"68c6f4a","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-10-29T23:17:01Z","run_type":"lock","season":"2026","week":"8","verdict":"NO LOCKS","selftest":"101/101","selftest_green":true,"fold":"13cb2ca","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
+{"at":"2026-10-30T21:18:25Z","run_type":"designation","season":"2026","week":"8","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"1bafa15","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
