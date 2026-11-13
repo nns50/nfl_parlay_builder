@@ -124,3 +124,4 @@
 {"at":"2026-11-12T14:22:46Z","run_type":"build","season":"2026","week":"10","verdict":"NO BET (SEA@LV U40.5 +2.5pp pending prices)","selftest":"101/101","selftest_green":true,"fold":"1d8969a","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-11-12T23:16:56Z","run_type":"lock","season":"2026","week":"10","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"PENDING","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-11-12T23:17:18Z","run_type":"lock","season":"2026","week":"10","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"c8bf1aa","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
+{"at":"2026-11-13T21:17:20Z","run_type":"designation","season":"2026","week":"10","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"5875a31","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
