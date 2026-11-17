@@ -129,3 +129,4 @@
 {"at":"2026-11-15T19:36:54Z","run_type":"lock","season":"2026","week":"10","verdict":"NO BET (API deactivated run 50)","selftest":"101/101","selftest_green":true,"fold":"6ef5cee","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-11-15T23:35:29Z","run_type":"lock","season":"2026","week":"10","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"d696477","email":"ok","slack":"ok","push":"ok","credits":0,"note":null}
 {"at":"2026-11-16T23:13:00Z","run_type":"lock","season":"2026","week":"10","verdict":"NO BET (SEA@LV U40.5 WIN top cand; API deactivated run 52)","selftest":"101/101","selftest_green":true,"fold":"e367eb7","email":"ok","slack":"ok","push":"ok","credits":0,"note":null}
+{"at":"2026-11-17T14:10:38Z","run_type":"wrap","season":"2026","week":"10","verdict":"NO BET (API deactivated)","selftest":"101/101","selftest_green":true,"fold":"dd471e6","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
