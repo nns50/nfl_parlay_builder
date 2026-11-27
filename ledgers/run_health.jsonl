@@ -143,3 +143,4 @@
 {"at":"2026-11-26T14:15:04Z","run_type":"build","season":"2026","week":"12","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"187e689","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
 {"at":"2026-11-26T23:17:17Z","run_type":"lock","season":"2026","week":"12","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"7d49ccd","email":"n/a","slack":"n/a","push":"n/a","credits":null,"note":null}
 {"at":"2026-11-26T23:18:12Z","run_type":"lock","season":"2026","week":"12","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"7d49ccd","email":"ok","slack":"ok","push":"ok","credits":null,"note":null}
+{"at":"2026-11-27T21:12:00Z","run_type":"designation","season":"2026","week":"12","verdict":"NO BET","selftest":"101/101","selftest_green":true,"fold":"4bfeb2a","email":"ok","slack":"ok","push":"ok","credits":null,"note":"DEN@PIT expired; AJB OUT; totals moved; 3 legs PENDING Sun"}
